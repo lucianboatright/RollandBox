@@ -18,7 +18,7 @@ export default function Login() {
     event.preventDefault();
 
     try {
-      await firebase.auth().signInWithEmailAndPassowrd(emailAddress, password);
+      await firebase.auth().signInWithEmailAndPassword(emailAddress, password);
       history.push(ROUTES.DASHBOARD);
     } catch (error) {
       // If there is an erroer reset the vcalues to nothing
