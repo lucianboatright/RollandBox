@@ -1,16 +1,15 @@
 import { useState, useContext, useEffect } from 'react';
-import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
-import FireBaseContext from '../context/firebase';
+import FirebaseContext from '../context/firebase';
 import image1 from '../images/watchbox.jpg';
 import { doesUsernameExist } from '../services/firebase';
 
 export default function SignUp() {
   const history = useHistory;
-  const { firebase } = useContext(FireBaseContext);
+  const { firebase } = useContext(FirebaseContext);
 
-  const [username, SetUsername] = useState('');
+  const [username, setUsername] = useState('');
   const [fullName, setFullName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
@@ -18,14 +17,13 @@ export default function SignUp() {
   const [error, setError] = useState('');
   const isInvalid = password === '' || emailAddress === '';
 
-  const handleSignup = async (event) => {
+  const handleSignUp = async (event) => {
     event.preventDefault();
 
     const usernamesExists = await doesUsernameExist(username);
     // try {
     // } catch (error) {}
   };
-
   useEffect(() => {
     document.title = 'Sign Up - Watch';
   }, []);
@@ -42,13 +40,13 @@ export default function SignUp() {
           </h1>
           {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
 
-          <form onSubmit={handleSignup} method="POST">
+          <form onSubmit={handleSignUp} method="POST">
             <input
               aria-label="Enter User Name"
               type="text"
               placeholder="Username"
               className="text-sm text-grey-base w-full mr-3 py-5 px-4 h-2 border border-grey-primary rounded mb-2"
-              onChange={({ target }) => SetUsername(target.value)}
+              onChange={({ target }) => setUsername(target.value)}
               value={username}
             />
             <input
@@ -75,15 +73,15 @@ export default function SignUp() {
               onChange={({ target }) => setPassword(target.value)}
               value={password}
             />
+            <button
+              disabled={isInvalid}
+              type="submit"
+              className={`bg-blue-500 text-white w-full border border-grey-primary rounded font-bold
+              ${isInvalid && 'opacity-50'}`}
+            >
+              Sign Up
+            </button>
           </form>
-          <button
-            disabled={isInvalid}
-            type="submit"
-            className={`bg-blue-500 text-white w-full border border-grey-primary rounded font-bold
-            ${isInvalid && 'opacity-50'}`}
-          >
-            Sign Up
-          </button>
         </div>
         <div className="flex justify-center items-center flex-col p-4 rounded border border-grey-primary">
           <p className="text-sm">

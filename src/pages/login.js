@@ -1,13 +1,12 @@
 import { useState, useContext, useEffect } from 'react';
-import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
-import FireBaseContext from '../context/firebase';
+import FirebaseContext from '../context/firebase';
 import image1 from '../images/watchbox.jpg';
 
 export default function Login() {
   const history = useHistory;
-  const { firebase } = useContext(FireBaseContext);
+  const { firebase } = useContext(FirebaseContext);
 
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
@@ -19,7 +18,7 @@ export default function Login() {
     event.preventDefault();
 
     try {
-      await FireBaseContext.auth().signInWithEmailAndPassowrd(emailAddress, password);
+      await firebase.auth().signInWithEmailAndPassowrd(emailAddress, password);
       history.push(ROUTES.DASHBOARD);
     } catch (error) {
       // If there is an erroer reset the vcalues to nothing
@@ -30,7 +29,7 @@ export default function Login() {
   };
 
   useEffect(() => {
-    document.title = 'Login - Watch';
+    document.title = 'Login - RollandBox';
   }, []);
 
   return (
@@ -62,15 +61,15 @@ export default function Login() {
               onChange={({ target }) => setPassword(target.value)}
               value={password}
             />
+            <button
+              disabled={isInvalid}
+              type="submit"
+              className={`bg-blue-500 text-white w-full border border-grey-primary rounded font-bold
+              ${isInvalid && 'opacity-50'}`}
+            >
+              Login
+            </button>
           </form>
-          <button
-            disabled={isInvalid}
-            type="submit"
-            className={`bg-blue-500 text-white w-full border border-grey-primary rounded font-bold
-            ${isInvalid && 'opacity-50'}`}
-          >
-            Login
-          </button>
         </div>
         <div className="flex justify-center items-center flex-col p-4 rounded border border-grey-primary">
           <p className="text-sm">

@@ -1,5 +1,5 @@
 import { createContext } from 'react';
 
-const FireBaseContext = createContext(null);
+const FirebaseContext = createContext(null);
 
-export default FireBaseContext;
+export default FirebaseContext;
