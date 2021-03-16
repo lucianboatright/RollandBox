@@ -16,6 +16,7 @@ export default function Header() {
         <div className="flex justify-between h-full">
           <div className="text-grey-700 text-center flex items-center aligh-items cursor-pointer">
             <h1 className="flex justify-center w-full">
+              <p className="text-grey-700 text-center flex items-center aligh-items">RollandBox</p>
               <Link to={ROUTES.DASHBOARD}>
                 <img className="mt-2 w-2/12 " src={image1} alt="Roll and Box" />
               </Link>
@@ -65,6 +66,15 @@ export default function Header() {
                     />
                   </svg>
                 </button>
+                <div className="flex item-center cursor-pointer">
+                  <Link to={`/p/${user.displayName}`}>
+                    <img
+                      className="rounded-full h8 w-8 flex"
+                      src={`/images/avatars/${user.displayName}.jpg`}
+                      alt={`${user.displayName} profile`}
+                    />
+                  </Link>
+                </div>
               </>
             ) : (
               <>
