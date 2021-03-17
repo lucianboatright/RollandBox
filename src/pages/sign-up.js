@@ -6,7 +6,7 @@ import image1 from '../images/watchbox.jpg';
 import { doesUsernameExist } from '../services/firebase';
 
 export default function SignUp() {
-  const history = useHistory;
+  const history = useHistory();
   const { firebase } = useContext(FirebaseContext);
 
   const [username, setUsername] = useState('');

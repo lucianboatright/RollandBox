@@ -5,7 +5,7 @@ import FirebaseContext from '../context/firebase';
 import image1 from '../images/watchbox.jpg';
 
 export default function Login() {
-  const history = useHistory;
+  const history = useHistory();
   const { firebase } = useContext(FirebaseContext);
 
   const [emailAddress, setEmailAddress] = useState('');
