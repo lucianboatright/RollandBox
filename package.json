@@ -10,10 +10,12 @@
     "firebase": "^8.2.10",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-loading-skeleton": "^2.2.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "prop-types": "^15.7.2"
   },
   "scripts": {
     "build:css": "postcss src/styles/tailwind.css -o src/styles/app.css",
@@ -57,7 +59,6 @@
     "postcss": "^8.2.8",
     "postcss-cli": "^8.3.1",
     "prettier": "^2.2.1",
-    "prop-types": "^15.7.2",
     "tailwindcss": "^2.0.3"
   }
 }

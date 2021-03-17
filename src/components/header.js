@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
@@ -9,6 +9,7 @@ import image1 from '../images/watchrollfullopen.webp';
 export default function Header() {
   const { firebase } = useContext(FirebaseContext);
   const { user } = useContext(UserContext);
+  const history = useHistory();
 
   return (
     <header className="h-18 bd-white border-b border-gray-primary mb-8">
@@ -44,10 +45,14 @@ export default function Header() {
                 <button
                   type="button"
                   title="sign-out"
-                  onClick={() => firebase.auth().signOut}
+                  onClick={() => {
+                    firebase.auth().signOut();
+                    history.push(ROUTES.LOGIN);
+                  }}
                   onKeyDown={(event) => {
                     if (event.key === 'Enter') {
                       firebase.auth().signOut();
+                      history.push(ROUTES.LOGIN);
                     }
                   }}
                 >
@@ -78,7 +83,22 @@ export default function Header() {
               </>
             ) : (
               <>
-                <div>hello</div>
+                <Link to={ROUTES.LOGIN}>
+                  <button
+                    type="button"
+                    className="bg-blue-700 font-bold text-sm rounded text-white w-20 h-8"
+                  >
+                    Login
+                  </button>
+                </Link>
+                <Link to={ROUTES.SIGN_UP}>
+                  <button
+                    type="button"
+                    className="font-bold text-sm rounded text-blue-700 w-20 h-8 border"
+                  >
+                    Sign-Up
+                  </button>
+                </Link>
               </>
             )}
           </div>
