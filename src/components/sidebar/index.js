@@ -1,15 +1,24 @@
-import useUser from '../../hooks/use-user';
+import React from 'react';
 import User from './user';
 import Suggestions from './suggestions';
+import useUser from '../../hooks/use-user';
 
 export default function Sidebar() {
   const {
     user: { fullName, username, userId }
   } = useUser();
+  const [test, setTest] = React.useState(0);
 
   return (
     <div className="p-4">
-      <User username={username} fullname={fullName} />
+      <button
+        type="button"
+        onClick={() => {
+          console.log(test);
+          setTest(Math.random());
+        }}
+      />
+      <User username={username} fullname={fullName} test={test} />
       <Suggestions userId={userId} />
     </div>
   );
