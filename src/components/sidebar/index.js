@@ -14,8 +14,7 @@ export default function Sidebar() {
       <button
         type="button"
         onClick={() => {
-          console.log(test);
-          setTest(Math.random());
+          console.log(fullName);
         }}
       >
         test
