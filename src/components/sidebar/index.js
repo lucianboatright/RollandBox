@@ -1,7 +1,7 @@
 import React from 'react';
 import User from './user';
-import Suggestions from './suggestions';
 import useUser from '../../hooks/use-user';
+import Suggestions from './suggestions';
 
 export default function Sidebar() {
   const {
@@ -17,7 +17,9 @@ export default function Sidebar() {
           console.log(test);
           setTest(Math.random());
         }}
-      />
+      >
+        test
+      </button>
       <User username={username} fullname={fullName} test={test} />
       <Suggestions userId={userId} />
     </div>

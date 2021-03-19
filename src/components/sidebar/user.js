@@ -1,20 +1,14 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
-// import { memo } from 'react';
 
-const User = ({ username, fullName, test }) =>
-  !username || !fullName ? (
-    <Skeleton count={1} height={61} />
-  ) : (
+import image1 from '../../images/avatar/lucian.jpg';
+
+export default function User({ username, fullName, test }) {
+  return (
     <Link to={`/p/${username}`} className="grid grid-cols-4 gap-4 mb-6 items-center">
       <div className="flex items-center justify-between col-span-1">
-        {test}
-        <img
-          className="rounded-full w-16 flex mr-3"
-          src={`/images/avatars/${username}.jpg`}
-          alt=""
-        />
+        <img className="rounded-full w-16 flex mr-3" src={image1} alt="" />
       </div>
       <div className="col-span-3">
         <p className="font-bold text-sm">{username}</p>
@@ -22,8 +16,7 @@ const User = ({ username, fullName, test }) =>
       </div>
     </Link>
   );
-
-export default User;
+}
 
 User.propTypes = {
   username: PropTypes.string,
