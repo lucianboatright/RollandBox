@@ -11,14 +11,15 @@ export default function Sidebar() {
 
   return (
     <div className="p-4">
-      <button
+      {/* <button
+        className="border"
         type="button"
         onClick={() => {
-          console.log(fullName);
+          console.log(`fullName ${fullName} username ${username}`);
         }}
       >
         test
-      </button>
+      </button> */}
       <User username={username} fullname={fullName} test={test} />
       <Suggestions userId={userId} />
     </div>
