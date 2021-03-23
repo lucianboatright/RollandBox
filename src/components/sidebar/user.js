@@ -4,11 +4,10 @@ import Skeleton from 'react-loading-skeleton';
 
 // import image1 from '../../images/avatar/lucian.jpg';
 
-export default function User({ username, fullName, test }) {
-  return (
-    // !username || !fullName ? (
-    //   <Skeleton count={1} height={61} />
-    // ) : (
+export default function User({ username, fullName }) {
+  return !username || !fullName ? (
+    <Skeleton count={1} height={61} />
+  ) : (
     <Link to={`/p/${username}`} className="grid grid-cols-4 gap-4 mb-6 items-center">
       <div className="flex items-center justify-between col-span-1">
         <img
@@ -19,7 +18,7 @@ export default function User({ username, fullName, test }) {
       </div>
       <div className="col-span-3">
         <p className="font-bold text-sm">{username}</p>
-        <p className="font-bold text-sm">{fullName}</p>
+        <p className="text-sm">{fullName}</p>
       </div>
     </Link>
   );
@@ -27,6 +26,5 @@ export default function User({ username, fullName, test }) {
 
 User.propTypes = {
   username: PropTypes.string,
-  fullName: PropTypes.string,
-  test: PropTypes.number
+  fullName: PropTypes.string
 };
