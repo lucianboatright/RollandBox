@@ -5,12 +5,12 @@ import Skeleton from 'react-loading-skeleton';
 import { getSuggestedProfiles } from '../../services/firebase';
 import SuggestedProfile from './suggested-profile';
 
-export default function Suggestions({ userId, following }) {
+export default function Suggestions({ userId, following, followers }) {
   const [profiles, setProfiles] = useState(null);
 
   useEffect(() => {
     async function suggestedProfiles() {
-      const response = await getSuggestedProfiles(userId, following);
+      const response = await getSuggestedProfiles(userId, following, followers);
       setProfiles(response);
     }
 
@@ -23,6 +23,10 @@ export default function Suggestions({ userId, following }) {
   // call the async function ^^^^ within useEffect
   // store it in state
   // go ahead and render (wait on the profiles as in 'skeleton')
+
+  // console.log('following (suggestions)', following);
+  // console.log('followers (suggestions)', followers);
+  // console.log('userId (suggestions)');
 
   return !profiles ? (
     <Skeleton count={1} height={150} className="mt-5" />
@@ -48,5 +52,6 @@ export default function Suggestions({ userId, following }) {
 
 Suggestions.propTypes = {
   userId: PropTypes.string,
-  following: PropTypes.array
+  following: PropTypes.array,
+  followers: PropTypes.array
 };

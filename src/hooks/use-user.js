@@ -15,6 +15,7 @@ export default function useUser() {
       getUserObjByUserId(user.uid);
     }
   }, [user]);
-  console.log('activeuser', activeUser);
+  // console.log('activeuser Followers', activeUser.followers);
+  // console.log('activeuser Following', activeUser.following);
   return { user: activeUser };
 }
