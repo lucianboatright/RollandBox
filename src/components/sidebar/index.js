@@ -5,10 +5,10 @@ import useUser from '../../hooks/use-user';
 
 export default function Sidebar() {
   const {
-    user: { fullName, username, userId, following, followers }
+    user: { docId, fullName, username, userId, following, followers }
   } = useUser();
 
-  // console.log('useUser', useUser());
+  console.log('useUser', useUser());
   // console.log('username', username);
   // console.log('follewing in index', following);
   // console.log('follewers', followers);
@@ -16,7 +16,12 @@ export default function Sidebar() {
   return (
     <div className="p-4">
       <User username={username} fullName={fullName} />
-      <Suggestions userId={userId} following={following} followers={followers} />
+      <Suggestions
+        userId={userId}
+        following={following}
+        followers={followers}
+        loggedInUserDocId={docId}
+      />
     </div>
   );
 }
