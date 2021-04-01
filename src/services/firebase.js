@@ -1,3 +1,4 @@
+import { parseWithOptions } from 'date-fns/fp';
 import { firebase, FieldValue } from '../lib/firebase';
 
 export async function doesUsernameExist(username) {
@@ -59,4 +60,32 @@ export async function updateFollowedUserFollowers(
         ? FieldValue.arrayRemove(loggedInUserDocId)
         : FieldValue.arrayUnion(loggedInUserDocId)
     });
+}
+
+export async function getWatches(userId, following) {
+  const result = await firebase
+    .firestore()
+    .collection('watches')
+    .where('userId', 'in', following)
+    .get();
+
+  const userFollowedWatches = result.docs.map((watch) => ({
+    ...watch.data(),
+    docId: watch.id
+  }));
+
+  console.log('userFolllowedWatches', userFollowedWatches);
+
+  const watchesWithUserDetails = await Promise.all(
+    userFollowedWatches.map(async (watch) => {
+      let userLikedWatch = false;
+      if (parseWithOptions.likes.includes(userId)) {
+        userLikedWatch = true;
+      }
+      const user = await getUserByUserId(watch.userId);
+      const { username } = user[0];
+      return { username, ...watch, userLikedWatch };
+    })
+  );
+  return watchesWithUserDetails;
 }

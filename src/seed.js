@@ -47,7 +47,7 @@ export function seedDatabase(firebase) {
   for (let i = 1; i <= 5; ++i) {
     firebase
       .firestore()
-      .collection('photos')
+      .collection('watches')
       .add({
         photoId: i,
         userId: '2',
