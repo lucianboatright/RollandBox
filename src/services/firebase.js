@@ -74,7 +74,7 @@ export async function getWatches(userId, following) {
     docId: watch.id
   }));
 
-  console.log('userFolllowedWatches', userFollowedWatches);
+  // console.log('userFolllowedWatches', userFollowedWatches);
 
   const watchesWithUserDetails = await Promise.all(
     userFollowedWatches.map(async (watch) => {

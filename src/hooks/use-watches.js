@@ -9,8 +9,6 @@ export default function useWatches() {
     user: { uid: userId = '' }
   } = useContext(UserContext);
 
-  console.log('use-watches', useContext);
-
   useEffect(() => {
     async function getTimeLineWatches() {
       const [{ following }] = await getUserByUserId(userId);
@@ -21,10 +19,12 @@ export default function useWatches() {
       if (following.length > 0) {
         followedUserWatches = await getWatches(userId, following);
       }
+      followedUserWatches.sort((a, b) => b.dateCreated - a.dateCreated);
+      setWatches(followedUserWatches);
     }
 
     getTimeLineWatches();
-  }, []);
+  }, [userId]);
 
   return { watches };
 }
