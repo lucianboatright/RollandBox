@@ -4,8 +4,8 @@ export function seedDatabase(firebase) {
     {
       userId: '1QBZjzUXfNgVNckqymdyjXg5gCi2',
       username: 'karl',
-      fullName: 'Lucian Boatright',
-      emailAddress: 'lucian.boatright@gmail.com',
+      fullName: 'Ed West',
+      emailAddress: 'ed@west.com',
       following: ['2'],
       followers: ['2', '3', '4'],
       dateCreated: Date.now()

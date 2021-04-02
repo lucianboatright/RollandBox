@@ -79,7 +79,7 @@ export async function getWatches(userId, following) {
   const watchesWithUserDetails = await Promise.all(
     userFollowedWatches.map(async (watch) => {
       let userLikedWatch = false;
-      if (parseWithOptions.likes.includes(userId)) {
+      if (watch.likes.includes(userId)) {
         userLikedWatch = true;
       }
       const user = await getUserByUserId(watch.userId);

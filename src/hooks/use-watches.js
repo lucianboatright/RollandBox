@@ -9,6 +9,8 @@ export default function useWatches() {
     user: { uid: userId = '' }
   } = useContext(UserContext);
 
+  console.log('use-watches', useContext);
+
   useEffect(() => {
     async function getTimeLineWatches() {
       const [{ following }] = await getUserByUserId(userId);
