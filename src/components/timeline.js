@@ -1,12 +1,14 @@
 /* eslint-disable no-nested-ternary */
 import Skeleton from 'react-loading-skeleton';
 import useWatches from '../hooks/use-watches';
+import Post from './post';
 
 export default function Timeline() {
   const { watches } = useWatches();
-  console.log('timeline-watches', watches);
+
+  // console.log('timeline-watches', watches);
   return (
-    <div className="col-span-2 grid grid-rows-3 grid-flow-col gap-4">
+    <div className="col-span-2 grid grid-rows-3 grid-flow-col gap-5">
       {!watches ? (
         <>
           {[...new Array(12)].map((_, index) => (
@@ -20,7 +22,9 @@ export default function Timeline() {
           ))}
         </>
       ) : watches?.length > 0 ? (
-        watches.map((content) => <p key={content.docId}>{content.imageSrc}</p>)
+        watches.map((content) => (
+          <Post className="text-pink-800" key={content.docId} content={content} />
+        ))
       ) : (
         <p className="text-center text-2xl">You need to Follow others to see Watches</p>
       )}
