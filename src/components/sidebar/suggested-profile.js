@@ -19,12 +19,12 @@ export default function SuggestedProfile({
     await updateFollowedUserFollowers(profileDocId, userId, false);
   }
   // console.log('Hello');
-  // console.log('suggested-profile', username);
+  // console.log('suggested-profile', followed);
   return !followed ? (
     <div className="flex flex-row items-center align-items justify-between">
       <div className="flex items-center justify-between">
         <img
-          className="rounded-full w-8 flex mr-3"
+          className="rounded-full w-14 flex mr-3"
           // src={`./images/avatars/${username}.jpg`}
           alt={username}
         />

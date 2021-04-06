@@ -6,11 +6,17 @@ export default function Timeline() {
   const { watches } = useWatches();
   console.log('timeline-watches', watches);
   return (
-    <div className="container col-span-2 space-x-10 space-y-10">
-      {watches ? (
+    <div className="col-span-2 grid grid-rows-3 grid-flow-col gap-4">
+      {!watches ? (
         <>
-          {[...new Array(6)].map((_, index) => (
-            <Skeleton className="" key={index} count={1} width={220} height={170} />
+          {[...new Array(12)].map((_, index) => (
+            <Skeleton
+              className="space-x-10 space-y-20"
+              key={index}
+              count={1}
+              width={120}
+              height={170}
+            />
           ))}
         </>
       ) : watches?.length > 0 ? (
