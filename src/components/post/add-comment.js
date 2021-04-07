@@ -24,7 +24,27 @@ export default function AddComment({ docId, comments, setComments, commentInput 
         onSubmit={(event) =>
           comment.length >= 1 ? handleSubmitComment(event) : event.preventDefault()
         }
-      />
+      >
+        <input
+          aria-label="Add a Comment"
+          autoComplete="off"
+          className="text-sm text-gray-base w-f mr-3 py-5 px-4"
+          type="text"
+          name="add-comments"
+          placeholder="Add a Comment ..."
+          value={comment}
+          onChange={({ target }) => setComments(target.value)}
+          ref={commentInput}
+        />
+        <button
+          className={`text-sm font-bold text-blue-medium ${!comment && 'opacity-25'}`}
+          type="button"
+          disabled={comment.length < 1}
+          onClick={handleSubmitComment}
+        >
+          Post
+        </button>
+      </form>
     </div>
   );
 }
