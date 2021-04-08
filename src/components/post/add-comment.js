@@ -4,7 +4,7 @@ import FirebaseContext from '../../context/firebase';
 import UserContext from '../../context/user';
 
 export default function AddComment({ docId, comments, setComments, commentInput }) {
-  const [comment, setComemnt] = useState('');
+  const [comment, setComment] = useState('');
   const { firebase, FieldValue } = useContext(FirebaseContext);
   const {
     user: { displayName }
@@ -13,7 +13,16 @@ export default function AddComment({ docId, comments, setComments, commentInput 
   const handleSubmitComment = (event) => {
     event.preventDefault();
 
-    return null;
+    setComments([{ displayName, comment }, ...comments]);
+    setComment('');
+
+    return firebase
+      .firestore()
+      .collection('watches')
+      .doc(docId)
+      .update({
+        comments: FieldValue.arrayUnion({ displayName, comment })
+      });
   };
 
   return (
@@ -30,10 +39,10 @@ export default function AddComment({ docId, comments, setComments, commentInput 
           autoComplete="off"
           className="text-sm text-gray-base w-f mr-3 py-5 px-4"
           type="text"
-          name="add-comments"
+          name="add-comment"
           placeholder="Add a Comment ..."
           value={comment}
-          onChange={({ target }) => setComments(target.value)}
+          onChange={({ target }) => setComment(target.value)}
           ref={commentInput}
         />
         <button
