@@ -23,11 +23,11 @@ export default function Profile() {
     }
     checkUserExists();
   }, [username, history]);
-  return userExists ? (
+  return user?.username ? (
     <div className="bg-gray-background">
       <Header />
       <div className="mx-auto max-w-screen-lg">
-        <UserProfile username={username} />
+        <UserProfile user={user} />
       </div>
     </div>
   ) : null;
