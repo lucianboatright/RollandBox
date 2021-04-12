@@ -20,6 +20,7 @@ export default function Profile({ user }) {
 
   useEffect(() => {
     async function getProfileInfoAndWatches() {
+      console.log('user', user);
       // const [{ ...user }] = await getUserByUsername(username);
       const watches = await getUserWatchesByUsername(user.username);
       dispatch({ profile: user, watchCollection: watches, followerCount: user.followers.length });
