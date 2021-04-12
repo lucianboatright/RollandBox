@@ -12,7 +12,7 @@ export default function Header({
     docId: profileDocId,
     userId: profileUserId,
     fullName,
-    following,
+    following = [],
     followers = [],
     username: profileUsername
   }
@@ -21,7 +21,12 @@ export default function Header({
   const [isFollowingProfile, setIsFollowingProfile] = useState(false);
   const activeButtonFollow = user.username && user.username !== profileUsername;
 
-  const handleToggleFollow = () => 1;
+  const handleToggleFollow = () => {
+    setIsFollowingProfile((isFollowingProfile) => !isFollowingProfile);
+    setFollowerCount({
+      followerCount: isFollowingProfile ? followers.length - 1 : followers.length + 1
+    });
+  };
 
   useEffect(() => {
     const isLoggedInUserFollowingProfile = async () => {
@@ -51,9 +56,37 @@ export default function Header({
               className="bg-blue-700 font-bold text-sm rounded text-white w-20 h-8"
               type="button"
               onClick={handleToggleFollow}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  handleToggleFollow();
+                }
+              }}
             >
-              {/* {isFollowingProfile ? 'Unfollow' : 'Follow'} */}button
+              {isFollowingProfile ? 'Unfollow' : 'Follow'}
             </button>
+          )}
+        </div>
+        <div className="container flex mt-4">
+          {followers === undefined || following === undefined ? (
+            <Skeleton count={1} width={677} height={24} />
+          ) : (
+            <>
+              <p className="mr-10">
+                <span className="font=bold">{watchesCount}</span>
+                {`  `}
+                Watches
+              </p>
+              <p className="mr-10">
+                <span className="font-bold">{followers.length}</span>
+                {`  `}
+                {followers.length === 1 ? `Follower` : `Followers`}
+              </p>
+              <p className="mr-10">
+                <span className="font-bold">{following.length}</span>
+                {`  `}
+                Following
+              </p>
+            </>
           )}
         </div>
       </div>
