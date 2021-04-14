@@ -32,4 +32,7 @@ module.export = {
             }
         },
     },
+    variants: {
+        display: ['ground-hover']
+    }
 }
