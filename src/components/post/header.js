@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 export default function Header({ username }) {
   return (
-    <div className="col-span-2 grid grid-rows-3 grid-flow-col gap-5">
+    <div className="col-span-2 grid grid-rows-1 grid-flow-col gap-1">
       <div className="flex items-center">
         <Link to={`/p/${username}`} className="flex items-center">
           <img
-            className="rounded-full border h-12 w-8 flex mr-3"
+            className="rounded-full border h-8 w-8 flex mr-3"
             src={`/images/avatars/${username}.jpg`}
             alt={username}
           />

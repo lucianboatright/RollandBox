@@ -1,4 +1,3 @@
-import { parseWithOptions } from 'date-fns/fp';
 import { firebase, FieldValue } from '../lib/firebase';
 
 export async function doesUsernameExist(username) {
@@ -87,7 +86,7 @@ export async function getWatches(userId, following) {
     docId: watch.id
   }));
 
-  // console.log('userFolllowedWatches', userFollowedWatches);
+  console.log('userFolllowedWatches', userFollowedWatches);
 
   const watchesWithUserDetails = await Promise.all(
     userFollowedWatches.map(async (watch) => {

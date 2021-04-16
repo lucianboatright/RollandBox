@@ -8,7 +8,7 @@ export default function Sidebar() {
     user: { docId, fullName, username, userId, following, followers }
   } = useUser();
 
-  console.log('useUser', useUser());
+  // console.log('useUser', useUser());
   // console.log('username', username);
   // console.log('follewing in index', following);
   // console.log('follewers', followers);

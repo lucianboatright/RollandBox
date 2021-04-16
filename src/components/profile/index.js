@@ -3,11 +3,7 @@ import PropTypes from 'prop-types';
 import Header from './header';
 import Watches from './watches';
 
-import {
-  getUserByUsername,
-  getUserWatchesByUsername,
-  updateFollowedUserFollowers
-} from '../../services/firebase';
+import { getUserWatchesByUsername } from '../../services/firebase';
 
 export default function Profile({ user }) {
   const reducer = (state, newState) => ({ ...state, ...newState });
@@ -18,9 +14,10 @@ export default function Profile({ user }) {
   };
   const [{ profile, watchCollection, followerCount }, dispatch] = useReducer(reducer, initialState);
 
+  console.log('watches', watchCollection);
+
   useEffect(() => {
     async function getProfileInfoAndWatches() {
-      // const [{ ...user }] = await getUserByUsername(username);
       const watches = await getUserWatchesByUsername(user.username);
       dispatch({ profile: user, watchCollection: watches, followerCount: user.followers.length });
     }
@@ -35,9 +32,7 @@ export default function Profile({ user }) {
         followerCount={followerCount}
         setFollowerCount={dispatch}
       />
-      <Watches watches={watchCollection}>
-        <span>hello</span>
-      </Watches>
+      <Watches watches={watchCollection} />
     </>
   );
 }

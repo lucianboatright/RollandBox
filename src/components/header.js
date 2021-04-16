@@ -1,14 +1,17 @@
+/* eslint-disable global-require */
 import { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
+import useUser from '../hooks/use-user';
 
 import image1 from '../images/watchrollfullopen.webp';
 
 export default function Header() {
+  const { user: loggedInUser } = useContext(UserContext);
   const { firebase } = useContext(FirebaseContext);
-  const { user } = useContext(UserContext);
+  const { user } = useUser(loggedInUser?.uid);
   const history = useHistory();
 
   return (
@@ -72,11 +75,12 @@ export default function Header() {
                   </svg>
                 </button>
                 <div className="flex item-center cursor-pointer">
-                  <Link to={`/p/${user.displayName}`}>
+                  <Link to={`/p/${user.username}`}>
                     <img
                       className="rounded-full h8 w-8 flex"
-                      src={`../images/avatar/${user.displayName}.jpg`}
-                      alt={`${user.displayName} profile`}
+                      alt="logo"
+                      style={{ width: 170 }}
+                      src={`../images/avatars/${user.username}.jpg`}
                     />
                   </Link>
                 </div>
@@ -107,3 +111,4 @@ export default function Header() {
     </header>
   );
 }
+/* eslint-disable global-require */

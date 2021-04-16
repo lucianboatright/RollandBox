@@ -21,6 +21,8 @@ export default function Header({
   const [isFollowingProfile, setIsFollowingProfile] = useState(false);
   const activeButtonFollow = user.username && user.username !== profileUsername;
 
+  // console.log('username', user.username);
+
   const handleToggleFollow = async () => {
     setIsFollowingProfile((isFollowingProfile) => !isFollowingProfile);
     setFollowerCount({
@@ -48,8 +50,8 @@ export default function Header({
         {user.username && (
           <img
             className="rounded-full h-40 w-40 flex"
-            alt={`${profileUsername}`}
-            scr={`${profileUsername}`}
+            src={`./images/avatars/${profileUsername}.jpg`}
+            alt={`/images/avatars/${profileUsername}.jpg`}
           />
         )}
       </div>

@@ -25,7 +25,7 @@ export default function Watches({ watches }) {
           ) : watches?.length > 0 ? (
             watches.map((watch) => (
               <div key={watch.docId} className="relative group">
-                <img src={image1} alt={image1} />
+                <img src={`../../images/users/raphael/${watch.imageSrc}`} alt={watch.caption} />
                 <div className="absolute bottom-0 left-0 bg-gray-200 z-10 w-full justify-evenly items-center h-full bg-black-faded groupe-hover:flex hidden">
                   <p className="flex-items-center text-white font-bold">
                     <svg
