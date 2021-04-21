@@ -13,7 +13,8 @@ export default function Post({ content }) {
   // console.log('content', content);
 
   return (
-    <div className="rounded col-span-2 border bg-white border-grey-primary">
+    <div>
+      {/* <div className="rounded col-span-1 border bg-white border-grey-primary"> */}
       <Header username={content.username} />
       <Image src={content.imageSrc} caption={content.caption} />
       <Actions

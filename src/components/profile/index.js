@@ -14,8 +14,6 @@ export default function Profile({ user }) {
   };
   const [{ profile, watchCollection, followerCount }, dispatch] = useReducer(reducer, initialState);
 
-  console.log('watches', watchCollection);
-
   useEffect(() => {
     async function getProfileInfoAndWatches() {
       const watches = await getUserWatchesByUsername(user.username);
@@ -23,6 +21,8 @@ export default function Profile({ user }) {
     }
     getProfileInfoAndWatches();
   }, [user.username]);
+
+  console.log('index_watch collection', watchCollection);
 
   return (
     <>
@@ -39,11 +39,12 @@ export default function Profile({ user }) {
 
 Profile.propTypes = {
   user: PropTypes.shape({
-    dateCreated: PropTypes.number.isRequired,
-    emailAddress: PropTypes.string.isRequired,
-    following: PropTypes.array.isRequired,
-    followers: PropTypes.array.isRequired,
-    fullName: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired
-  }).isRequired
+    dateCreated: PropTypes.number,
+    emailAddress: PropTypes.string,
+    following: PropTypes.array,
+    followers: PropTypes.array,
+    fullName: PropTypes.string,
+    username: PropTypes.string,
+    userId: PropTypes.string
+  })
 };

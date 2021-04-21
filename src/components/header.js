@@ -75,7 +75,7 @@ export default function Header() {
                   </svg>
                 </button>
                 <div className="flex item-center cursor-pointer">
-                  <Link to={`/p/${user.username}`}>
+                  <Link to={`/${user.username}`}>
                     <img
                       className="rounded-full h8 w-8 flex"
                       alt="logo"

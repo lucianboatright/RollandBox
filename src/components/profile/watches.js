@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import '../../styles/watches.css';
 
-import image1 from '../../images/watch_rolls/watchrollround-3.jpg';
-
 export default function Watches({ watches }) {
   return (
     <div className="">
@@ -25,7 +23,7 @@ export default function Watches({ watches }) {
           ) : watches?.length > 0 ? (
             watches.map((watch) => (
               <div key={watch.docId} className="relative group">
-                <img src={`../../images/users/raphael/${watch.imageSrc}`} alt={watch.caption} />
+                <img src={`../../images/watches/${watch.photoId}.jpg`} alt={`${watch.photoId}`} />
                 <div className="absolute bottom-0 left-0 bg-gray-200 z-10 w-full justify-evenly items-center h-full bg-black-faded groupe-hover:flex hidden">
                   <p className="flex-items-center text-white font-bold">
                     <svg
@@ -55,7 +53,7 @@ export default function Watches({ watches }) {
                         clipRule="evenodd"
                       />
                     </svg>
-                    {watches.comment.length}
+                    {/* {watches.comments.length} */}
                   </p>
                 </div>
               </div>

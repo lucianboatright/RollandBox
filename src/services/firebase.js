@@ -86,8 +86,6 @@ export async function getWatches(userId, following) {
     docId: watch.id
   }));
 
-  console.log('userFolllowedWatches', userFollowedWatches);
-
   const watchesWithUserDetails = await Promise.all(
     userFollowedWatches.map(async (watch) => {
       let userLikedWatch = false;
@@ -99,9 +97,9 @@ export async function getWatches(userId, following) {
       return { username, ...watch, userLikedWatch };
     })
   );
+  console.log('watchesWithUserDetails', watchesWithUserDetails);
   return watchesWithUserDetails;
 }
-
 export async function getUserWatchesByUsername(username) {
   const [user] = await getUserByUsername(username);
   const result = await firebase
@@ -110,7 +108,7 @@ export async function getUserWatchesByUsername(username) {
     .where('userId', '==', user.userId)
     .get();
 
-  result.docs.map((item) => ({
+  return result.docs.map((item) => ({
     ...item.data(),
     docId: item.id
   }));

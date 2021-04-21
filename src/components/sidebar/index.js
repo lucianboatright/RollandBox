@@ -12,6 +12,7 @@ export default function Sidebar() {
   // console.log('username', username);
   // console.log('follewing in index', following);
   // console.log('follewers', followers);
+  // console.log('userID', userId);
 
   return (
     <div className="p-4">

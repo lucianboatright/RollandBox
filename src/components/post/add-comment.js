@@ -26,33 +26,41 @@ export default function AddComment({ docId, comments, setComments, commentInput 
   };
 
   return (
-    <div className="border-t boarder-gray-primary">
+    <div className="border boarder-gray-primary">
       <form
-        className="flex justify-between pl-0 pr-1"
+        className="pl-0 pr-1"
         method="POST"
         onSubmit={(event) =>
           comment.length >= 1 ? handleSubmitComment(event) : event.preventDefault()
         }
       >
-        <input
-          aria-label="Add a Comment"
-          autoComplete="off"
-          className="text-sm text-gray-600 w-f mr-3 py-3 px-3"
-          type="text"
-          name="add-comment"
-          placeholder="Add a Comment ..."
-          value={comment}
-          onChange={({ target }) => setComment(target.value)}
-          ref={commentInput}
-        />
-        <button
-          className={`text-sm font-bold text-blue-800 ${!comment && 'opacity-25'}`}
-          type="button"
-          disabled={comment.length < 1}
-          onClick={handleSubmitComment}
-        >
-          Post
-        </button>
+        <div className="flex">
+          <div className="w-4/5">
+            <input
+              aria-label="Add a Comment"
+              autoComplete="off"
+              className="text-sm text-gray-600 w-f mr-0 py-1 px-1"
+              type="text"
+              name="add-comment"
+              placeholder="Add a Comment ..."
+              value={comment}
+              onChange={({ target }) => setComment(target.value)}
+              ref={commentInput}
+            />
+          </div>
+          <div className="w-1/5 ">
+            <button
+              className={`inline-block align-baseline text-sm font-bold text-blue-800 ${
+                !comment && 'opacity-25'
+              }`}
+              type="button"
+              disabled={comment.length < 1}
+              onClick={handleSubmitComment}
+            >
+              Post
+            </button>
+          </div>
+        </div>
       </form>
     </div>
   );

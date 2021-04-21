@@ -6,9 +6,8 @@ import Post from './post';
 export default function Timeline() {
   const { watches } = useWatches();
 
-  console.log('timeline-watches', watches);
   return (
-    <div className="col-span-2 grid grid-rows-3 grid-flow-col gap-5">
+    <div className="col-span-2 grid grid-flow-col grid-cols-3 grid-rows-3 gap-4">
       {!watches ? (
         <>
           {[...new Array(12)].map((_, index) => (
