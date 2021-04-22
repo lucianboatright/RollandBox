@@ -2,10 +2,10 @@
 import Skeleton from 'react-loading-skeleton';
 import useWatches from '../hooks/use-watches';
 import Post from './post';
+// import woodBorder from '../images/borders/plank_2_vertical.png';
 
 export default function Timeline() {
   const { watches } = useWatches();
-
   return (
     <div className="col-span-2 grid grid-cols-4 grid-rows-3 gap-4">
       {!watches ? (
@@ -22,13 +22,16 @@ export default function Timeline() {
         </>
       ) : watches?.length > 0 ? (
         watches.map((content) => (
-          <Post
-            className="text-pink-800 space-x-10 space-y-20"
-            key={content.docId}
-            content={content}
-            width={120}
-            height={170}
-          />
+          <>
+            <Post
+              className="text-pink-800 space-x-10 space-y-20"
+              key={content.docId}
+              content={content}
+              width={120}
+              height={170}
+            />
+            {/* <img src={woodBorder} alt="" /> */}
+          </>
         ))
       ) : (
         <p className="text-center text-2xl">You need to Follow others to see Watches</p>

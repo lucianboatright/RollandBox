@@ -8,21 +8,21 @@ export default function Comments({ docId, comments: allComments, posted, comment
   const [comments, setComments] = useState(allComments);
   return (
     <>
-      <div className="p-4 pt-1 pb-1">
+      <div className="p-2 pt-0 pb-0">
         {comments.length >= 3 && (
-          <p className="text-sm text-gray-700 mb-1 cursor-pointer">
+          <p className="text-xs text-gray-700 mb-0 cursor-pointer">
             View all {comments.length} comments
           </p>
         )}
         {comments.slice(0, 3).map((item) => (
-          <p key={`${item.comment}-${item.displayName}`} className="mb-1">
+          <p key={`${item.comment}-${item.displayName}`} className="mb-0">
             <Link to={`/${item.displayName}`}>
-              <span className=" mr-1 font-bold">{item.displayName}</span>
+              <span className="text-xs mr-1 font-bold">{item.displayName}</span>
             </Link>
-            <span>{item.comment}</span>
+            <span className="text-xs">{item.comment}</span>
           </p>
         ))}
-        <p className="text-xs text-gray-700 uppercase mt-2">
+        <p className="text-xs text-gray-700 uppercase mt-1">
           {formatDistance(posted, new Date())} ago
         </p>
       </div>

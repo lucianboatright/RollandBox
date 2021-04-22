@@ -2,6 +2,7 @@ import { PropTypes } from 'prop-types';
 import { useState, useContext } from 'react';
 import FirebaseContext from '../../context/firebase';
 import UserContext from '../../context/user';
+import { ReactComponent as WatchLogo } from '../../images/svg_png/watch.svg';
 
 export default function Actions({ docId, totalLikes, likedWatch, handleFocus }) {
   const {
@@ -28,31 +29,19 @@ export default function Actions({ docId, totalLikes, likedWatch, handleFocus }) 
 
   return (
     <>
-      <div className="flex justify-between p-2">
+      <div className="flex justify-between p-1">
         <div className="flex">
-          <svg
+          <WatchLogo
             onClick={handleToggleLiked}
             onKeyDown={(event) => {
               if (event.key === 'Enter') {
                 handleToggleLiked();
               }
             }}
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            tabIndex={0}
             className={`w-4 mr-2 select-none cursor-pointer ${
               toggleLiked ? 'fill-current text-red-600' : 'text-black-light'
             }`}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-            />
-          </svg>
+          />
           <svg
             onClick={handleFocus}
             onKeyDown={(event) => {
@@ -76,8 +65,10 @@ export default function Actions({ docId, totalLikes, likedWatch, handleFocus }) 
           </svg>
         </div>
       </div>
-      <div className="p-4 py-0">
-        <p className="font-light font-sx">{likes === 1 ? `${likes} like` : `${likes} likes`}</p>
+      <div className="p-2 py-0">
+        <p className="font-light text-xs font-sx">
+          {likes === 1 ? `${likes} like` : `${likes} likes`}
+        </p>
       </div>
     </>
   );

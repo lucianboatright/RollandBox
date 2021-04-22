@@ -42,7 +42,7 @@ export default function AddComment({ docId, comments, setComments, commentInput 
               className="text-sm text-gray-600 w-f mr-0 py-1 px-1"
               type="text"
               name="add-comment"
-              placeholder="Add a Comment ..."
+              placeholder="Comment ..."
               value={comment}
               onChange={({ target }) => setComment(target.value)}
               ref={commentInput}
@@ -50,8 +50,8 @@ export default function AddComment({ docId, comments, setComments, commentInput 
           </div>
           <div className="w-1/5 ">
             <button
-              className={`inline-block align-baseline text-sm font-bold text-blue-800 ${
-                !comment && 'opacity-25'
+              className={`inline-block align-baseline text-sm font-bold text-pink-800 ${
+                !comment && 'opacity-50'
               }`}
               type="button"
               disabled={comment.length < 1}
