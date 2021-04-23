@@ -8,7 +8,7 @@ export default function Comments({ docId, comments: allComments, posted, comment
   const [comments, setComments] = useState(allComments);
   return (
     <>
-      <div className="p-2 pt-0 pb-0">
+      <div className="ml-1 p-0 pt-0 pb-0">
         {comments.length >= 3 && (
           <p className="text-xs text-gray-700 mb-0 cursor-pointer">
             View all {comments.length} comments
@@ -22,7 +22,7 @@ export default function Comments({ docId, comments: allComments, posted, comment
             <span className="text-xs">{item.comment}</span>
           </p>
         ))}
-        <p className="text-xs text-gray-700 uppercase mt-1">
+        <p className="text-xs text-gray-700 uppercase mt-0">
           {formatDistance(posted, new Date())} ago
         </p>
       </div>

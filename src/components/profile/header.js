@@ -49,7 +49,7 @@ export default function Header({
       <div className="container flex justify-center">
         {user.username && (
           <img
-            className="rounded-full h-40 w-40 flex"
+            className="rounded-full h-40 w-auto flex"
             src={`./images/avatars/${profileUsername}.jpg`}
             alt={`/images/avatars/${profileUsername}.jpg`}
           />
@@ -60,7 +60,7 @@ export default function Header({
           <p className="text-2xl mr-4">{profileUsername}</p>
           {activeButtonFollow && (
             <button
-              className="bg-blue-700 font-bold text-sm rounded text-white w-20 h-8"
+              className="bg-green-600 font-bold text-sm rounded text-white w-20 h-8"
               type="button"
               onClick={handleToggleFollow}
               onKeyDown={(event) => {
@@ -103,11 +103,11 @@ export default function Header({
       <div className="flex items-center justify-evenly flex-col col-span">
         <div className="container mt-6">
           <button
-            className="bg-blue-700 font-bold text-sm rounded text-white w-20 h-8"
+            className="bg-pink-600 font-bold text-sm rounded text-white pr-5 pl-5 h-8"
             type="button"
             onClick={handdleNewpost}
           >
-            New Post
+            New Watch
           </button>
         </div>
       </div>

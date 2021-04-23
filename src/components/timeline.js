@@ -3,11 +3,12 @@ import Skeleton from 'react-loading-skeleton';
 import useWatches from '../hooks/use-watches';
 import Post from './post';
 // import woodBorder from '../images/borders/plank_2_vertical.png';
+import backGrid from '../images/borders/wooden_grid_3.png';
 
 export default function Timeline() {
   const { watches } = useWatches();
   return (
-    <div className="col-span-2 grid grid-cols-4 grid-rows-3 gap-4">
+    <div className="col-span-3 grid grid-cols-5 grid-rows-3 gap-4">
       {!watches ? (
         <>
           {[...new Array(12)].map((_, index) => (

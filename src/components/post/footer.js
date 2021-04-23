@@ -3,9 +3,9 @@ import { PropTypes } from 'prop-types';
 
 export default function Footer({ caption, username }) {
   return (
-    <div className="p-2 pt-0 pb-0">
-      <span className="mr-1 font-bold text-xs">{username}</span>
-      <span className="text-xs">{caption}</span>
+    <div className="">
+      {/* <span className="ml-1 font-bold text-xs">{username}</span> */}
+      <span className="font-bold ml-1 text-xs">{caption}</span>
     </div>
   );
 }

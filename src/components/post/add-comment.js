@@ -50,7 +50,7 @@ export default function AddComment({ docId, comments, setComments, commentInput 
           </div>
           <div className="w-1/5 ">
             <button
-              className={`inline-block align-baseline text-sm font-bold text-pink-800 ${
+              className={`inline-block align-baseline text-sm font-bold text-pink-800 pr-10 ${
                 !comment && 'opacity-50'
               }`}
               type="button"
