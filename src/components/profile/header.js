@@ -31,10 +31,6 @@ export default function Header({
     await toggleFollow(isFollowingProfile, user.docId, profileDocId, profileUserId, user.userId);
   };
 
-  const handdleNewpost = () => {
-    console.log('new post please');
-  };
-
   useEffect(() => {
     const isLoggedInUserFollowingProfile = async () => {
       const isFollowing = await isUserFollowingProfile(user.username, profileUserId);
@@ -98,17 +94,6 @@ export default function Header({
         </div>
         <div className="container mt-4">
           <p className="font-medium">{!fullName ? <Skeleton count={1} height={24} /> : fullName}</p>
-        </div>
-      </div>
-      <div className="flex items-center justify-evenly flex-col col-span">
-        <div className="container mt-6">
-          <button
-            className="bg-pink-600 font-bold text-sm rounded text-white pr-5 pl-5 h-8"
-            type="button"
-            onClick={handdleNewpost}
-          >
-            New Watch
-          </button>
         </div>
       </div>
     </div>

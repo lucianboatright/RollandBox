@@ -14,14 +14,18 @@ export default function Header() {
   const { user } = useUser(loggedInUser?.uid);
   const history = useHistory();
 
+  const handdleNewpost = () => {
+    console.log('new post please');
+  };
+
   return (
     <header className="h-18 bd-white border-b border-gray-primary mb-8">
       <div className="container mx-auto max-w-screen-lg h-full">
         <div className="flex justify-between h-full">
-          <div className="text-grey-700 text-center flex items-center aligh-items cursor-pointer">
+          <div className="text-grey-700 cursor-pointer">
             <h1 className="flex justify-center w-full">
-              <p className="text-grey-700 text-center flex items-center aligh-items text-3xl">
-                R&B
+              <p className="text-grey-700 flex flex-row items-center justify-between text-2xl">
+                Roll & Box
               </p>
               <Link to={ROUTES.DASHBOARD}>
                 <img className="mt-2 w-2/12 " src={image1} alt="Roll and Box" />
@@ -29,14 +33,22 @@ export default function Header() {
               {/* <p className="text-grey-700 text-center flex items-center aligh-items"> Roll & Box</p> */}
             </h1>
           </div>
-          <p className="text-grey-700 text-center flex items-center aligh-items w-6/16">
-            Roll & Box
-          </p>
-          <div className="text-grey-700 text-center flex items-center align-items">
+          <div className="text-grey-700 text-center flex items-center align-items align-items">
+            <div className="flex items-center justify-evenly flex-col col-span">
+              <div className="container mr-2">
+                <button
+                  className="bg-pink-600 font-bold text-sm  rounded text-white pr-5 pl-5 h-10"
+                  type="button"
+                  onClick={handdleNewpost}
+                >
+                  New Watch
+                </button>
+              </div>
+            </div>
             {user ? (
               <>
                 <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
-                  <BoxLogo className="w-8 mr-6 text-black-light cursor-pointer" alt="button" />
+                  <BoxLogo className="w-8 mr-2 text-black-light cursor-pointer" alt="button" />
                 </Link>
                 <button
                   type="button"
@@ -53,7 +65,7 @@ export default function Header() {
                   }}
                 >
                   <svg
-                    className="w-8 mr-6 text-black-light cursor-pointer"
+                    className="w-8 mr-2 text-black-light cursor-pointer"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
