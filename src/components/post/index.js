@@ -13,10 +13,10 @@ export default function Post({ content }) {
   // console.log('content', content);
 
   return (
-    <div>
+    <div className="">
       {/* <div className="rounded col-span-1 border bg-white border-grey-primary"> */}
-      <Header username={content.username} />
-      <Image src={content.imageSrc} caption={content.caption} />
+      <Header className="" username={content.username} />
+      <Image className="" src={content.imageSrc} caption={content.caption} />
       <Actions
         docId={content.username}
         totalLikes={content.likes.length}

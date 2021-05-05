@@ -34,23 +34,22 @@ export default function AddComment({ docId, comments, setComments, commentInput 
           comment.length >= 1 ? handleSubmitComment(event) : event.preventDefault()
         }
       >
-        <div className="flex">
-          <div className="w-4/5">
+        <div className="">
+          <div className="">
             <input
               aria-label="Add a Comment"
               autoComplete="off"
-              className="text-sm text-gray-600 w-f mr-0 py-1 px-1"
+              className="text-xs text-gray-600 mr-0 py-1 px-1"
               type="text"
               name="add-comment"
               placeholder="Comment ..."
               value={comment}
               onChange={({ target }) => setComment(target.value)}
               ref={commentInput}
+              style={{ width: '100px' }}
             />
-          </div>
-          <div className="w-1/5 ">
             <button
-              className={`inline-block align-baseline text-sm font-bold text-pink-800 pr-10 ${
+              className={`inline-block align-baseline text-xs font-bold text-pink-800 pr-2 ${
                 !comment && 'opacity-50'
               }`}
               type="button"
