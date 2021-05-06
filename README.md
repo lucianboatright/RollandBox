@@ -28,7 +28,22 @@ Folder structre
 - services (firebase functions in here)
 - styles (tailwind foilder app/tailwinds)
 - hooks
-- pages
-- images
+- pages - fundimental pages for the router dom to manage and show components.
+- images - currently storing watch images and items before storing in firebase
 
 
+## Interesting aplications to create box
+One of the main parts of this appp is the visulisation of the box surrounding the watches. At first I used a single background image and arraged the watches to fit into each space but they were seperate 
+
+![watchbox](/images/readme/first_background.png)
+![watchbox2](/images/readme/first_background_2.png)
+
+This had its limitations though it me be something that the user can chose between.
+- This style will have empty spaces even if the watch is not there. 
+- Works well when there is not information.
+
+The second style uses a single a single box .png as shown below which is used as a background image that is repeated around each image which means the box will only be visiable around existant watches. This means the box is infinate and will grow with the collection. It does also mean that there will be spaces that are not showing the box leading to a non complete box visual as shown below.
+
+![watchoutline](/images/readme/single_box.png)
+![watchoutline](/images/readme/profile_box.png)
+![watchoutline](/images/readme/timeline_box.png)
