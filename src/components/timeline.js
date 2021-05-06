@@ -28,13 +28,23 @@ export default function Timeline() {
           {!watches ? (
             <>
               {[...new Array(12)].map((_, index) => (
-                <Skeleton
-                  className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
-                  key={index}
-                  count={1}
-                  width={120}
-                  height={170}
-                />
+                <div
+                  className="pt-3"
+                  style={{
+                    backgroundImage: `url(${backGrid})`,
+                    backgroundPosition: 'top',
+                    backgroundSize: '165px',
+                    backgroundRepeat: 'repeat'
+                  }}
+                >
+                  <Skeleton
+                    className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
+                    key={index}
+                    count={1}
+                    width={120}
+                    height={170}
+                  />
+                </div>
               ))}
             </>
           ) : watches?.length > 0 ? (
