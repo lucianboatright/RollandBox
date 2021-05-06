@@ -20,6 +20,7 @@ export default function Profile({ user }) {
       dispatch({ profile: user, watchCollection: watches, followerCount: user.followers.length });
     }
     getProfileInfoAndWatches();
+    // eslint-disable-next-line
   }, [user.username]);
 
   console.log('index_watch collection', watchCollection);
