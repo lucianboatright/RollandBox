@@ -5,10 +5,6 @@ import useUser from '../../hooks/use-user';
 import { isUserFollowingProfile, toggleFollow } from '../../services/firebase';
 import Modal from '../newWatch/Modal';
 
-const BUTTON_WRAPPER = {
-  position: 'relative'
-};
-
 export default function Header({
   watchesCount,
   followerCount,
@@ -102,7 +98,7 @@ export default function Header({
                   >
                     New Watch
                   </button>
-                  <Modal profile={profileUsername} open={isOpen} onClose={() => setIsOpen(false)} />
+                  <Modal profile={profileUsername} watchesCount={watchesCount} open={isOpen} onClose={() => setIsOpen(false)} />
                 </div>
               </div>
             </>
