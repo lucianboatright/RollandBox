@@ -90,7 +90,7 @@ export default function Header({
                 Following
               </p>
               <div className="flex items-center justify-evenly flex-col col-span">
-                <div style={BUTTON_WRAPPER} className="container mr-2">
+                <div className="container mr-2">
                   <button
                     className="bg-pink-600 font-bold text-sm  rounded text-white pr-5 pl-5 h-10"
                     type="button"
@@ -98,7 +98,12 @@ export default function Header({
                   >
                     New Watch
                   </button>
-                  <Modal profile={profileUsername} watchesCount={watchesCount} open={isOpen} onClose={() => setIsOpen(false)} />
+                  <Modal
+                    profile={profileUsername}
+                    watchesCount={watchesCount}
+                    open={isOpen}
+                    onClose={() => setIsOpen(false)}
+                  />
                 </div>
               </div>
             </>
