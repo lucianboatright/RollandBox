@@ -21,15 +21,35 @@ const OVERLAY_STYLES = {
   zIndex: 1000
 };
 
-export default function Modal({ open, onClose, profile }) {
+export default function Modal({ open, onClose, profile, watchesCount }) {
   if (!open) return null;
 
   return (
     <>
       <div style={OVERLAY_STYLES}>
         <div style={MODAL_STYLES}>
-          <p>hello {profile}</p>
-          <button type="button" onClick={onClose}>
+          <p>Hello {profile}</p>
+          <p>You currently have {watchesCount} watches</p>
+          <br />
+          <form>
+            <p>Watch Name</p>
+            <input className="border-solid border-2 border-light-blue-500" type="text" />
+            <br />
+            <p>Upload Image</p>
+            <input type="file" />
+            <p>Enter any information or links below</p>
+            <input
+              className="border-solid border-2 border-light-blue-500"
+              type="text"
+              style={{ height: '270px' }}
+            />
+          </form>
+          <br />
+          <button
+            type="button"
+            onClick={onClose}
+            className="border-solid border-2 rounded-md border-light-blue-500 p-1"
+          >
             Close
           </button>
         </div>
@@ -39,6 +59,7 @@ export default function Modal({ open, onClose, profile }) {
 }
 
 Modal.propTypes = {
+  watchesCount: PropTypes.number.isRequired,
   open: PropTypes.bool,
   onClose: PropTypes.bool,
   profile: PropTypes.string
