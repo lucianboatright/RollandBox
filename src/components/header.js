@@ -9,19 +9,11 @@ import { ReactComponent as BoxLogo } from '../images/svg_png/grid_logo_2.svg';
 import image1 from '../images/watchrollfullopen.webp';
 // import NewWatch from './newWatch/newWatch';
 
-const BUTTON_WRAPPER = {
-  position: 'relative'
-};
-
 export default function Header() {
   const { user: loggedInUser } = useContext(UserContext);
   const { firebase } = useContext(FirebaseContext);
   const { user } = useUser(loggedInUser?.uid);
   const history = useHistory();
-
-  const handdleNewpost = () => {
-    console.log('new post please');
-  };
 
   return (
     <header className="h-18 bd-white border-b border-gray-primary mb-8">
