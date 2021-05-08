@@ -1,8 +1,13 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import useUser from '../../hooks/use-user';
 import { isUserFollowingProfile, toggleFollow } from '../../services/firebase';
+import Modal from '../newWatch/Modal';
+
+const BUTTON_WRAPPER = {
+  position: 'relative'
+};
 
 export default function Header({
   watchesCount,
@@ -20,8 +25,7 @@ export default function Header({
   const { user } = useUser();
   const [isFollowingProfile, setIsFollowingProfile] = useState(false);
   const activeButtonFollow = user.username && user.username !== profileUsername;
-
-  // console.log('username', user.username);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleToggleFollow = async () => {
     setIsFollowingProfile((isFollowingProfile) => !isFollowingProfile);
@@ -89,6 +93,18 @@ export default function Header({
                 {`  `}
                 Following
               </p>
+              <div className="flex items-center justify-evenly flex-col col-span">
+                <div style={BUTTON_WRAPPER} className="container mr-2">
+                  <button
+                    className="bg-pink-600 font-bold text-sm  rounded text-white pr-5 pl-5 h-10"
+                    type="button"
+                    onClick={() => setIsOpen(true)}
+                  >
+                    New Watch
+                  </button>
+                  <Modal profile={profileUsername} open={isOpen} onClose={() => setIsOpen(false)} />
+                </div>
+              </div>
             </>
           )}
         </div>

@@ -7,6 +7,11 @@ import * as ROUTES from '../constants/routes';
 import useUser from '../hooks/use-user';
 import { ReactComponent as BoxLogo } from '../images/svg_png/grid_logo_2.svg';
 import image1 from '../images/watchrollfullopen.webp';
+// import NewWatch from './newWatch/newWatch';
+
+const BUTTON_WRAPPER = {
+  position: 'relative'
+};
 
 export default function Header() {
   const { user: loggedInUser } = useContext(UserContext);
@@ -34,8 +39,8 @@ export default function Header() {
             </h1>
           </div>
           <div className="text-grey-700 text-center flex items-center align-items align-items">
-            <div className="flex items-center justify-evenly flex-col col-span">
-              <div className="container mr-2">
+            {/* <div className="flex items-center justify-evenly flex-col col-span">
+              <div style={BUTTON_WRAPPER} className="container mr-2">
                 <button
                   className="bg-pink-600 font-bold text-sm  rounded text-white pr-5 pl-5 h-10"
                   type="button"
@@ -43,8 +48,9 @@ export default function Header() {
                 >
                   New Watch
                 </button>
+                <NewWatch>inside</NewWatch>
               </div>
-            </div>
+            </div> */}
             {user ? (
               <>
                 <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
