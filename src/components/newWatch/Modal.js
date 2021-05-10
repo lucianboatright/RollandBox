@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ImageCrop from './imageCrop';
 
 const MODAL_STYLES = {
   position: 'fixed',
@@ -32,6 +33,7 @@ export default function Modal({ open, onClose, profile, watchesCount }) {
           <p>You currently have {watchesCount} watches</p>
           <br />
           <form>
+            <ImageCrop />
             <p>Watch Name</p>
             <input className="border-solid border-2 border-light-blue-500" type="text" />
             <br />
