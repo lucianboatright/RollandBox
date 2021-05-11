@@ -29,31 +29,44 @@ export default function Modal({ open, onClose, profile, watchesCount }) {
     <>
       <div style={OVERLAY_STYLES}>
         <div style={MODAL_STYLES}>
-          <p>Hello {profile}</p>
-          <p>You currently have {watchesCount} watches</p>
-          <br />
-          <form>
-            <ImageCrop />
-            <p>Watch Name</p>
-            <input className="border-solid border-2 border-light-blue-500" type="text" />
+          <div className="overflow-y-scroll h-80">
+            <div className="flex items-stretch">
+              <div className="justify-left">
+                <img
+                  className="rounded-full h-12 mr-2"
+                  src={`/images/avatars/${profile}.jpg`}
+                  alt={profile}
+                />
+              </div>
+              <div className="justify-left">
+                <p>Hello {profile}</p>
+                <p>You currently have {watchesCount} watches</p>
+              </div>
+            </div>
             <br />
-            <p>Upload Image</p>
-            <input type="file" />
-            <p>Enter any information or links below</p>
-            <input
-              className="border-solid border-2 border-light-blue-500"
-              type="text"
-              style={{ height: '270px' }}
-            />
-          </form>
-          <br />
-          <button
-            type="button"
-            onClick={onClose}
-            className="border-solid border-2 rounded-md border-light-blue-500 p-1"
-          >
-            Close
-          </button>
+            <form>
+              <ImageCrop />
+              <p>Watch Name</p>
+              <input className="border-solid border-2 border-light-blue-500" type="text" />
+              <br />
+              {/* <p>Upload Image</p>
+              <input type="file" /> */}
+              <p>Enter any information or links below</p>
+              <input
+                className="border-solid border-2 border-light-blue-500"
+                type="text"
+                style={{ height: '270px' }}
+              />
+            </form>
+            <br />
+            <button
+              type="button"
+              onClick={onClose}
+              className="border-solid border-2 rounded-md border-light-blue-500 p-1"
+            >
+              Close
+            </button>
+          </div>
         </div>
       </div>
     </>
