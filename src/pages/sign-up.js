@@ -4,10 +4,15 @@ import * as ROUTES from '../constants/routes';
 import FirebaseContext from '../context/firebase';
 import image1 from '../images/watchbox.jpg';
 import { doesUsernameExist } from '../services/firebase';
+import ImageCrop from './imageCrop';
 
 export default function SignUp() {
   const history = useHistory();
   const { firebase } = useContext(FirebaseContext);
+
+  // const allInputs = {imgUrl: ''}
+  //   const [imageAsFile, setImageAsFile] = useState('')
+  //   const [imageAsUrl, setImageAsUrl] = useState(allImputs)
 
   const [username, setUsername] = useState('');
   const [fullName, setFullName] = useState('');
@@ -58,6 +63,12 @@ export default function SignUp() {
     document.title = 'Sign Up - Watch';
   }, []);
 
+  // console.log(imageAsFile)
+  // const handleImageAsFile = (e) => {
+  //   const image = e.target.files[0]
+  //   setImageAsFile(imageFile => (image))
+  // }
+
   return (
     <div className="container flex mx-auto max-w-screen-md items-center h-screen">
       <div className="flex w-3/5">
@@ -103,6 +114,7 @@ export default function SignUp() {
               onChange={({ target }) => setPassword(target.value)}
               value={password}
             />
+            <ImageCrop />
             <button
               disabled={isInvalid}
               type="submit"
