@@ -1,10 +1,10 @@
 import { useState, useContext, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import 'react-image-crop/dist/ReactCrop.css';
 import * as ROUTES from '../constants/routes';
 import FirebaseContext from '../context/firebase';
 import image1 from '../images/watchbox.jpg';
 import { doesUsernameExist } from '../services/firebase';
-import ImageCrop from './imageCrop';
 
 export default function SignUp() {
   const history = useHistory();
@@ -114,7 +114,6 @@ export default function SignUp() {
               onChange={({ target }) => setPassword(target.value)}
               value={password}
             />
-            <ImageCrop />
             <button
               disabled={isInvalid}
               type="submit"

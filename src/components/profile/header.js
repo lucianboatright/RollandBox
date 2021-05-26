@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import useUser from '../../hooks/use-user';
 import { isUserFollowingProfile, toggleFollow } from '../../services/firebase';
-import Modal from '../newWatch/Modal';
+import ModalNewWatch from '../newWatch/ModalNewWatch';
+import ModalAvitar from '../newWatch/ModalAvitar';
 
 export default function Header({
   watchesCount,
@@ -22,6 +23,8 @@ export default function Header({
   const [isFollowingProfile, setIsFollowingProfile] = useState(false);
   const activeButtonFollow = user.username && user.username !== profileUsername;
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenAvitar, setIsOpenAvitar] = useState(false);
+  const editProfile = user.username && user.username === profileUsername;
 
   const handleToggleFollow = async () => {
     setIsFollowingProfile((isFollowingProfile) => !isFollowingProfile);
@@ -89,23 +92,43 @@ export default function Header({
                 {`  `}
                 Following
               </p>
-              <div className="flex items-center justify-evenly flex-col col-span">
-                <div className="container mr-2">
-                  <button
-                    className="bg-pink-600 font-bold text-sm  rounded text-white pr-5 pl-5 h-10"
-                    type="button"
-                    onClick={() => setIsOpen(true)}
-                  >
-                    New Watch
-                  </button>
-                  <Modal
-                    profile={profileUsername}
-                    watchesCount={watchesCount}
-                    open={isOpen}
-                    onClose={() => setIsOpen(false)}
-                  />
+              {editProfile && (
+                <div>
+                  <div className="flex items-center justify-evenly flex-col col-span">
+                    <div className="container mr-2">
+                      <button
+                        className="bg-green-400 font-bold text-sm  rounded text-white pr-5 pl-5 h-10"
+                        type="button"
+                        onClick={() => setIsOpenAvitar(true)}
+                      >
+                        Change Avitar
+                      </button>
+                      <ModalAvitar
+                        profile={profileUsername}
+                        open={isOpenAvitar}
+                        onClose={() => setIsOpenAvitar(false)}
+                      />
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-evenly flex-col col-span">
+                    <div className="container mr-2">
+                      <button
+                        className="bg-pink-600 font-bold text-sm  rounded text-white pr-5 pl-5 h-10"
+                        type="button"
+                        onClick={() => setIsOpen(true)}
+                      >
+                        New Watch
+                      </button>
+                      <ModalNewWatch
+                        profile={profileUsername}
+                        watchesCount={watchesCount}
+                        open={isOpen}
+                        onClose={() => setIsOpen(false)}
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
+              )}
             </>
           )}
         </div>

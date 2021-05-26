@@ -1,37 +1,36 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
+import PropTypes from 'prop-types';
 
-function generateDownload(canvas, crop) {
-  if (!crop || !canvas) {
-    console.log(crop, 'crop image');
-    return;
-  }
+// function generateDownload(canvas, crop) {
+//   if (!crop || !canvas) {
+//     return;
+//   }
+// }
 
-  canvas.toBlob(
-    (blob) => {
-      const previewUrl = window.URL.createObjectURL(blob);
+//   canvas.toBlob(
+//     (blob) => {
+//       const previewUrl = window.URL.createObjectURL(blob);
 
-      const anchor = document.createElement('a');
-      anchor.download = 'cropPreview.png';
-      anchor.href = URL.createObjectURL(blob);
-      anchor.click();
+//       const anchor = document.createElement('a');
+//       anchor.download = 'cropPreview.png';
+//       anchor.href = URL.createObjectURL(blob);
+//       anchor.click();
 
-      window.URL.revokeObjectURL(previewUrl);
-    },
-    'image/png',
-    1
-  );
-}
+//       window.URL.revokeObjectURL(previewUrl);
+//     },
+//     'image/png',
+//     1
+//   );
+// }
 
-export default function ImageCrop(completedCrop) {
+export default function ImageCrop() {
   const [upImg, setUpImg] = useState();
   const imgRef = useRef(null);
   const previewCanvasRef = useRef(null);
-  const [crop, setCrop] = useState({ unit: '%', width: 30, aspect: 10 / 10 });
+  const [crop, setCrop] = useState({ width: 40, aspect: 10 / 10 });
   const [completedCrop, setCompletedCrop] = useState(null);
-
-  // console.log(completedCrop, 'iamge');
 
   const onSelectFile = (e) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -90,7 +89,7 @@ export default function ImageCrop(completedCrop) {
           crop={crop}
           onChange={(c) => setCrop(c)}
           onComplete={(c) => setCompletedCrop(c)}
-          style={{ height: '200px', width: '150px' }}
+          style={{ height: '250px', width: '250px' }}
           className=""
         />
         <div style={{ height: '100px', width: '100px', margin: '10px' }}>
@@ -104,14 +103,16 @@ export default function ImageCrop(completedCrop) {
           />
         </div>
       </div>
-      {/* <button
+      <button
         type="button"
         className="rounded border-solid border-2 border-light-blue-600 text-xs mt-4 mb-1 pl-2 pr-2 pt-1 pb-1"
         disabled={!completedCrop?.width || !completedCrop?.height}
-        onClick={() => generateDownload(previewCanvasRef.current, completedCrop)}
+        onClick={console.log(completedCrop, 'complete image')}
       >
         Download cropped image
-      </button> */}
+      </button>
     </div>
   );
 }
+
+ImageCrop.propTypes = {};

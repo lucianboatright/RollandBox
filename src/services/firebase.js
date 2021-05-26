@@ -129,6 +129,16 @@ export async function isUserFollowingProfile(loggedInUserUsername, profileUserId
   return response.userId;
 }
 
+// export async function addWatch(Watch) {
+//   return firebase
+//     .firestore()
+//     .collection('users')
+//     .add({ imgURL: Watch })
+//     .then(() => {
+//       setImgURL('')
+//     })
+// }
+
 export async function toggleFollow(
   isFollowingProfile,
   activeUserDocId,

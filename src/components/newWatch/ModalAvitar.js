@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ImageCrop from './imageCrop';
+import ImageCrop from './imageCropAvitar';
 
 const MODAL_STYLES = {
   position: 'fixed',
@@ -22,7 +22,7 @@ const OVERLAY_STYLES = {
   zIndex: 1000
 };
 
-export default function Modal({ open, onClose, profile, watchesCount }) {
+export default function Modal({ open, onClose, profile }) {
   if (!open) return null;
 
   return (
@@ -40,23 +40,12 @@ export default function Modal({ open, onClose, profile, watchesCount }) {
               </div>
               <div className="justify-left">
                 <p>Hello {profile}</p>
-                <p>You currently have {watchesCount} watches</p>
+                <p>Please select and image and crop for your Avitar</p>
               </div>
             </div>
             <br />
             <form>
               <ImageCrop />
-              <p>Watch Name</p>
-              <input className="border-solid border-2 border-light-blue-500" type="text" />
-              <br />
-              {/* <p>Upload Image</p>
-              <input type="file" /> */}
-              <p>Enter any information or links below</p>
-              <input
-                className="border-solid border-2 border-light-blue-500"
-                type="text"
-                style={{ height: '270px' }}
-              />
             </form>
             <br />
             <button
@@ -74,7 +63,6 @@ export default function Modal({ open, onClose, profile, watchesCount }) {
 }
 
 Modal.propTypes = {
-  watchesCount: PropTypes.number.isRequired,
   open: PropTypes.bool,
   onClose: PropTypes.bool,
   profile: PropTypes.string
