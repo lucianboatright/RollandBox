@@ -3,6 +3,7 @@ import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 import PropTypes from 'prop-types';
 import ImageCrop from './imageCrop';
+// import app from '../../lib/firebaseStorage';
 
 const MODAL_STYLES = {
   position: 'fixed',
@@ -25,6 +26,7 @@ const OVERLAY_STYLES = {
 };
 
 function generateDownload(canvas, crop) {
+  console.log('anything');
   if (!crop || !canvas) {
     return;
   }
@@ -39,12 +41,20 @@ function generateDownload(canvas, crop) {
   });
 }
 
+// function handleSubmit(event) {
+//   event.preventDefault();
+//   // generateDownload(previewCanvasRef.current, completedCrop);
+//   // console.log('onclick', watchName, watchInfo);
+// }
+
 export default function Modal({ open, onClose, profile, watchesCount }) {
   const [upImg, setUpImg] = useState();
   const imgRef = useRef(null);
   const previewCanvasRef = useRef(null);
   const [crop, setCrop] = useState({ unit: '%', width: 30, aspect: 10 / 16 });
   const [completedCrop, setCompletedCrop] = useState(null);
+  const [watchName, setWatchName] = useState(null);
+  const [watchInfo, setWatchInfo] = useState(null);
 
   const onSelectFile = (e) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -54,9 +64,26 @@ export default function Modal({ open, onClose, profile, watchesCount }) {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    generateDownload(previewCanvasRef.current, completedCrop);
+    console.log('onclick', watchName, watchInfo);
+    onClose(e);
+  };
+
+  const handleSubmitUpload = (e) => {
+    console.log('File uploaded');
+  };
+
   const onLoad = useCallback((img) => {
     imgRef.current = img;
   }, []);
+
+  // const closeButton = (e) => {
+  //   () => generateDownload(previewCanvasRef.current, completedCrop);
+  //   console.log('onclick', watchName, watchInfo);
+  //   onClose;
+  // };
 
   useEffect(() => {
     if (!completedCrop || !previewCanvasRef.current || !imgRef.current) {
@@ -112,7 +139,7 @@ export default function Modal({ open, onClose, profile, watchesCount }) {
               </div>
             </div>
             <br />
-            <form>
+            <form onSubmit={handleSubmit} method="POST">
               <div className="App">
                 <div>
                   <input className="m-2" type="file" accept="image/*" onChange={onSelectFile} />
@@ -142,13 +169,17 @@ export default function Modal({ open, onClose, profile, watchesCount }) {
                   type="button"
                   className="rounded border-solid border-2 border-light-blue-600 mt-8 mb-1 pl-2 pr-2 pt-1 pb-1"
                   disabled={!completedCrop?.width || !completedCrop?.height}
-                  onClick={() => generateDownload(previewCanvasRef.current, completedCrop)}
+                  onClick={handleSubmitUpload}
                 >
                   Download cropped image
                 </button>
               </div>
               <p>Watch Name</p>
-              <input className="border-solid border-2 border-light-blue-500" type="text" />
+              <input
+                className="border-solid border-2 border-light-blue-500"
+                type="text"
+                onChange={({ target }) => setWatchName(target.value)}
+              />
               <br />
               {/* <p>Upload Image</p>
               <input type="file" /> */}
@@ -157,16 +188,22 @@ export default function Modal({ open, onClose, profile, watchesCount }) {
                 className="border-solid border-2 border-light-blue-500"
                 type="text"
                 style={{ height: '270px' }}
+                onChange={({ target }) => setWatchInfo(target.value)}
               />
+              <input type="submit" />
             </form>
             <br />
-            <button
+            {/* <button
               type="button"
-              onClick={onClose}
+              // onClick={
+              //   (() => generateDownload(previewCanvasRef.current, completedCrop),
+              //   console.log('onclick', watchName, watchInfo),
+              //   onClose)
+              // }
               className="border-solid border-2 rounded-md border-light-blue-500 p-1"
             >
               Close
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
