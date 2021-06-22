@@ -3,6 +3,7 @@ import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 import PropTypes from 'prop-types';
 import ImageCrop from './imageCrop';
+import Imageform from './imageform';
 // import app from '../../lib/firebaseStorage';
 
 const MODAL_STYLES = {
