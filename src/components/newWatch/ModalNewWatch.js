@@ -3,6 +3,7 @@ import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 import PropTypes from 'prop-types';
 import ImageCrop from './imageCrop';
+import { firebase } from '../../lib/firebase';
 // import app from '../../lib/firebaseStorage';
 
 const MODAL_STYLES = {
@@ -55,6 +56,8 @@ export default function Modal({ open, onClose, profile, watchesCount }) {
   const [completedCrop, setCompletedCrop] = useState(null);
   const [watchName, setWatchName] = useState(null);
   const [watchInfo, setWatchInfo] = useState(null);
+  const [imageBlob, setImageBlob] = useState(null);
+  const [url, setUrl] = useState('');
 
   const onSelectFile = (e) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -62,6 +65,12 @@ export default function Modal({ open, onClose, profile, watchesCount }) {
       reader.addEventListener('load', () => setUpImg(reader.result));
       reader.readAsDataURL(e.target.files[0]);
     }
+  };
+
+  const imageBlobGenerater = (e) => {
+    generateDownload(previewCanvasRef.current, completedCrop);
+    setImageBlob(completedCrop);
+    console.log('completed crop', imageBlob);
   };
 
   const handleSubmit = (e) => {
@@ -72,7 +81,49 @@ export default function Modal({ open, onClose, profile, watchesCount }) {
   };
 
   const handleSubmitUpload = (e) => {
-    console.log('File uploaded');
+    e.preventDefault();
+    const metadata = {
+      contentType: 'image/jpeg',
+      customMetadata: {
+        watchname: watchName,
+        watchinfo: watchInfo
+      }
+    };
+    const storageRef = firebase.storage().ref();
+    const watchRef = storageRef.child(`watches/${watchName}.jpg`);
+    watchRef
+      .put(imageBlob, metadata)
+      .then((snapshot) => {
+        console.log('Uploaded a blob or file!');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // watchRef.put(imageBlob).then((snapshot) => {
+    //   console.log('Uploaded a blob or file!');
+    // });
+    // uploadTask.on(
+    //   'state_changed',
+    //   // snapshot => {
+    //   //   const progress = Math.round(
+    //   //     (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+    //   //   );
+    //   //   setProgress(progress);
+    //   // },
+    //   (error) => {
+    //     console.log(error);
+    //   },
+    // () => {
+    //   storage
+    //     .ref('watches')
+    //     .child(imageBlob.name)
+    //     .getDownloadURL()
+    //     .then((url) => {
+    //       setUrl(url);
+    //     });
+    // },
+    onClose();
+    // );
   };
 
   const onLoad = useCallback((img) => {
@@ -139,7 +190,7 @@ export default function Modal({ open, onClose, profile, watchesCount }) {
               </div>
             </div>
             <br />
-            <form onSubmit={handleSubmit} method="POST">
+            <form onSubmit={handleSubmitUpload} method="POST">
               <div className="App">
                 <div>
                   <input className="m-2" type="file" accept="image/*" onChange={onSelectFile} />
@@ -169,7 +220,7 @@ export default function Modal({ open, onClose, profile, watchesCount }) {
                   type="button"
                   className="rounded border-solid border-2 border-light-blue-600 mt-8 mb-1 pl-2 pr-2 pt-1 pb-1"
                   disabled={!completedCrop?.width || !completedCrop?.height}
-                  onClick={handleSubmitUpload}
+                  onClick={imageBlobGenerater}
                 >
                   Download cropped image
                 </button>
