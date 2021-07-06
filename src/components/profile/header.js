@@ -122,6 +122,7 @@ export default function Header({
                       <ModalNewWatch
                         profile={profileUsername}
                         watchesCount={watchesCount}
+                        userId={profileUserId}
                         open={isOpen}
                         onClose={() => setIsOpen(false)}
                       />
