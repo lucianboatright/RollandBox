@@ -15,8 +15,8 @@ const config = {
 };
 
 const firebase = Firebase.initializeApp(config);
+const { storage } = Firebase.storage();
 const { FieldValue } = Firebase.firestore;
-const { storage } = firebase.storage();
 
 // seedDatabase(firebase);
 
