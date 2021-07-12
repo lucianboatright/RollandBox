@@ -15,9 +15,10 @@ const config = {
 };
 
 const firebase = Firebase.initializeApp(config);
-const { storage } = firebase.storage();
+const db = firebase.firestore();
 const { FieldValue } = Firebase.firestore;
+const { storage } = Firebase.storage();
 
 // seedDatabase(firebase);
 
-export { firebase, storage, FieldValue };
+export { firebase, storage, db, FieldValue };

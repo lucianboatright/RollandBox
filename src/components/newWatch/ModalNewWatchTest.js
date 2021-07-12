@@ -3,7 +3,7 @@ import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 import PropTypes from 'prop-types';
 import ImageCrop from './imageCrop';
-import { firebase, storage, FieldValue } from '../../lib/firebase';
+import { firebase, storage, db, FieldValue } from '../../lib/firebase';
 // import app from '../../lib/firebaseStorage';
 
 const MODAL_STYLES = {
@@ -31,6 +31,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
   const [watchInfo, setWatchInfo] = useState('');
   const [image, setImage] = useState('');
   const [progress, setProgress] = useState(0);
+  const [url, setUrl] = useState('');
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
@@ -38,12 +39,28 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
     }
   };
 
-  const handleUpload = (e) => {
-    const uploadTask = storage.ref(`watches/${watchName}${userId}`).put(image);
-    uploadTask.on(
+  const handleUpload = async (e) => {
+    const metadata = {
+      contentType: 'image/jpeg',
+      customMetadata: {
+        watchname: watchName,
+        watchinfo: watchInfo,
+        profilename: profile,
+        usernumber: userId
+      }
+    };
+    const storageRef = firebase.storage().ref();
+    // const fileRef = storageRef.child(`watches/${watchName}.jpg`);
+    // await fileRef.put(image, metadata).then(() => {
+    //   console.log('file Uploaded');
+    // });
+    // setUrl(await fileRef.getDownloadURL());
+    // const uploadTask = storage.ref(`watches/${watchName}${userId}`).put(image);
+    const uploadTask = storageRef.child(`watches/${watchName}.jpg`).put(image, metadata);
+    await uploadTask.on(
       'state_changed',
       (snapshot) => {
-        const progress = Math.round((snapshot.bytes.Transferred / snapshot.totalBytes) * 100);
+        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
         setProgress(progress);
       },
       (error) => {
@@ -51,12 +68,13 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
         alert(error.messgae);
       },
       () => {
-        storage
+        firebase
+          .storage()
           .ref('watches')
           .child(`${watchName}${userId}`)
           .getDownloadURL()
           .then((url) => {
-            FieldValue.collection('watches').add({
+            db.collection('watches').add({
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               watchname: watchName,
               watchinfo: watchInfo,
@@ -65,9 +83,10 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
             });
             setProgress(0);
             setWatchInfo('');
+            setWatchInfo('');
             setImage(null);
+            console.log('complete', url);
           });
-        console.log('complete', url);
       }
     );
     onClose(e);

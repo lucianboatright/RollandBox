@@ -70,7 +70,6 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
   };
 
   const imageBlobGenerater = async (e) => {
-    generateDownload(previewCanvasRef.current, completedCrop);
     setImageBlob(completedCrop);
     console.log('completed crop', completedCrop);
     console.log('completed blob', imageBlob);
@@ -373,6 +372,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
               <input type="submit" />
             </form>
             <br />
+            <img src={completedCrop} alt="" />
             {/* <button
               type="button"
               // onClick={
