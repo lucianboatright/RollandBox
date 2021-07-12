@@ -39,7 +39,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
   };
 
   const handleUpload = (e) => {
-    const uploadTask = storage.ref(`watches/${watchName}`).put(image);
+    const uploadTask = storage.ref(`watches/${watchName}${userId}`).put(image);
     uploadTask.on(
       'state_changed',
       (snapshot) => {
@@ -57,7 +57,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
           .getDownloadURL()
           .then((url) => {
             FieldValue.collection('watches').add({
-              // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+              timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               watchname: watchName,
               watchinfo: watchInfo,
               imageurl: url,
@@ -66,8 +66,8 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
             setProgress(0);
             setWatchInfo('');
             setImage(null);
-            console.log('complete', url);
           });
+        console.log('complete', url);
       }
     );
     onClose(e);
