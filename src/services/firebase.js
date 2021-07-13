@@ -105,7 +105,7 @@ export async function getUserWatchesByUsername(username) {
   const result = await firebase
     .firestore()
     .collection('watches')
-    .where('userId', '==', user.userId)
+    .where('userid', '==', user.userId)
     .get();
 
   return result.docs.map((item) => ({
