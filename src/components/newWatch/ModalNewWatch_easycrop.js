@@ -39,6 +39,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
   const [imageBlob, setImageBlob] = useState(null);
   const [url, setUrl] = useState('');
   const [image, setImage] = useState('');
+  const [progress, setProgress] = useState(0);
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
@@ -58,11 +59,40 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
     };
     const file = image;
     const storageRef = firebase.storage().ref();
-    const fileRef = storageRef.child(`watches/${watchName}.jpg`);
-    await fileRef.put(file, metadata).then(() => {
-      console.log('file Uploaded');
-    });
-    setUrl(await fileRef.getDownloadURL());
+    const fileRef = storageRef.child(`watches/${watchName}.jpg`).put(file, metadata);
+    // setUrl(await fileRef.getDownloadURL());
+    fileRef.on(
+      'state_changed',
+      (snapshot) => {
+        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        setProgress(progress);
+      },
+      (error) => {
+        console.log(error);
+        alert(error.messgae);
+      },
+      () => {
+        firebase
+          .storage()
+          .ref('watches')
+          .child(`${watchName}.jpg`)
+          .getDownloadURL()
+          .then((url) => {
+            db.collection('watches').add({
+              // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+              watchname: watchName,
+              watchinfo: watchInfo,
+              imageurl: url,
+              userid: userId
+            });
+            setProgress(0);
+            setWatchInfo('');
+            setWatchInfo('');
+            setImage(null);
+            console.log('complete', url);
+          });
+      }
+    );
   };
 
   // const handleSubmit = (e) => {
@@ -129,6 +159,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
                   Download cropped image
                 </button>
               </div>
+              <progress className="" value={progress} max="100" />
               <p>Watch Name</p>
               <input
                 className="border-solid border-2 border-light-blue-500"
