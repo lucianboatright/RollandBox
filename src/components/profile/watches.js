@@ -46,7 +46,7 @@ export default function Watches({ watches }) {
                 <div className="rounded-full">
                   <img
                     className="p-2"
-                    src={`../../images/watches/${watch.watchId}.jpg`}
+                    src={watch.imageurl}
                     alt={`${watch.watchId}`}
                     width="150px"
                     // height="100px"
