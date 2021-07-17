@@ -25,13 +25,29 @@ export async function getUserByUsername(username) {
 
 // get user from the firestore where userId === userId (passed from the auth)
 export async function getUserByUserId(userId) {
-  const result = await firebase.firestore().collection('users').where('userId', '==', userId).get();
-  const user = result.docs.map((item) => ({
-    ...item.data(),
-    docId: item.id
-  }));
+  console.log('USERID', userId);
+  const result = await firebase
+    .firestore()
+    .collection('users')
+    .doc(userId)
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        return doc.data();
+      }
+      console.log('nooooopp');
+    })
+    .catch((error) => {
+      console.log('error', error);
+    });
+  // console.log('Getuserbyuserid resoo', result);
+  // const user = result.docs.map((item) => ({
+  //   ...item.data(),
+  //   docId: item.id
+  // }));
+  // console.log('Getuserbyuserid', user);
 
-  return user;
+  // return user;
 }
 export async function getSuggestedProfiles(userId, following) {
   const result = await firebase.firestore().collection('users').limit(10).get();
@@ -78,7 +94,7 @@ export async function getWatches(userId, following) {
   const result = await firebase
     .firestore()
     .collection('watches')
-    .where('userId', 'in', following)
+    .where('userid', 'in', following)
     .get();
 
   const userFollowedWatches = result.docs.map((watch) => ({
