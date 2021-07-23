@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import useUser from '../../hooks/use-user';
+import UserContext from '../../context/user';
 import { isUserFollowingProfile, toggleFollow } from '../../services/firebase';
 // import ModalNewWatch from '../newWatch/ModalNewWatch';
 import ModalNewWatch from '../newWatch/ModalNewWatch_easycrop';
@@ -21,7 +22,9 @@ export default function Header({
     username: profileUsername
   }
 }) {
-  const { user } = useUser();
+  const { data: user } = useContext(UserContext);
+  // const user = userContext.user;
+  // const { user } = useUser();
   const [isFollowingProfile, setIsFollowingProfile] = useState(false);
   const activeButtonFollow = user.username && user.username !== profileUsername;
   const [isOpen, setIsOpen] = useState(false);

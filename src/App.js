@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import * as ROUTES from './constants/routes';
 import UserContext from './context/user';
 import useAuthListener from './hooks/use-auth-listener';
-
 import ProtectedRoute from './helpers/protected.route';
 import IsUserLoggedIn from './helpers/is-user-logged-in';
 
@@ -14,10 +13,10 @@ const Profile = lazy(() => import('./pages/profile'));
 const NotFound = lazy(() => import('./pages/not-found'));
 
 export default function App() {
-  const { user } = useAuthListener();
+  const user = useAuthListener();
 
   return (
-    <UserContext.Provider value={{ user }}>
+    <UserContext.Provider value={user}>
       <Router>
         <Suspense fallback={<p>Loading ... </p>}>
           <Switch>
