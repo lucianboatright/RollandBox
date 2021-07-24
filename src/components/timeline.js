@@ -37,13 +37,13 @@ export default function Timeline() {
                     backgroundRepeat: 'repeat'
                   }}
                 >
-                  <Skeleton
+                  {/* <Skeleton
                     className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
                     key={index}
                     count={1}
                     width={120}
                     height={170}
-                  />
+                  /> */}
                 </div>
               ))}
             </>

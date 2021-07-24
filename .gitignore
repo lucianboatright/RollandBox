@@ -2,6 +2,8 @@
 
 lib
 
+web/firebase-config.js
+
 # dependencies
 /node_modules
 /.pnp
