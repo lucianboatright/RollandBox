@@ -30,6 +30,7 @@ export default function Timeline() {
               {[...new Array(12)].map((_, index) => (
                 <div
                   className="pt-3"
+                  key={index}
                   style={{
                     backgroundImage: `url(${backGrid})`,
                     backgroundPosition: 'top',

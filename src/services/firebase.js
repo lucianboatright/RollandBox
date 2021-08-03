@@ -26,6 +26,8 @@ export async function getUserByUsername(username) {
 // get user from the firestore where userId === userId (passed from the auth)
 export async function getUserByUserId(userId) {
   const result = await firebase.firestore().collection('users').where('userId', '==', userId).get();
+  console.log('RRESSULKLTS 3', result.docs);
+
   const user = result.docs.map((item) => ({
     ...item.data(),
     docId: item.id
@@ -80,7 +82,7 @@ export async function getWatches(userId, following) {
     .collection('watches')
     .where('userId', 'in', following)
     .get();
-
+  console.log('result 1', result.docs);
   const userFollowedWatches = result.docs.map((watch) => ({
     ...watch.data(),
     docId: watch.id
@@ -105,8 +107,9 @@ export async function getUserWatchesByUsername(username) {
   const result = await firebase
     .firestore()
     .collection('watches')
-    .where('userid', '==', user.userId)
+    .where('userId', '==', user.userId)
     .get();
+  console.log('REEESULTS 1', result.docs);
 
   return result.docs.map((item) => ({
     ...item.data(),
