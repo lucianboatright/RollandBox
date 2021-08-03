@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import useUser from '../../hooks/use-user';
 import { isUserFollowingProfile, toggleFollow } from '../../services/firebase';
-import ModalNewWatch from '../newWatch/ModalNewWatch';
+// import ModalNewWatch from '../newWatch/ModalNewWatch';
+import ModalNewWatch from '../newWatch/ModalNewWatch_easycrop';
+// import ModalNewWatch from '../newWatch/ModalNewWatchTest';
 import ModalAvitar from '../newWatch/ModalAvitar';
 
 export default function Header({
@@ -122,6 +124,7 @@ export default function Header({
                       <ModalNewWatch
                         profile={profileUsername}
                         watchesCount={watchesCount}
+                        userId={profileUserId}
                         open={isOpen}
                         onClose={() => setIsOpen(false)}
                       />

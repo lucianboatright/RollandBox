@@ -2,21 +2,15 @@ import Firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/storage';
+import { config } from './firebase-config';
 
 // import { seedDatabase } from '../seed';
 
-const config = {
-  apiKey: 'AIzaSyC7p3mdGL8qY_vkyRWA994aqMUGUvJhJAM',
-  authDomain: 'mywatchboxweb.firebaseapp.com',
-  projectId: 'mywatchboxweb',
-  storageBucket: 'mywatchboxweb.appspot.com',
-  messagingSenderId: '922169170815',
-  appId: '1:922169170815:web:4a8cf6b43d83ffb23e584a'
-};
-
 const firebase = Firebase.initializeApp(config);
+const db = firebase.firestore();
 const { FieldValue } = Firebase.firestore;
+const { storage } = Firebase.storage();
 
 // seedDatabase(firebase);
 
-export { firebase, FieldValue };
+export { firebase, storage, db, FieldValue };
