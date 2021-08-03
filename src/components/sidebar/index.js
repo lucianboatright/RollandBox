@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import User from './user';
 import Suggestions from './suggestions';
-import useUser from '../../hooks/use-user';
+// import useUser from '../../hooks/use-user';
+import UserContext from '../../context/user';
 
 export default function Sidebar() {
   const {
-    user: { docId, fullName, username, userId, following, followers }
-  } = useUser();
+    data: { docId, fullName, username, userId, following, followers }
+  } = useContext(UserContext);
 
   // console.log('useUser', useUser());
   // console.log('username', username);

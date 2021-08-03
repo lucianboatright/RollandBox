@@ -36,12 +36,13 @@ export default function SignUp() {
           displayName: username
         });
         // firebase user collection (creat a document)
-        await firebase.firestore().collection('users').add({
+        await firebase.firestore().collection('users').doc(createdUserResult.user.uid).set({
           userId: createdUserResult.user.uid,
           username: username.toLowerCase(),
           fullName,
           emailAddress: emailAddress.toLowerCase(),
           following: [],
+          followers: [],
           //  if you want all user to follow me at start add my id in above
           dateCreated: Date.now()
         });

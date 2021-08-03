@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
 export default function IsUserLoggedIn({ user, loggedInPath, children, ...rest }) {
+  console.log('Logged in page', user, loggedInPath);
   return (
     <Route
       {...rest}

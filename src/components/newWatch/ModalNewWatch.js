@@ -3,12 +3,13 @@ import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 import PropTypes from 'prop-types';
 import ImageCrop from './imageCrop';
-<<<<<<< HEAD
-import Imageform from './imageform';
-=======
 import { firebase, storage } from '../../lib/firebase';
->>>>>>> temp1
+
 // import app from '../../lib/firebaseStorage';
+
+import { firebase, storage } from '../../lib/firebase
+import Imageform from './imageform';
+
 
 const db = firebase.firestore();
 

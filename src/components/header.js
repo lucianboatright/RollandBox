@@ -4,15 +4,14 @@ import { Link, useHistory } from 'react-router-dom';
 import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
-import useUser from '../hooks/use-user';
 import { ReactComponent as BoxLogo } from '../images/svg_png/grid_logo_2.svg';
 import image1 from '../images/watchrollfullopen.webp';
 // import NewWatch from './newWatch/newWatch';
 
 export default function Header() {
-  const { user: loggedInUser } = useContext(UserContext);
+  const userContext = useContext(UserContext);
   const { firebase } = useContext(FirebaseContext);
-  const { user } = useUser(loggedInUser?.uid);
+  // const { user } = useUser(loggedInUser?.uid);
   const history = useHistory();
 
   return (
@@ -43,7 +42,7 @@ export default function Header() {
                 <NewWatch>inside</NewWatch>
               </div>
             </div> */}
-            {user ? (
+            {userContext.data ? (
               <>
                 <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
                   <BoxLogo className="w-8 mr-2 text-black-light cursor-pointer" alt="button" />
@@ -78,12 +77,12 @@ export default function Header() {
                   </svg>
                 </button>
                 <div className="flex item-center cursor-pointer">
-                  <Link to={`/${user.username}`}>
+                  <Link to={`/${userContext.data.username}`}>
                     <img
                       className="rounded-full h8 w-8 flex"
                       alt="logo"
                       style={{ width: 170 }}
-                      src={`../images/avatars/${user.username}.jpg`}
+                      src={`../images/avatars/${userContext.data.username}.jpg`}
                     />
                   </Link>
                 </div>
