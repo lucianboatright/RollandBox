@@ -114,10 +114,7 @@ export async function getWatches(userId, following) {
 
   const watchesWithUserDetails = await Promise.all(
     userFollowedWatches.map(async (watch) => {
-      let userLikedWatch = false;
-      if (watch.likes.includes(userId)) {
-        userLikedWatch = true;
-      }
+      const userLikedWatch = (watch.likes || []).includes(userId);
       const user = await getUserByUserId(watch.userId);
       const { username } = user[0];
       return { username, ...watch, userLikedWatch };

@@ -18,7 +18,7 @@ export default function Post({ content }) {
       <Image className="" src={content.imageSrc} caption={content.caption} />
       <Actions
         docId={content.username}
-        totalLikes={content.likes.length}
+        totalLikes={(content.likes || []).length}
         likedWatch={content.userLikedWatch}
         handleFocus={handleFocus}
       />
