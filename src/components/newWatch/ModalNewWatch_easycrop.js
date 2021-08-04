@@ -83,7 +83,9 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
               watchname: watchName,
               watchinfo: watchInfo,
               imageurl: url,
-              userid: userId
+              comments: [],
+              likes: [],
+              userId
             });
             setProgress(0);
             setWatchInfo('');

@@ -5,6 +5,7 @@ import backGrid from '../../images/borders/wood_watch_grid.png';
 import '../../styles/watches.css';
 
 export default function Watches({ watches }) {
+  console.log('WATCHES', watches);
   return (
     <div className="">
       <div className="h-16 border-t border-gray-primary">

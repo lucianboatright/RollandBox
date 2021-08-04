@@ -14,8 +14,8 @@ export default function Post({ content }) {
   return (
     <div className="">
       {/* <div className="rounded col-span-1 border bg-white border-grey-primary"> */}
+      <Image className="" src={content.imageurl} caption={content.caption} />
       <Header className="" username={content.username} />
-      <Image className="" src={content.imageSrc} caption={content.caption} />
       <Actions
         docId={content.username}
         totalLikes={(content.likes || []).length}
@@ -36,7 +36,7 @@ export default function Post({ content }) {
 Post.propTypes = {
   content: PropTypes.shape({
     username: PropTypes.string.isRequired,
-    imageSrc: PropTypes.string.isRequired,
+    imageurl: PropTypes.string.isRequired,
     caption: PropTypes.string.isRequired,
     docId: PropTypes.string.isRequired,
     userLikedWatch: PropTypes.bool.isRequired,

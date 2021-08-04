@@ -5,7 +5,9 @@ import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
 import useUser from '../hooks/use-user';
-import { ReactComponent as BoxLogo } from '../images/svg_png/grid_logo_2.svg';
+// import { ReactComponent as BoxLogo } from '../images/svg_png/worldboxlogo.png';
+import boximageworld from '../images/svg_png/worldboxlogo.png';
+import boximage from '../images/svg_png/box_grid.svg';
 import image1 from '../images/watchrollfullopen.webp';
 // import NewWatch from './newWatch/newWatch';
 
@@ -18,7 +20,7 @@ export default function Header() {
   return (
     <header className="h-18 bd-white border-b border-gray-primary mb-8">
       <div className="container mx-auto max-w-screen-lg h-full">
-        <div className="flex justify-between h-full">
+        <div className="inline-flex items-center justify-between h-full">
           <div className="text-grey-700 cursor-pointer">
             <h1 className="flex justify-center w-full">
               <p className="text-grey-700 flex flex-row items-center justify-between text-2xl">
@@ -27,65 +29,60 @@ export default function Header() {
               <Link to={ROUTES.DASHBOARD}>
                 <img className="mt-2 w-2/12 " src={image1} alt="Roll and Box" />
               </Link>
-              {/* <p className="text-grey-700 text-center flex items-center aligh-items"> Roll & Box</p> */}
             </h1>
           </div>
-          <div className="text-grey-700 text-center flex items-center align-items align-items">
-            {/* <div className="flex items-center justify-evenly flex-col col-span">
-              <div style={BUTTON_WRAPPER} className="container mr-2">
-                <button
-                  className="bg-pink-600 font-bold text-sm  rounded text-white pr-5 pl-5 h-10"
-                  type="button"
-                  onClick={handdleNewpost}
-                >
-                  New Watch
-                </button>
-                <NewWatch>inside</NewWatch>
-              </div>
-            </div> */}
+          <div className="text-grey-700">
             {user ? (
               <>
-                <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
-                  <BoxLogo className="w-8 mr-2 text-black-light cursor-pointer" alt="button" />
-                </Link>
-                <button
-                  type="button"
-                  title="sign-out"
-                  onClick={() => {
-                    firebase.auth().signOut();
-                    history.push(ROUTES.LOGIN);
-                  }}
-                  onKeyDown={(event) => {
-                    if (event.key === 'Enter') {
+                <div className="inline-flex items-center">
+                  <Link to={ROUTES.DASHBOARD} aria-label="Dashboard" className="flex-1">
+                    <img src={boximageworld} alt="worldbox" className="h-auto w-auto" />
+                    {/* <BoxLogo className="w-8 mr-2 text-black-light cursor-pointer" alt="button" /> */}
+                  </Link>
+                  <Link to={`/${user.username}`} aria-label="Dashboard" className="flex-1">
+                    <img src={boximage} alt="worldbox" className="h-20 w-20" />
+                    {/* <BoxLogo className="w-8 mr-2 text-black-light cursor-pointer" alt="button" /> */}
+                  </Link>
+                  <button
+                    className="flex-1"
+                    type="button"
+                    title="sign-out"
+                    onClick={() => {
                       firebase.auth().signOut();
                       history.push(ROUTES.LOGIN);
-                    }
-                  }}
-                >
-                  <svg
-                    className="w-8 mr-2 text-black-light cursor-pointer"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                    }}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter') {
+                        firebase.auth().signOut();
+                        history.push(ROUTES.LOGIN);
+                      }
+                    }}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                    />
-                  </svg>
-                </button>
-                <div className="flex item-center cursor-pointer">
-                  <Link to={`/${user.username}`}>
-                    <img
-                      className="rounded-full h8 w-8 flex"
-                      alt="logo"
-                      style={{ width: 170 }}
-                      src={`../images/avatars/${user.username}.jpg`}
-                    />
-                  </Link>
+                    <svg
+                      className="w-8 mr-2 text-black-light cursor-pointer"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                      />
+                    </svg>
+                  </button>
+                  <div className="flex-1 cursor-pointer">
+                    <Link to={`/${user.username}`}>
+                      <img
+                        className="rounded-full h8 w-8"
+                        alt="logo"
+                        // style={{ width: 170 }}
+                        src={`../images/avatars/${user.username}.jpg`}
+                      />
+                    </Link>
+                  </div>
                 </div>
               </>
             ) : (
