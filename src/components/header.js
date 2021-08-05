@@ -5,11 +5,9 @@ import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
 import useUser from '../hooks/use-user';
-// import { ReactComponent as BoxLogo } from '../images/svg_png/worldboxlogo.png';
-import boximageworld from '../images/svg_png/worldboxlogo.png';
-import boximage from '../images/svg_png/box_grid.svg';
+import worldBoxLogo from '../images/svg_png/worldboxlogo.png';
+import BoxLogo from '../images/svg_png/box_grid.svg';
 import image1 from '../images/watchrollfullopen.webp';
-// import NewWatch from './newWatch/newWatch';
 
 export default function Header() {
   const { user: loggedInUser } = useContext(UserContext);
@@ -20,27 +18,27 @@ export default function Header() {
   return (
     <header className="h-18 bd-white border-b border-gray-primary mb-8">
       <div className="container mx-auto max-w-screen-lg h-full">
-        <div className="inline-flex items-center justify-between h-full">
-          <div className="text-grey-700 cursor-pointer">
-            <h1 className="flex justify-center w-full">
-              <p className="text-grey-700 flex flex-row items-center justify-between text-2xl">
-                Roll & Box
-              </p>
+        <div className="inline-flex items-center justify-between">
+          <div className="flex justify-start text-grey-700 cursor-pointer">
+            <div className="mt-2 w-3/12">
+              <span className="inline-block align-middle">Roll & Box</span>
+            </div>
+            <div>
               <Link to={ROUTES.DASHBOARD}>
-                <img className="mt-2 w-2/12 " src={image1} alt="Roll and Box" />
+                <img className="mt-2 w-3/12" src={image1} alt="Roll and Box" />
               </Link>
-            </h1>
+            </div>
           </div>
           <div className="text-grey-700">
             {user ? (
               <>
                 <div className="inline-flex items-center">
                   <Link to={ROUTES.DASHBOARD} aria-label="Dashboard" className="flex-1">
-                    <img src={boximageworld} alt="worldbox" className="h-auto w-auto" />
+                    <img src={worldBoxLogo} alt="worldbox" className="h-auto w-auto" />
                     {/* <BoxLogo className="w-8 mr-2 text-black-light cursor-pointer" alt="button" /> */}
                   </Link>
                   <Link to={`/${user.username}`} aria-label="Dashboard" className="flex-1">
-                    <img src={boximage} alt="worldbox" className="h-20 w-20" />
+                    <img src={BoxLogo} alt="worldbox" className="h-14" />
                     {/* <BoxLogo className="w-8 mr-2 text-black-light cursor-pointer" alt="button" /> */}
                   </Link>
                   <button
@@ -76,7 +74,7 @@ export default function Header() {
                   <div className="flex-1 cursor-pointer">
                     <Link to={`/${user.username}`}>
                       <img
-                        className="rounded-full h8 w-8"
+                        className="rounded-full h8"
                         alt="logo"
                         // style={{ width: 170 }}
                         src={`../images/avatars/${user.username}.jpg`}

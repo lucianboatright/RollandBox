@@ -29,7 +29,6 @@ const OVERLAY_STYLES = {
 };
 
 export default function Modal({ open, onClose, profile, watchesCount, userId }) {
-  const [upImg, setUpImg] = useState();
   const imgRef = useRef(null);
   const previewCanvasRef = useRef(null);
   const [crop, setCrop] = useState({ unit: '%', width: 30, aspect: 10 / 16 });
@@ -79,7 +78,6 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
           .getDownloadURL()
           .then((url) => {
             db.collection('watches').add({
-              // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               watchname: watchName,
               watchinfo: watchInfo,
               imageurl: url,
@@ -97,28 +95,9 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
     );
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log('onclick', watchName, watchInfo);
-  //   onClose(e);
-  // };
-
   const handleSubmitUpload = (e) => {
     e.preventDefault();
-    // const metadata = {
-    //   contentType: 'image/jpeg',
-    //   customMetadata: {
-    //     watchname: watchName,
-    //     watchinfo: watchInfo,
-    //     profilename: profile,
-    //     usernumber: userId
-    //   }
-    // };
-    // const file = imageBlob;
-    // const storageRef = firebase.storage().ref();
-    // const fileRef = storageRef.child(`watches/${watchName}.jpg`);
-    // await fileRef.put(file, metadata);
-    // setUrl(await fileRef.getDownloadURL());
+
     console.log('UURRLL', url);
     onClose();
   };
@@ -169,8 +148,6 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
                 onChange={({ target }) => setWatchName(target.value)}
               />
               <br />
-              {/* <p>Upload Image</p>
-              <input type="file" /> */}
               <p>Enter any information or links below</p>
               <input
                 className="border-solid border-2 border-light-blue-500"
@@ -182,17 +159,6 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
             </form>
             <br />
             <img src={completedCrop} alt="" />
-            {/* <button
-              type="button"
-              // onClick={
-              //   (() => generateDownload(previewCanvasRef.current, completedCrop),
-              //   console.log('onclick', watchName, watchInfo),
-              //   onClose)
-              // }
-              className="border-solid border-2 rounded-md border-light-blue-500 p-1"
-            >
-              Close
-            </button> */}
           </div>
         </div>
       </div>

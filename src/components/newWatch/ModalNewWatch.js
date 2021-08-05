@@ -40,7 +40,8 @@ function generateDownload(canvas, crop) {
     // anchor.href = URL.createObjectURL(blob);
     // anchor.click();
     // window.URL.revokeObjectURL(previewUrl);
-    console.log(blob);
+    console.log('BLOB GEN DOWNLOAD', blob);
+    return blob;
   });
 }
 
@@ -60,6 +61,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
   const [watchInfo, setWatchInfo] = useState(null);
   const [imageBlob, setImageBlob] = useState(null);
   const [url, setUrl] = useState('');
+  const [progress, setProgress] = useState(0);
 
   const onSelectFile = (e) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -70,25 +72,9 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
   };
 
   const imageBlobGenerater = async (e) => {
-    setImageBlob(completedCrop);
+    console.log('TESTTT', generateDownload(previewCanvasRef.current, completedCrop));
     console.log('completed crop', completedCrop);
     console.log('completed blob', imageBlob);
-    const metadata = {
-      contentType: 'image/jpeg',
-      customMetadata: {
-        watchname: watchName,
-        watchinfo: watchInfo,
-        profilename: profile,
-        usernumber: userId
-      }
-    };
-    const file = imageBlob;
-    const storageRef = firebase.storage().ref();
-    const fileRef = storageRef.child(`watches/${watchName}.jpg`);
-    await fileRef.put(file, metadata).then(() => {
-      console.log('file Uploaded');
-    });
-    setUrl(await fileRef.getDownloadURL());
   };
 
   const handleSubmit = (e) => {
@@ -313,27 +299,32 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
                 />
               </div>
               <div className="justify-left">
-                <p>Hello {profile}</p>
-                <p>You currently have {watchesCount} watches</p>
+                <p>Adding Another Watch {profile}?</p>
+                <p>Collection total is {watchesCount} Watches</p>
+                {/* <p>Submit at bottom </p> */}
               </div>
             </div>
-            <br />
             <form onSubmit={handleSubmitUpload} method="POST">
               <div className="App">
-                <div>
-                  <input className="m-2" type="file" accept="image/*" onChange={onSelectFile} />
+                <div className="rounded bg-gradient-to-r from-green-400 to-blue-500 w-60 bg mt-1 mb-1 pl-1 pr-1 pt-1 pb-1">
+                  <input
+                    className="m-2 w-60"
+                    type="file"
+                    accept="image/*"
+                    onChange={onSelectFile}
+                  />
                 </div>
-                <div className="justify-around ml-0 h-26 w-2/3 flex items-start">
+                <div className="flex justify-center ml-0 h-26 w-2/3">
                   <ReactCrop
                     src={upImg}
                     onImageLoaded={onLoad}
                     crop={crop}
                     onChange={(c) => setCrop(c)}
                     onComplete={(c) => setCompletedCrop(c)}
-                    style={{ height: '200px', width: '150px' }}
+                    style={{ height: 'auto', width: '8rem' }}
                     className=""
                   />
-                  <div style={{ height: '100px', width: '100px', margin: '10px' }}>
+                  <div style={{ height: 'auto', width: '8rem', marginLeft: '1rem' }}>
                     <canvas
                       ref={previewCanvasRef}
                       // Rounding is important so the canvas width and height matches/is a multiple for sharpness.
@@ -346,16 +337,20 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
                 </div>
                 <button
                   type="button"
-                  className="rounded border-solid border-2 border-light-blue-600 mt-8 mb-1 pl-2 pr-2 pt-1 pb-1"
+                  className="rounded mt-2 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-green-400 to-blue-500 w-60 bg"
                   disabled={!completedCrop?.width || !completedCrop?.height}
                   onClick={imageBlobGenerater}
                 >
                   Download cropped image
                 </button>
+                <div>
+                  <span className="text-xs align-top pr-4">Progress</span>
+                  <progress className="" value={progress} max="100" />
+                </div>
               </div>
               <p>Watch Name</p>
               <input
-                className="border-solid border-2 border-light-blue-500"
+                className="border-solid border-2 border-light-blue-500 w-60"
                 type="text"
                 onChange={({ target }) => setWatchName(target.value)}
               />
@@ -363,13 +358,26 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
               {/* <p>Upload Image</p>
               <input type="file" /> */}
               <p>Enter any information or links below</p>
-              <input
+              <textarea
+                id="watchinfo"
+                onChange={({ target }) => setWatchInfo(target.value)}
+                className="border-2 border-grey-500 focus:border-black-900 w-60"
+                rows="4"
+                cols="50"
+                placeholder="Enter text"
+              >
+                Enter text
+              </textarea>
+              {/* <input
                 className="border-solid border-2 border-light-blue-500"
                 type="text"
                 style={{ height: '270px' }}
                 onChange={({ target }) => setWatchInfo(target.value)}
+              /> */}
+              <input
+                type="submit"
+                className="rounded mt-1 mb-1 pl-2 pr-2 pt-1 pb-1 bg-gradient-to-r from-green-400 to-blue-500 w-60 bg"
               />
-              <input type="submit" />
             </form>
             <br />
             <img src={completedCrop} alt="" />
