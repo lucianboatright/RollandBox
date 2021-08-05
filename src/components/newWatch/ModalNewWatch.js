@@ -28,27 +28,16 @@ const OVERLAY_STYLES = {
   zIndex: 1000
 };
 
-function generateDownload(canvas, crop) {
-  console.log('anything');
-  if (!crop || !canvas) {
-    return;
-  }
-  canvas.toBlob((blob) => {
-    // const previewUrl = window.URL.createObjectURL(blob);
-    // const anchor = document.createElement('a');
-    // anchor.download = 'cropPreview.png';
-    // anchor.href = URL.createObjectURL(blob);
-    // anchor.click();
-    // window.URL.revokeObjectURL(previewUrl);
-    console.log('BLOB GEN DOWNLOAD', blob);
-    return blob;
-  });
-}
-
-// function handleSubmit(event) {
-//   event.preventDefault();
-//   // generateDownload(previewCanvasRef.current, completedCrop);
-//   // console.log('onclick', watchName, watchInfo);
+// function generateDownload(upImg, completedCrop) {
+//   console.log('anything');
+//   if (!completedCrop || !upImg) {
+//     return;
+//   }
+//   upImg.toBlob((blob) => {
+//     console.log('BLOB GEN DOWNLOAD', blob);
+//     console.log('inside toBlob', completedCrop);
+//     return blob;
+//   });
 // }
 
 export default function Modal({ open, onClose, profile, watchesCount, userId }) {
@@ -63,6 +52,17 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
   const [url, setUrl] = useState('');
   const [progress, setProgress] = useState(0);
 
+  const generateDownload = (upImg, completedCrop) => {
+    console.log('anything');
+    if (!completedCrop || !upImg) {
+      return;
+    }
+    upImg.toBlob((blob) => {
+      setImageBlob(blob);
+      console.log('end', imageBlob);
+    });
+  };
+
   const onSelectFile = (e) => {
     if (e.target.files && e.target.files.length > 0) {
       const reader = new FileReader();
@@ -72,183 +72,66 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
   };
 
   const imageBlobGenerater = async (e) => {
-    console.log('TESTTT', generateDownload(previewCanvasRef.current, completedCrop));
+    console.log('TESTTT', previewCanvasRef.current, completedCrop);
     console.log('completed crop', completedCrop);
     console.log('completed blob', imageBlob);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    generateDownload(previewCanvasRef.current, completedCrop);
-    console.log('onclick', watchName, watchInfo);
-    onClose(e);
+    const test = generateDownload(previewCanvasRef.current, completedCrop);
+    console.log('TEST END', test);
   };
 
   const handleSubmitUpload = (e) => {
-    e.preventDefault();
-    // const metadata = {
-    //   contentType: 'image/jpeg',
-    //   customMetadata: {
-    //     watchname: watchName,
-    //     watchinfo: watchInfo,
-    //     profilename: profile,
-    //     usernumber: userId
-    //   }
-    // };
-    // const file = imageBlob;
-    // const storageRef = firebase.storage().ref();
-    // const fileRef = storageRef.child(`watches/${watchName}.jpg`);
-    // await fileRef.put(file, metadata);
+    const metadata = {
+      contentType: 'image/jpeg',
+      customMetadata: {
+        watchname: watchName,
+        watchinfo: watchInfo,
+        profilename: profile,
+        usernumber: userId
+      }
+    };
+    const file = imageBlob;
+    const storageRef = firebase.storage().ref();
+    const fileRef = storageRef.child(`watches/${watchName}.jpg`).put(file, metadata);
     // setUrl(await fileRef.getDownloadURL());
-    console.log('UURRLL', url);
+    fileRef.on(
+      'state_changed',
+      (snapshot) => {
+        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        setProgress(progress);
+      },
+      (error) => {
+        console.log(error);
+        alert(error.messgae);
+      },
+      () => {
+        firebase
+          .storage()
+          .ref('watches')
+          .child(`${watchName}.jpg`)
+          .getDownloadURL()
+          .then((url) => {
+            db.collection('watches').add({
+              watchname: watchName,
+              watchinfo: watchInfo,
+              imageurl: url,
+              comments: [],
+              likes: [],
+              userId
+            });
+            setProgress(0);
+            setWatchInfo('');
+            setWatchInfo('');
+            setImageBlob(null);
+            console.log('complete', url);
+          });
+      }
+    );
     onClose();
   };
-
-  // const handleSubmitUpload = (e) => {
-  //   e.preventDefault();
-  //   const metadata = {
-  //     contentType: 'image/jpeg',
-  //     customMetadata: {
-  //       watchname: watchName,
-  //       watchinfo: watchInfo
-  //     }
-  //   };
-  //   const storageRef = firebase.storage().ref();
-  //   const watchRef = storageRef.child(`watches/${watchName}.jpg`);
-  //   watchRef.put(imageBlob, metadata).then((snapshot) => {
-  //     console.log('Uploaded a blob or file!');
-  //     console.log('snapshhot', snapshot);
-  //   });
-  //   (error) => {
-  //     console.log(error);
-  //   };
-  //   () => {
-  //     storage
-  //       .ref('watches')
-  //       .child(`${profile}${watchName}`)
-  //       .getDownloadUrl()
-  //       .then((url) => {
-  //         console.log(url);
-  //       });
-  //   };
-  //   console.log('image', imageBlob);
-  //   onClose();
-  // };
-
-  // const handleSubmitUpload = () => {
-  //   const metadata = {
-  //     contentType: 'image/jpeg',
-  //     customMetadata: {
-  //       watchname: watchName,
-  //       watchinfo: watchInfo,
-  //       fullname: profile.fullName,
-  //       profilename: profile,
-  //       usernumber: profile.userId
-  //     }
-  //   };
-  //   const uploadTask = firebase.ref(`/watches/${profile}${watchName}`).put(imageBlob);
-  //   uploadTask.on(
-  //     'state_changed',
-  //     (snapshot) => {},
-  //     (error) => {
-  //       console.log(error);
-  //     },
-  //     () => {
-  //       firebase
-  //         .ref('watches')
-  //         .child(watchName)
-  //         .getDownloadURL()
-  //         .then((url) => {
-  //           console.log(url);
-  //         });
-  //     }
-  //   );
-  //   onClose();
-  // };
-
-  // const handleSubmitUpload = () => {
-  //   // e.preventDeafult();
-  //   const metadata = {
-  //     contentType: 'image/jpeg',
-  //     customMetadata: {
-  //       watchname: watchName,
-  //       watchinfo: watchInfo,
-  //       fullname: profile.fullName,
-  //       profilename: profile,
-  //       usernumber: profile.userId
-  //     }
-  //   };
-  //   const ref = firebase.ref(`/watches/${profile}${watchName}`);
-  //   const uploadTask = ref.put(imageBlob, metadata);
-  //   uploadTask.on('state_changed', console.log, console.error, () => {
-  //     ref.getDownloadURL().then((url) => {
-  //       setImageBlob(null);
-  //       setUrl(url);
-  //     });
-  //   });
-  //   onClose();
-  //   console.log('url', url);
-  // };
-
-  // const handleSubmitUpload = (e) => {
-  //   e.preventDefault();
-  //   const metadata = {
-  //     contentType: 'image/jpeg',
-  //     customMetadata: {
-  //       watchname: watchName,
-  //       watchinfo: watchInfo
-  //     }
-  //   };
-  //   const storageRef = firebase.storage().ref();
-  //   const watchRef = storageRef.child(`watches/${watchName}.jpg`);
-  //   watchRef
-  //     .put(imageBlob, metadata)
-  //     .then((snapshot) => {
-  //       console.log('Uploaded a blob or file!');
-  //       console.log('snapshhot', snapshot);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  //   watchRef.child(`watches/${watchName}.jpg`).getDownloadUrl((url) => {
-  //     console.log(url);
-  //   });
-  //   // watchRef.put(imageBlob).then((snapshot) => {
-  //   //   console.log('Uploaded a blob or file!');
-  //   // });
-  //   // uploadTask.on(
-  //   //   'state_changed',
-  //   //   // snapshot => {
-  //   //   //   const progress = Math.round(
-  //   //   //     (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-  //   //   //   );
-  //   //   //   setProgress(progress);
-  //   //   // },
-  //   //   (error) => {
-  //   //     console.log(error);
-  //   //   },
-  //   // () => {
-  //   //   storage
-  //   //     .ref('watches')
-  //   //     .child(imageBlob.name)
-  //   //     .getDownloadURL()
-  //   //     .then((url) => {
-  //   //       setUrl(url);
-  //   //     });
-  //   // },
-  //   onClose();
-  //   // );
-  // };
 
   const onLoad = useCallback((img) => {
     imgRef.current = img;
   }, []);
-
-  // const closeButton = (e) => {
-  //   () => generateDownload(previewCanvasRef.current, completedCrop);
-  //   console.log('onclick', watchName, watchInfo);
-  //   onClose;
-  // };
 
   useEffect(() => {
     if (!completedCrop || !previewCanvasRef.current || !imgRef.current) {
@@ -301,7 +184,6 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
               <div className="justify-left">
                 <p>Adding Another Watch {profile}?</p>
                 <p>Collection total is {watchesCount} Watches</p>
-                {/* <p>Submit at bottom </p> */}
               </div>
             </div>
             <form onSubmit={handleSubmitUpload} method="POST">
@@ -327,7 +209,6 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
                   <div style={{ height: 'auto', width: '8rem', marginLeft: '1rem' }}>
                     <canvas
                       ref={previewCanvasRef}
-                      // Rounding is important so the canvas width and height matches/is a multiple for sharpness.
                       style={{
                         width: Math.round(completedCrop?.width ?? 0),
                         height: Math.round(completedCrop?.height ?? 0)
@@ -355,8 +236,6 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
                 onChange={({ target }) => setWatchName(target.value)}
               />
               <br />
-              {/* <p>Upload Image</p>
-              <input type="file" /> */}
               <p>Enter any information or links below</p>
               <textarea
                 id="watchinfo"
@@ -368,12 +247,6 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
               >
                 Enter text
               </textarea>
-              {/* <input
-                className="border-solid border-2 border-light-blue-500"
-                type="text"
-                style={{ height: '270px' }}
-                onChange={({ target }) => setWatchInfo(target.value)}
-              /> */}
               <input
                 type="submit"
                 className="rounded mt-1 mb-1 pl-2 pr-2 pt-1 pb-1 bg-gradient-to-r from-green-400 to-blue-500 w-60 bg"
@@ -381,17 +254,6 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
             </form>
             <br />
             <img src={completedCrop} alt="" />
-            {/* <button
-              type="button"
-              // onClick={
-              //   (() => generateDownload(previewCanvasRef.current, completedCrop),
-              //   console.log('onclick', watchName, watchInfo),
-              //   onClose)
-              // }
-              className="border-solid border-2 rounded-md border-light-blue-500 p-1"
-            >
-              Close
-            </button> */}
           </div>
         </div>
       </div>
