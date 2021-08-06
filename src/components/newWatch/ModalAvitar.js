@@ -40,7 +40,7 @@ export default function Modal({ open, onClose, profile }) {
               </div>
               <div className="justify-left">
                 <p>Hello {profile}</p>
-                <p>Please select and image and crop for your Avitar</p>
+                <p>Select and crop for your Avitar</p>
               </div>
             </div>
             <br />
