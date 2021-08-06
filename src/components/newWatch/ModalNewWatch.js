@@ -4,7 +4,6 @@ import 'react-image-crop/dist/ReactCrop.css';
 import PropTypes from 'prop-types';
 import ImageCrop from './imageCrop';
 import { firebase, storage } from '../../lib/firebase';
-// import app from '../../lib/firebaseStorage';
 
 const db = firebase.firestore();
 
@@ -15,7 +14,6 @@ const MODAL_STYLES = {
   transform: 'translate(-50%, -50%)',
   backgroundColor: '#FFF',
   padding: '50px'
-  // zIndex: 1000
 };
 
 const OVERLAY_STYLES = {
@@ -27,18 +25,6 @@ const OVERLAY_STYLES = {
   backgroundColor: 'rgba(0, 0, 0, .7)',
   zIndex: 1000
 };
-
-// function generateDownload(upImg, completedCrop) {
-//   console.log('anything');
-//   if (!completedCrop || !upImg) {
-//     return;
-//   }
-//   upImg.toBlob((blob) => {
-//     console.log('BLOB GEN DOWNLOAD', blob);
-//     console.log('inside toBlob', completedCrop);
-//     return blob;
-//   });
-// }
 
 export default function Modal({ open, onClose, profile, watchesCount, userId }) {
   const [upImg, setUpImg] = useState();
@@ -72,11 +58,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
   };
 
   const imageBlobGenerater = async (e) => {
-    console.log('TESTTT', previewCanvasRef.current, completedCrop);
-    console.log('completed crop', completedCrop);
-    console.log('completed blob', imageBlob);
-    const test = generateDownload(previewCanvasRef.current, completedCrop);
-    console.log('TEST END', test);
+    generateDownload(previewCanvasRef.current, completedCrop);
   };
 
   const handleSubmitUpload = (e) => {
@@ -95,10 +77,10 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
     // setUrl(await fileRef.getDownloadURL());
     fileRef.on(
       'state_changed',
-      (snapshot) => {
-        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-        setProgress(progress);
-      },
+      // (snapshot) => {
+      //   const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+      //   setProgress(progress);
+      // },
       (error) => {
         console.log(error);
         alert(error.messgae);
@@ -141,12 +123,10 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
     const image = imgRef.current;
     const canvas = previewCanvasRef.current;
     const crop = completedCrop;
-
     const scaleX = image.naturalWidth / image.width;
     const scaleY = image.naturalHeight / image.height;
     const ctx = canvas.getContext('2d');
     const pixelRatio = window.devicePixelRatio;
-
     canvas.width = crop.width * pixelRatio;
     canvas.height = crop.height * pixelRatio;
 
@@ -173,84 +153,90 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
       <div style={OVERLAY_STYLES}>
         <div style={MODAL_STYLES}>
           <div className="overflow-y-scroll h-80">
-            <div className="flex items-stretch">
-              <div className="justify-left">
-                <img
-                  className="rounded-full h-12 mr-2"
-                  src={`/images/avatars/${profile}.jpg`}
-                  alt={profile}
-                />
-              </div>
-              <div className="justify-left">
-                <p>Adding Another Watch {profile}?</p>
-                <p>Collection total is {watchesCount} Watches</p>
-              </div>
-            </div>
             <form onSubmit={handleSubmitUpload} method="POST">
-              <div className="App">
-                <div className="rounded bg-gradient-to-r from-green-400 to-blue-500 w-60 bg mt-1 mb-1 pl-1 pr-1 pt-1 pb-1">
-                  <input
-                    className="m-2 w-60"
-                    type="file"
-                    accept="image/*"
-                    onChange={onSelectFile}
-                  />
-                </div>
-                <div className="flex justify-center ml-0 h-26 w-2/3">
-                  <ReactCrop
-                    src={upImg}
-                    onImageLoaded={onLoad}
-                    crop={crop}
-                    onChange={(c) => setCrop(c)}
-                    onComplete={(c) => setCompletedCrop(c)}
-                    style={{ height: 'auto', width: '8rem' }}
-                    className=""
-                  />
-                  <div style={{ height: 'auto', width: '8rem', marginLeft: '1rem' }}>
-                    <canvas
-                      ref={previewCanvasRef}
-                      style={{
-                        width: Math.round(completedCrop?.width ?? 0),
-                        height: Math.round(completedCrop?.height ?? 0)
-                      }}
-                    />
+              <div className="flex items-start">
+                <div>
+                  <div className="flex items-stretch">
+                    <div className="justify-left">
+                      <img
+                        className="rounded-full h-12 mr-2"
+                        src={`/images/avatars/${profile}.jpg`}
+                        alt={profile}
+                      />
+                    </div>
+                    <div className="justify-left">
+                      <p>Adding Another Watch {profile}?</p>
+                      <p>Collection total is {watchesCount} Watches</p>
+                    </div>
+                  </div>
+                  <div className="App">
+                    <div className="rounded bg-gradient-to-r from-green-400 to-blue-500 w-60 bg mt-1 mb-1 pl-1 pr-1 pt-1 pb-1">
+                      <input
+                        className="m-2 w-60"
+                        type="file"
+                        accept="image/*"
+                        onChange={onSelectFile}
+                      />
+                    </div>
+                    <div className="flex justify-center ml-0 h-26 w-2/3">
+                      <ReactCrop
+                        src={upImg}
+                        onImageLoaded={onLoad}
+                        crop={crop}
+                        onChange={(c) => setCrop(c)}
+                        onComplete={(c) => setCompletedCrop(c)}
+                        style={{ height: 'auto', width: '8rem' }}
+                        className=""
+                      />
+                      <div style={{ height: 'auto', width: '8rem', marginLeft: '1rem' }}>
+                        <canvas
+                          ref={previewCanvasRef}
+                          style={{
+                            width: Math.round(completedCrop?.width ?? 0),
+                            height: Math.round(completedCrop?.height ?? 0)
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-green-400 to-blue-500 w-60 bg"
+                      disabled={!completedCrop?.width || !completedCrop?.height}
+                      onClick={imageBlobGenerater}
+                    >
+                      Download cropped image
+                    </button>
+                    {/* <div>
+                      <span className="text-xs align-top pr-4">Progress</span>
+                      <progress className="" value={progress} max="100" />
+                    </div> */}
                   </div>
                 </div>
-                <button
-                  type="button"
-                  className="rounded mt-2 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-green-400 to-blue-500 w-60 bg"
-                  disabled={!completedCrop?.width || !completedCrop?.height}
-                  onClick={imageBlobGenerater}
-                >
-                  Download cropped image
-                </button>
-                <div>
-                  <span className="text-xs align-top pr-4">Progress</span>
-                  <progress className="" value={progress} max="100" />
+                <div className="mt-12">
+                  <p>Watch Name</p>
+                  <input
+                    className="border-solid border-2 border-light-blue-500 w-60"
+                    type="text"
+                    onChange={({ target }) => setWatchName(target.value)}
+                  />
+                  <br />
+                  <p>Enter any information or links below</p>
+                  <textarea
+                    id="watchinfo"
+                    onChange={({ target }) => setWatchInfo(target.value)}
+                    className="border-2 border-grey-500 focus:border-black-900 w-60"
+                    rows="4"
+                    cols="50"
+                    placeholder="Enter text"
+                  >
+                    Enter text
+                  </textarea>
+                  <input
+                    type="submit"
+                    className="rounded mt-1 mb-1 pl-2 pr-2 pt-1 pb-1 bg-gradient-to-r from-green-400 to-blue-500 w-60 bg"
+                  />
                 </div>
               </div>
-              <p>Watch Name</p>
-              <input
-                className="border-solid border-2 border-light-blue-500 w-60"
-                type="text"
-                onChange={({ target }) => setWatchName(target.value)}
-              />
-              <br />
-              <p>Enter any information or links below</p>
-              <textarea
-                id="watchinfo"
-                onChange={({ target }) => setWatchInfo(target.value)}
-                className="border-2 border-grey-500 focus:border-black-900 w-60"
-                rows="4"
-                cols="50"
-                placeholder="Enter text"
-              >
-                Enter text
-              </textarea>
-              <input
-                type="submit"
-                className="rounded mt-1 mb-1 pl-2 pr-2 pt-1 pb-1 bg-gradient-to-r from-green-400 to-blue-500 w-60 bg"
-              />
             </form>
             <br />
             <img src={completedCrop} alt="" />
