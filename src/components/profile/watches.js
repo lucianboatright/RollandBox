@@ -36,7 +36,7 @@ export default function Watches({ watches }) {
             watches.map((watch) => (
               <div
                 key={watch.docId}
-                className="pt-3"
+                className="pt-1"
                 style={{
                   backgroundImage: `url(${backGrid})`,
                   backgroundPosition: 'top',

@@ -59,6 +59,9 @@ export default function Header({
       <div className="flex items-center justify-center flex-col col-span">
         <div className="container flex item-center">
           <p className="text-2xl mr-4">{profileUsername}</p>
+          <span className="font-medium inline-block align-bottom">
+            {!fullName ? <Skeleton count={1} height={24} /> : fullName}
+          </span>
           {activeButtonFollow && (
             <button
               className="bg-green-600 font-bold text-sm rounded text-white w-20 h-8"
@@ -134,9 +137,6 @@ export default function Header({
               )}
             </>
           )}
-        </div>
-        <div className="container mt-4">
-          <p className="font-medium">{!fullName ? <Skeleton count={1} height={24} /> : fullName}</p>
         </div>
       </div>
     </div>
