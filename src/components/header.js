@@ -8,6 +8,7 @@ import useUser from '../hooks/use-user';
 import worldBoxLogo from '../images/svg_png/worldboxlogo.png';
 import BoxLogo from '../images/svg_png/box_grid.svg';
 import image1 from '../images/watchrollfullopen.webp';
+import altAvitar from '../images/avatars/avatarLogo.png';
 
 export default function Header() {
   const { user: loggedInUser } = useContext(UserContext);

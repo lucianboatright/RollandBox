@@ -102,7 +102,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
             });
             setProgress(0);
             setWatchInfo('');
-            setWatchInfo('');
+            setWatchName('');
             setImageBlob(null);
             console.log('complete', url);
           });

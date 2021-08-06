@@ -7,6 +7,7 @@ import ModalNewWatch from '../newWatch/ModalNewWatch';
 // import ModalNewWatch from '../newWatch/ModalNewWatch_easycrop';
 // import ModalNewWatch from '../newWatch/ModalNewWatchTest';
 import ModalAvitar from '../newWatch/ModalAvitar';
+import altAvitar from '../../images/avatars/avatarLogo.png';
 
 export default function Header({
   watchesCount,
@@ -52,7 +53,7 @@ export default function Header({
           <img
             className="rounded-full h-40 w-auto flex"
             src={`./images/avatars/${profileUsername}.jpg`}
-            alt={`/images/avatars/${profileUsername}.jpg`}
+            alt={altAvitar}
           />
         )}
       </div>
@@ -116,6 +117,7 @@ export default function Header({
                   </button>
                   <ModalAvitar
                     profile={profileUsername}
+                    userId={profileUserId}
                     open={isOpenAvitar}
                     onClose={() => setIsOpenAvitar(false)}
                   />

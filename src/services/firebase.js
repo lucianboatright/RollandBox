@@ -1,5 +1,14 @@
 import { firebase, FieldValue } from '../lib/firebase';
 
+// export async function getUserAvatar(userId) {
+//   const result = await firebase
+//     .firestore()
+//     .collection('avatars')
+//     .where('userId', '==', userId)
+//     .get();
+//   return imageurl;
+// }
+
 export async function doesUsernameExist(username) {
   const result = await firebase
     .firestore()
@@ -82,7 +91,6 @@ export async function getWatches(userId, following) {
     .collection('watches')
     .where('userId', 'in', following)
     .get();
-  console.log('result 1', result.docs);
   const userFollowedWatches = result.docs.map((watch) => ({
     ...watch.data(),
     docId: watch.id
