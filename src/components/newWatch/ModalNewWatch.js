@@ -2,7 +2,6 @@ import React, { useState, useCallback, useRef, useEffect } from 'react';
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 import PropTypes from 'prop-types';
-import ImageCrop from './imageCrop';
 import { firebase, storage } from '../../lib/firebase';
 
 const db = firebase.firestore();
@@ -77,10 +76,10 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
     // setUrl(await fileRef.getDownloadURL());
     fileRef.on(
       'state_changed',
-      // (snapshot) => {
-      //   const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-      //   setProgress(progress);
-      // },
+      (snapshot) => {
+        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        setProgress(progress);
+      },
       (error) => {
         console.log(error);
         alert(error.messgae);
@@ -206,10 +205,10 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
                     >
                       Download cropped image
                     </button>
-                    {/* <div>
+                    <div>
                       <span className="text-xs align-top pr-4">Progress</span>
                       <progress className="" value={progress} max="100" />
-                    </div> */}
+                    </div>
                   </div>
                 </div>
                 <div className="mt-12">

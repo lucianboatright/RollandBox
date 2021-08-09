@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ReactCrop from 'react-image-crop';
-import ImageCrop from './imageCropAvitar';
 import { firebase, storage } from '../../lib/firebase';
 import altAvitar from '../../images/avatars/avatarLogo.png';
 
@@ -74,10 +73,10 @@ export default function Modal({ open, onClose, profile, userId }) {
     // setUrl(await fileRef.getDownloadURL());
     fileRef.on(
       'state_changed',
-      // (snapshot) => {
-      //   const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-      //   setProgress(progress);
-      // },
+      (snapshot) => {
+        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        setProgress(progress);
+      },
       (error) => {
         console.log(error);
         alert(error.messgae);
@@ -166,8 +165,8 @@ export default function Modal({ open, onClose, profile, userId }) {
                   src={upImg}
                   onImageLoaded={onLoad}
                   crop={crop}
-                  onChange={(c) => setCrop(c)}
-                  onComplete={(c) => setCompletedCrop(c)}
+                  onChange={((c) => setCrop(c), (c) => setCompletedCrop(c))}
+                  // onComplete={(c) => setCompletedCrop(c)}
                   style={{ height: 'auto', width: '8rem' }}
                   className=""
                 />
@@ -180,6 +179,10 @@ export default function Modal({ open, onClose, profile, userId }) {
                     }}
                   />
                 </div>
+              </div>
+              <div>
+                <span className="text-xs align-top pr-4">Progress</span>
+                <progress className="" value={progress} max="100" />
               </div>
               <button
                 type="button"
