@@ -26,7 +26,6 @@ export async function getUserByUsername(username) {
 // get user from the firestore where userId === userId (passed from the auth)
 export async function getUserByUserId(userId) {
   const result = await firebase.firestore().collection('users').where('userId', '==', userId).get();
-  console.log('RRESSULKLTS 3', result.docs);
 
   const user = result.docs.map((item) => ({
     ...item.data(),
@@ -75,6 +74,19 @@ export async function updateFollowedUserFollowers(
         : FieldValue.arrayUnion(loggedInUserDocId)
     });
 }
+export async function getAvatar(userId) {
+  const result = await firebase
+    .firestore()
+    .collection('avatars')
+    .where('userId', '==', userId)
+    .get();
+  console.log('AVATAR RESULT', result.docs);
+
+  const avatar = result.docs.map((userAvatar) => ({
+    ...userAvatar.data(),
+    docId: userAvatar.id
+  }));
+}
 
 export async function getWatches(userId, following) {
   const result = await firebase
@@ -82,7 +94,6 @@ export async function getWatches(userId, following) {
     .collection('watches')
     .where('userId', 'in', following)
     .get();
-  console.log('result 1', result.docs);
   const userFollowedWatches = result.docs.map((watch) => ({
     ...watch.data(),
     docId: watch.id
@@ -106,8 +117,6 @@ export async function getUserWatchesByUsername(username) {
     .collection('watches')
     .where('userId', '==', user.userId)
     .get();
-  console.log('REEESULTS 1', result.docs);
-
   return result.docs.map((item) => ({
     ...item.data(),
     docId: item.id

@@ -1,8 +1,7 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ReactCrop from 'react-image-crop';
-import { firebase, storage } from '../../lib/firebase';
-import altAvitar from '../../images/avatars/avatarLogo.png';
+import { firebase } from '../../lib/firebase';
 
 const db = firebase.firestore();
 

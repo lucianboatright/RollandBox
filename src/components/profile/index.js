@@ -2,13 +2,12 @@ import { useReducer, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Header from './header';
 import Watches from './watches';
-import { firebase } from '../../lib/firebase';
+// import useAvatar from '../hooks/use-avatar';
 
-import { getUserWatchesByUsername } from '../../services/firebase';
+import { getAvatar, getUserWatchesByUsername } from '../../services/firebase';
 // import { SettingsInputCompositeSharp } from '@material-ui/icons';
 
 export default function Profile({ user }) {
-  const [posts, setPosts] = useState([]);
   const reducer = (state, newState) => ({ ...state, ...newState });
   const initialState = {
     profile: {},
@@ -21,6 +20,8 @@ export default function Profile({ user }) {
     async function getProfileInfoAndWatches() {
       const watches = await getUserWatchesByUsername(user.username);
       dispatch({ profile: user, watchCollection: watches, followerCount: user.followers.length });
+      const avatar = await getAvatar(user.userId);
+      console.log('INSIODE INDEX', avatar);
     }
     getProfileInfoAndWatches();
     // eslint-disable-next-line

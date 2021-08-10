@@ -2,7 +2,7 @@ import React, { useState, useCallback, useRef, useEffect } from 'react';
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 import PropTypes from 'prop-types';
-import { firebase, storage } from '../../lib/firebase';
+import { firebase } from '../../lib/firebase';
 
 const db = firebase.firestore();
 
@@ -34,7 +34,6 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
   const [watchName, setWatchName] = useState(null);
   const [watchInfo, setWatchInfo] = useState(null);
   const [imageBlob, setImageBlob] = useState(null);
-  const [url, setUrl] = useState('');
   const [progress, setProgress] = useState(0);
 
   const generateDownload = (upImg, completedCrop) => {
