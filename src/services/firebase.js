@@ -34,6 +34,7 @@ export async function getUserByUserId(userId) {
 
   return user;
 }
+
 export async function getSuggestedProfiles(userId, following) {
   const result = await firebase.firestore().collection('users').limit(10).get();
 
@@ -74,19 +75,21 @@ export async function updateFollowedUserFollowers(
         : FieldValue.arrayUnion(loggedInUserDocId)
     });
 }
-export async function getAvatar(userId) {
-  const result = await firebase
-    .firestore()
-    .collection('avatars')
-    .where('userId', '==', userId)
-    .get();
-  console.log('AVATAR RESULT', result.docs);
+// export async function getAvatar(userId) {
+//   const result = await firebase
+//     .firestore()
+//     .collection('avatars')
+//     .where('userId', '==', userId)
+//     .get();
+//   console.log('AVATAR RESULT', result);
+//   console.log('AVATAR RESULT2', result.docs);
 
-  const avatar = result.docs.map((userAvatar) => ({
-    ...userAvatar.data(),
-    docId: userAvatar.id
-  }));
-}
+//   const avatar = result.docs.map((userAvatar) => ({
+//     ...userAvatar.data(),
+//     docId: userAvatar.id
+//   }));
+//   return avatar;
+// }
 
 export async function getWatches(userId, following) {
   const result = await firebase
@@ -107,7 +110,6 @@ export async function getWatches(userId, following) {
       return { username, ...watch, userLikedWatch };
     })
   );
-  console.log('watchesWithUserDetails', watchesWithUserDetails);
   return watchesWithUserDetails;
 }
 export async function getUserWatchesByUsername(username) {
@@ -137,16 +139,6 @@ export async function isUserFollowingProfile(loggedInUserUsername, profileUserId
   }));
   return response.userId;
 }
-
-// export async function addWatch(Watch) {
-//   return firebase
-//     .firestore()
-//     .collection('users')
-//     .add({ imgURL: Watch })
-//     .then(() => {
-//       setImgURL('')
-//     })
-// }
 
 export async function toggleFollow(
   isFollowingProfile,

@@ -37,11 +37,11 @@ Post.propTypes = {
   content: PropTypes.shape({
     username: PropTypes.string.isRequired,
     imageurl: PropTypes.string.isRequired,
-    caption: PropTypes.string.isRequired,
+    caption: PropTypes.string,
     docId: PropTypes.string.isRequired,
     userLikedWatch: PropTypes.bool.isRequired,
     likes: PropTypes.array.isRequired,
     comments: PropTypes.array.isRequired,
-    dateCreated: PropTypes.number.isRequired
+    dateCreated: PropTypes.number
   })
 };

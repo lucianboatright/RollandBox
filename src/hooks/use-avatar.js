@@ -1,25 +1,22 @@
-import { useState, useEffect, useContext } from 'react';
-import UserContext from '../context/user';
-import { getAvatar, getUserByUserId } from '../services/firebase';
+// import { useState, useEffect, useContext } from 'react';
+// import UserContext from '../context/user';
+// import { getAvatar } from '../services/firebase';
 
-export deafault function useAvatar() {
-  const [avatar, setAvatar] = useState(null);
+// export default function useAvatar() {
+//   const [avatar, setAvatar] = useState(null);
 
-  const {
-    user: { uid: userId = '' }
-  } = useContext(UserContext);
+//   const {
+//     user: { uid: userId = '' }
+//   } = useContext(UserContext);
 
-  useEffect(() => { 
-    async function getUserAvatar() {
-      const avatar = await getAvatar(userId);
-      let avatarUrl = [];
+//   useEffect(() => {
+//     async function getUserAvatar() {
+//       const [{ response }] = await getAvatar(userId);
+//       setAvatar(response);
+//       console.log('Avatar url', avatar);
+//     }
+//     getUserAvatar();
+//   }, [userId]);
 
-      console.log('Avatar url', avatarUrl);
-      setAvatar(avatarUrl);
-
-    }
-    getUserAvatar();
-  }, [userId]);
-
-  return { avatar };
-}
+//   return { avatar };
+// }

@@ -40,6 +40,6 @@ export default function Comments({ docId, comments: allComments = [], posted, co
 Comments.propTypes = {
   docId: PropTypes.string.isRequired,
   comments: PropTypes.array.isRequired,
-  posted: PropTypes.number.isRequired,
+  posted: PropTypes.number,
   commentInput: PropTypes.object.isRequired
 };

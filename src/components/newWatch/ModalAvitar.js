@@ -25,7 +25,7 @@ const OVERLAY_STYLES = {
   zIndex: 1000
 };
 
-export default function Modal({ open, onClose, profile, userId }) {
+export default function Modal({ open, onClose, profile, userId, documentId }) {
   const [upImg, setUpImg] = useState();
   const imgRef = useRef(null);
   const previewCanvasRef = useRef(null);
@@ -87,9 +87,8 @@ export default function Modal({ open, onClose, profile, userId }) {
           .child(`${profile}.jpg`)
           .getDownloadURL()
           .then((url) => {
-            db.collection('avatars').add({
-              imageurl: url,
-              userId
+            db.collection('users').doc(documentId).update({
+              imageurl: url
             });
             setProgress(0);
             setImageBlob(null);
@@ -200,6 +199,7 @@ export default function Modal({ open, onClose, profile, userId }) {
 }
 
 Modal.propTypes = {
+  documentId: PropTypes.string,
   open: PropTypes.bool,
   onClose: PropTypes.bool,
   profile: PropTypes.string,

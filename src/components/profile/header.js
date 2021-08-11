@@ -116,6 +116,7 @@ export default function Header({
                     Profile Settings
                   </button>
                   <ModalAvitar
+                    documentId={user.docId}
                     profile={profileUsername}
                     userId={profileUserId}
                     open={isOpenAvitar}

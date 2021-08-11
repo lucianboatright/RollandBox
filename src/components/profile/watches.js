@@ -9,22 +9,6 @@ export default function Watches({ watches }) {
   return (
     <div className="">
       <div className="h-16 border-t border-gray-primary">
-        {/* <div
-          className="alight-center mt-4"
-          style={{
-            backgroundImage: `url(${backGrid})`,
-            backgroundPosition: 'center',
-            backgroundSize: '150px',
-            backgroundRepeat: 'repeat'
-            // paddingVertical: '10'
-            // backgroundPosition: 'top',
-            // position: 'absolute',
-            // bottom: '0'
-            // width: '150px',
-            // height: '100px'
-          }}
-        > */}
-        {/* <img src={backGrid} alt="" /> */}
         <div className="pt-1 flex flex-wrap overflow-hidden xl:-mx-4">
           {!watches ? (
             <>
@@ -50,7 +34,6 @@ export default function Watches({ watches }) {
                     src={watch.imageurl}
                     alt={`${watch.watchId}`}
                     width="150px"
-                    // height="100px"
                   />
                 </div>
               </div>
@@ -59,7 +42,6 @@ export default function Watches({ watches }) {
             <p className="text-center text-2xl">No watches added yet</p>
           )}
         </div>
-        {/* </div> */}
       </div>
     </div>
   );
