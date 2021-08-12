@@ -6,8 +6,8 @@ import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
 import useUser from '../hooks/use-user';
-import worldBoxLogo from '../images/svg_png/worldboxlogo.png';
-import BoxLogo from '../images/svg_png/box_grid.svg';
+import worldBoxLogo from '../images/svg_png/worldboxlogoCenter.png';
+import BoxLogo from '../images/svg_png/boxLogoCenter.png';
 import image1 from '../images/watchrollfullopen.webp';
 
 export default function Header() {
@@ -26,7 +26,12 @@ export default function Header() {
             </div>
             <div>
               <Link to={ROUTES.DASHBOARD}>
-                <img className="mt-2 w-3/12" src={image1} alt="Roll and Box" />
+                <img
+                  className="mt-2 w-3/12"
+                  src={image1}
+                  alt="Roll and Box"
+                  style={{ maxWidth: '30rem' }}
+                />
               </Link>
             </div>
           </div>
@@ -35,11 +40,21 @@ export default function Header() {
               <>
                 <div className="inline-flex items-center">
                   <Link to={ROUTES.DASHBOARD} aria-label="Dashboard" className="flex-1">
-                    <img src={worldBoxLogo} alt="worldbox" className="h-auto w-auto" />
+                    <img
+                      src={worldBoxLogo}
+                      alt="worldbox"
+                      className="h-10 pr-2"
+                      style={{ maxWidth: '10rem' }}
+                    />
                     {/* <BoxLogo className="w-8 mr-2 text-black-light cursor-pointer" alt="button" /> */}
                   </Link>
                   <Link to={`/${user.username}`} aria-label="Dashboard" className="flex-1">
-                    <img src={BoxLogo} alt="worldbox" className="h-14" />
+                    <img
+                      src={BoxLogo}
+                      alt="worldbox"
+                      className="h-10 pr-2"
+                      style={{ maxWidth: '10rem' }}
+                    />
                     {/* <BoxLogo className="w-8 mr-2 text-black-light cursor-pointer" alt="button" /> */}
                   </Link>
                   <button

@@ -14,8 +14,6 @@ export default function useWatches() {
       const [{ following }] = await getUserByUserId(userId);
       let followedUserWatches = [];
 
-      console.log('use_watch-hooks', following);
-
       if (following.length > 0) {
         followedUserWatches = await getWatches(userId, following);
       }

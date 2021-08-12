@@ -6,7 +6,7 @@ import Actions from './actions';
 import Footer from './footer';
 import Comments from './comments';
 
-export default function Post({ content }) {
+export default function Post({ content, avatar }) {
   const commentInput = useRef(null);
 
   const handleFocus = () => commentInput.current.focus();
@@ -15,7 +15,7 @@ export default function Post({ content }) {
     <div className="">
       {/* <div className="rounded col-span-1 border bg-white border-grey-primary"> */}
       <Image className="" src={content.imageurl} caption={content.caption} />
-      <Header className="" username={content.username} />
+      <Header className="" username={content.username} avatarImage={avatar} />
       <Actions
         docId={content.username}
         totalLikes={(content.likes || []).length}
@@ -43,5 +43,6 @@ Post.propTypes = {
     likes: PropTypes.array.isRequired,
     comments: PropTypes.array.isRequired,
     dateCreated: PropTypes.number
-  })
+  }),
+  avatar: PropTypes.string
 };

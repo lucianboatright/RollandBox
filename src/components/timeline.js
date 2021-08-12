@@ -3,9 +3,14 @@ import Skeleton from 'react-loading-skeleton';
 import useWatches from '../hooks/use-watches';
 import Post from './post';
 import backGrid from '../images/borders/wood_watch_grid.png';
+import useUser from '../hooks/use-user';
 
 export default function Timeline() {
   const { watches } = useWatches();
+  const {
+    user: { imageurl }
+  } = useUser();
+
   return (
     <div className="col-span-3">
       <div>
@@ -50,6 +55,7 @@ export default function Timeline() {
                     key={content.docId}
                     className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
                     content={content}
+                    avatar={imageurl}
                   />
                 </div>
               </>

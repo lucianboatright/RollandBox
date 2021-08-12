@@ -4,10 +4,7 @@ import Skeleton from 'react-loading-skeleton';
 import useUser from '../../hooks/use-user';
 import { isUserFollowingProfile, toggleFollow } from '../../services/firebase';
 import ModalNewWatch from '../newWatch/ModalNewWatch';
-// import ModalNewWatch from '../newWatch/ModalNewWatch_easycrop';
-// import ModalNewWatch from '../newWatch/ModalNewWatchTest';
 import ModalAvitar from '../newWatch/ModalAvitar';
-import altAvitar from '../../images/avatars/avatarLogo.png';
 
 export default function Header({
   watchesCount,
@@ -29,6 +26,13 @@ export default function Header({
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenAvitar, setIsOpenAvitar] = useState(false);
   const editProfile = user.username && user.username === profileUsername;
+
+  const nameUp = profileUsername;
+  // const name = user.username[0];
+  console.log(nameUp);
+  const nameFullUp = user.fullName;
+  // const nameFull = user.fullName[0];
+  console.log(nameFullUp);
 
   const handleToggleFollow = async () => {
     setIsFollowingProfile((isFollowingProfile) => !isFollowingProfile);
@@ -56,9 +60,15 @@ export default function Header({
       </div>
       <div className="flex items-center justify-center flex-col col-span">
         <div className="container flex item-center">
-          <p className="text-2xl mr-4">{profileUsername}</p>
+          <p className="text-2xl mr-4">
+            {nameUp}
+            {/* {name[0].toUppercase}
+            {name.slice(1)} */}
+          </p>
           <span className="font-medium inline-block align-bottom">
-            {!fullName ? <Skeleton count={1} height={24} /> : fullName}
+            {nameFullUp}
+            {/* {nameFull[0].toUppercase}
+            {nameFull.slice(1)} */}
           </span>
           {activeButtonFollow && (
             <button
