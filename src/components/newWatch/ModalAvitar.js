@@ -53,12 +53,12 @@ export default function Modal({ open, onClose, profile, userId, documentId }) {
     }
   };
 
-  // const imageBlobGenerater = async (e) => {
-  //   generateDownload(previewCanvasRef.current, completedCrop);
-  // };
+  const imageBlobGenerater = async (e) => {
+    generateDownload(previewCanvasRef.current, completedCrop);
+  };
 
   const handleSubmitUpload = (e) => {
-    generateDownload(previewCanvasRef.current, completedCrop);
+    // generateDownload(previewCanvasRef.current, completedCrop);
     const metadata = {
       contentType: 'image/jpeg',
       customMetadata: {
@@ -182,14 +182,26 @@ export default function Modal({ open, onClose, profile, userId, documentId }) {
                 <span className="text-xs align-top pr-4">Progress</span>
                 <progress className="" value={progress} max="100" />
               </div>
-              <button
-                type="button"
-                className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-green-400 to-blue-500 w-60 bg"
-                disabled={!completedCrop?.width || !completedCrop?.height}
-                onClick={handleSubmitUpload}
-              >
-                Download cropped image
-              </button>
+              <div>
+                <button
+                  type="button"
+                  className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-green-400 to-blue-500 w-60 bg"
+                  disabled={!completedCrop?.width || !completedCrop?.height}
+                  onClick={imageBlobGenerater}
+                >
+                  Upload Image
+                </button>
+              </div>
+              <div>
+                <button
+                  type="button"
+                  className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-green-400 to-blue-500 w-60 bg"
+                  disabled={!completedCrop?.width || !completedCrop?.height}
+                  onClick={handleSubmitUpload}
+                >
+                  Complete
+                </button>
+              </div>
             </div>
           </div>
         </div>

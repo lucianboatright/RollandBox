@@ -19,7 +19,8 @@ export default function Header({
     fullName,
     following = [],
     followers = [],
-    username: profileUsername
+    username: profileUsername,
+    imageurl: imgurl
   }
 }) {
   const { user } = useUser();
@@ -50,11 +51,7 @@ export default function Header({
     <div className="grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg pb-2">
       <div className="container flex justify-center">
         {user.username && (
-          <img
-            className="rounded-full h-40 w-auto flex"
-            src={`./images/avatars/${profileUsername}.jpg`}
-            alt={altAvitar}
-          />
+          <img className="rounded-full h-40 w-auto flex" src={imgurl} alt="imgurl" />
         )}
       </div>
       <div className="flex items-center justify-center flex-col col-span">
@@ -160,6 +157,7 @@ Header.propTypes = {
     fullName: PropTypes.string,
     username: PropTypes.string,
     followers: PropTypes.array,
-    following: PropTypes.array
+    following: PropTypes.array,
+    imageurl: PropTypes.string
   }).isRequired
 };

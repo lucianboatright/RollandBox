@@ -1,6 +1,7 @@
 /* eslint-disable global-require */
 import { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
@@ -16,7 +17,7 @@ export default function Header() {
   const history = useHistory();
 
   return (
-    <header className="h-18 bd-white border-b border-gray-primary mb-8">
+    <header className="h-18 bd-white border-b border-gray-primary mb-2">
       <div className="container mx-auto max-w-screen-lg h-full">
         <div className="inline-flex items-center justify-between">
           <div className="flex justify-start text-grey-700 cursor-pointer">
@@ -74,10 +75,10 @@ export default function Header() {
                   <div className="flex-1 cursor-pointer">
                     <Link to={`/${user.username}`}>
                       <img
-                        className="rounded-full h8"
+                        className="rounded-full"
                         alt="logo"
-                        // style={{ width: 170 }}
-                        src={`../images/avatars/${user.username}.jpg`}
+                        style={{ width: '3rem' }}
+                        src={user.imageurl}
                       />
                     </Link>
                   </div>
@@ -109,4 +110,5 @@ export default function Header() {
     </header>
   );
 }
+
 /* eslint-disable global-require */

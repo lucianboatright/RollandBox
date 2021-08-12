@@ -31,18 +31,17 @@ export default function SignUp() {
         const createdUserResult = await firebase
           .auth()
           .createUserWithEmailAndPassword(emailAddress, password);
-        //  auth to firbase email, user, address
         await createdUserResult.user.updateProfile({
           displayName: username
         });
-        // firebase user collection (creat a document)
         await firebase.firestore().collection('users').add({
           userId: createdUserResult.user.uid,
           username: username.toLowerCase(),
           fullName,
           emailAddress: emailAddress.toLowerCase(),
           following: [],
-          //  if you want all user to follow me at start add my id in above
+          followers: [],
+          imageurl: '',
           dateCreated: Date.now()
         });
         history.push(ROUTES.DASHBOARD);
@@ -62,12 +61,6 @@ export default function SignUp() {
   useEffect(() => {
     document.title = 'Sign Up - Watch';
   }, []);
-
-  // console.log(imageAsFile)
-  // const handleImageAsFile = (e) => {
-  //   const image = e.target.files[0]
-  //   setImageAsFile(imageFile => (image))
-  // }
 
   return (
     <div className="container flex mx-auto max-w-screen-md items-center h-screen">

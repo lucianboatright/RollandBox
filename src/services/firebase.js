@@ -23,7 +23,6 @@ export async function getUserByUsername(username) {
   }));
 }
 
-// get user from the firestore where userId === userId (passed from the auth)
 export async function getUserByUserId(userId) {
   const result = await firebase.firestore().collection('users').where('userId', '==', userId).get();
 
@@ -42,7 +41,6 @@ export async function getSuggestedProfiles(userId, following) {
     .map((user) => ({ ...user.data(), docId: user.id }))
     .filter((profile) => profile.userId !== userId && !following.includes(profile.userId));
 }
-// updateLoggedInUserFollowing, updateFollowedUserFollowers
 
 export async function updateLoggedInUserFollowing(
   loggedInUserDocId,
@@ -75,21 +73,6 @@ export async function updateFollowedUserFollowers(
         : FieldValue.arrayUnion(loggedInUserDocId)
     });
 }
-// export async function getAvatar(userId) {
-//   const result = await firebase
-//     .firestore()
-//     .collection('avatars')
-//     .where('userId', '==', userId)
-//     .get();
-//   console.log('AVATAR RESULT', result);
-//   console.log('AVATAR RESULT2', result.docs);
-
-//   const avatar = result.docs.map((userAvatar) => ({
-//     ...userAvatar.data(),
-//     docId: userAvatar.id
-//   }));
-//   return avatar;
-// }
 
 export async function getWatches(userId, following) {
   const result = await firebase

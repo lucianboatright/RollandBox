@@ -32,7 +32,7 @@ export default function Profile({ user }) {
         followerCount={followerCount}
         setFollowerCount={dispatch}
       />
-      <Watches watches={watchCollection} />
+      <Watches watches={watchCollection} profile={profile} />
     </>
   );
 }
@@ -45,6 +45,7 @@ Profile.propTypes = {
     followers: PropTypes.array,
     fullName: PropTypes.string,
     username: PropTypes.string,
-    userId: PropTypes.string
+    userId: PropTypes.string,
+    imageurl: PropTypes.string
   })
 };
