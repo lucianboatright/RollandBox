@@ -48,7 +48,7 @@ export default function Header({
     }
   }, [user.username, profileUserId]);
   return (
-    <div className="grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg pb-2">
+    <div className="grid grid-cols-3 gap-2 pb-2">
       <div className="container flex justify-center">
         {user.username && (
           <img className="rounded-full h-40 w-auto flex" src={imgurl} alt="imgurl" />
@@ -80,17 +80,17 @@ export default function Header({
             <Skeleton count={1} width={677} height={24} />
           ) : (
             <>
-              <p className="mr-10">
+              <p className="mr-4">
                 <span className="font=bold">{watchesCount}</span>
                 {`  `}
                 Watches
               </p>
-              <p className="mr-10">
+              <p className="mr-4">
                 <span className="font-bold">{followerCount}</span>
                 {`  `}
                 {followerCount === 1 ? `Follower` : `Followers`}
               </p>
-              <p className="mr-10">
+              <p className="mr-4">
                 <span className="font-bold">{following?.length}</span>
                 {`  `}
                 Following

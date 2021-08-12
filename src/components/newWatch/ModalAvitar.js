@@ -155,7 +155,7 @@ export default function Modal({ open, onClose, profile, userId, documentId }) {
               </div>
             </div>
             <div className="App">
-              <div className="rounded bg-gradient-to-r from-green-400 to-blue-500 w-60 bg mt-1 mb-1 pl-1 pr-1 pt-1 pb-1">
+              <div className="rounded bg-gradient-to-r from-blue-500 to-pink-600 w-60 bg mt-1 mb-1 pl-1 pr-1 pt-1 pb-1">
                 <input className="m-2 w-60" type="file" accept="image/*" onChange={onSelectFile} />
               </div>
               <div className="flex justify-center ml-0 h-26 w-2/3">
@@ -193,14 +193,18 @@ export default function Modal({ open, onClose, profile, userId, documentId }) {
                 </button>
               </div>
               <div>
-                <button
-                  type="button"
-                  className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-green-400 to-blue-500 w-60 bg"
-                  disabled={!completedCrop?.width || !completedCrop?.height}
-                  onClick={handleSubmitUpload}
-                >
-                  Complete
-                </button>
+                {!imageBlob ? (
+                  <div> Waiting on upload</div>
+                ) : (
+                  <button
+                    type="button"
+                    className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-blue-500 to-green-400 w-60 bg"
+                    disabled={!completedCrop?.width || !completedCrop?.height}
+                    onClick={handleSubmitUpload}
+                  >
+                    Complete
+                  </button>
+                )}
               </div>
             </div>
           </div>
