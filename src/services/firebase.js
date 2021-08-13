@@ -91,11 +91,9 @@ export async function getWatches(userId, following) {
       const userLikedWatch = (watch.likes || []).includes(userId);
       const user = await getUserByUserId(watch.userId);
       const { username } = user[0];
-      console.log('username11', user);
       return { username, ...watch, userLikedWatch, user };
     })
   );
-  console.log('watchesWithUserDetails', watchesWithUserDetails);
   return watchesWithUserDetails;
 }
 export async function getUserWatchesByUsername(username) {

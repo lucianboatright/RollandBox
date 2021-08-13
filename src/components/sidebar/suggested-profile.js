@@ -12,20 +12,16 @@ export default function SuggestedProfile({
   avatar
 }) {
   const [followed, setFollowed] = useState(false);
-  console.log('AVATAR', avatar);
-
   async function handleFollowUser() {
     setFollowed(true);
 
     await updateLoggedInUserFollowing(loggedInUserDocId, profileId, false);
     await updateFollowedUserFollowers(profileDocId, userId, false);
   }
-  // console.log('Hello');
-  console.log('suggested-profile', userId);
   return !followed ? (
     <div className="flex flex-row items-center align-items justify-between">
       <div className="flex items-center justify-between">
-        <img className="rounded-full w-14 flex mr-2" src={avatar} alt={username} />
+        <img className="rounded-full w-14 flex mr-2" src={avatar.imageurl} alt={username} />
         <Link to={`/${username}`}>
           <p className="font-bold text-sm text-pink-600">{username}</p>
         </Link>

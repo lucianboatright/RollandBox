@@ -6,7 +6,6 @@ import backGrid from '../images/borders/wood_watch_grid.png';
 
 export default function Timeline() {
   const { watches } = useWatches();
-  console.log('FINDING USERIMG WITH WATCHES', watches);
   return (
     <div className="col-span-3">
       <div>
