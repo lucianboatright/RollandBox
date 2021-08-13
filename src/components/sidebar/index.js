@@ -8,12 +8,6 @@ export default function Sidebar() {
     user: { docId, fullName, username, userId, following, followers, imageurl }
   } = useUser();
 
-  // console.log('useUser', useUser());
-  // console.log('username', username);
-  // console.log('follewing in index', following);
-  // console.log('follewers', followers);
-  // console.log('userID', userId);
-
   return (
     <div className="p-4 mr-10">
       <User username={username} fullName={fullName} avatar={imageurl} />
@@ -22,7 +16,6 @@ export default function Sidebar() {
         following={following}
         followers={followers}
         loggedInUserDocId={docId}
-        avatar={imageurl}
       />
     </div>
   );

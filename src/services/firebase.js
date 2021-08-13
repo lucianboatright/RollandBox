@@ -1,3 +1,4 @@
+import { CollectionsOutlined } from '@material-ui/icons';
 import { firebase, FieldValue } from '../lib/firebase';
 
 export async function doesUsernameExist(username) {
@@ -90,9 +91,11 @@ export async function getWatches(userId, following) {
       const userLikedWatch = (watch.likes || []).includes(userId);
       const user = await getUserByUserId(watch.userId);
       const { username } = user[0];
-      return { username, ...watch, userLikedWatch };
+      console.log('username11', user);
+      return { username, ...watch, userLikedWatch, user };
     })
   );
+  console.log('watchesWithUserDetails', watchesWithUserDetails);
   return watchesWithUserDetails;
 }
 export async function getUserWatchesByUsername(username) {

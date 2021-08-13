@@ -10,10 +10,6 @@ export default function SignUp() {
   const history = useHistory();
   const { firebase } = useContext(FirebaseContext);
 
-  // const allInputs = {imgUrl: ''}
-  //   const [imageAsFile, setImageAsFile] = useState('')
-  //   const [imageAsUrl, setImageAsUrl] = useState(allImputs)
-
   const [username, setUsername] = useState('');
   const [fullName, setFullName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
