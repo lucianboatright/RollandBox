@@ -8,9 +8,11 @@ export default function SuggestedProfile({
   username,
   profileId,
   userId,
-  loggedInUserDocId
+  loggedInUserDocId,
+  avatar
 }) {
   const [followed, setFollowed] = useState(false);
+  console.log('AVATAR', avatar);
 
   async function handleFollowUser() {
     setFollowed(true);
@@ -19,15 +21,11 @@ export default function SuggestedProfile({
     await updateFollowedUserFollowers(profileDocId, userId, false);
   }
   // console.log('Hello');
-  // console.log('suggested-profile', followed);
+  console.log('suggested-profile', userId);
   return !followed ? (
     <div className="flex flex-row items-center align-items justify-between">
       <div className="flex items-center justify-between">
-        <img
-          className="rounded-full w-14 flex mr-2"
-          src={`/images/avatars/${username}.jpg`}
-          alt={username}
-        />
+        <img className="rounded-full w-14 flex mr-2" src={avatar} alt={username} />
         <Link to={`/${username}`}>
           <p className="font-bold text-sm text-pink-600">{username}</p>
         </Link>
@@ -44,5 +42,6 @@ SuggestedProfile.propTypes = {
   username: PropTypes.string.isRequired,
   profileId: PropTypes.string.isRequired,
   userId: PropTypes.string.isRequired,
-  loggedInUserDocId: PropTypes.string.isRequired
+  loggedInUserDocId: PropTypes.string.isRequired,
+  avatar: PropTypes.string
 };

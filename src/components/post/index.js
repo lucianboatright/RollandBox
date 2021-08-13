@@ -8,9 +8,7 @@ import Comments from './comments';
 
 export default function Post({ content }) {
   const commentInput = useRef(null);
-
   const handleFocus = () => commentInput.current.focus();
-  console.log('userliked watch', content);
 
   return (
     <div className="">

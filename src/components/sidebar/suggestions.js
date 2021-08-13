@@ -35,6 +35,7 @@ export default function Suggestions({ userId, following, followers, loggedInUser
             profileId={profile.userId}
             userId={userId}
             loggedInUserDocId={loggedInUserDocId}
+            avatar={profile}
           />
         ))}
       </div>
