@@ -25,7 +25,6 @@ export default function Actions({ docId, totalLikes, likedWatch, handleFocus }) 
 
     setLikes((likes) => (toggleLiked ? likes - 1 : likes + 1));
   };
-  console.log();
 
   return (
     <>
