@@ -15,11 +15,19 @@ export default function Comments({ docId, comments: allComments = [], posted, co
           </p>
         )}
         {comments.slice(0, 3).map((item) => (
-          <p key={`${item.comment}-${item.displayName}`} className="mb-0">
-            <Link to={`/${item.displayName}`}>
+          <p
+            key={`${item.comment}-${item.displayName}`}
+            className="mb-0 text-xs cursor-pointer w-20 truncate"
+          >
+            <Link to={`/${item.displayName}`} className="inline">
               <span className="text-xs mr-1 font-bold">{item.displayName}</span>
             </Link>
-            <span className="text-xs">{item.comment}</span>
+            <div className="has-tooltip inline">
+              <span className="text-xs tooltip rounded shadow-lg p-1 bg-gray-100 text-red-500">
+                {item.comment}
+              </span>
+              {item.comment}
+            </div>
           </p>
         ))}
         {!!posted && (

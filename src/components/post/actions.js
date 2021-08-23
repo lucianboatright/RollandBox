@@ -28,7 +28,7 @@ export default function Actions({ docId, totalLikes, likedWatch, handleFocus }) 
 
   return (
     <>
-      <div className="flex justify-between p-1 mt-5">
+      <div className="flex justify-between p-1 mt-1">
         <div className="flex">
           <WatchLogo
             onClick={handleToggleLiked}

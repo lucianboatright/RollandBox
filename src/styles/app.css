@@ -56,7 +56,7 @@ Improve consistency of default fonts in all browsers. (https://github.com/sindre
 body {
   font-family:
 		system-ui,
-		-apple-system,
+		-apple-system, /* Firefox supports this but not yet `system-ui` */
 		'Segoe UI',
 		Roboto,
 		Helvetica,
@@ -29789,6 +29789,16 @@ video {
 
 .backdrop-sepia {
   --tw-backdrop-sepia: sepia(100%);
+}
+
+.tooltip {
+  position: absolute;
+  visibility: hidden;
+}
+
+.has-tooltip:hover .tooltip {
+  visibility: visible;
+  z-index: 50
 }
 
 @media (min-width: 640px) {

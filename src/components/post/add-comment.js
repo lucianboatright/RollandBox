@@ -46,7 +46,7 @@ export default function AddComment({ docId, comments, setComments, commentInput 
               value={comment}
               onChange={({ target }) => setComment(target.value)}
               ref={commentInput}
-              style={{ width: '100px' }}
+              style={{ width: '5rem' }}
             />
             <button
               className={`inline-block align-baseline text-xs font-bold text-pink-800 pr-2 ${
