@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
 
 export default function Image({ src, caption }) {
-  return <img className="ml-3 mb-2" src={src} alt={caption} width={120} height={170} />;
+  return (
+    <img className="mb-14 mt-1 border rounded" src={src} alt={caption} width={150} height={200} />
+  );
 }
 
 Image.propTypes = {

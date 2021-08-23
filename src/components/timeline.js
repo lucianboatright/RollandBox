@@ -14,10 +14,11 @@ export default function Timeline() {
         style={{
           backgroundImage: `url(${grid})`,
           backgroundRepeat: 'no-repeat',
-          backgroundSize: '40rem 30rem'
+          backgroundSize: '44rem auto'
         }}
+        className="mt-5 ml-8"
       >
-        <div className="pt-10 flex pl-7 flex-wrap overflow-hidden xl:-mx-0">
+        <div className="pt-10 flex pl-6 pl-12px flex-wrap overflow-hidden xl:-mx-0">
           {!watches ? (
             <>
               {[...new Array(12)].map((_, index) => (
@@ -35,8 +36,8 @@ export default function Timeline() {
                   key={index}
                   className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
                   count={1}
-                  width={120}
-                  height={170}
+                  width={140}
+                  height={180}
                 />
                 // </div>
               ))}

@@ -12,7 +12,7 @@ export default function Post({ content }) {
   console.log('Conetnet hunt for caption', content.watchinfo);
 
   return (
-    <div className="">
+    <div className="pr-7">
       {/* <div className="rounded col-span-1 border bg-white border-grey-primary"> */}
       <Image className="" src={content.imageurl} caption={content.watchinfo} />
       <Header className="" username={content.username} avatar={content.user} />
