@@ -52,13 +52,13 @@ export default function Header({
     }
   }, [user.username, profileUserId]);
   return (
-    <div className="grid grid-cols-3 gap-2 pb-2">
-      <div className="container flex justify-center">
+    <div className="grid grid-cols-3 gap-2 pb-2 pt-2">
+      <div className="container flex justify-center border-r-2 border-grey-700">
         {user.username && (
-          <img className="rounded-full h-40 w-auto flex" src={imgurl} alt="imgurl" />
+          <img className="rounded-full h-30 w-auto flex shadow-lg" src={imgurl} alt="imgurl" />
         )}
       </div>
-      <div className="flex items-center justify-center flex-col col-span">
+      <div className="flex items-center justify-center flex-col col-span border-r-2 border-grey-700">
         <div className="container flex item-center">
           <p className="text-2xl mr-4">
             {nameUp}

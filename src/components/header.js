@@ -81,7 +81,7 @@ export default function Header() {
                   <div className="flex-1 cursor-pointer">
                     <Link to={`/${user.username}`}>
                       <img
-                        className="rounded-full"
+                        className="rounded-full shadow-lg"
                         alt="logo"
                         style={{ width: '3rem' }}
                         src={user.imageurl}

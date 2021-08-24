@@ -35,6 +35,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
   const [watchInfo, setWatchInfo] = useState(null);
   const [imageBlob, setImageBlob] = useState(null);
   const [imagedownload, setImageDownload] = useState(false);
+  const [downloadAtempt, setDownloadAtempt] = useState(false);
   const [progress, setProgress] = useState(0);
 
   const generateDownload = (upImg, completedCrop) => {
@@ -63,6 +64,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
 
   const imageBlobGenerater = async (e) => {
     generateDownload(previewCanvasRef.current, completedCrop);
+    setDownloadAtempt(true);
   };
 
   const handleSubmitUpload = (e) => {
@@ -119,7 +121,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
     imgRef.current = img;
   }, []);
 
-  const text = 'Info: \n Movment: \n Case Size: \n Year: \n Link:';
+  const text = 'Info: \nMovment: \nCase Size: \nYear: \nLink:';
 
   useEffect(() => {
     if (!completedCrop || !previewCanvasRef.current || !imgRef.current) {
@@ -210,20 +212,30 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
                       disabled={!completedCrop?.width || !completedCrop?.height}
                       onClick={imageBlobGenerater}
                     >
-                      Download cropped image
+                      Download Image
                     </button>
                     <div>
-                      {imagedownload === false ? (
+                      {downloadAtempt === true ? (
                         <>
-                          <div className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-red-400 to-blue-500">
-                            Please Try Again
+                          <div>
+                            {imagedownload === false ? (
+                              <>
+                                <div className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-red-400 to-blue-500">
+                                  Please Try Again
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                <div className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-green-400 to-blue-500">
+                                  Ready To Upload
+                                </div>
+                              </>
+                            )}
                           </div>
                         </>
                       ) : (
                         <>
-                          <div className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-green-400 to-blue-500">
-                            Ready To Upload
-                          </div>
+                          <span />
                         </>
                       )}
                     </div>
