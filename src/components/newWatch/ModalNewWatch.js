@@ -25,7 +25,7 @@ const OVERLAY_STYLES = {
   zIndex: 1000
 };
 
-export default function Modal({ open, onClose, profile, watchesCount, userId }) {
+export default function Modal({ open, onClose, profile, watchesCount, userId, userAvatar }) {
   const [upImg, setUpImg] = useState();
   const imgRef = useRef(null);
   const previewCanvasRef = useRef(null);
@@ -121,7 +121,16 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
     imgRef.current = img;
   }, []);
 
-  const text = 'Info: \nMovment: \nCase Size: \nYear: \nLink:';
+  const closeModal = (e) => {
+    e.preventDefault();
+    setProgress(0);
+    setWatchInfo('');
+    setWatchName('');
+    setImageBlob(null);
+    onClose();
+  };
+
+  const text = 'Info: \nManufacturer:  \nMovment: \nCase Size: \nCase Material: \nYear: \nLink:';
 
   useEffect(() => {
     if (!completedCrop || !previewCanvasRef.current || !imgRef.current) {
@@ -159,6 +168,13 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
   return (
     <>
       <div style={OVERLAY_STYLES}>
+        <button
+          type="button"
+          onClick={closeModal}
+          className="text-white bg-gradient-to-r from-red-600 to-blue-500 rounded px-2 py-0.5 hover:bg-white-600 hover:text-red"
+        >
+          X Close Modal
+        </button>
         <div style={MODAL_STYLES}>
           <div className="overflow-y-scroll h-80">
             <form onSubmit={handleSubmitUpload} method="POST">
@@ -166,13 +182,9 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
                 <div>
                   <div className="flex items-stretch">
                     <div className="justify-left">
-                      <img
-                        className="rounded-full h-12 mr-2"
-                        src={`/images/avatars/${profile}.jpg`}
-                        alt={profile}
-                      />
+                      <img className="rounded-full h-10 mr-2 mt-1" src={userAvatar} alt={profile} />
                     </div>
-                    <div className="justify-left">
+                    <div className="justify-left capitalize">
                       <p>Adding Another Watch {profile}?</p>
                       <p>Collection total is {watchesCount} Watches</p>
                     </div>
@@ -242,19 +254,19 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
                   </div>
                 </div>
                 <div className="mt-0">
-                  <p>Watch Name</p>
+                  <p className="text-blue-600">Watch Name</p>
                   <input
                     className="border-solid border-2 border-light-blue-500 w-60"
                     type="text"
                     onChange={({ target }) => setWatchName(target.value)}
                   />
                   <br />
-                  <p>Enter Iinformation and Links below</p>
+                  <p className="text-blue-600">Enter Iinformation and Links</p>
                   <textarea
                     id="watchinfo"
                     onChange={({ target }) => setWatchInfo(target.value)}
                     className="border-2 border-grey-500 focus:border-black-900 w-60"
-                    rows="5"
+                    rows="8"
                     cols="50"
                   >
                     {text}
@@ -280,5 +292,6 @@ Modal.propTypes = {
   open: PropTypes.bool,
   onClose: PropTypes.bool,
   profile: PropTypes.string,
-  userId: PropTypes.string
+  userId: PropTypes.string,
+  userAvatar: PropTypes.string
 };

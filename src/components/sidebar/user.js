@@ -11,8 +11,8 @@ export default function User({ username, fullName, avatar }) {
         <img className="rounded-full w-16 flex mr-3 shadow-lg" src={avatar} alt={username} />
       </div>
       <div className="col-span-3">
-        <p className="font-bold text-sm">{username}</p>
-        <p className="text-sm">{fullName}</p>
+        <p className="font-bold text-sm capitalize">{username}</p>
+        <p className="text-sm capitalize">{fullName}</p>
       </div>
     </Link>
   );

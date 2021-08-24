@@ -27,7 +27,7 @@ export default function SuggestedProfile({
           alt={username}
         />
         <Link to={`/${username}`}>
-          <p className="font-bold text-sm text-pink-600">{username}</p>
+          <p className="font-bold text-sm text-pink-600 capitalize">{username}</p>
         </Link>
       </div>
       <button

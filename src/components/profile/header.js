@@ -26,13 +26,7 @@ export default function Header({
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenAvitar, setIsOpenAvitar] = useState(false);
   const editProfile = user.username && user.username === profileUsername;
-
-  const nameUp = profileUsername;
-  // const name = user.username[0];
-  console.log(nameUp);
-  const nameFullUp = user.fullName;
-  // const nameFull = user.fullName[0];
-  console.log(nameFullUp);
+  const avatar = user.imageurl;
 
   const handleToggleFollow = async () => {
     setIsFollowingProfile((isFollowingProfile) => !isFollowingProfile);
@@ -51,6 +45,7 @@ export default function Header({
       isLoggedInUserFollowingProfile();
     }
   }, [user.username, profileUserId]);
+
   return (
     <div className="grid grid-cols-3 gap-2 pb-2 pt-2">
       <div className="container flex justify-center border-r-2 border-grey-700">
@@ -60,13 +55,13 @@ export default function Header({
       </div>
       <div className="flex items-center justify-center flex-col col-span border-r-2 border-grey-700">
         <div className="container flex item-center">
-          <p className="text-2xl mr-4">
-            {nameUp}
+          <p className="text-2xl mr-4 capitalize">
+            {profileUsername}
             {/* {name[0].toUppercase}
             {name.slice(1)} */}
           </p>
-          <span className="font-medium inline-block align-bottom">
-            {nameFullUp}
+          <span className="font-medium inline-block align-bottom capitalize">
+            {user.fullName}
             {/* {nameFull[0].toUppercase}
             {nameFull.slice(1)} */}
           </span>
@@ -91,7 +86,7 @@ export default function Header({
           ) : (
             <>
               <p className="mr-4">
-                <span className="font=bold">{watchesCount}</span>
+                <span className="font-bold">{watchesCount}</span>
                 {`  `}
                 Watches
               </p>
@@ -123,6 +118,7 @@ export default function Header({
                     Profile Settings
                   </button>
                   <ModalAvitar
+                    userAvatar={avatar}
                     documentId={user.docId}
                     profile={profileUsername}
                     userId={profileUserId}
@@ -141,6 +137,7 @@ export default function Header({
                     Add New Watch
                   </button>
                   <ModalNewWatch
+                    userAvatar={avatar}
                     profile={profileUsername}
                     watchesCount={watchesCount}
                     userId={profileUserId}
