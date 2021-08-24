@@ -9,7 +9,7 @@ export default function Sidebar() {
   } = useUser();
 
   return (
-    <div className="p-4 mr-10">
+    <div className="p-4 mr-10 border-l-2 border-grey-600">
       <User username={username} fullName={fullName} avatar={imageurl} />
       <Suggestions
         userId={userId}

@@ -29,11 +29,12 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
   const [upImg, setUpImg] = useState();
   const imgRef = useRef(null);
   const previewCanvasRef = useRef(null);
-  const [crop, setCrop] = useState({ unit: '%', width: 30, aspect: 10 / 16 });
+  const [crop, setCrop] = useState({ unit: '%', width: 250, aspect: 10 / 16 });
   const [completedCrop, setCompletedCrop] = useState(null);
   const [watchName, setWatchName] = useState(null);
   const [watchInfo, setWatchInfo] = useState(null);
   const [imageBlob, setImageBlob] = useState(null);
+  const [imagedownload, setImageDownload] = useState(false);
   const [progress, setProgress] = useState(0);
 
   const generateDownload = (upImg, completedCrop) => {
@@ -44,6 +45,11 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
     upImg.toBlob((blob) => {
       setImageBlob(blob);
       console.log('end', imageBlob);
+      if (imageBlob === null) {
+        setImageDownload(false);
+      } else {
+        setImageDownload(true);
+      }
     });
   };
 
@@ -112,6 +118,8 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
   const onLoad = useCallback((img) => {
     imgRef.current = img;
   }, []);
+
+  const text = 'Info: \n Movment: \n Case Size: \n Year: \n Link:';
 
   useEffect(() => {
     if (!completedCrop || !previewCanvasRef.current || !imgRef.current) {
@@ -205,12 +213,23 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
                       Download cropped image
                     </button>
                     <div>
-                      <span className="text-xs align-top pr-4">Progress</span>
-                      <progress className="" value={progress} max="100" />
+                      {imagedownload === false ? (
+                        <>
+                          <div className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-red-400 to-blue-500">
+                            Please Try Again
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-green-400 to-blue-500">
+                            Ready To Upload
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
-                <div className="mt-12">
+                <div className="mt-0">
                   <p>Watch Name</p>
                   <input
                     className="border-solid border-2 border-light-blue-500 w-60"
@@ -218,16 +237,15 @@ export default function Modal({ open, onClose, profile, watchesCount, userId }) 
                     onChange={({ target }) => setWatchName(target.value)}
                   />
                   <br />
-                  <p>Enter any information or links below</p>
+                  <p>Enter Iinformation and Links below</p>
                   <textarea
                     id="watchinfo"
                     onChange={({ target }) => setWatchInfo(target.value)}
                     className="border-2 border-grey-500 focus:border-black-900 w-60"
-                    rows="4"
+                    rows="5"
                     cols="50"
-                    placeholder="Enter text"
                   >
-                    Enter text
+                    {text}
                   </textarea>
                   <input
                     type="submit"

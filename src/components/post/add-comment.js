@@ -26,7 +26,7 @@ export default function AddComment({ docId, comments, setComments, commentInput 
   };
 
   return (
-    <div className="border-2 border-grey-800 rounded mb-6">
+    <div className="border-2 border-grey-800 rounded mb-10">
       <form
         className="pl-0 pr-0"
         method="POST"

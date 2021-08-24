@@ -14,9 +14,9 @@ export default function Timeline() {
         style={{
           backgroundImage: `url(${grid})`,
           backgroundRepeat: 'no-repeat',
-          backgroundSize: '44rem auto'
+          backgroundSize: '44.5rem auto'
         }}
-        className="mt-5 ml-8"
+        className="mt-4 ml-8"
       >
         <div className="pt-10 flex pl-6 pl-12px flex-wrap overflow-hidden xl:-mx-0">
           {!watches ? (
