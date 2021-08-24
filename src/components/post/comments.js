@@ -25,7 +25,7 @@ export default function Comments({ docId, comments: allComments = [], posted, co
             className="mb-0 text-xs cursor-pointer w-20 truncate"
           >
             <Link to={`/${item.displayName}`} className="inline">
-              <span className="text-xs mr-1 font-bold">{item.displayName}</span>
+              <span className="text-xs mr-1 font-bold capitalize">{item.displayName}</span>
             </Link>
             <div className="has-tooltip inline">
               <span className="text-xs tooltip rounded shadow-lg p-1 bg-gray-100 text-red-500">

@@ -148,6 +148,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
     canvas.height = crop.height * pixelRatio;
 
     ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = 'high';
 
     ctx.drawImage(

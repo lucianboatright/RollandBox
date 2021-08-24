@@ -25,13 +25,15 @@ const OVERLAY_STYLES = {
   zIndex: 1000
 };
 
-export default function Modal({ open, onClose, profile, userId, documentId }) {
+export default function Modal({ open, onClose, profile, userId, documentId, userAvatar }) {
   const [upImg, setUpImg] = useState();
   const imgRef = useRef(null);
   const previewCanvasRef = useRef(null);
   const [crop, setCrop] = useState({ unit: '%', width: 30, aspect: 1 / 1 });
   const [completedCrop, setCompletedCrop] = useState(null);
   const [imageBlob, setImageBlob] = useState(null);
+  const [imagedownload, setImageDownload] = useState(false);
+  const [downloadAtempt, setDownloadAtempt] = useState(false);
   const [progress, setProgress] = useState(0);
 
   const generateDownload = (upImg, completedCrop) => {
@@ -42,6 +44,11 @@ export default function Modal({ open, onClose, profile, userId, documentId }) {
     upImg.toBlob((blob) => {
       setImageBlob(blob);
       console.log('end', imageBlob);
+      if (imageBlob === null) {
+        setImageDownload(false);
+      } else {
+        setImageDownload(true);
+      }
     });
   };
 
@@ -55,6 +62,7 @@ export default function Modal({ open, onClose, profile, userId, documentId }) {
 
   const imageBlobGenerater = async (e) => {
     generateDownload(previewCanvasRef.current, completedCrop);
+    setDownloadAtempt(true);
   };
 
   const handleSubmitUpload = (e) => {
@@ -99,6 +107,13 @@ export default function Modal({ open, onClose, profile, userId, documentId }) {
     onClose();
   };
 
+  const closeModal = (e) => {
+    e.preventDefault();
+    setProgress(0);
+    setImageBlob(null);
+    onClose();
+  };
+
   const onLoad = useCallback((img) => {
     imgRef.current = img;
   }, []);
@@ -139,15 +154,18 @@ export default function Modal({ open, onClose, profile, userId, documentId }) {
   return (
     <>
       <div style={OVERLAY_STYLES}>
+        <button
+          type="button"
+          onClick={closeModal}
+          className="text-white bg-gradient-to-r from-red-600 to-blue-500 rounded px-2 py-0.5 hover:bg-white-600 hover:text-red"
+        >
+          X Close Modal
+        </button>
         <div style={MODAL_STYLES}>
           <div className="overflow-y-scroll h-80">
             <div className="flex items-stretch">
               <div className="justify-left">
-                <img
-                  className="rounded-full h-12 mr-2"
-                  src={`/images/avatars/${profile}.jpg`}
-                  alt={profile}
-                />
+                <img className="rounded-full h-12 mr-2" src={userAvatar} alt={profile} />
               </div>
               <div className="justify-left">
                 <p>Hello {profile}</p>
@@ -179,10 +197,6 @@ export default function Modal({ open, onClose, profile, userId, documentId }) {
                 </div>
               </div>
               <div>
-                <span className="text-xs align-top pr-4">Progress</span>
-                <progress className="" value={progress} max="100" />
-              </div>
-              <div>
                 <button
                   type="button"
                   className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-green-400 to-blue-500 w-60 bg"
@@ -193,6 +207,36 @@ export default function Modal({ open, onClose, profile, userId, documentId }) {
                 </button>
               </div>
               <div>
+                {downloadAtempt === true ? (
+                  <>
+                    <div>
+                      {imagedownload === false ? (
+                        <>
+                          <div className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-red-400 to-blue-500">
+                            Please Try Again
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <button
+                            type="button"
+                            className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-blue-500 to-green-400 w-60 bg"
+                            disabled={!completedCrop?.width || !completedCrop?.height}
+                            onClick={handleSubmitUpload}
+                          >
+                            Complete
+                          </button>
+                        </>
+                      )}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <span />
+                  </>
+                )}
+              </div>
+              {/* <div>
                 {!imageBlob ? (
                   <div> Waiting on upload</div>
                 ) : (
@@ -205,7 +249,7 @@ export default function Modal({ open, onClose, profile, userId, documentId }) {
                     Complete
                   </button>
                 )}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -219,5 +263,6 @@ Modal.propTypes = {
   open: PropTypes.bool,
   onClose: PropTypes.bool,
   profile: PropTypes.string,
-  userId: PropTypes.string
+  userId: PropTypes.string,
+  userAvatar: PropTypes.string
 };
