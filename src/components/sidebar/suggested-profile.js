@@ -8,31 +8,33 @@ export default function SuggestedProfile({
   username,
   profileId,
   userId,
-  loggedInUserDocId
+  loggedInUserDocId,
+  avatar
 }) {
   const [followed, setFollowed] = useState(false);
-
   async function handleFollowUser() {
     setFollowed(true);
 
     await updateLoggedInUserFollowing(loggedInUserDocId, profileId, false);
     await updateFollowedUserFollowers(profileDocId, userId, false);
   }
-  // console.log('Hello');
-  // console.log('suggested-profile', followed);
   return !followed ? (
-    <div className="flex flex-row items-center align-items justify-between">
-      <div className="flex items-center justify-between">
+    <div className="flex flex-row items-center align-items justify-between w-40">
+      <div className="flex items-center justify-between pr-2">
         <img
-          className="rounded-full w-14 flex mr-2"
-          src={`/images/avatars/${username}.jpg`}
+          className="rounded-full w-8 flex mr-2 shadow-lg"
+          src={avatar.imageurl}
           alt={username}
         />
         <Link to={`/${username}`}>
-          <p className="font-bold text-sm text-pink-600">{username}</p>
+          <p className="font-bold text-sm text-pink-600 capitalize">{username}</p>
         </Link>
       </div>
-      <button className="text-xs font-bold text-blue-700" type="button" onClick={handleFollowUser}>
+      <button
+        className="text-xs mx-1 my-1 px-1 py-0.5 border-l-2 border-grey-700 rounded font-bold text-blue-700 hover:bg-blue-400 hover:text-white"
+        type="button"
+        onClick={handleFollowUser}
+      >
         Follow
       </button>
     </div>
@@ -44,5 +46,6 @@ SuggestedProfile.propTypes = {
   username: PropTypes.string.isRequired,
   profileId: PropTypes.string.isRequired,
   userId: PropTypes.string.isRequired,
-  loggedInUserDocId: PropTypes.string.isRequired
+  loggedInUserDocId: PropTypes.string.isRequired,
+  avatar: PropTypes.string
 };

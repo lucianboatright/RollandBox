@@ -1,12 +1,15 @@
 /* eslint-disable global-require */
 import { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
-import { ReactComponent as BoxLogo } from '../images/svg_png/grid_logo_2.svg';
+import useUser from '../hooks/use-user';
+import worldBoxLogo from '../images/svg_png/worldboxlogoCenter.png';
+import BoxLogo from '../images/svg_png/homeboxlogoCenter.png';
 import image1 from '../images/watchrollfullopen.webp';
-// import NewWatch from './newWatch/newWatch';
+import signOutLogo from '../images/svg_png/signOutBoxGrey.png';
 
 export default function Header() {
   const userContext = useContext(UserContext);
@@ -15,76 +18,81 @@ export default function Header() {
   const history = useHistory();
 
   return (
-    <header className="h-18 bd-white border-b border-gray-primary mb-8">
-      <div className="container mx-auto max-w-screen-lg h-full">
-        <div className="flex justify-between h-full">
-          <div className="text-grey-700 cursor-pointer">
-            <h1 className="flex justify-center w-full">
-              <p className="text-grey-700 flex flex-row items-center justify-between text-2xl">
+    <header className="h-18 bd-white border-b border-gray-primary mb-2">
+      <div className="container ml-5 w-screen-lg h-full">
+        <div className="inline-flex items-center justify-between">
+          <div className="flex justify-start text-grey-700 cursor-pointer">
+            <div className="mt-4 w-3/12 ml-16">
+              <span
+                className="inline jkhh align-middle text-4xl ml-2"
+                style={{ fontFamily: 'Acakadut' }}
+              >
                 Roll & Box
-              </p>
+              </span>
+            </div>
+            <div>
               <Link to={ROUTES.DASHBOARD}>
-                <img className="mt-2 w-2/12 " src={image1} alt="Roll and Box" />
+                <img
+                  className="mt-1 inline w-3/12"
+                  src={image1}
+                  alt="Roll and Box"
+                  style={{ maxWidth: '30rem' }}
+                />
               </Link>
-              {/* <p className="text-grey-700 text-center flex items-center aligh-items"> Roll & Box</p> */}
-            </h1>
+            </div>
           </div>
-          <div className="text-grey-700 text-center flex items-center align-items align-items">
-            {/* <div className="flex items-center justify-evenly flex-col col-span">
-              <div style={BUTTON_WRAPPER} className="container mr-2">
-                <button
-                  className="bg-pink-600 font-bold text-sm  rounded text-white pr-5 pl-5 h-10"
-                  type="button"
-                  onClick={handdleNewpost}
-                >
-                  New Watch
-                </button>
-                <NewWatch>inside</NewWatch>
-              </div>
-            </div> */}
-            {userContext.data ? (
+          <div className="text-grey-700 ml-32">
+            {user ? (
               <>
-                <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
-                  <BoxLogo className="w-8 mr-2 text-black-light cursor-pointer" alt="button" />
-                </Link>
-                <button
-                  type="button"
-                  title="sign-out"
-                  onClick={() => {
-                    firebase.auth().signOut();
-                    history.push(ROUTES.LOGIN);
-                  }}
-                  onKeyDown={(event) => {
-                    if (event.key === 'Enter') {
-                      firebase.auth().signOut();
-                      history.push(ROUTES.LOGIN);
-                    }
-                  }}
-                >
-                  <svg
-                    className="w-8 mr-2 text-black-light cursor-pointer"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                    />
-                  </svg>
-                </button>
-                <div className="flex item-center cursor-pointer">
-                  <Link to={`/${userContext.data.username}`}>
+                <div className="inline-flex items-center ml-10">
+                  <Link to={ROUTES.DASHBOARD} aria-label="Dashboard" className="flex-1">
                     <img
-                      className="rounded-full h8 w-8 flex"
-                      alt="logo"
-                      style={{ width: 170 }}
-                      src={`../images/avatars/${userContext.data.username}.jpg`}
+                      src={worldBoxLogo}
+                      alt="worldbox"
+                      className="h-10 pr-2"
+                      style={{ maxWidth: '10rem' }}
                     />
                   </Link>
+                  <Link to={`/${user.username}`} aria-label="Dashboard" className="flex-1">
+                    <img
+                      src={BoxLogo}
+                      alt="worldbox"
+                      className="h-10 pr-3"
+                      style={{ maxWidth: '10rem' }}
+                    />
+                  </Link>
+                  <button
+                    className="flex-1"
+                    type="button"
+                    title="sign-out"
+                    onClick={() => {
+                      firebase.auth().signOut();
+                      history.push(ROUTES.LOGIN);
+                    }}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter') {
+                        firebase.auth().signOut();
+                        history.push(ROUTES.LOGIN);
+                      }
+                    }}
+                  >
+                    <img
+                      src={signOutLogo}
+                      alt="worldbox"
+                      className="h-10 pr-3"
+                      style={{ maxWidth: '10rem' }}
+                    />
+                  </button>
+                  <div className="flex-1 cursor-pointer">
+                    <Link to={`/${user.username}`}>
+                      <img
+                        className="rounded-full shadow-lg"
+                        alt="logo"
+                        style={{ width: '3rem' }}
+                        src={user.imageurl}
+                      />
+                    </Link>
+                  </div>
                 </div>
               </>
             ) : (
@@ -113,4 +121,5 @@ export default function Header() {
     </header>
   );
 }
+
 /* eslint-disable global-require */

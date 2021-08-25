@@ -1,3 +1,4 @@
+import { CollectionsOutlined } from '@material-ui/icons';
 import { firebase, FieldValue } from '../lib/firebase';
 
 export async function doesUsernameExist(username) {
@@ -22,10 +23,8 @@ export async function getUserByUsername(username) {
     docId: item.id
   }));
 }
-// get user from the firestore where userId === userId (passed from the auth)
 export async function getUserByUserId(userId) {
   const result = await firebase.firestore().collection('users').where('userId', '==', userId).get();
-  console.log('RRESSULKLTS 3', result.docs);
 
   const user = result.docs.map((item) => ({
     ...item.data(),
@@ -59,6 +58,7 @@ export async function getUserByUserId(userId) {
 
   // return user;
 }
+
 export async function getSuggestedProfiles(userId, following) {
   const result = await firebase.firestore().collection('users').limit(10).get();
 
@@ -66,7 +66,6 @@ export async function getSuggestedProfiles(userId, following) {
     .map((user) => ({ ...user.data(), docId: user.id }))
     .filter((profile) => profile.userId !== userId && !following.includes(profile.userId));
 }
-// updateLoggedInUserFollowing, updateFollowedUserFollowers
 
 export async function updateLoggedInUserFollowing(
   loggedInUserDocId,
@@ -106,7 +105,6 @@ export async function getWatches(userId, following) {
     .collection('watches')
     .where('userid', 'in', following)
     .get();
-  console.log('result 1', result.docs);
   const userFollowedWatches = result.docs.map((watch) => ({
     ...watch.data(),
     docId: watch.id
@@ -117,10 +115,9 @@ export async function getWatches(userId, following) {
       const userLikedWatch = (watch.likes || []).includes(userId);
       const user = await getUserByUserId(watch.userId);
       const { username } = user[0];
-      return { username, ...watch, userLikedWatch };
+      return { username, ...watch, userLikedWatch, user };
     })
   );
-  console.log('watchesWithUserDetails', watchesWithUserDetails);
   return watchesWithUserDetails;
 }
 export async function getUserWatchesByUsername(username) {
@@ -130,8 +127,6 @@ export async function getUserWatchesByUsername(username) {
     .collection('watches')
     .where('userId', '==', user.userId)
     .get();
-  console.log('REEESULTS 1', result.docs);
-
   return result.docs.map((item) => ({
     ...item.data(),
     docId: item.id
@@ -152,16 +147,6 @@ export async function isUserFollowingProfile(loggedInUserUsername, profileUserId
   }));
   return response.userId;
 }
-
-// export async function addWatch(Watch) {
-//   return firebase
-//     .firestore()
-//     .collection('users')
-//     .add({ imgURL: Watch })
-//     .then(() => {
-//       setImgURL('')
-//     })
-// }
 
 export async function toggleFollow(
   isFollowingProfile,

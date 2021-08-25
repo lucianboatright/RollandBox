@@ -53,17 +53,8 @@ body {
 Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
 */
 
-body {
-  font-family:
-		system-ui,
-		-apple-system, /* Firefox supports this but not yet `system-ui` */
-		'Segoe UI',
-		Roboto,
-		Helvetica,
-		Arial,
-		sans-serif,
-		'Apple Color Emoji',
-		'Segoe UI Emoji';
+* {
+  font-family: 'Quinngothic';
 }
 
 /*
@@ -29790,6 +29781,24 @@ video {
 .backdrop-sepia {
   --tw-backdrop-sepia: sepia(100%);
 }
+
+.tooltip {
+  position: absolute;
+  visibility: hidden;
+}
+
+.has-tooltip:hover .tooltip {
+  visibility: visible;
+  z-index: 50
+}
+
+/* @layer base {
+  @font-face {
+    font-family: "Acakadut";
+    src: url("../fonts/Acakadut-GOZ5A.ttf") format("ttf");
+    font-weight: 700;
+  }
+} */
 
 @media (min-width: 640px) {
   .sm\:container {

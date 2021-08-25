@@ -4,9 +4,7 @@ import Skeleton from 'react-loading-skeleton';
 import useUser from '../../hooks/use-user';
 import UserContext from '../../context/user';
 import { isUserFollowingProfile, toggleFollow } from '../../services/firebase';
-// import ModalNewWatch from '../newWatch/ModalNewWatch';
-import ModalNewWatch from '../newWatch/ModalNewWatch_easycrop';
-// import ModalNewWatch from '../newWatch/ModalNewWatchTest';
+import ModalNewWatch from '../newWatch/ModalNewWatch';
 import ModalAvitar from '../newWatch/ModalAvitar';
 
 export default function Header({
@@ -19,7 +17,8 @@ export default function Header({
     fullName,
     following = [],
     followers = [],
-    username: profileUsername
+    username: profileUsername,
+    imageurl: imgurl
   }
 }) {
   const { data: user } = useContext(UserContext);
@@ -30,6 +29,7 @@ export default function Header({
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenAvitar, setIsOpenAvitar] = useState(false);
   const editProfile = user.username && user.username === profileUsername;
+  const avatar = user.imageurl;
 
   const handleToggleFollow = async () => {
     setIsFollowingProfile((isFollowingProfile) => !isFollowingProfile);
@@ -48,20 +48,26 @@ export default function Header({
       isLoggedInUserFollowingProfile();
     }
   }, [user.username, profileUserId]);
+
   return (
-    <div className="grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg pb-2">
-      <div className="container flex justify-center">
+    <div className="grid grid-cols-3 gap-2 pb-2 pt-2">
+      <div className="container flex justify-center border-r-2 border-grey-700">
         {user.username && (
-          <img
-            className="rounded-full h-40 w-auto flex"
-            src={`./images/avatars/${profileUsername}.jpg`}
-            alt={`/images/avatars/${profileUsername}.jpg`}
-          />
+          <img className="rounded-full h-30 w-auto flex shadow-lg" src={imgurl} alt="imgurl" />
         )}
       </div>
-      <div className="flex items-center justify-center flex-col col-span">
+      <div className="flex items-center justify-center flex-col col-span border-r-2 border-grey-700">
         <div className="container flex item-center">
-          <p className="text-2xl mr-4">{profileUsername}</p>
+          <p className="text-2xl mr-4 capitalize">
+            {profileUsername}
+            {/* {name[0].toUppercase}
+            {name.slice(1)} */}
+          </p>
+          <span className="font-medium inline-block align-bottom capitalize">
+            {user.fullName}
+            {/* {nameFull[0].toUppercase}
+            {nameFull.slice(1)} */}
+          </span>
           {activeButtonFollow && (
             <button
               className="bg-green-600 font-bold text-sm rounded text-white w-20 h-8"
@@ -82,64 +88,71 @@ export default function Header({
             <Skeleton count={1} width={677} height={24} />
           ) : (
             <>
-              <p className="mr-10">
-                <span className="font=bold">{watchesCount}</span>
+              <p className="mr-4">
+                <span className="font-bold">{watchesCount}</span>
                 {`  `}
                 Watches
               </p>
-              <p className="mr-10">
+              <p className="mr-4">
                 <span className="font-bold">{followerCount}</span>
                 {`  `}
                 {followerCount === 1 ? `Follower` : `Followers`}
               </p>
-              <p className="mr-10">
+              <p className="mr-4">
                 <span className="font-bold">{following?.length}</span>
                 {`  `}
                 Following
               </p>
-              {editProfile && (
-                <div>
-                  <div className="flex items-center justify-evenly flex-col col-span">
-                    <div className="container mr-2">
-                      <button
-                        className="bg-green-400 font-bold text-sm  rounded text-white pr-5 pl-5 h-10"
-                        type="button"
-                        onClick={() => setIsOpenAvitar(true)}
-                      >
-                        Change Avitar
-                      </button>
-                      <ModalAvitar
-                        profile={profileUsername}
-                        open={isOpenAvitar}
-                        onClose={() => setIsOpenAvitar(false)}
-                      />
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-evenly flex-col col-span">
-                    <div className="container mr-2">
-                      <button
-                        className="bg-pink-600 font-bold text-sm  rounded text-white pr-5 pl-5 h-10"
-                        type="button"
-                        onClick={() => setIsOpen(true)}
-                      >
-                        New Watch
-                      </button>
-                      <ModalNewWatch
-                        profile={profileUsername}
-                        watchesCount={watchesCount}
-                        userId={profileUserId}
-                        open={isOpen}
-                        onClose={() => setIsOpen(false)}
-                      />
-                    </div>
-                  </div>
-                </div>
-              )}
             </>
           )}
         </div>
-        <div className="container mt-4">
-          <p className="font-medium">{!fullName ? <Skeleton count={1} height={24} /> : fullName}</p>
+      </div>
+      <div className="flex items-center justify-center flex-col col-span">
+        <div className="container flex item-center">
+          {editProfile && (
+            <div>
+              <div className="flex items-center justify-evenly flex-col col-span">
+                <div className="container mr-2">
+                  <button
+                    className="bg-gradient-to-r from-green-400 to-blue-500 font-bold text-base  rounded text-white h-10 w-40"
+                    type="button"
+                    onClick={() => setIsOpenAvitar(true)}
+                    style={{ fontFamily: 'Acakadut' }}
+                  >
+                    Profile Settings
+                  </button>
+                  <ModalAvitar
+                    userAvatar={avatar}
+                    documentId={user.docId}
+                    profile={profileUsername}
+                    userId={profileUserId}
+                    open={isOpenAvitar}
+                    onClose={() => setIsOpenAvitar(false)}
+                  />
+                </div>
+              </div>
+              <div className="flex items-center justify-evenly flex-col col-span">
+                <div className="container mr-2">
+                  <button
+                    className="bg-gradient-to-r from-blue-500 to-pink-600 font-bold text-xl  rounded text-white mt-2 pr-5 pl-5 h-10 w-40"
+                    type="button"
+                    onClick={() => setIsOpen(true)}
+                    style={{ fontFamily: 'Acakadut' }}
+                  >
+                    Add New Watch
+                  </button>
+                  <ModalNewWatch
+                    userAvatar={avatar}
+                    profile={profileUsername}
+                    watchesCount={watchesCount}
+                    userId={profileUserId}
+                    open={isOpen}
+                    onClose={() => setIsOpen(false)}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -156,6 +169,7 @@ Header.propTypes = {
     fullName: PropTypes.string,
     username: PropTypes.string,
     followers: PropTypes.array,
-    following: PropTypes.array
+    following: PropTypes.array,
+    imageurl: PropTypes.string
   }).isRequired
 };

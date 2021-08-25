@@ -8,17 +8,12 @@ export default function useUser() {
 
   useEffect(() => {
     async function getUserObjByUserId() {
-      console.log('USERID', user.uid);
-      console.log('USERID USER', user);
-      const response = await getUserByUserId(user.uid);
-      console.log('SetActive user', response);
+      const [response] = await getUserByUserId(user.uid);
       setActiveUser(response);
     }
     if (user?.uid) {
       getUserObjByUserId(user.uid);
     }
   }, [user]);
-  // console.log('activeuser Followers', activeUser.followers);
-  console.log('activeuser Following', activeUser);
   return { user: activeUser };
 }

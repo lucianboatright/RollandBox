@@ -2,13 +2,11 @@ import { useReducer, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Header from './header';
 import Watches from './watches';
-import { firebase } from '../../lib/firebase';
+// import useAvatar from '../hooks/use-avatar';
 
 import { getUserWatchesByUsername } from '../../services/firebase';
-// import { SettingsInputCompositeSharp } from '@material-ui/icons';
 
 export default function Profile({ user }) {
-  const [posts, setPosts] = useState([]);
   const reducer = (state, newState) => ({ ...state, ...newState });
   const initialState = {
     profile: {},
@@ -26,19 +24,6 @@ export default function Profile({ user }) {
     // eslint-disable-next-line
   }, [user.username]);
 
-  // useEffect(() => {
-  //   firebase.collections('watches').onSnapshot((snapshot) => {
-  //     setPosts(
-  //       snapshot.docs.map((doc) => ({
-  //         id: doc.id,
-  //         post: doc.data()
-  //       }))
-  //     );
-  //   });
-  // }, []);
-
-  console.log('index_watch collection', watchCollection);
-
   return (
     <>
       <Header
@@ -47,7 +32,7 @@ export default function Profile({ user }) {
         followerCount={followerCount}
         setFollowerCount={dispatch}
       />
-      <Watches watches={watchCollection} />
+      <Watches watches={watchCollection} profile={profile} />
     </>
   );
 }
@@ -60,6 +45,7 @@ Profile.propTypes = {
     followers: PropTypes.array,
     fullName: PropTypes.string,
     username: PropTypes.string,
-    userId: PropTypes.string
+    userId: PropTypes.string,
+    imageurl: PropTypes.string
   })
 };

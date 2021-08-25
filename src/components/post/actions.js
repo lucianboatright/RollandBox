@@ -25,11 +25,10 @@ export default function Actions({ docId, totalLikes, likedWatch, handleFocus }) 
 
     setLikes((likes) => (toggleLiked ? likes - 1 : likes + 1));
   };
-  console.log();
 
   return (
     <>
-      <div className="flex justify-between p-1 mt-5">
+      <div className="flex justify-between p-1 mt-0">
         <div className="flex">
           <WatchLogo
             onClick={handleToggleLiked}
@@ -65,7 +64,7 @@ export default function Actions({ docId, totalLikes, likedWatch, handleFocus }) 
           </svg>
         </div>
       </div>
-      <div className="p-2 py-0">
+      <div className="pl-2 py-0">
         <p className="font-light text-xs font-sx">
           {likes === 1 ? `${likes} like` : `${likes} likes`}
         </p>
