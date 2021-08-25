@@ -10,12 +10,20 @@ export default function Comments({ docId, comments: allComments = [], posted, co
     <>
       <div className="ml-1 p-0 pt-0 pb-0">
         {comments.length >= 1 && (
-          <div className="text-xs text-gray-700 mb-0 cursor-pointer">
+          <div
+            className="text-xs text-gray-700 mb-0 cursor-pointer"
+            style={{ fontFamily: 'Buggie' }}
+          >
             View {comments.length} comments
           </div>
         )}
         {comments.length === 0 && (
-          <div className="text-xs text-gray-700 cursor-pointer mb-12">Add Comments</div>
+          <div
+            className="text-xs text-gray-700 cursor-pointer mb-12"
+            style={{ fontFamily: 'Buggie' }}
+          >
+            Add Comments
+          </div>
         )}
         {comments.length === 1 && <div className="text-xs text-gray-700 cursor-pointer mb-8" />}
         {comments.length === 2 && <div className="text-xs text-gray-700 cursor-pointer mb-4" />}
@@ -25,10 +33,15 @@ export default function Comments({ docId, comments: allComments = [], posted, co
             className="mb-0 text-xs cursor-pointer w-20 truncate"
           >
             <Link to={`/${item.displayName}`} className="inline">
-              <span className="text-xs mr-1 font-bold capitalize">{item.displayName}</span>
+              <span className="text-xs mr-1 font-bold capitalize" style={{ fontFamily: 'Buggie' }}>
+                {item.displayName}
+              </span>
             </Link>
             <div className="has-tooltip inline">
-              <span className="text-xs tooltip rounded shadow-lg p-1 bg-gray-100 text-red-500">
+              <span
+                className="text-xs tooltip rounded shadow-lg p-1 bg-gray-100 text-red-500"
+                style={{ fontFamily: 'Buggie' }}
+              >
                 {item.comment}
               </span>
               {item.comment}

@@ -12,7 +12,9 @@ export default function Header({ username, avatar }) {
             src={test.imageurl}
             alt={username}
           />
-          <p className="font-bold">{username}</p>
+          <p className="font-bold capitalize" style={{ fontFamily: 'Buggie' }}>
+            {username}
+          </p>
         </Link>
       </div>
     </div>
