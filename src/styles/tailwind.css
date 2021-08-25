@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 .tooltip {
   @apply invisible absolute;
 }
@@ -9,7 +10,10 @@
   @apply visible z-50
 }
 
-@font-face {
-  font-family: 'Acakadut';
-  src: local('Acakadut'), url('../fonts/Acakadut-GOZ5A.ttf') format('ttf');
-}
+/* @layer base {
+  @font-face {
+    font-family: "Acakadut";
+    src: url("../fonts/Acakadut-GOZ5A.ttf") format("ttf");
+    font-weight: 700;
+  }
+} */

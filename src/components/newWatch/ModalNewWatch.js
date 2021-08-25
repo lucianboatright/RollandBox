@@ -186,10 +186,8 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                       <img className="rounded-full h-10 mr-2 mt-1" src={userAvatar} alt={profile} />
                     </div>
                     <div className="justify-left capitalize">
-                      <p style={{ fontSize: '0.9rem' }}>Adding Another Watch {profile}?</p>
-                      <p style={{ fontSize: '0.9rem' }}>
-                        Collection total is {watchesCount} Watches
-                      </p>
+                      <p style={{ fontSize: '0.8rem' }}>Adding Another Watch {profile}?</p>
+                      <p style={{ fontSize: '0.8rem' }}>Current total is {watchesCount} Watches</p>
                     </div>
                   </div>
                   <div className="App">
@@ -223,9 +221,10 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                     </div>
                     <button
                       type="button"
-                      className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 border-2"
+                      className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 border-2 bg-gradient-to-r from-green-400 to-blue-500 text-xl text-gray-200"
                       disabled={!completedCrop?.width || !completedCrop?.height}
                       onClick={imageBlobGenerater}
+                      style={{ fontFamily: 'Acakadut' }}
                     >
                       Download Image
                     </button>
@@ -235,13 +234,19 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                           <div>
                             {imagedownload === false ? (
                               <>
-                                <div className="rounded mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-red-400 to-blue-500">
+                                <div
+                                  style={{ fontFamily: 'Acakadut' }}
+                                  className="rounded mb-1 pl-2 pr-2 pt-1 pb-1 w-60 text-red-700 bg-gradient-to-r from-red-400 to-white-500 text-center"
+                                >
                                   Please Try Again
                                 </div>
                               </>
                             ) : (
                               <>
-                                <div className="rounded mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-green-400 to-blue-500">
+                                <div
+                                  style={{ fontFamily: 'Acakadut' }}
+                                  className="rounded mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-white to-green-400 text-center text-green-900"
+                                >
                                   Ready To Upload
                                 </div>
                               </>
@@ -275,9 +280,10 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                     {text}
                   </textarea>
                   <input
+                    style={{ fontFamily: 'Acakadut' }}
                     type="submit"
                     value="Add Watch"
-                    className="rounded mt-1 mb-1 pl-2 pr-2 pt-1 pb-1 bg-gradient-to-r from-blue-500 to-green-400 text-red-500 w-60 bg"
+                    className="rounded mt-1 mb-1 pl-2 pr-2 pt-1 pb-1 bg-gradient-to-r from-blue-500 to-green-400 text-red-700 text-xl w-60 bg"
                   />
                 </div>
               </div>

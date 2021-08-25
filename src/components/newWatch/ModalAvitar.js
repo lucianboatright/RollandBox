@@ -157,6 +157,7 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
         <button
           type="button"
           onClick={closeModal}
+          style={{ fontFamily: 'Acakadut' }}
           className="text-white bg-gradient-to-r from-red-600 to-blue-500 rounded px-2 py-0.5 hover:bg-white-600 hover:text-red"
         >
           X Close Modal
@@ -202,6 +203,7 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
                   className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-green-400 to-blue-500 w-60 bg"
                   disabled={!completedCrop?.width || !completedCrop?.height}
                   onClick={imageBlobGenerater}
+                  style={{ fontFamily: 'Acakadut' }}
                 >
                   Upload Image
                 </button>
@@ -212,7 +214,10 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
                     <div>
                       {imagedownload === false ? (
                         <>
-                          <div className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-red-400 to-blue-500">
+                          <div
+                            style={{ fontFamily: 'Acakadut' }}
+                            className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-red-400 to-blue-500"
+                          >
                             Please Try Again
                           </div>
                         </>
@@ -223,6 +228,7 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
                             className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-blue-500 to-green-400 w-60 bg"
                             disabled={!completedCrop?.width || !completedCrop?.height}
                             onClick={handleSubmitUpload}
+                            style={{ fontFamily: 'Acakadut' }}
                           >
                             Complete
                           </button>

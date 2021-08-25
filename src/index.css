@@ -1,0 +1,26 @@
+
+@font-face {
+  font-family: 'Acakadut';
+  src: url('./fonts/Acakadut-GOZ5A.ttf') format('truetype');
+  font-weight: normal;
+} 
+@font-face {
+  font-family: 'Quinngothic';
+  src: url('./fonts/Quinngothic-Wyy1O.ttf') format('truetype');
+  font-weight: normal;
+} 
+@font-face {
+  font-family: 'Buggie';
+  src: url('./fonts/buggie-font/Buggie-L3y03.ttf') format('truetype');
+  font-weight: normal;
+} 
+@font-face {
+  font-family: 'Doodle';
+  src: url('./fonts/zuka-doodle-font/ZukaDoodle-Kz7y.ttf') format('truetype');
+  font-weight: normal;
+} 
+@font-face {
+  font-family: 'Doodle-Italic';
+  src: url('./fonts/zuka-doodle-font/ZukaDoodle-MnVJ.ttf') format('truetype');
+  font-weight: normal;
+} 
