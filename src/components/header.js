@@ -19,16 +19,21 @@ export default function Header() {
 
   return (
     <header className="h-18 bd-white border-b border-gray-primary mb-2">
-      <div className="container mx-auto max-w-screen-lg h-full">
+      <div className="container ml-5 w-screen-lg h-full">
         <div className="inline-flex items-center justify-between">
           <div className="flex justify-start text-grey-700 cursor-pointer">
-            <div className="mt-2 w-3/12">
-              <span className="inline-block align-middle">Roll & Box</span>
+            <div className="mt-4 w-3/12 ml-16">
+              <span
+                className="inline jkhh align-middle text-4xl ml-2"
+                style={{ fontFamily: 'Acakadut' }}
+              >
+                Roll & Box
+              </span>
             </div>
             <div>
               <Link to={ROUTES.DASHBOARD}>
                 <img
-                  className="mt-2 w-3/12"
+                  className="mt-1 inline w-3/12"
                   src={image1}
                   alt="Roll and Box"
                   style={{ maxWidth: '30rem' }}
@@ -36,10 +41,10 @@ export default function Header() {
               </Link>
             </div>
           </div>
-          <div className="text-grey-700">
+          <div className="text-grey-700 ml-32">
             {user ? (
               <>
-                <div className="inline-flex items-center">
+                <div className="inline-flex items-center ml-10">
                   <Link to={ROUTES.DASHBOARD} aria-label="Dashboard" className="flex-1">
                     <img
                       src={worldBoxLogo}

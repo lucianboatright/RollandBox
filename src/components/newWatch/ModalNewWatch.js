@@ -276,6 +276,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                     className="border-2 border-grey-500 focus:border-black-900 w-60"
                     rows="8"
                     cols="50"
+                    style={{ whiteSpace: 'pre-wrap' }}
                   >
                     {text}
                   </textarea>

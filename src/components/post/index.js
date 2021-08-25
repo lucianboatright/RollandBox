@@ -9,7 +9,7 @@ import Comments from './comments';
 export default function Post({ content }) {
   const commentInput = useRef(null);
   const handleFocus = () => commentInput.current.focus();
-  console.log('Conetnet hunt for caption', content.watchinfo);
+  console.log('Conetnet hunt for caption', content.watchname);
 
   return (
     <div className="">
@@ -22,7 +22,11 @@ export default function Post({ content }) {
         likedWatch={content.userLikedWatch}
         handleFocus={handleFocus}
       />
-      <Footer caption={content.watchinfo} username={content.username} />
+      <Footer
+        caption={content.watchinfo}
+        username={content.username}
+        watchName={content.watchname}
+      />
       <Comments
         docId={content.docId}
         comments={content.comments}
@@ -38,6 +42,7 @@ Post.propTypes = {
     username: PropTypes.string.isRequired,
     imageurl: PropTypes.string.isRequired,
     watchinfo: PropTypes.string,
+    watchname: PropTypes.string,
     docId: PropTypes.string.isRequired,
     userLikedWatch: PropTypes.bool.isRequired,
     likes: PropTypes.array.isRequired,
