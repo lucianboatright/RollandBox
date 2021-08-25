@@ -12,9 +12,9 @@ import image1 from '../images/watchrollfullopen.webp';
 import signOutLogo from '../images/svg_png/signOutBoxGrey.png';
 
 export default function Header() {
-  const { user: loggedInUser } = useContext(UserContext);
+  const userContext = useContext(UserContext);
   const { firebase } = useContext(FirebaseContext);
-  const { user } = useUser(loggedInUser?.uid);
+  // const { user } = useUser(loggedInUser?.uid);
   const history = useHistory();
 
   return (
