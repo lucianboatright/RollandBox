@@ -16,6 +16,7 @@
     "antd": "^4.15.5",
     "date-fns": "^2.19.0",
     "firebase": "^8.7.1",
+    "font-face": "^2.3.4",
     "get-orientation": "^1.1.2",
     "prop-types": "^15.7.2",
     "rc-progress": "^3.1.3",

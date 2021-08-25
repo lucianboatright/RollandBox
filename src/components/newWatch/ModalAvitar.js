@@ -182,7 +182,7 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
                   onImageLoaded={onLoad}
                   crop={crop}
                   onChange={((c) => setCrop(c), (c) => setCompletedCrop(c))}
-                  // onComplete={(c) => setCompletedCrop(c)}
+                  onComplete={(c) => setCompletedCrop(c)}
                   style={{ height: 'auto', width: '8rem' }}
                   className=""
                 />

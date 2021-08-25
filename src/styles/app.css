@@ -29801,6 +29801,12 @@ video {
   z-index: 50
 }
 
+@font-face {
+  font-family: 'Acakadut';
+
+  src: local('Acakadut'), url('../fonts/Acakadut-GOZ5A.ttf') format('ttf');
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

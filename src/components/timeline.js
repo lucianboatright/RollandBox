@@ -7,9 +7,9 @@ import grid from '../images/borders/wooden_grid_5x.png';
 
 export default function Timeline() {
   const { watches } = useWatches();
+  console.log('WATCHES', watches);
   return (
     <div className="col-span-3">
-      {/* <img src={grid} alt="grid" /> */}
       <div
         style={{
           backgroundImage: `url(${grid})`,

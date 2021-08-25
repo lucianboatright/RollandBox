@@ -186,12 +186,14 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                       <img className="rounded-full h-10 mr-2 mt-1" src={userAvatar} alt={profile} />
                     </div>
                     <div className="justify-left capitalize">
-                      <p>Adding Another Watch {profile}?</p>
-                      <p>Collection total is {watchesCount} Watches</p>
+                      <p style={{ fontSize: '0.9rem' }}>Adding Another Watch {profile}?</p>
+                      <p style={{ fontSize: '0.9rem' }}>
+                        Collection total is {watchesCount} Watches
+                      </p>
                     </div>
                   </div>
                   <div className="App">
-                    <div className="rounded bg-gradient-to-r from-green-400 to-blue-500 w-60 bg mt-1 mb-1 pl-1 pr-1 pt-1 pb-1">
+                    <div className="w-60 mt-1 mb-1 pl-1 pr-1 pt-1 pb-1">
                       <input
                         className="m-2 w-60"
                         type="file"
@@ -221,7 +223,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                     </div>
                     <button
                       type="button"
-                      className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-green-400 to-blue-500 w-60 bg"
+                      className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 border-2"
                       disabled={!completedCrop?.width || !completedCrop?.height}
                       onClick={imageBlobGenerater}
                     >
@@ -233,13 +235,13 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                           <div>
                             {imagedownload === false ? (
                               <>
-                                <div className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-red-400 to-blue-500">
+                                <div className="rounded mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-red-400 to-blue-500">
                                   Please Try Again
                                 </div>
                               </>
                             ) : (
                               <>
-                                <div className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-green-400 to-blue-500">
+                                <div className="rounded mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-green-400 to-blue-500">
                                   Ready To Upload
                                 </div>
                               </>
@@ -274,7 +276,8 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                   </textarea>
                   <input
                     type="submit"
-                    className="rounded mt-1 mb-1 pl-2 pr-2 pt-1 pb-1 bg-gradient-to-r from-green-400 to-blue-500 w-60 bg"
+                    value="Add Watch"
+                    className="rounded mt-1 mb-1 pl-2 pr-2 pt-1 pb-1 bg-gradient-to-r from-blue-500 to-green-400 text-red-500 w-60 bg"
                   />
                 </div>
               </div>

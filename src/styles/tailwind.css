@@ -8,3 +8,8 @@
 .has-tooltip:hover .tooltip {
   @apply visible z-50
 }
+
+@font-face {
+  font-family: 'Acakadut';
+  src: local('Acakadut'), url('../fonts/Acakadut-GOZ5A.ttf') format('ttf');
+}
