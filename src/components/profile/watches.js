@@ -17,7 +17,7 @@ export default function Watches({ watches }) {
   return (
     <div className="mr-2 ml-2">
       <div className="h-16 border-t border-gray-primary">
-        <div className="pt-3 pl-8 flex flex-wrap overflow-hidden xl:-mx-4">
+        <div className="pt-3 pl-4 flex flex-wrap overflow-hidden xl:-mx-4">
           {!watches ? (
             <>
               {[...new Array(12)].map((_, index) => (
@@ -32,7 +32,7 @@ export default function Watches({ watches }) {
                 style={{
                   backgroundImage: `url(${singleBox})`,
                   backgroundPosition: 'center top',
-                  backgroundSize: '9rem 14.2rem',
+                  backgroundSize: '9.5rem 14.4rem',
                   backgroundRepeat: 'no-repeat'
                 }}
               >
@@ -47,10 +47,10 @@ export default function Watches({ watches }) {
                     }}
                   >
                     <img
-                      className="border-grey rounded ml-2 mr-2 mt-1 mb-2 cursor-pointer"
+                      className="border-grey rounded ml-2.5 mr-2.5 mt-1 mb-2 cursor-pointer"
                       src={watch.imageurl}
                       alt={`${watch.watchId}`}
-                      width="170px"
+                      width="173px"
                     />
                     <WatchCard open={isOpen} watchInfo={watch} onClose={() => setIsOpen(false)} />
                   </button>

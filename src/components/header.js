@@ -6,10 +6,10 @@ import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
 import useUser from '../hooks/use-user';
-import worldBoxLogo from '../images/svg_png/worldboxlogoCenter.png';
-import BoxLogo from '../images/svg_png/homeboxlogoCenter.png';
+import worldBoxLogo from '../images/svg_png/TestWorldBox.png';
+import BoxLogo from '../images/svg_png/watchBoxLogoLongHouse.png';
 import image1 from '../images/watchrollfullopen.webp';
-import signOutLogo from '../images/svg_png/signOutBoxGrey.png';
+import signOutLogo from '../images/svg_png/logout4.svg';
 
 export default function Header() {
   const { user: loggedInUser } = useContext(UserContext);
@@ -49,17 +49,12 @@ export default function Header() {
                     <img
                       src={worldBoxLogo}
                       alt="worldbox"
-                      className="h-10 pr-2"
-                      style={{ maxWidth: '10rem' }}
+                      className="pr-2"
+                      style={{ width: '6rem' }}
                     />
                   </Link>
                   <Link to={`/${user.username}`} aria-label="Dashboard" className="flex-1">
-                    <img
-                      src={BoxLogo}
-                      alt="worldbox"
-                      className="h-10 pr-3"
-                      style={{ maxWidth: '10rem' }}
-                    />
+                    <img src={BoxLogo} alt="worldbox" className="pr-3" style={{ width: '6rem' }} />
                   </Link>
                   <button
                     className="flex-1"

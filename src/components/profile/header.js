@@ -114,7 +114,7 @@ export default function Header({
               <div className="flex items-center justify-evenly flex-col col-span">
                 <div className="container mr-2">
                   <button
-                    className="bg-gradient-to-r from-green-400 to-blue-500 font-bold text-base  rounded text-white h-10 w-40"
+                    className="bg-gradient-to-r from-pink-600 to-blue-500 text-base text-xl rounded text-white h-10 w-40"
                     type="button"
                     onClick={() => setIsOpenAvitar(true)}
                     style={{ fontFamily: 'Acakadut' }}
@@ -134,7 +134,7 @@ export default function Header({
               <div className="flex items-center justify-evenly flex-col col-span">
                 <div className="container mr-2">
                   <button
-                    className="bg-gradient-to-r from-blue-500 to-pink-600 font-bold text-xl  rounded text-white mt-2 pr-5 pl-5 h-10 w-40"
+                    className="bg-gradient-to-r from-blue-500 to-pink-600 text-xl rounded text-white mt-2 pr-5 pl-5 h-10 w-40"
                     type="button"
                     onClick={() => setIsOpen(true)}
                     style={{ fontFamily: 'Acakadut' }}

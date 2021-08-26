@@ -6,10 +6,10 @@ import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
 import useUser from '../hooks/use-user';
-import worldBoxLogo from '../images/svg_png/worldboxlogoCenter.png';
-import BoxLogo from '../images/svg_png/homeboxlogoCenter.png';
+import worldBoxLogo from '../images/svg_png/TestWorldBox.png';
+import BoxLogo from '../images/svg_png/watchBoxLogoLongHouse.png';
 import image1 from '../images/watchrollfullopen.webp';
-import signOutLogo from '../images/svg_png/signOutBoxGrey.png';
+import signOutLogo from '../images/svg_png/logout4.svg';
 
 export default function Header() {
   const { user: loggedInUser } = useContext(UserContext);
@@ -24,7 +24,7 @@ export default function Header() {
           <div className="flex justify-start text-grey-700 cursor-pointer">
             <div className="mt-4 w-30 ml-48">
               <span
-                className="inline jkhh align-middle text-4xl ml-2"
+                className="inline jkhh align-middle text-4xl ml-1.5"
                 style={{ fontFamily: 'Acakadut' }}
               >
                 Roll & Box
@@ -36,7 +36,7 @@ export default function Header() {
                   className="mt-1 mb-0.5 inline "
                   src={image1}
                   alt="Roll and Box"
-                  style={{ width: '7rem' }}
+                  style={{ width: '8rem' }}
                 />
               </Link>
             </div>
@@ -44,25 +44,20 @@ export default function Header() {
           <div className="text-grey-700">
             {user ? (
               <>
-                <div className="inline-flex items-center ml-60">
-                  <Link to={ROUTES.DASHBOARD} aria-label="Dashboard" className="flex-1">
+                <div className="inline-flex items-center ml-56">
+                  <Link to={ROUTES.DASHBOARD} aria-label="Dashboard" className="">
                     <img
                       src={worldBoxLogo}
                       alt="worldbox"
-                      className="h-10 pr-2"
-                      style={{ maxWidth: '10rem' }}
+                      className="pr-1"
+                      style={{ width: '6rem' }}
                     />
                   </Link>
-                  <Link to={`/${user.username}`} aria-label="Dashboard" className="flex-1">
-                    <img
-                      src={BoxLogo}
-                      alt="worldbox"
-                      className="h-10 pr-3"
-                      style={{ maxWidth: '10rem' }}
-                    />
+                  <Link to={`/${user.username}`} aria-label="Dashboard" className="">
+                    <img src={BoxLogo} alt="worldbox" className="pr-1" style={{ width: '6rem' }} />
                   </Link>
                   <button
-                    className="flex-1"
+                    className=""
                     type="button"
                     title="sign-out"
                     onClick={() => {
@@ -79,20 +74,20 @@ export default function Header() {
                     <img
                       src={signOutLogo}
                       alt="worldbox"
-                      className="h-10 pr-3"
-                      style={{ maxWidth: '10rem' }}
+                      className="pr-2 pl-1 mt-0.5 h-12"
+                      // style={{ width: '6rem' }}
                     />
                   </button>
-                  <div className="flex-1 cursor-pointer">
+                  {/* <div className="cursor-pointer">
                     <Link to={`/${user.username}`}>
                       <img
-                        className="rounded-full shadow-lg"
+                        className="rounded-full shadow-lg w-11"
                         alt="logo"
-                        style={{ width: '3rem' }}
+                        // style={{ width: '3rem' }}
                         src={user.imageurl}
                       />
                     </Link>
-                  </div>
+                  </div> */}
                 </div>
               </>
             ) : (
