@@ -7,39 +7,31 @@ import singleBox from '../images/borders/Box_single.png';
 
 export default function Timeline() {
   const { watches } = useWatches();
-  console.log('WATCHES', watches);
+  console.log('WATCHES', singleBox);
   return (
     <div className="col-span-3">
-      {/* <div
-        style={{
-          backgroundImage: `url(${grid})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: '44.5rem auto'
-        }}
-        className="mt-4 ml-8"
-      > */}
       <div className="pt-10 flex pl-12 pl-12px flex-wrap overflow-hidden">
         {!watches ? (
           <>
             {[...new Array(12)].map((_, index) => (
-              // <div
-              //   key={index}
-              //   className="pt-3"
-              //   style={{
-              //     backgroundImage: `url(${backGrid})`,
-              //     backgroundPosition: 'top',
-              //     backgroundSize: '165px',
-              //     backgroundRepeat: 'repeat'
-              //   }}
-              // >
-              <Skeleton
+              <div
                 key={index}
-                className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
-                count={1}
-                width={140}
-                height={180}
-              />
-              // </div>
+                className="pt-3"
+                style={{
+                  backgroundImage: `url(${singleBox})`,
+                  backgroundPosition: 'top',
+                  backgroundSize: '165px',
+                  backgroundRepeat: 'repeat'
+                }}
+              >
+                <Skeleton
+                  key={index}
+                  className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
+                  count={1}
+                  width={140}
+                  height={180}
+                />
+              </div>
             ))}
           </>
         ) : watches?.length > 0 ? (
@@ -62,7 +54,6 @@ export default function Timeline() {
                     content={content}
                   />
                 </div>
-                {/* <img src={grid} alt="grid" /> */}
               </div>
             </>
           ))

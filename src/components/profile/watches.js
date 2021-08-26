@@ -1,15 +1,15 @@
 /* eslint-disable no-nested-ternary */
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
-import backGrid from '../../images/borders/wood_watch_grid.png';
+import singleBox from '../../images/borders/shortSingleBox.png';
 import '../../styles/watches.css';
 
 export default function Watches({ watches }) {
-  console.log('WATCHES', watches);
+  console.log('WATCHES BOX', singleBox);
   return (
     <div className="">
       <div className="h-16 border-t border-gray-primary">
-        <div className="pt-1 flex flex-wrap overflow-hidden xl:-mx-4">
+        <div className="pt-3 flex flex-wrap overflow-hidden xl:-mx-4">
           {!watches ? (
             <>
               {[...new Array(12)].map((_, index) => (
@@ -19,18 +19,18 @@ export default function Watches({ watches }) {
           ) : watches?.length > 0 ? (
             watches.map((watch) => (
               <div
-                key={watch.docId}
-                className="pt-1"
+                // key={watch.docId}
+                className=""
                 style={{
-                  backgroundImage: `url(${backGrid})`,
-                  backgroundPosition: 'top',
-                  backgroundSize: '162px',
-                  backgroundRepeat: 'repeat'
+                  backgroundImage: `url(${singleBox})`,
+                  backgroundPosition: 'center top',
+                  backgroundSize: '8rem 12rem',
+                  backgroundRepeat: 'no-repeat'
                 }}
               >
-                <div className="rounded-full">
+                <div className="">
                   <img
-                    className="p-2"
+                    className="border-grey rounded ml-2 mr-2 mt-2 mb-2"
                     src={watch.imageurl}
                     alt={`${watch.watchId}`}
                     width="150px"
