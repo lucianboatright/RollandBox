@@ -15,9 +15,9 @@ export default function Watches({ watches }) {
   };
 
   return (
-    <div className="">
+    <div className="mr-2 ml-2">
       <div className="h-16 border-t border-gray-primary">
-        <div className="pt-3 flex flex-wrap overflow-hidden xl:-mx-4">
+        <div className="pt-3 pl-8 flex flex-wrap overflow-hidden xl:-mx-4">
           {!watches ? (
             <>
               {[...new Array(12)].map((_, index) => (

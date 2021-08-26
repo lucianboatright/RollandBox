@@ -55,12 +55,15 @@ export default function Header({
       </div>
       <div className="flex items-center justify-center flex-col col-span border-r-2 border-grey-700">
         <div className="container flex item-center">
-          <p className="text-2xl mr-4 capitalize">
+          <p className="text-2xl mr-4 capitalize" style={{ fontFamily: 'Quinngothic' }}>
             {profileUsername}
             {/* {name[0].toUppercase}
             {name.slice(1)} */}
           </p>
-          <span className="font-medium inline-block align-bottom capitalize">
+          <span
+            className="font-medium inline-block align-bottom capitalize"
+            style={{ fontFamily: 'Quinngothic' }}
+          >
             {user.fullName}
             {/* {nameFull[0].toUppercase}
             {nameFull.slice(1)} */}
@@ -85,17 +88,17 @@ export default function Header({
             <Skeleton count={1} width={677} height={24} />
           ) : (
             <>
-              <p className="mr-4">
+              <p className="mr-4" style={{ fontFamily: 'Quinngothic' }}>
                 <span className="font-bold">{watchesCount}</span>
                 {`  `}
                 Watches
               </p>
-              <p className="mr-4">
+              <p className="mr-4" style={{ fontFamily: 'Quinngothic' }}>
                 <span className="font-bold">{followerCount}</span>
                 {`  `}
                 {followerCount === 1 ? `Follower` : `Followers`}
               </p>
-              <p className="mr-4">
+              <p className="mr-4" style={{ fontFamily: 'Quinngothic' }}>
                 <span className="font-bold">{following?.length}</span>
                 {`  `}
                 Following
@@ -107,7 +110,7 @@ export default function Header({
       <div className="flex items-center justify-center flex-col col-span">
         <div className="container flex item-center">
           {editProfile && (
-            <div>
+            <div className="ml-1">
               <div className="flex items-center justify-evenly flex-col col-span">
                 <div className="container mr-2">
                   <button

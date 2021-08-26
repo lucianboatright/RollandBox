@@ -39,7 +39,7 @@ export default function Login() {
       </div>
       <div className="flex flex-col w-2/5">
         <div className="flex flex-col items-center bg-white p-4 border border-grey-primary mb-4 rounded">
-          <h1 className="flex justify-center w-full">
+          <h1 className="flex justify-center w-full text-4xl" style={{ fontFamily: 'Acakadut' }}>
             <p>RollandBox</p>
           </h1>
           {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
@@ -47,34 +47,40 @@ export default function Login() {
           <form onSubmit={handleLogin} method="POST">
             <input
               aria-label="Enter your email address"
+              style={{ fontFamily: 'Quinngothic' }}
               type="text"
-              placeholder="Email Address"
+              placeholder="Email Address ..."
               className="text-sm text-grey-base w-full mr-3 py-5 px-4 h-2 border border-grey-primary rounded mb-2"
               onChange={({ target }) => setEmailAddress(target.value)}
               value={emailAddress}
             />
             <input
               aria-label="Enter your password"
+              style={{ fontFamily: 'Quinngothic' }}
               type="password"
-              placeholder="Password"
+              placeholder="Password ..."
               className="text-sm text-grey-base w-full mr-3 py-5 px-4 h-2 border border-grey-primary rounded mb-2"
               onChange={({ target }) => setPassword(target.value)}
               value={password}
             />
             <button
               disabled={isInvalid}
+              style={{ fontFamily: 'Acakadut' }}
               type="submit"
-              className={`bg-blue-500 text-white w-full border border-grey-primary rounded font-bold
-              ${isInvalid && 'opacity-50'}`}
+              className="bg-blue-600 text-white w-full border border-grey-primary rounded pt-0.5 pb-0.5 text-xl"
             >
               Login
             </button>
           </form>
         </div>
         <div className="flex justify-center items-center flex-col p-4 rounded border border-grey-primary">
-          <p className="text-sm">
+          <p className="text-sm" style={{ fontFamily: 'Quinngothic' }}>
             New Account? &ensp;
-            <Link to={ROUTES.SIGN_UP} className="font-bold text-blue-medium">
+            <Link
+              to={ROUTES.SIGN_UP}
+              style={{ fontFamily: 'Acakadut' }}
+              className="bg-blue-600 border border-grey-primary px-2 py-1 rounded text-white text-xl"
+            >
               Sign up
             </Link>
           </p>
