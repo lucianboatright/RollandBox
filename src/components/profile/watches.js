@@ -1,11 +1,19 @@
 /* eslint-disable no-nested-ternary */
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
+import WatchCard from '../watchCards/ProfileCard';
 import singleBox from '../../images/borders/shortSingleBox.png';
 import '../../styles/watches.css';
 
 export default function Watches({ watches }) {
-  console.log('WATCHES BOX', singleBox);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const viewWatch = () => {
+    console.log('HELLO');
+    setIsOpen(true);
+  };
+
   return (
     <div className="">
       <div className="h-16 border-t border-gray-primary">
@@ -24,17 +32,28 @@ export default function Watches({ watches }) {
                 style={{
                   backgroundImage: `url(${singleBox})`,
                   backgroundPosition: 'center top',
-                  backgroundSize: '8rem 12rem',
+                  backgroundSize: '9rem 14.2rem',
                   backgroundRepeat: 'no-repeat'
                 }}
               >
-                <div className="">
-                  <img
-                    className="border-grey rounded ml-2 mr-2 mt-2 mb-2"
-                    src={watch.imageurl}
-                    alt={`${watch.watchId}`}
-                    width="150px"
-                  />
+                <div className="mt-2">
+                  <button
+                    type="button"
+                    onClick={viewWatch}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter') {
+                        viewWatch();
+                      }
+                    }}
+                  >
+                    <img
+                      className="border-grey rounded ml-2 mr-2 mt-1 mb-2 cursor-pointer"
+                      src={watch.imageurl}
+                      alt={`${watch.watchId}`}
+                      width="170px"
+                    />
+                    <WatchCard open={isOpen} watchInfo={watch} onClose={() => setIsOpen(false)} />
+                  </button>
                 </div>
               </div>
             ))

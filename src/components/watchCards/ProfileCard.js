@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import watchBox from '../../images/borders/Box_single.png';
+import PostCard from './card';
 // import { firebase } from '../../lib/firebase';
 
 const MODAL_STYLES = {
@@ -9,7 +10,7 @@ const MODAL_STYLES = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   backgroundColor: '#FFF',
-  padding: '50px',
+  padding: '40px',
   marginTop: '4rem',
   marginBottom: '4rem'
   // zIndex: 1000
@@ -26,40 +27,41 @@ const OVERLAY_STYLES = {
 };
 
 export default function Modal({ open, onClose, watchInfo }) {
+  const closeCard = (e) => {
+    e.preventDefault();
+    onClose();
+  };
+
   console.log('CONTNET INSIDE MODAL', watchInfo);
+
   if (!open) return null;
   return (
     <>
       <div style={OVERLAY_STYLES}>
         <button
           type="button"
-          onClick={onClose}
+          onClick={closeCard}
           style={{ fontFamily: 'Acakadut' }}
           className="text-white bg-gradient-to-r from-red-600 to-blue-500 rounded px-2 py-0.5 hover:bg-white-600 hover:text-red"
         >
           X Close Modal
         </button>
         <div style={MODAL_STYLES}>
-          {/* <button
-            type="button"
-            onClick={onClose}
-            style={{ fontFamily: 'Acakadut' }}
-            className="text-white bg-gradient-to-r from-red-600 to-blue-500 rounded px-2 py-0.5 hover:bg-white-600 hover:text-red"
-          >
-            X Close Modal
-          </button> */}
-          <div className="overflow-y-scroll h-screen pb-24">
+          <div className="overflow-y-scroll h-screen">
             <div
-              className=""
+              className="pt-3"
               style={{
                 backgroundImage: `url(${watchBox})`,
                 backgroundPosition: 'center top',
-                backgroundSize: '26rem 26rem',
+                backgroundSize: '18rem 44rem',
                 backgroundRepeat: 'no-repeat'
               }}
             >
               <div className="pl-10 pr-10">
-                <span>hello</span>
+                <PostCard
+                  content={watchInfo}
+                  className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
+                />
               </div>
             </div>
           </div>
@@ -71,6 +73,6 @@ export default function Modal({ open, onClose, watchInfo }) {
 
 Modal.propTypes = {
   open: PropTypes.bool,
-  onClose: PropTypes.func,
+  onClose: PropTypes.bool,
   watchInfo: PropTypes.array
 };

@@ -242,20 +242,6 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
                   </>
                 )}
               </div>
-              {/* <div>
-                {!imageBlob ? (
-                  <div> Waiting on upload</div>
-                ) : (
-                  <button
-                    type="button"
-                    className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-blue-500 to-green-400 w-60 bg"
-                    disabled={!completedCrop?.width || !completedCrop?.height}
-                    onClick={handleSubmitUpload}
-                  >
-                    Complete
-                  </button>
-                )}
-              </div> */}
             </div>
           </div>
         </div>
