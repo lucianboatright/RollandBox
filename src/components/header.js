@@ -18,7 +18,7 @@ export default function Header() {
   const history = useHistory();
 
   return (
-    <header className="h-18 bd-white border-b border-gray-primary mb-2">
+    <header className="h-18 bd-white border-b border-gray-primary">
       <div className="container ml-5 w-screen-lg h-full">
         <div className="inline-flex items-center justify-between">
           <div className="flex justify-start text-grey-700 cursor-pointer">

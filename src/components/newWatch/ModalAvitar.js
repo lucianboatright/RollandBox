@@ -173,7 +173,7 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
         >
           X Close Modal
         </button>
-        <div style={MODAL_STYLES}>
+        <div style={MODAL_STYLES} className="rounded">
           <div className="overflow-y-scroll h-80">
             <div className="flex items-stretch">
               <div className="justify-left pb-2">

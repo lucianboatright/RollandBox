@@ -187,7 +187,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
         >
           X Close Modal
         </button>
-        <div style={MODAL_STYLES}>
+        <div style={MODAL_STYLES} className="rounded">
           <div className="overflow-y-scroll h-80">
             <form onSubmit={handleSubmitUpload} method="POST">
               <div className="flex items-start">

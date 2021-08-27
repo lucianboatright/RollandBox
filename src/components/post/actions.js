@@ -16,7 +16,6 @@ export default function Actions({ docId, totalLikes, likedWatch, watchContent, h
   const [isOpen, setIsOpen] = useState(false);
 
   const viewWatch = () => {
-    console.log('HELLO');
     setIsOpen(true);
   };
 

@@ -10,7 +10,7 @@ export default function Timeline() {
   console.log('WATCHES', singleBox);
   return (
     <div className="col-span-3">
-      <div className="pt-10 flex pl-12 pl-12px flex-wrap overflow-hidden">
+      <div className="pt-5 flex pl-12 pl-12px flex-wrap overflow-hidden">
         {!watches ? (
           <>
             {[...new Array(12)].map((_, index) => (

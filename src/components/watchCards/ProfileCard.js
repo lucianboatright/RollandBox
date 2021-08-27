@@ -28,7 +28,8 @@ const OVERLAY_STYLES = {
 
 export default function Modal({ open, onClose, watchInfo }) {
   const closeCard = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
+    console.log('CLOSING');
     onClose();
   };
 
@@ -46,7 +47,7 @@ export default function Modal({ open, onClose, watchInfo }) {
         >
           X Close Modal
         </button>
-        <div style={MODAL_STYLES}>
+        <div style={MODAL_STYLES} className="rounded">
           <div className="overflow-y-scroll h-screen">
             <div
               className="pt-3"

@@ -10,14 +10,14 @@ export default function Watches({ watches }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const viewWatch = () => {
-    console.log('HELLO');
+    console.log('WATCHES PROFILE POP UP', isOpen);
     setIsOpen(true);
   };
 
   return (
     <div className="mr-2 ml-2">
       <div className="h-16 border-t border-gray-primary">
-        <div className="pt-3 pl-4 flex flex-wrap overflow-hidden xl:-mx-4">
+        <div className="pt-1 pl-4 flex flex-wrap overflow-hidden xl:-mx-4">
           {!watches ? (
             <>
               {[...new Array(12)].map((_, index) => (
