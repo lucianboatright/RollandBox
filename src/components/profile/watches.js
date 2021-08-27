@@ -32,7 +32,7 @@ export default function Watches({ watches }) {
                 style={{
                   backgroundImage: `url(${singleBox})`,
                   backgroundPosition: 'center top',
-                  backgroundSize: '9.5rem 14.4rem',
+                  backgroundSize: '11.5rem 15.2rem',
                   backgroundRepeat: 'no-repeat'
                 }}
               >
@@ -46,13 +46,15 @@ export default function Watches({ watches }) {
                       }
                     }}
                   >
-                    <img
-                      className="border-grey rounded ml-2.5 mr-2.5 mt-1 mb-2 cursor-pointer"
-                      src={watch.imageurl}
-                      alt={`${watch.watchId}`}
-                      width="173px"
-                    />
-                    <WatchCard open={isOpen} watchInfo={watch} onClose={() => setIsOpen(false)} />
+                    <div className="pb-2 pt-1">
+                      <img
+                        className="rounded ml-3 mr-2.5 mt-2.5 cursor-pointer"
+                        src={watch.imageurl}
+                        alt={`${watch.watchId}`}
+                        width="170px"
+                      />
+                      <WatchCard open={isOpen} watchInfo={watch} onClose={() => setIsOpen(false)} />
+                    </div>
                   </button>
                 </div>
               </div>

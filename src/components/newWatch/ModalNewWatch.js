@@ -44,8 +44,6 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
   const hiddenFileInput = React.useRef(null);
   const [progress, setProgress] = useState(0);
 
-  console.log('TEST OF OPENING', fileSelected);
-
   const generateDownload = (upImg, completedCrop) => {
     console.log('anything');
     if (!completedCrop || !upImg) {
@@ -259,7 +257,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                         </>
                       )}
                     </div>
-                    <div className="flex justify-center ml-1 h-26 w-2/3">
+                    <div className="flex justify-center ml-4 h-26 w-2/3">
                       <ReactCrop
                         src={upImg}
                         onImageLoaded={onLoad}
@@ -398,9 +396,14 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                         <img
                           alt="logo"
                           src={rightArrow}
-                          className="animate-pulse h-8 w-8 mr-5 inline"
+                          className="animate-pulse h-8 w-8 mr-3 inline"
                         />
                         Add Watch
+                        <img
+                          alt="logo"
+                          src={leftArrow}
+                          className="animate-pulse h-8 w-8 ml-3 inline"
+                        />
                       </button>
                     </>
                   )}
