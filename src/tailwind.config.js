@@ -4,6 +4,12 @@ module.export = {
     },
 
     theme: {
+        animation: {
+            'bounce': {
+                '0%, 100%': { transform: 'rotate(-3deg)' },
+                '50%': { transform: 'rotate(3deg)' },
+            }
+        ,}
         fontSize: {
             sm: ['14px', '20px'],
             base: ['16px', '24px'],

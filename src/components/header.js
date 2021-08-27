@@ -50,11 +50,11 @@ export default function Header() {
                       src={worldBoxLogo}
                       alt="worldbox"
                       className="pr-2"
-                      style={{ width: '6rem' }}
+                      style={{ width: '8rem' }}
                     />
                   </Link>
                   <Link to={`/${user.username}`} aria-label="Dashboard" className="flex-1">
-                    <img src={BoxLogo} alt="worldbox" className="pr-3" style={{ width: '6rem' }} />
+                    <img src={BoxLogo} alt="worldbox" className="pr-3" style={{ width: '8rem' }} />
                   </Link>
                   <button
                     className="flex-1"
