@@ -130,7 +130,7 @@ export default function SignUp() {
             Have an account? &ensp;
             <Link
               to={ROUTES.LOGIN}
-              className="bg-blue-300 px-4 py-1 text-xl rounded text-white"
+              className="bg-blue-500 opacity-50 px-4 py-1 text-xl rounded text-white hover:opacity-100"
               style={{ fontFamily: 'Acakadut' }}
             >
               Login

@@ -87,7 +87,7 @@ export default function Login() {
             <Link
               to={ROUTES.SIGN_UP}
               style={{ fontFamily: 'Acakadut' }}
-              className="bg-blue-400 border border-grey-primary px-2 py-1 rounded text-white text-xl"
+              className="bg-blue-500 opacity-50 border border-grey-primary px-2 py-1 rounded text-white text-xl hover:opacity-100"
             >
               Sign up
             </Link>
