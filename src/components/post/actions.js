@@ -34,7 +34,7 @@ export default function Actions({ docId, totalLikes, likedWatch, watchContent, h
 
   return (
     <>
-      <div className="flex justify-between p-1 mt-0">
+      <div className="flex justify-between pt-0.5 pb-0.5 pl-0.5 mt-0">
         <div className="flex">
           <WatchLogo
             onClick={handleToggleLiked}
@@ -82,8 +82,11 @@ export default function Actions({ docId, totalLikes, likedWatch, watchContent, h
           </div>
         </div>
       </div>
-      <div className="pl-2 py-0">
-        <p className="font-light text-xs font-sx">
+      <div className="pl-1">
+        <p
+          className="font-light text-xs font-sx"
+          style={{ fontFamily: 'Buggie', color: 'rgb(0,15,85)' }}
+        >
           {likes === 1 ? `${likes} like` : `${likes} likes`}
         </p>
       </div>

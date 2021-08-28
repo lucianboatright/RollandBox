@@ -35,7 +35,8 @@ module.export = {
             },
             red: {
                 primary: '#ed4956'
-            }
+            },
+            ink: 'rgb(0,15,85'
         },
     },
     variants: {

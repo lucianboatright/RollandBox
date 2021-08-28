@@ -26,7 +26,7 @@ export default function AddComment({ docId, comments, setComments, commentInput 
   };
 
   return (
-    <div className="border-2 border-grey-800 rounded mb-10">
+    <div className="border-2 border-grey-800 rounded ">
       <form
         className="pl-0 pr-0"
         method="POST"
@@ -49,7 +49,7 @@ export default function AddComment({ docId, comments, setComments, commentInput 
               style={{ width: '4rem' }}
             />
             <button
-              className={`inline-block align-baseline text-xs font-bold text-white bg-gradient-to-r from-pink-400 to-blue-500 ml-2 pt-1.5 pb-1 pr-3 rounded border-grey-800 ${
+              className={`inline-block align-baseline text-xs font-bold text-white bg-gradient-to-r from-pink-400 to-blue-500 ml-1 pl-2 pt-1.5 pb-1 pr-3 rounded border-grey-800 ${
                 !comment && 'opacity-50'
               }`}
               type="button"

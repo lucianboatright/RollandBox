@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import watchBox from '../../images/borders/Box_single.png';
+import watchBox from '../../images/borders/ProfileCardBox.png';
 // import { firebase } from '../../lib/firebase';
 
 const MODAL_STYLES = {
@@ -42,25 +42,25 @@ export default function Modal({ open, onClose, watchInfo }) {
         <div style={MODAL_STYLES} className="rounded">
           <div className="overflow-y-scroll h-screen">
             <div
-              className=""
+              className="pl-1 pr-1 rounded pb-40 content-center"
               style={{
                 backgroundImage: `url(${watchBox})`,
                 backgroundPosition: 'center top',
-                backgroundSize: '22rem 60rem',
+                backgroundSize: '24rem 140rem',
                 backgroundRepeat: 'no-repeat'
               }}
             >
-              <div className="pl-9 pr-8 pb-10 pt-10">
-                <img alt="watch" src={watchInfo.imageurl} className="rounded w-60" />
+              <div className="pl-11 pr-9 pb-10 pt-11">
+                <img alt="watch" src={watchInfo.imageurl} className="rounded w-64" />
               </div>
-              <div>
-                <div>
+              <div style={{ fontFamily: 'Buggie', color: 'rgb(0,15,85)' }} className="pt-10">
+                <div className="border-b-2 w-64 ml-11 text-4xl capitalize">
                   <span>{watchInfo.username}</span>
                 </div>
-                <div>
+                <div className="border-b-2 w-64 ml-11 text-xl">
                   <span>{watchInfo.watchname}</span>
                 </div>
-                <div>
+                <div className="border-b-2 w-64 ml-11">
                   <span style={{ whiteSpace: 'pre-wrap' }}>{watchInfo.watchinfo}</span>
                 </div>
                 {/* <div>
