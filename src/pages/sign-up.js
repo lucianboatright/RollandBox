@@ -65,10 +65,17 @@ export default function SignUp() {
       </div>
       <div className="flex flex-col w-2/5">
         <div className="flex flex-col items-center bg-white p-4 border border-grey-primary mb-4 rounded">
-          <h1 className="flex justify-center w-full">
-            <p>RollandBox</p>
+          <h1 className="flex justify-center w-full text-4xl" style={{ fontFamily: 'Acakadut' }}>
+            <p>Roll & Box</p>
           </h1>
-          {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
+          {error && (
+            <p
+              className="mb-4 text-s text-center text-red-700"
+              style={{ fontFamily: 'Quinngothic' }}
+            >
+              {error}
+            </p>
+          )}
 
           <form onSubmit={handleSignUp} method="POST">
             <input
@@ -77,6 +84,7 @@ export default function SignUp() {
               placeholder="Username"
               className="text-sm text-grey-base w-full mr-3 py-5 px-4 h-2 border border-grey-primary rounded mb-2"
               onChange={({ target }) => setUsername(target.value)}
+              style={{ fontFamily: 'Quinngothic' }}
               value={username}
             />
             <input
@@ -85,6 +93,7 @@ export default function SignUp() {
               placeholder="Full Name"
               className="text-sm text-grey-base w-full mr-3 py-5 px-4 h-2 border border-grey-primary rounded mb-2"
               onChange={({ target }) => setFullName(target.value)}
+              style={{ fontFamily: 'Quinngothic' }}
               value={fullName}
             />
             <input
@@ -93,6 +102,7 @@ export default function SignUp() {
               placeholder="Email Address"
               className="text-sm text-grey-base w-full mr-3 py-5 px-4 h-2 border border-grey-primary rounded mb-2"
               onChange={({ target }) => setEmailAddress(target.value)}
+              style={{ fontFamily: 'Quinngothic' }}
               value={emailAddress}
             />
             <input
@@ -101,12 +111,14 @@ export default function SignUp() {
               placeholder="Password"
               className="text-sm text-grey-base w-full mr-3 py-5 px-4 h-2 border border-grey-primary rounded mb-2"
               onChange={({ target }) => setPassword(target.value)}
+              style={{ fontFamily: 'Quinngothic' }}
               value={password}
             />
             <button
               disabled={isInvalid}
               type="submit"
-              className={`bg-blue-500 text-white w-full border border-grey-primary rounded font-bold
+              style={{ fontFamily: 'Acakadut' }}
+              className={`bg-blue-500 text-white w-full border border-grey-primary rounded text-s my-1 py-1
               ${isInvalid && 'opacity-50'}`}
             >
               Sign Up
@@ -114,9 +126,13 @@ export default function SignUp() {
           </form>
         </div>
         <div className="flex justify-center items-center flex-col p-4 rounded border border-grey-primary">
-          <p className="text-sm">
-            Already have an account? &ensp;
-            <Link to={ROUTES.LOGIN} className="font-bold text-blue-medium">
+          <p className="text-sm" style={{ fontFamily: 'Quinngothic' }}>
+            Have an account? &ensp;
+            <Link
+              to={ROUTES.LOGIN}
+              className="bg-blue-300 px-4 py-1 text-xl rounded text-white"
+              style={{ fontFamily: 'Acakadut' }}
+            >
               Login
             </Link>
           </p>

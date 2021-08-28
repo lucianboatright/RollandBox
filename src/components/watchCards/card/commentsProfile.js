@@ -11,7 +11,7 @@ export default function Comments({ docId, comments: allComments = [], posted, co
       <div className="ml-1 p-0 pt-0 pb-0 pb-32">
         {comments.length >= 1 && (
           <div
-            className="text-xl text-gray-700 mb-0 cursor-pointer"
+            className="text-xl text-gray-700 mb-1 mt-1 cursor-pointer border-b-2 "
             style={{ fontFamily: 'Buggie' }}
           >
             {comments.length} comments

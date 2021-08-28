@@ -53,7 +53,7 @@ export default function Modal({ open, onClose, image, name, comments, info, id }
         <div style={MODAL_STYLES} className="rounded">
           <div className="overflow-y-scroll h-screen">
             <div
-              className="pt-3"
+              className="pt-3 rounded"
               style={{
                 backgroundImage: `url(${watchBox})`,
                 backgroundPosition: 'center top',

@@ -30,41 +30,7 @@ export default function Watches({ watches }) {
               ))}
             </>
           ) : watches?.length > 0 ? (
-            watches.map((watch) => (
-              <WatchCard watchInfo={watch} />
-              // <div
-              //   // key={watch.docId}
-              //   className=""
-              //   style={{
-              //     backgroundImage: `url(${singleBox})`,
-              //     backgroundPosition: 'center top',
-              //     backgroundSize: '11.5rem 15.2rem',
-              //     backgroundRepeat: 'no-repeat'
-              //   }}
-              // >
-              //   <div className="mt-2">
-              //     <button
-              //       type="button"
-              //       onClick={viewWatch}
-              //       onKeyDown={(event) => {
-              //         if (event.key === 'Enter') {
-              //           viewWatch();
-              //         }
-              //       }}
-              //     >
-              //       <div className="pb-2 pt-1">
-              //         <img
-              //           className="rounded ml-3 mr-2.5 mt-2.5 cursor-pointer"
-              //           src={watch.imageurl}
-              //           alt={`${watch.watchId}`}
-              //           width="170px"
-              //         />
-              //         <WatchCard open={isOpen} watchInfo={watch} onClose={closeModal} />
-              //       </div>
-              //     </button>
-              //   </div>
-              // </div>
-            ))
+            watches.map((watch) => <WatchCard watchInfo={watch} />)
           ) : (
             <p className="text-center text-2xl">No watches added yet</p>
           )}

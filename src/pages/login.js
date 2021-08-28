@@ -40,9 +40,16 @@ export default function Login() {
       <div className="flex flex-col w-2/5">
         <div className="flex flex-col items-center bg-white p-4 border border-grey-primary mb-4 rounded">
           <h1 className="flex justify-center w-full text-4xl" style={{ fontFamily: 'Acakadut' }}>
-            <p>RollandBox</p>
+            <p>Roll & Box</p>
           </h1>
-          {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
+          {error && (
+            <p
+              className="mb-4 text-s text-center text-red-700"
+              style={{ fontFamily: 'Quinngothic' }}
+            >
+              {error}
+            </p>
+          )}
 
           <form onSubmit={handleLogin} method="POST">
             <input
@@ -67,7 +74,8 @@ export default function Login() {
               disabled={isInvalid}
               style={{ fontFamily: 'Acakadut' }}
               type="submit"
-              className="bg-blue-600 text-white w-full border border-grey-primary rounded pt-0.5 pb-0.5 text-xl"
+              className={`bg-blue-500 text-white w-full border border-grey-primary rounded text-s my-1 py-1
+              ${isInvalid && 'opacity-50'}`}
             >
               Login
             </button>
@@ -79,7 +87,7 @@ export default function Login() {
             <Link
               to={ROUTES.SIGN_UP}
               style={{ fontFamily: 'Acakadut' }}
-              className="bg-blue-600 border border-grey-primary px-2 py-1 rounded text-white text-xl"
+              className="bg-blue-400 border border-grey-primary px-2 py-1 rounded text-white text-xl"
             >
               Sign up
             </Link>

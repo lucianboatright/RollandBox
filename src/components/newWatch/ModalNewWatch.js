@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import { firebase } from '../../lib/firebase';
 import loading from '../../images/svg_png/loading.png';
 import correct from '../../images/svg_png/correct.png';
-import leftArrow from '../../images/svg_png/left-arrow.png';
-import rightArrow from '../../images/svg_png/right-arrow.png';
+import leftArrow from '../../images/svg_png/arrowLeft.png';
+import rightArrow from '../../images/svg_png/arrowRight.png';
 
 const db = firebase.firestore();
 
