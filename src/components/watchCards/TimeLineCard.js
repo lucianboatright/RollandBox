@@ -63,9 +63,9 @@ export default function Modal({ open, onClose, watchInfo }) {
                 <div>
                   <span style={{ whiteSpace: 'pre-wrap' }}>{watchInfo.watchinfo}</span>
                 </div>
-                <div>
+                {/* <div>
                   <span>{watchInfo.comments}</span>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

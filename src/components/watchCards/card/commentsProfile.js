@@ -2,19 +2,19 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { formatDistance } from 'date-fns';
 import { Link } from 'react-router-dom';
-import AddComment from './add-comment';
+import AddComment from './add-commentProfile';
 
 export default function Comments({ docId, comments: allComments = [], posted, commentInput }) {
   const [comments, setComments] = useState(allComments);
   return (
     <>
-      <div className="ml-1 p-0 pt-0 pb-0">
+      <div className="ml-1 p-0 pt-0 pb-0 pb-32">
         {comments.length >= 1 && (
           <div
             className="text-xl text-gray-700 mb-0 cursor-pointer"
             style={{ fontFamily: 'Buggie' }}
           >
-            View {comments.length} comments
+            {comments.length} comments
           </div>
         )}
         {comments.length === 0 && (
@@ -27,23 +27,20 @@ export default function Comments({ docId, comments: allComments = [], posted, co
         )}
         {comments.length === 1 && <div className="text-xs text-gray-700 cursor-pointer mb-8" />}
         {comments.length === 2 && <div className="text-xs text-gray-700 cursor-pointer mb-4" />}
-        {comments.slice(0, 3).map((item) => (
+        {comments.slice(0).map((item) => (
           <p
             key={`${item.comment}-${item.displayName}`}
-            className="mb-0 text-xl cursor-pointer w-20 truncate"
+            className="text-xl cursor-pointer content-start w-48 text-left"
           >
             <Link to={`/${item.displayName}`} className="inline">
-              <span className="text-xs mr-1 font-bold capitalize" style={{ fontFamily: 'Buggie' }}>
-                {item.displayName}
-              </span>
-            </Link>
-            <div className="has-tooltip inline">
               <span
-                className="text-xl tooltip rounded shadow-lg p-1 bg-gray-100 text-red-500"
+                className="text-xl mr-1 font-bold capitalize inline text-grey"
                 style={{ fontFamily: 'Buggie' }}
               >
-                {item.comment}
+                {item.displayName}:
               </span>
+            </Link>
+            <div className="inline text-xl" style={{ fontFamily: 'Buggie' }}>
               {item.comment}
             </div>
           </p>
@@ -54,12 +51,6 @@ export default function Comments({ docId, comments: allComments = [], posted, co
           </p>
         )}
       </div>
-      <AddComment
-        docId={docId}
-        comments={comments}
-        setComments={setComments}
-        commentInput={commentInput}
-      />
     </>
   );
 }

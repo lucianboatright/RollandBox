@@ -76,9 +76,7 @@ export default function Actions({ docId, totalLikes, likedWatch, watchContent, h
                   viewWatch();
                 }
               }}
-              className={`w-4 mr-2 ml-2 select-none cursor-pointer ${
-                toggleLiked ? 'fill-current text-red-600' : 'text-black-light'
-              }`}
+              className="w-4 mr-2 ml-2 select-none cursor-pointer"
             />
             <WatchCard open={isOpen} watchInfo={watchContent} onClose={() => setIsOpen(false)} />
           </div>

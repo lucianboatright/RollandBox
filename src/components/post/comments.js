@@ -37,7 +37,7 @@ export default function Comments({ docId, comments: allComments = [], posted, co
                 {item.displayName}
               </span>
             </Link>
-            <div className="has-tooltip inline">
+            <div className="has-tooltip inline" style={{ fontFamily: 'Buggie' }}>
               <span
                 className="text-xs tooltip rounded shadow-lg p-1 bg-gray-100 text-red-500"
                 style={{ fontFamily: 'Buggie' }}
