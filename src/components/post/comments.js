@@ -8,29 +8,27 @@ export default function Comments({ docId, comments: allComments = [], posted, co
   const [comments, setComments] = useState(allComments);
   return (
     <>
-      <div className="ml-1 p-0 pb-1">
+      <div className="ml-1 p-0 pb-2.5">
         {comments.length >= 1 && (
           <div
             className="text-xs text-gray-700 mb-0 cursor-pointer"
-            style={{ fontFamily: 'Buggie' }}
+            style={{ fontFamily: 'Buggie', color: 'rgb(0,15,85)' }}
           >
             {comments.length} Comments
           </div>
         )}
         {comments.length === 0 && (
           <div
-            className="text-xs text-gray-700 cursor-pointer mb-14"
-            style={{ fontFamily: 'Buggie' }}
+            className="text-xs text-gray-700 cursor-pointer mb-11"
+            style={{ fontFamily: 'Buggie', color: 'rgb(0,15,85)' }}
           >
-            Add Comments
+            <div className="pb-1.5">Add Comments</div>
           </div>
         )}
         {comments.length === 1 && (
-          <div className="text-xs text-gray-700 cursor-pointer mb-6 pb-4" />
+          <div className="text-xs text-gray-700 cursor-pointer mb-6 pb-2.5" />
         )}
-        {comments.length === 2 && (
-          <div className="text-xs text-gray-700 cursor-pointer mb-4 pb-2" />
-        )}
+        {comments.length === 2 && <div className="text-xs text-gray-700 cursor-pointer mb-4" />}
         {comments.slice(0, 3).map((item) => (
           <p
             key={`${item.comment}-${item.displayName}`}

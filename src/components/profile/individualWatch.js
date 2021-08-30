@@ -6,14 +6,20 @@ import '../../styles/watches.css';
 
 export default function IndividualWatch({ watchInfo }) {
   const [isOpen, setIsOpen] = useState(false);
+  console.log('IsIt OPEN', isOpen);
 
   const closeModal = () => {
+    console.log('CLOSING IN INDIVIDI CARD', isOpen);
     setIsOpen(false);
   };
 
   const viewWatch = () => {
+    console.log('IS THIS OPENINGN IT', isOpen);
     setIsOpen(true);
+    console.log('IS THIS OPENINGN IT 22', isOpen);
   };
+
+  console.log('IsIt OPEN LATER', isOpen);
 
   return (
     <div
@@ -25,17 +31,19 @@ export default function IndividualWatch({ watchInfo }) {
         backgroundRepeat: 'no-repeat'
       }}
     >
-      <div className="mt-2">
-        <button
-          type="button"
-          onClick={viewWatch}
-          onKeyDown={(event) => {
-            if (event.key === 'Enter') {
-              viewWatch();
-            }
-          }}
-        >
-          <div className="pb-2 pt-1">
+      <div className="pt-3 mb-3">
+        <div>
+          <button
+            type="button"
+            className=""
+            onClick={viewWatch}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') {
+                viewWatch();
+              }
+            }}
+          >
+            {/* <div className="pb-2 pt-1"> */}
             <img
               className="rounded ml-3 mr-2.5 mt-2.5 cursor-pointer"
               src={watchInfo.imageurl}
@@ -51,13 +59,14 @@ export default function IndividualWatch({ watchInfo }) {
               id={watchInfo.docId}
               onClose={closeModal}
             />
-          </div>
-        </button>
+          </button>
+          {/* </div> */}
+        </div>
       </div>
     </div>
   );
 }
 
 IndividualWatch.propTypes = {
-  watchInfo: PropTypes.array
+  watchInfo: PropTypes.object
 };

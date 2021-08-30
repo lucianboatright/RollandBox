@@ -22,7 +22,7 @@ export default function SuggestedProfile({
     <div className="flex flex-row items-center align-items justify-between w-40">
       <div className="flex items-center justify-between pr-2">
         <img
-          className="rounded-full w-8 flex mr-2 shadow-lg"
+          className="rounded-full w-8 mr-2 shadow-lg"
           style={{ fontFamily: 'Quinngothic' }}
           src={avatar.imageurl}
           alt={username}

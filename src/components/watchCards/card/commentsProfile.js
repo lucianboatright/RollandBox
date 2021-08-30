@@ -28,7 +28,7 @@ export default function Comments({ docId, comments: allComments = [], posted, co
         {comments.length === 1 && <div className="text-xs text-gray-700 cursor-pointer mb-8" />}
         {comments.length === 2 && <div className="text-xs text-gray-700 cursor-pointer mb-4" />}
         {comments.slice(0).map((item) => (
-          <p
+          <span
             key={`${item.comment}-${item.displayName}`}
             className="text-xl cursor-pointer content-start w-48 text-left"
           >
@@ -43,12 +43,12 @@ export default function Comments({ docId, comments: allComments = [], posted, co
             <div className="inline text-xl" style={{ fontFamily: 'Buggie' }}>
               {item.comment}
             </div>
-          </p>
+          </span>
         ))}
         {!!posted && (
-          <p className="text-xl text-gray-700 uppercase mt-0">
+          <span className="text-xl text-gray-700 uppercase mt-0">
             {formatDistance(posted, new Date())} ago
-          </p>
+          </span>
         )}
       </div>
     </>

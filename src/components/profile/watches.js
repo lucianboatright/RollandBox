@@ -6,19 +6,8 @@ import WatchCard from './individualWatch';
 import singleBox from '../../images/borders/shortSingleBox.png';
 import '../../styles/watches.css';
 
-export default function Watches({ watches }) {
-  // const [isOpen, setIsOpen] = useState(false);
-
-  // const closeModal = () => {
-  //   console.log('CLOSEING MODAL');
-  //   setIsOpen(false);
-  // };
-
-  // const viewWatch = () => {
-  //   console.log('WATCHES PROFILE POP UP', isOpen);
-  //   setIsOpen(true);
-  // };
-
+export default function Watches({ watches, profile }) {
+  console.log('PROFILE INFO INSIDE WATCHES', profile);
   return (
     <div className="mr-2 ml-2">
       <div className="h-16 border-t border-gray-primary">
@@ -30,7 +19,7 @@ export default function Watches({ watches }) {
               ))}
             </>
           ) : watches?.length > 0 ? (
-            watches.map((watch) => <WatchCard watchInfo={watch} />)
+            watches.map((watch) => <WatchCard key={watch.docId} watchInfo={watch} />)
           ) : (
             <p className="text-center text-2xl">No watches added yet</p>
           )}
@@ -41,5 +30,14 @@ export default function Watches({ watches }) {
 }
 
 Watches.propTypes = {
-  watches: PropTypes.array
+  watches: PropTypes.array,
+  profile: PropTypes.shape({
+    docId: PropTypes.string,
+    userId: PropTypes.string,
+    fullName: PropTypes.string,
+    username: PropTypes.string,
+    followers: PropTypes.array,
+    following: PropTypes.array,
+    imageurl: PropTypes.string
+  })
 };

@@ -27,22 +27,22 @@ const OVERLAY_STYLES = {
 };
 
 export default function Modal({ open, onClose, image, name, comments, info, id }) {
-  // const closeCard = (e) => {
-  //   // e.preventDefault();
-  //   console.log('CLOSING');
-  //   onClose();
-  // };
-
+  const closeCard = (event) => {
+    event.preventDefault();
+    console.log('CLOSING');
+    onClose();
+  };
+  console.log('STATE OF OPEN', open);
   if (!open) return null;
   return (
     <>
       <div style={OVERLAY_STYLES}>
         <button
           type="button"
-          onClick={onClose}
+          onClick={closeCard}
           onKeyDown={(event) => {
             if (event.key === 'Enter') {
-              onClose();
+              closeCard();
             }
           }}
           style={{ fontFamily: 'Acakadut' }}
@@ -81,7 +81,7 @@ export default function Modal({ open, onClose, image, name, comments, info, id }
 
 Modal.propTypes = {
   open: PropTypes.bool,
-  onClose: PropTypes.bool,
+  onClose: PropTypes.func,
   image: PropTypes.string,
   name: PropTypes.string,
   comments: PropTypes.array,
