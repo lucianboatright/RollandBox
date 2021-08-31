@@ -7,10 +7,10 @@ export default function User({ username, fullName, avatar }) {
     <Skeleton count={1} height={61} />
   ) : (
     <Link to={`/${username}`} className="grid grid-cols-4 gap-4 mb-3 pb-3 items-center border-b-2">
-      <div className="flex items-center justify-between col-span-1">
-        <img className="rounded-full w-16 flex mr-3 shadow-lg" src={avatar} alt={username} />
+      <div className="items-center col-span-1 w-10 invisible sm:invisible h-10 w-10 md:visible w-10 h-10 lg:visible h-10 w-10 xl:visible w-10 h-10">
+        <img className="rounded-full mr-3 shadow-lg" src={avatar} alt={username} />
       </div>
-      <div className="col-span-3">
+      <div className="col-span-3 ml-3" style={{ fontFamily: 'Quinngothic' }}>
         <p className="font-bold text-sm capitalize">{username}</p>
         <p className="text-sm capitalize">{fullName}</p>
       </div>

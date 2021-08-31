@@ -1,15 +1,17 @@
 /* eslint-disable no-nested-ternary */
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
-import backGrid from '../../images/borders/wood_watch_grid.png';
+import WatchCard from './individualWatch';
+import singleBox from '../../images/borders/shortSingleBox.png';
 import '../../styles/watches.css';
 
-export default function Watches({ watches }) {
-  console.log('WATCHES', watches);
+export default function Watches({ watches, profile }) {
+  console.log('PROFILE INFO INSIDE WATCHES', profile);
   return (
-    <div className="">
+    <div className="mr-2 ml-2">
       <div className="h-16 border-t border-gray-primary">
-        <div className="pt-1 flex flex-wrap overflow-hidden xl:-mx-4">
+        <div className="pt-1 flex flex-wrap overflow-hidden flex h-screen justify-center xl:-mx-4">
           {!watches ? (
             <>
               {[...new Array(12)].map((_, index) => (
@@ -17,27 +19,7 @@ export default function Watches({ watches }) {
               ))}
             </>
           ) : watches?.length > 0 ? (
-            watches.map((watch) => (
-              <div
-                key={watch.docId}
-                className="pt-1"
-                style={{
-                  backgroundImage: `url(${backGrid})`,
-                  backgroundPosition: 'top',
-                  backgroundSize: '162px',
-                  backgroundRepeat: 'repeat'
-                }}
-              >
-                <div className="rounded-full">
-                  <img
-                    className="p-2"
-                    src={watch.imageurl}
-                    alt={`${watch.watchId}`}
-                    width="150px"
-                  />
-                </div>
-              </div>
-            ))
+            watches.map((watch) => <WatchCard key={watch.docId} watchInfo={watch} />)
           ) : (
             <p className="text-center text-2xl">No watches added yet</p>
           )}
@@ -48,5 +30,14 @@ export default function Watches({ watches }) {
 }
 
 Watches.propTypes = {
-  watches: PropTypes.array.isRequired
+  watches: PropTypes.array,
+  profile: PropTypes.shape({
+    docId: PropTypes.string,
+    userId: PropTypes.string,
+    fullName: PropTypes.string,
+    username: PropTypes.string,
+    followers: PropTypes.array,
+    following: PropTypes.array,
+    imageurl: PropTypes.string
+  })
 };

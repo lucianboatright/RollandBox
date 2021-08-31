@@ -2,6 +2,10 @@ import React, { useState, useCallback, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ReactCrop from 'react-image-crop';
 import { firebase } from '../../lib/firebase';
+import rightArrow from '../../images/svg_png/arrowRight.png';
+import leftArrow from '../../images/svg_png/arrowLeft.png';
+import loading from '../../images/svg_png/loading.png';
+import correct from '../../images/svg_png/correct.png';
 
 const db = firebase.firestore();
 
@@ -34,7 +38,9 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
   const [imageBlob, setImageBlob] = useState(null);
   const [imagedownload, setImageDownload] = useState(false);
   const [downloadAtempt, setDownloadAtempt] = useState(false);
+  const [fileDownload, setFileDownload] = useState(false);
   const [progress, setProgress] = useState(0);
+  const hiddenFileInput = React.useRef(null);
 
   const generateDownload = (upImg, completedCrop) => {
     console.log('anything');
@@ -57,6 +63,7 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
       const reader = new FileReader();
       reader.addEventListener('load', () => setUpImg(reader.result));
       reader.readAsDataURL(e.target.files[0]);
+      setFileDownload(true);
     }
   };
 
@@ -105,6 +112,10 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
       }
     );
     onClose();
+  };
+
+  const handleClick = (e) => {
+    hiddenFileInput.current.click();
   };
 
   const closeModal = (e) => {
@@ -162,22 +173,49 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
         >
           X Close Modal
         </button>
-        <div style={MODAL_STYLES}>
+        <div style={MODAL_STYLES} className="rounded">
           <div className="overflow-y-scroll h-80">
             <div className="flex items-stretch">
-              <div className="justify-left">
+              <div className="justify-left pb-2">
                 <img className="rounded-full h-12 mr-2" src={userAvatar} alt={profile} />
               </div>
-              <div className="justify-left">
+              <div className="justify-left capitalize" style={{ fontFamily: 'Quinngothic' }}>
                 <p>Hello {profile}</p>
-                <p>Select and crop for your Avitar</p>
+                <p>Download your Avitar</p>
               </div>
             </div>
             <div className="App">
-              <div className="rounded bg-gradient-to-r from-blue-500 to-pink-600 w-60 bg mt-1 mb-1 pl-1 pr-1 pt-1 pb-1">
-                <input className="m-2 w-60" type="file" accept="image/*" onChange={onSelectFile} />
-              </div>
-              <div className="flex justify-center ml-0 h-26 w-2/3">
+              {fileDownload === false ? (
+                <div className="pt-1 text-center w-60 h-10 text-green-900 rounded bg-gradient-to-r from-green-400 to-yellow-500">
+                  <img alt="logo" src={rightArrow} className="animate-pulse h-8 w-8 mr-3 inline" />
+                  <button onClick={handleClick} type="button" style={{ fontFamily: 'Acakadut' }}>
+                    Browse Files for Upload ...
+                  </button>
+                  <input
+                    className="m-2 w-48"
+                    style={{ display: 'none' }}
+                    ref={hiddenFileInput}
+                    type="file"
+                    accept="image/*"
+                    onChange={onSelectFile}
+                  />
+                </div>
+              ) : (
+                <div className="pt-1 text-center w-60 h-10 text-green-900 rounded bg-gradient-to-r from-green-400 to-yellow-500">
+                  <button onClick={handleClick} type="button" style={{ fontFamily: 'Acakadut' }}>
+                    Browse Files for Upload ...
+                  </button>
+                  <input
+                    className="m-2 w-48"
+                    style={{ display: 'none' }}
+                    ref={hiddenFileInput}
+                    type="file"
+                    accept="image/*"
+                    onChange={onSelectFile}
+                  />
+                </div>
+              )}
+              <div className="flex justify-center ml-0 pt-2 h-26 w-2/3">
                 <ReactCrop
                   src={upImg}
                   onImageLoaded={onLoad}
@@ -197,65 +235,86 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
                   />
                 </div>
               </div>
-              <div>
+              {imagedownload === false ? (
+                <>
+                  <div>
+                    {fileDownload === false ? (
+                      <>
+                        <span />
+                      </>
+                    ) : (
+                      <button
+                        type="button"
+                        className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 text-green-800 bg-gradient-to-r from-green-400 to-yellow-500 w-60 bg"
+                        disabled={!completedCrop?.width || !completedCrop?.height}
+                        onClick={imageBlobGenerater}
+                        style={{ fontFamily: 'Acakadut' }}
+                      >
+                        <img
+                          alt="logo"
+                          src={rightArrow}
+                          className="animate-pulse h-8 w-8 mr-3 inline"
+                        />
+                        Upload Image
+                      </button>
+                    )}
+                  </div>
+                  <div>
+                    {downloadAtempt === true ? (
+                      <>
+                        <div>
+                          {imagedownload === false ? (
+                            <>
+                              <div
+                                style={{ fontFamily: 'Acakadut' }}
+                                className="rounded mb-1 pl-2 pr-2 pt-1 pb-1 w-60 text-red-700 inline-block align-middle"
+                              >
+                                <img
+                                  alt="logo"
+                                  src={loading}
+                                  className="animate-spin h-6 w-6 mr-3 inline"
+                                  // viewBox="0 0 24 24"
+                                />
+                                <span className="inline">Please Try Again</span>
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              <div
+                                style={{ fontFamily: 'Acakadut' }}
+                                className="rounded mb-1 pl-2 pr-2 pt-2 w-60 text-green-900"
+                              >
+                                <img
+                                  alt="logo"
+                                  src={correct}
+                                  className="h-8 w-8 mr-3 inline"
+                                  // viewBox="0 0 24 24"
+                                />
+                                <span className="inline">Ready To Upload</span>
+                              </div>
+                            </>
+                          )}
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <span />
+                      </>
+                    )}
+                  </div>
+                </>
+              ) : (
                 <button
                   type="button"
-                  className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-green-400 to-blue-500 w-60 bg"
-                  disabled={!completedCrop?.width || !completedCrop?.height}
-                  onClick={imageBlobGenerater}
+                  onClick={handleSubmitUpload}
                   style={{ fontFamily: 'Acakadut' }}
+                  className="rounded mt-3 text-xl mb-1 pr-2 pt-1 pb-1 w-60 text-green-800 bg-gradient-to-r from-green-400 to-yellow-500 w-60 bg"
                 >
-                  Upload Image
+                  <img alt="logo" src={rightArrow} className="animate-pulse h-8 w-8 mr-3 inline" />
+                  Finish
+                  <img alt="logo" src={leftArrow} className="animate-pulse h-8 w-8 ml-3 inline" />
                 </button>
-              </div>
-              <div>
-                {downloadAtempt === true ? (
-                  <>
-                    <div>
-                      {imagedownload === false ? (
-                        <>
-                          <div
-                            style={{ fontFamily: 'Acakadut' }}
-                            className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-red-400 to-blue-500"
-                          >
-                            Please Try Again
-                          </div>
-                        </>
-                      ) : (
-                        <>
-                          <button
-                            type="button"
-                            className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-blue-500 to-green-400 w-60 bg"
-                            disabled={!completedCrop?.width || !completedCrop?.height}
-                            onClick={handleSubmitUpload}
-                            style={{ fontFamily: 'Acakadut' }}
-                          >
-                            Complete
-                          </button>
-                        </>
-                      )}
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <span />
-                  </>
-                )}
-              </div>
-              {/* <div>
-                {!imageBlob ? (
-                  <div> Waiting on upload</div>
-                ) : (
-                  <button
-                    type="button"
-                    className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-blue-500 to-green-400 w-60 bg"
-                    disabled={!completedCrop?.width || !completedCrop?.height}
-                    onClick={handleSubmitUpload}
-                  >
-                    Complete
-                  </button>
-                )}
-              </div> */}
+              )}
             </div>
           </div>
         </div>

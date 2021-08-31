@@ -8,24 +8,26 @@ export default function Comments({ docId, comments: allComments = [], posted, co
   const [comments, setComments] = useState(allComments);
   return (
     <>
-      <div className="ml-1 p-0 pt-0 pb-0">
+      <div className="ml-1 p-0 pb-0.5">
         {comments.length >= 1 && (
           <div
             className="text-xs text-gray-700 mb-0 cursor-pointer"
-            style={{ fontFamily: 'Buggie' }}
+            style={{ fontFamily: 'Buggie', color: 'rgb(0,15,85)' }}
           >
-            View {comments.length} comments
+            {comments.length} Comments
           </div>
         )}
         {comments.length === 0 && (
           <div
-            className="text-xs text-gray-700 cursor-pointer mb-12"
-            style={{ fontFamily: 'Buggie' }}
+            className="text-xs text-gray-700 cursor-pointer mb-11"
+            style={{ fontFamily: 'Buggie', color: 'rgb(0,15,85)' }}
           >
-            Add Comments
+            <div className="pb-1.5">Add Comments</div>
           </div>
         )}
-        {comments.length === 1 && <div className="text-xs text-gray-700 cursor-pointer mb-8" />}
+        {comments.length === 1 && (
+          <div className="text-xs text-gray-700 cursor-pointer mb-6 pb-2.5" />
+        )}
         {comments.length === 2 && <div className="text-xs text-gray-700 cursor-pointer mb-4" />}
         {comments.slice(0, 3).map((item) => (
           <p
@@ -33,14 +35,20 @@ export default function Comments({ docId, comments: allComments = [], posted, co
             className="mb-0 text-xs cursor-pointer w-20 truncate"
           >
             <Link to={`/${item.displayName}`} className="inline">
-              <span className="text-xs mr-1 font-bold capitalize" style={{ fontFamily: 'Buggie' }}>
-                {item.displayName}
+              <span
+                className="text-xs mr-1 font-bold capitalize"
+                style={{ fontFamily: 'Buggie', color: 'rgb(0,15,85)' }}
+              >
+                {item.displayName}:
               </span>
             </Link>
-            <div className="has-tooltip inline">
+            <div
+              className="has-tooltip inline"
+              style={{ fontFamily: 'Buggie', color: 'rgb(0,15,85)' }}
+            >
               <span
-                className="text-xs tooltip rounded shadow-lg p-1 bg-gray-100 text-red-500"
-                style={{ fontFamily: 'Buggie' }}
+                className="text-xl tooltip rounded shadow-lg p-1 bg-gray-100"
+                style={{ fontFamily: 'Buggie', color: 'rgb(0,15,85)' }}
               >
                 {item.comment}
               </span>

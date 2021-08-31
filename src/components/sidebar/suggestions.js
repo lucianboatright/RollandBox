@@ -24,7 +24,9 @@ export default function Suggestions({ userId, following, followers, loggedInUser
   ) : profiles.length > 0 ? (
     <div className="rounded flex flex-col">
       <div className="text-sm flex items-center align-items justify-between mb-1">
-        <p className="font-bold text-gray-base">Suggested Users</p>
+        <p className="font-bold text-gray-base" style={{ fontFamily: 'Quinngothic' }}>
+          Suggested Users
+        </p>
       </div>
       <div className="mt-1 grid gap-2">
         {profiles.map((profile) => (
