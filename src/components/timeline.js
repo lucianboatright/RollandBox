@@ -9,8 +9,8 @@ export default function Timeline() {
   const { watches } = useWatches();
   console.log('WATCHES', singleBox);
   return (
-    <div className="col-span-3">
-      <div className="pt-5 flex pl-12 pl-12px flex-wrap overflow-hidden">
+    <div className="col-span-4">
+      <div className="pt-5 flex pl-0 pl-12px flex-wrap overflow-hidden">
         {!watches ? (
           <>
             {[...new Array(12)].map((_, index) => (

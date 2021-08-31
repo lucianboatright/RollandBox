@@ -20,30 +20,32 @@ export default function Header() {
   return (
     <header className="h-18 bd-white border-b border-gray-primary">
       <div className="container ml-5 w-screen-lg h-full">
-        {/* <div className=""> */}
-        <div className="text-grey-700 cursor-pointer">
-          <div className="inline ml-16 align-middle w-64 pt-2">
-            <span className="align-middle text-4xl ml-2" style={{ fontFamily: 'Acakadut' }}>
-              Roll & Box
-            </span>
+        <div className="space-x-4 sm:flex md:flex lg:flex xl:flex">
+          <div className="cursor-pointer pl-5 flex-1 inline sm:mt-2 md:mt-2 lg:mt-2 xl:mt-2">
+            <div className="w-64 pt-2 inline">
+              <span
+                className="text-4xl sm:text-3xl md:text-5xl lg:text-5xl xl:text-5xl"
+                style={{ fontFamily: 'Acakadut' }}
+              >
+                Roll & Box
+              </span>
+            </div>
+            <div className="inline">
+              <Link to={ROUTES.DASHBOARD}>
+                <img
+                  className=" w-0 invisible sm:invisible md:invisible lg:visible xl:visible sm:w-10 lg:w-28 xl:w-28"
+                  src={image1}
+                  alt="Roll and Box"
+                  style={{ maxWidth: '30rem' }}
+                />
+              </Link>
+            </div>
           </div>
-          <div className="inline">
-            <Link to={ROUTES.DASHBOARD}>
-              <img
-                className="mt-1 w-40"
-                src={image1}
-                alt="Roll and Box"
-                style={{ maxWidth: '30rem' }}
-              />
-            </Link>
-          </div>
-        </div>
-        <div className="text-grey-700 flex justify-end">
-          {user ? (
-            <>
-              <div className="table">
-                <div className="table-row-group ml-10">
-                  <Link to={ROUTES.DASHBOARD} aria-label="Dashboard" className="table-cell">
+          <div className="justify-end inline ">
+            {user ? (
+              <>
+                <div className="">
+                  <Link to={ROUTES.DASHBOARD} aria-label="Dashboard" className="inline">
                     <img
                       src={worldBoxLogo}
                       alt="worldbox"
@@ -51,11 +53,11 @@ export default function Header() {
                       style={{ width: '5rem' }}
                     />
                   </Link>
-                  <Link to={`/${user.username}`} aria-label="Dashboard" className="table-cell">
+                  <Link to={`/${user.username}`} aria-label="Dashboard" className="inline">
                     <img src={BoxLogo} alt="worldbox" className="pr-3" style={{ width: '5rem' }} />
                   </Link>
                   <button
-                    className="table-cell"
+                    className="inline"
                     type="button"
                     title="sign-out"
                     onClick={() => {
@@ -76,7 +78,7 @@ export default function Header() {
                       style={{ maxWidth: '10rem' }}
                     />
                   </button>
-                  <div className="table-cell cursor-pointer table-cell">
+                  <div className="cursor-pointer inline">
                     <Link to={`/${user.username}`}>
                       <img
                         className="rounded-full shadow-lg"
@@ -87,30 +89,29 @@ export default function Header() {
                     </Link>
                   </div>
                 </div>
-              </div>
-            </>
-          ) : (
-            <>
-              <Link to={ROUTES.LOGIN}>
-                <button
-                  type="button"
-                  className="bg-blue-700 font-bold text-sm rounded text-white w-20 h-8"
-                >
-                  Login
-                </button>
-              </Link>
-              <Link to={ROUTES.SIGN_UP}>
-                <button
-                  type="button"
-                  className="font-bold text-sm rounded text-blue-700 w-20 h-8 border"
-                >
-                  Sign-Up
-                </button>
-              </Link>
-            </>
-          )}
+              </>
+            ) : (
+              <>
+                <Link to={ROUTES.LOGIN}>
+                  <button
+                    type="button"
+                    className="bg-blue-700 font-bold text-sm rounded text-white w-20 h-8"
+                  >
+                    Login
+                  </button>
+                </Link>
+                <Link to={ROUTES.SIGN_UP}>
+                  <button
+                    type="button"
+                    className="font-bold text-sm rounded text-blue-700 w-20 h-8 border"
+                  >
+                    Sign-Up
+                  </button>
+                </Link>
+              </>
+            )}
+          </div>
         </div>
-        {/* </div> */}
       </div>
     </header>
   );

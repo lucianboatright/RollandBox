@@ -39,7 +39,7 @@ export default function AddComment({ docId, comments, setComments, commentInput 
             <input
               aria-label="Add a Comment"
               autoComplete="off"
-              className="text-xs text-gray-600 mr-0"
+              className="text-xs text-gray-600"
               type="text"
               name="add-comment"
               placeholder="Comment ..."
@@ -50,7 +50,7 @@ export default function AddComment({ docId, comments, setComments, commentInput 
             />
             <button
               className={`inline-block align-baseline text-xs font-bold text-white bg-gradient-to-r from-pink-400 to-blue-500 pl-2 pt-1.5 pb-1 pr-3 rounded border-grey-800 ${
-                !comment && 'opacity-50'
+                !comment && 'opacity-80'
               }`}
               type="button"
               disabled={comment.length < 1}
