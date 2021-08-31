@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import watchBox from '../../images/borders/ProfileCardBox.png';
+import watchBox from '../../images/borders/ProfileCardBoxEdit.png';
 // import { firebase } from '../../lib/firebase';
 
 const MODAL_STYLES = {
@@ -47,11 +47,11 @@ export default function Modal({ open, onClose, watchInfo }) {
         <div style={MODAL_STYLES} className="rounded">
           <div className="overflow-y-scroll h-screen">
             <div
-              className="pl-1 pr-1 rounded pb-40 content-center"
+              className="pl-1 pr-1 pt-3 rounded pb-40 content-center"
               style={{
                 backgroundImage: `url(${watchBox})`,
                 backgroundPosition: 'center top',
-                backgroundSize: '24rem 140rem',
+                backgroundSize: '24rem 146rem',
                 backgroundRepeat: 'no-repeat'
               }}
             >
@@ -68,9 +68,15 @@ export default function Modal({ open, onClose, watchInfo }) {
                 <div className="border-b-2 w-64 ml-11">
                   <span style={{ whiteSpace: 'pre-wrap' }}>{watchInfo.watchinfo}</span>
                 </div>
-                {/* <div>
-                  <span>{watchInfo.comments}</span>
-                </div> */}
+                <div>
+                  {watchInfo.comments.map((item) => (
+                    <p key={`${item.content}-${item.displayName}`} className="w-64 ml-11">
+                      <span className="capitalize">
+                        {item.displayName}: {item.comment}
+                      </span>
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

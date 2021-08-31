@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import watchBox from '../../images/borders/ProfileCardBox.png';
+import watchBox from '../../images/borders/ProfileCardBoxEdit.png';
 import PostCard from './card/indexProfile';
 // import { firebase } from '../../lib/firebase';
 

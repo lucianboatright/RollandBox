@@ -5,6 +5,7 @@ import Image from './image';
 import Actions from './actions';
 import Footer from './footer';
 import Comments from './comments';
+import paper from '../../images/borders/paper-1.jpg';
 
 export default function Post({ content }) {
   const commentInput = useRef(null);
@@ -14,25 +15,35 @@ export default function Post({ content }) {
     <div className="">
       {/* <div className="rounded col-span-1 border bg-white border-grey-primary"> */}
       <Image className="" src={content.imageurl} caption={content.watchinfo} />
-      <Header className="" username={content.username} avatar={content.user} />
-      <Actions
-        docId={content.username}
-        totalLikes={(content.likes || []).length}
-        likedWatch={content.userLikedWatch}
-        handleFocus={handleFocus}
-        watchContent={content}
-      />
-      <Footer
-        caption={content.watchinfo}
-        username={content.username}
-        watchName={content.watchname}
-      />
-      <Comments
-        docId={content.docId}
-        comments={content.comments}
-        posted={content.dateCreated}
-        commentInput={commentInput}
-      />
+      <div
+        className="rounded ml-0.5"
+        style={{
+          backgroundImage: `url(${paper})`,
+          backgroundPosition: '',
+          backgroundSize: '30rem 30rem',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        <Header className="" username={content.username} avatar={content.user} />
+        <Actions
+          docId={content.username}
+          totalLikes={(content.likes || []).length}
+          likedWatch={content.userLikedWatch}
+          handleFocus={handleFocus}
+          watchContent={content}
+        />
+        <Footer
+          caption={content.watchinfo}
+          username={content.username}
+          watchName={content.watchname}
+        />
+        <Comments
+          docId={content.docId}
+          comments={content.comments}
+          posted={content.dateCreated}
+          commentInput={commentInput}
+        />
+      </div>
     </div>
   );
 }

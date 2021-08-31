@@ -20,6 +20,7 @@ module.export = {
             red: theme('color.red.primary')
         }),
         color: {
+            ink: '#000F55',
             white: '#ffffff',
             blue: {
                 medium: '#005c98'
@@ -35,8 +36,7 @@ module.export = {
             },
             red: {
                 primary: '#ed4956'
-            },
-            ink: 'rgb(0,15,85'
+            }
         },
     },
     variants: {

@@ -29,8 +29,8 @@ export default function SuggestedProfile({
         />
         <Link to={`/${username}`}>
           <p
-            className="font-bold text-sm text-pink-600 capitalize"
-            style={{ fontFamily: 'Quinngothic' }}
+            className="font-bold text-sm capitalize text-ink"
+            style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}
           >
             {username}
           </p>
