@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import Header from '../components/header';
 import Sidebar from '../components/sidebar';
 import Timeline from '../components/timeline';
+import UserContext from '../context/user';
 
 export default function Dashboard() {
   useEffect(() => {

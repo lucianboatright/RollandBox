@@ -23,7 +23,6 @@ export async function getUserByUsername(username) {
     docId: item.id
   }));
 }
-
 export async function getUserByUserId(userId) {
   const result = await firebase.firestore().collection('users').where('userId', '==', userId).get();
 
@@ -33,6 +32,31 @@ export async function getUserByUserId(userId) {
   }));
 
   return user;
+
+  // console.log('USERID', userId);
+  // const result = await firebase
+  //   .firestore()
+  //   .collection('users')
+  //   .doc(userId)
+  //   .get()
+  //   .then((doc) => {
+  //     if (doc.exists) {
+  //       return doc.data();
+  //     }
+  //     console.log('nooooopp');
+  //   })
+  //   .catch((error) => {
+  //     console.log('error', error);
+  //   });
+
+  // console.log('Getuserbyuserid resoo', result);
+  // const user = result.docs.map((item) => ({
+  //   ...item.data(),
+  //   docId: item.id
+  // }));
+  // console.log('Getuserbyuserid', user);
+
+  // return user;
 }
 
 export async function getSuggestedProfiles(userId, following) {
@@ -79,7 +103,7 @@ export async function getWatches(userId, following) {
   const result = await firebase
     .firestore()
     .collection('watches')
-    .where('userId', 'in', following)
+    .where('userid', 'in', following)
     .get();
   const userFollowedWatches = result.docs.map((watch) => ({
     ...watch.data(),
