@@ -522,7 +522,7 @@ audio,
 iframe,
 embed,
 object {
-  /* display: block; */
+  display: block;
   vertical-align: middle;
 }
 
