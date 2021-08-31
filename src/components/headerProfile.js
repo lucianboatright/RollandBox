@@ -20,20 +20,20 @@ export default function Header() {
   return (
     <header className="h-18 bd-white border-b border-gray-primary mb-2">
       <div className="container ml-5 w-screen-lg h-full">
-        <div className="inline-flex items-center justify-between">
-          <div className="flex justify-start text-grey-700 cursor-pointer">
-            <div className="mt-4 w-30 ml-48">
+        <div className="flex w-screen justify-center ">
+          <div className="cursor-pointer flex-1 inline ">
+            <div className="w-64 pt-2 inline">
               <span
-                className="inline jkhh align-middle text-4xl ml-1.5"
+                className="text-4xl pl-1 sm:text-3xl md:text-5xl lg:text-5xl xl:text-5xl"
                 style={{ fontFamily: 'Acakadut' }}
               >
                 Roll & Box
               </span>
             </div>
-            <div>
+            <div className="inline">
               <Link to={ROUTES.DASHBOARD}>
                 <img
-                  className="mt-1 mb-0.5 inline "
+                  className="w-0 invisible sm:invisible md:invisible lg:visible xl:visible sm:w-10 lg:w-28 xl:w-28"
                   src={image1}
                   alt="Roll and Box"
                   style={{ width: '8rem' }}
@@ -41,11 +41,11 @@ export default function Header() {
               </Link>
             </div>
           </div>
-          <div className="text-grey-700">
+          <div className="justify-start inline">
             {user ? (
               <>
-                <div className="inline-flex items-center ml-56">
-                  <Link to={ROUTES.DASHBOARD} aria-label="Dashboard" className="">
+                <div className="i">
+                  <Link to={ROUTES.DASHBOARD} aria-label="Dashboard" className="inline">
                     <img
                       src={worldBoxLogo}
                       alt="worldbox"
@@ -53,11 +53,11 @@ export default function Header() {
                       style={{ width: '6rem' }}
                     />
                   </Link>
-                  <Link to={`/${user.username}`} aria-label="Dashboard" className="">
+                  <Link to={`/${user.username}`} aria-label="Dashboard" className="inline">
                     <img src={BoxLogo} alt="worldbox" className="pr-1" style={{ width: '6rem' }} />
                   </Link>
                   <button
-                    className=""
+                    className="inline"
                     type="button"
                     title="sign-out"
                     onClick={() => {
@@ -74,7 +74,7 @@ export default function Header() {
                     <img
                       src={signOutLogo}
                       alt="worldbox"
-                      className="pr-2 pl-1 mt-0.5 h-12"
+                      className="h-10 pr-3"
                       // style={{ width: '6rem' }}
                     />
                   </button>

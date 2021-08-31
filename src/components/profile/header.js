@@ -53,7 +53,7 @@ export default function Header({
           <img className="rounded-full h-30 w-auto flex shadow-lg" src={imgurl} alt="imgurl" />
         )}
       </div>
-      <div className="flex items-center justify-center flex-col col-span border-r-2 border-grey-700">
+      <div className="flex items-center justify-center flex-col col-span border-r-2 border-grey-700 pl-3 sm:pl-0 md:pl-0 lg:pl-0 xl:pl-0">
         <div className="container flex item-center">
           <p className="text-2xl mr-4 capitalize" style={{ fontFamily: 'Quinngothic' }}>
             {profileUsername}

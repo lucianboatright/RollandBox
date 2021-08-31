@@ -20,7 +20,7 @@ export default function Header() {
   return (
     <header className="h-18 bd-white border-b border-gray-primary">
       <div className="container ml-5 w-screen-lg h-full">
-        <div className="space-x-4 sm:flex md:flex lg:flex xl:flex">
+        <div className="flex w-screen justify-center">
           <div className="cursor-pointer pl-5 flex-1 inline sm:mt-2 md:mt-2 lg:mt-2 xl:mt-2">
             <div className="w-64 pt-2 inline">
               <span
@@ -41,20 +41,25 @@ export default function Header() {
               </Link>
             </div>
           </div>
-          <div className="justify-end inline ">
+          <div className="justify-end inline pr-5">
             {user ? (
               <>
-                <div className="">
+                <div className="pt-1">
                   <Link to={ROUTES.DASHBOARD} aria-label="Dashboard" className="inline">
                     <img
                       src={worldBoxLogo}
                       alt="worldbox"
                       className="pr-2"
-                      style={{ width: '5rem' }}
+                      style={{ width: '5.3rem' }}
                     />
                   </Link>
                   <Link to={`/${user.username}`} aria-label="Dashboard" className="inline">
-                    <img src={BoxLogo} alt="worldbox" className="pr-3" style={{ width: '5rem' }} />
+                    <img
+                      src={BoxLogo}
+                      alt="worldbox"
+                      className="pr-3"
+                      style={{ width: '5.4rem' }}
+                    />
                   </Link>
                   <button
                     className="inline"
@@ -74,11 +79,11 @@ export default function Header() {
                     <img
                       src={signOutLogo}
                       alt="worldbox"
-                      className="h-10 pr-3"
+                      className="h-12 pr-2"
                       style={{ maxWidth: '10rem' }}
                     />
                   </button>
-                  <div className="cursor-pointer inline">
+                  <div className="cursor-pointer inline pr-1">
                     <Link to={`/${user.username}`}>
                       <img
                         className="rounded-full shadow-lg"
