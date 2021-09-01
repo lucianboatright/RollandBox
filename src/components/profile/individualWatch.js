@@ -31,7 +31,7 @@ export default function IndividualWatch({ watchInfo }) {
         backgroundRepeat: 'no-repeat'
       }}
     >
-      <div className="pt-3 mb-3">
+      <div className="pt-3 mb-4">
         <div>
           <button
             type="button"
@@ -43,24 +43,25 @@ export default function IndividualWatch({ watchInfo }) {
               }
             }}
           >
-            {/* <div className="pb-2 pt-1"> */}
-            <img
-              className="rounded ml-3 mr-2.5 mt-2.5 cursor-pointer"
-              src={watchInfo.imageurl}
-              alt={`${watchInfo.watchId}`}
-              width="170px"
-            />
-            <WatchCard
-              open={isOpen}
-              image={watchInfo.imageurl}
-              name={watchInfo.watchname}
-              comments={watchInfo.comments}
-              info={watchInfo.watchinfo}
-              id={watchInfo.docId}
-              onClose={closeModal}
-            />
+            <div>
+              {/* <div className="pb-2 pt-1"> */}
+              <img
+                className="rounded ml-3 mr-2.5 mt-2.5 cursor-pointer"
+                src={watchInfo.imageurl}
+                alt={`${watchInfo.watchId}`}
+                width="170px"
+              />
+              <WatchCard
+                open={isOpen}
+                image={watchInfo.imageurl}
+                name={watchInfo.watchname}
+                comments={watchInfo.comments}
+                info={watchInfo.watchinfo}
+                id={watchInfo.docId}
+                onClose={closeModal}
+              />
+            </div>
           </button>
-          {/* </div> */}
         </div>
       </div>
     </div>

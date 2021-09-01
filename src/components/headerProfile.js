@@ -74,8 +74,8 @@ export default function Header() {
                     <img
                       src={signOutLogo}
                       alt="worldbox"
-                      className="h-10 pr-3"
-                      // style={{ width: '6rem' }}
+                      className="pt-0.5 pr-3"
+                      style={{ width: '3.8rem', paddingTop: '0.2rem' }}
                     />
                   </button>
                   {/* <div className="cursor-pointer">

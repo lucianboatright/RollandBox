@@ -44,21 +44,21 @@ export default function Header() {
           <div className="justify-end inline pr-5">
             {user ? (
               <>
-                <div className="pt-1">
+                <div className="">
                   <Link to={ROUTES.DASHBOARD} aria-label="Dashboard" className="inline">
                     <img
                       src={worldBoxLogo}
                       alt="worldbox"
                       className="pr-2"
-                      style={{ width: '5.3rem' }}
+                      style={{ width: '6rem' }}
                     />
                   </Link>
                   <Link to={`/${user.username}`} aria-label="Dashboard" className="inline">
                     <img
                       src={BoxLogo}
                       alt="worldbox"
-                      className="pr-3"
-                      style={{ width: '5.4rem' }}
+                      className="pr-3 ml-0"
+                      style={{ width: '6.2rem' }}
                     />
                   </Link>
                   <button
@@ -79,8 +79,8 @@ export default function Header() {
                     <img
                       src={signOutLogo}
                       alt="worldbox"
-                      className="h-12 pr-2"
-                      style={{ maxWidth: '10rem' }}
+                      className="pt-0.5 pr-2"
+                      style={{ width: '3.4rem' }}
                     />
                   </button>
                   <div className="cursor-pointer inline pr-1">

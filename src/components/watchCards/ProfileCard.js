@@ -27,49 +27,53 @@ const OVERLAY_STYLES = {
 };
 
 export default function Modal({ open, onClose, image, name, comments, info, id }) {
-  const closeCard = (event) => {
-    event.preventDefault();
-    console.log('CLOSING');
-    onClose();
-  };
+  // const closeCard = (event) => {
+  //   event.preventDefault();
+  //   console.log('CLOSING');
+  //   onClose();
+  // };
   console.log('STATE OF OPEN', open);
   if (!open) return null;
   return (
     <>
       <div style={OVERLAY_STYLES}>
-        <button
-          type="button"
-          onClick={closeCard}
-          onKeyDown={(event) => {
-            if (event.key === 'Enter') {
-              closeCard();
-            }
-          }}
-          style={{ fontFamily: 'Acakadut' }}
-          className="text-white bg-gradient-to-r from-red-600 to-blue-500 rounded px-2 py-0.5 hover:bg-white-600 hover:text-red"
-        >
-          X Close Modal
-        </button>
-        <div style={MODAL_STYLES} className="rounded">
-          <div className="overflow-y-scroll h-screen">
-            <div
-              className="pt-3 rounded"
-              style={{
-                backgroundImage: `url(${watchBox})`,
-                backgroundPosition: 'center top',
-                backgroundSize: '18rem 103rem',
-                backgroundRepeat: 'no-repeat'
+        <div>
+          <div>
+            <button
+              type="button"
+              onClick={onClose}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  onClose();
+                }
               }}
+              style={{ fontFamily: 'Acakadut' }}
+              className="text-white bg-gradient-to-r from-red-600 to-blue-500 rounded px-2 py-0.5 hover:bg-white-600 hover:text-red"
             >
-              <div className="pl-10 pr-10">
-                <PostCard
-                  imageurl={image}
-                  watchName={name}
-                  comments={comments}
-                  watchInfo={info}
-                  docId={id}
-                  className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
-                />
+              X Close Modal
+            </button>
+          </div>
+          <div style={MODAL_STYLES} className="rounded">
+            <div className="overflow-y-scroll h-screen">
+              <div
+                className="pt-3 rounded"
+                style={{
+                  backgroundImage: `url(${watchBox})`,
+                  backgroundPosition: 'center top',
+                  backgroundSize: '22rem 132rem',
+                  backgroundRepeat: 'no-repeat'
+                }}
+              >
+                <div className="pl-10 pr-10">
+                  <PostCard
+                    imageurl={image}
+                    watchName={name}
+                    comments={comments}
+                    watchInfo={info}
+                    docId={id}
+                    className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -81,10 +85,10 @@ export default function Modal({ open, onClose, image, name, comments, info, id }
 
 Modal.propTypes = {
   open: PropTypes.bool,
-  onClose: PropTypes.func,
+  onClose: PropTypes.bool,
   image: PropTypes.string,
   name: PropTypes.string,
-  comments: PropTypes.array,
+  comments: PropTypes.string,
   info: PropTypes.string,
   id: PropTypes.string
 };

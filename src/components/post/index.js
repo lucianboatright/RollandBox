@@ -16,7 +16,7 @@ export default function Post({ content }) {
       {/* <div className="rounded col-span-1 border bg-white border-grey-primary"> */}
       <Image className="" src={content.imageurl} caption={content.watchinfo} />
       <div
-        className="rounded ml-0.5"
+        className="rounded ml-0.5 mt-0.5"
         style={{
           backgroundImage: `url(${paper})`,
           backgroundPosition: '',

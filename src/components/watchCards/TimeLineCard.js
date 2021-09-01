@@ -31,19 +31,21 @@ export default function Modal({ open, onClose, watchInfo }) {
   return (
     <>
       <div style={OVERLAY_STYLES}>
-        <button
-          type="button"
-          onClick={onClose}
-          onKeyDown={(event) => {
-            if (event.key === 'Enter') {
-              onClose();
-            }
-          }}
-          style={{ fontFamily: 'Acakadut' }}
-          className="text-white bg-gradient-to-r from-red-600 to-blue-500 rounded px-2 py-0.5 hover:bg-white-600 hover:text-red"
-        >
-          X Close Modal
-        </button>
+        <div>
+          <button
+            type="button"
+            onClick={onClose}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') {
+                onClose();
+              }
+            }}
+            style={{ fontFamily: 'Acakadut' }}
+            className="text-white bg-gradient-to-r from-red-600 to-blue-500 rounded px-2 py-0.5 hover:bg-white-600 hover:text-red"
+          >
+            X Close Modal
+          </button>
+        </div>
         <div style={MODAL_STYLES} className="rounded">
           <div className="overflow-y-scroll h-screen">
             <div

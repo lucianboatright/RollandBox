@@ -9,6 +9,7 @@ import Comments from './commentsProfile';
 export default function Post({ imageurl, watchName, comments, watchInfo, docId }) {
   const commentInput = useRef(null);
   const handleFocus = () => commentInput.current.focus();
+  console.log('WATCH INFO ON INDEX PROFILE', watchInfo);
 
   return (
     <div className="">
