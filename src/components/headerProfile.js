@@ -24,7 +24,7 @@ export default function Header() {
           <div className="cursor-pointer flex-1 inline">
             <div className="w-64 pt-2 inline">
               <span
-                className="text-4xl pt-4 pl-1 sm:text-3xl sm:pt-4 md:text-5xl lg:text-5xl xl:text-5xl"
+                className="text-4xl pt-4 pl-0 sm:text-3xl pl-1 sm:pt-4 md:text-5xl pl-1 lg:text-5xl pl-1 xl:text-5xl pl-1"
                 style={{ fontFamily: 'Acakadut' }}
               >
                 Roll & Box
@@ -33,15 +33,15 @@ export default function Header() {
             <div className="inline">
               <Link to={ROUTES.DASHBOARD}>
                 <img
-                  className="w-0 pt-1 invisible sm:invisible md:invisible lg:visible xl:visible sm:w-10 lg:w-28 xl:w-28"
+                  className=" w-0 invisible sm:invisible md:invisible lg:visible xl:visible sm:w-10 lg:w-28 xl:w-28 sm:mt-1 mb-0.5 md:mt-1 mb-0.5 lg:mt-1 mb-0.5 xl:mt-1 mb-0.5"
                   src={image1}
                   alt="Roll and Box"
-                  style={{ width: '8rem' }}
+                  style={{ width: '3rem' }}
                 />
               </Link>
             </div>
           </div>
-          <div className="justify-start inline pt-0 ">
+          <div className="justify-start inline pt-0 sm:pt-0 md:pt-0 lg:pt-1.5 xl:pt-1.5">
             {user ? (
               <>
                 <div className="">
@@ -49,7 +49,7 @@ export default function Header() {
                     <img
                       src={worldBoxLogo}
                       alt="worldbox"
-                      className="pr-1 h-10 sm:h-12 md:h-16 lg:h-16 xl:h-16"
+                      className="pr-1 h-8 sm:h-8 md:h-8 lg:h-8 xl:h-8"
                       // style={{ width: '6rem' }}
                     />
                   </Link>
@@ -57,7 +57,7 @@ export default function Header() {
                     <img
                       src={BoxLogo}
                       alt="worldbox"
-                      className="pr-1 h-10 sm:h-12 md:h-16 lg:h-16 xl:h-16"
+                      className="pr-1 h-8 sm:h-8 md:h-8 lg:h-8 xl:h-8"
                     />
                   </Link>
                   <button
@@ -79,7 +79,7 @@ export default function Header() {
                       <img
                         src={signOutLogo}
                         alt="worldbox"
-                        className="pl-1 pt-0.5 pr-3 sm:h-10 md:h-12 lg:h-12 xl:h-12"
+                        className="pl-1 pt-0.5 pr-3 h-6 sm:h-6 md:h-6 lg:h-6 xl:h-6"
                         // style={{ width: '1.8rem', paddingTop: '0.2rem' }}
                       />
                     </div>

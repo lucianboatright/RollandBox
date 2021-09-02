@@ -19,7 +19,7 @@ export default function SuggestedProfile({
     await updateFollowedUserFollowers(profileDocId, userId, false);
   }
   return !followed ? (
-    <div className="flex flex-row items-center align-items justify-between ">
+    <div className="flex flex-row items-center align-items ">
       <div className="flex items-center justify-between pr-2">
         <img
           className="rounded-full w-8 mr-2 shadow-lg"

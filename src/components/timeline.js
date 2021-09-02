@@ -9,8 +9,8 @@ export default function Timeline() {
   const { watches } = useWatches();
   console.log('WATCHES', singleBox);
   return (
-    <div className="col-span-4">
-      <div className="pt-5 flex pl-0 pl-12px flex-wrap overflow-hidden">
+    <div className="col-span-5">
+      <div className="pt-5 flex pl-0 pl-14px flex-wrap overflow-hidden">
         {!watches ? (
           <>
             {[...new Array(12)].map((_, index) => (
@@ -43,11 +43,11 @@ export default function Timeline() {
                 style={{
                   backgroundImage: `url(${singleBox})`,
                   backgroundPosition: 'center top',
-                  backgroundSize: '11rem 27.7rem',
+                  backgroundSize: '11rem 27.9rem',
                   backgroundRepeat: 'no-repeat'
                 }}
               >
-                <div className="pl-4 pr-4">
+                <div className="pl-2 mr-2">
                   <Post
                     key={content.docId}
                     className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"

@@ -20,8 +20,8 @@ export default function Header() {
   return (
     <header className="h-18 bd-white border-b border-gray-primary">
       <div className="container ml-5 h-full">
-        <div className="flex  justify-center">
-          <div className="cursor-pointer pl-5 flex-1 inline">
+        <div className="flex justify-center">
+          <div className="cursor-pointer pl-5 flex-1">
             <div className="w-64 align-middle inline">
               <span
                 className="text-4xl sm:text-3xl md:text-4xl md:pt-3 lg:text-5xl xl:text-5xl"
@@ -36,7 +36,7 @@ export default function Header() {
                   className=" w-0 invisible sm:invisible md:invisible lg:visible xl:visible sm:w-10 lg:w-28 xl:w-28 sm:mt-1 mb-0.5 md:mt-1 mb-0.5 lg:mt-1 mb-0.5 xl:mt-1 mb-0.5"
                   src={image1}
                   alt="Roll and Box"
-                  style={{ maxWidth: '30rem' }}
+                  style={{ maxWidth: '5rem' }}
                 />
               </Link>
             </div>
