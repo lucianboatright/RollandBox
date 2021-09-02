@@ -18,10 +18,10 @@ export default function Header() {
   const history = useHistory();
 
   return (
-    <header className="h-20 bd-white border-b border-gray-primary mb-2">
+    <header className="h-12 sm:h-14 md:h-16 lg:h-20 xl:h-20 bd-white border-b border-gray-primary mb-2">
       <div className="container ml-5 w-screen-lg h-full">
         <div className="flex justify-center ">
-          <div className="cursor-pointer flex-1 inline ">
+          <div className="cursor-pointer flex-1 inline">
             <div className="w-64 pt-2 inline">
               <span
                 className="text-4xl pt-4 pl-1 sm:text-3xl sm:pt-4 md:text-5xl lg:text-5xl xl:text-5xl"
@@ -41,7 +41,7 @@ export default function Header() {
               </Link>
             </div>
           </div>
-          <div className="justify-start inline">
+          <div className="justify-start inline pt-0 ">
             {user ? (
               <>
                 <div className="">
@@ -49,12 +49,16 @@ export default function Header() {
                     <img
                       src={worldBoxLogo}
                       alt="worldbox"
-                      className="pr-1"
-                      style={{ width: '6rem' }}
+                      className="pr-1 h-10 sm:h-12 md:h-16 lg:h-16 xl:h-16"
+                      // style={{ width: '6rem' }}
                     />
                   </Link>
                   <Link to={`/${user.username}`} aria-label="Dashboard" className="inline">
-                    <img src={BoxLogo} alt="worldbox" className="pr-1" style={{ width: '6rem' }} />
+                    <img
+                      src={BoxLogo}
+                      alt="worldbox"
+                      className="pr-1 h-10 sm:h-12 md:h-16 lg:h-16 xl:h-16"
+                    />
                   </Link>
                   <button
                     className="inline"
@@ -71,12 +75,14 @@ export default function Header() {
                       }
                     }}
                   >
-                    <img
-                      src={signOutLogo}
-                      alt="worldbox"
-                      className="pt-0.5 pr-0"
-                      style={{ width: '3rem', paddingTop: '0.2rem' }}
-                    />
+                    <div style={{ paddingTop: '0.5rem' }}>
+                      <img
+                        src={signOutLogo}
+                        alt="worldbox"
+                        className="pl-1 pt-0.5 pr-3 sm:h-10 md:h-12 lg:h-12 xl:h-12"
+                        // style={{ width: '1.8rem', paddingTop: '0.2rem' }}
+                      />
+                    </div>
                   </button>
                 </div>
               </>

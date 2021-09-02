@@ -50,7 +50,7 @@ export default function Header({
 
   return (
     <div className="grid grid-cols-3 gap-2 pb-2 pt-2">
-      <div className="container flex justify-center border-r-2 border-grey-700">
+      <div className="container flex justify-center border-r-2 border-grey-700 invisible sm:visible md:visible lg:visible xl:visible">
         {user.username && (
           <img className="rounded-full h-30 w-auto flex shadow-lg" src={imgurl} alt="imgurl" />
         )}
@@ -59,16 +59,12 @@ export default function Header({
         <div className="container flex item-center">
           <p className="text-2xl mr-4 capitalize" style={{ fontFamily: 'Quinngothic' }}>
             {profileUsername}
-            {/* {name[0].toUppercase}
-            {name.slice(1)} */}
           </p>
           <span
             className="font-medium inline-block align-bottom capitalize"
             style={{ fontFamily: 'Quinngothic' }}
           >
             {user.fullName}
-            {/* {nameFull[0].toUppercase}
-            {nameFull.slice(1)} */}
           </span>
           {activeButtonFollow && (
             <button
@@ -116,7 +112,7 @@ export default function Header({
               <div className="flex items-center justify-evenly flex-col col-span">
                 <div className="container mr-2">
                   <button
-                    className="bg-gradient-to-r from-green-600 to-yellow-500 text-base text-xl rounded text-white h-10 w-40"
+                    className="bg-gradient-to-r from-green-600 to-yellow-500 text-base text-xl rounded text-white h-10 w-40 hidden sm:block md:block lg:block xl:block"
                     type="button"
                     onClick={() => setIsOpenAvitar(true)}
                     style={{ fontFamily: 'Acakadut' }}
@@ -137,13 +133,55 @@ export default function Header({
               <div className="flex items-center justify-evenly flex-col col-span">
                 <div className="container mr-2">
                   <button
-                    className="bg-gradient-to-r from-yellow-500 to-green-600 text-xl rounded text-white mt-2 pr-2 pl-1 h-10 w-40"
+                    className="bg-gradient-to-r from-green-600 to-yellow-500 text-base text-xl rounded text-white h-10 w-20 block sm:hidden md:hidden lg:hidden xl:hidden"
+                    type="button"
+                    onClick={() => setIsOpenAvitar(true)}
+                    style={{ fontFamily: 'Acakadut' }}
+                  >
+                    <img alt="setting" src={settingLogo} className="h-6 pr-2" />
+                    Set
+                  </button>
+                  <ModalAvitar
+                    userAvatar={avatar}
+                    documentId={user.docId}
+                    profile={profileUsername}
+                    userId={profileUserId}
+                    open={isOpenAvitar}
+                    onClose={() => setIsOpenAvitar(false)}
+                  />
+                </div>
+              </div>
+              <div className="flex items-center justify-evenly flex-col col-span">
+                <div className="container mr-2">
+                  <button
+                    className="bg-gradient-to-r from-yellow-500 to-green-600 text-xl rounded text-white mt-2 pr-2 pl-1 h-10 w-40 hidden sm:block md:block lg:block xl:block"
                     type="button"
                     onClick={() => setIsOpen(true)}
                     style={{ fontFamily: 'Acakadut' }}
                   >
                     <img alt="setting" src={watchLogo} className="h-7 pr-1" />
                     Add New Watch
+                  </button>
+                  <ModalNewWatch
+                    userAvatar={avatar}
+                    profile={profileUsername}
+                    watchesCount={watchesCount}
+                    userId={profileUserId}
+                    open={isOpen}
+                    onClose={() => setIsOpen(false)}
+                  />
+                </div>
+              </div>
+              <div className="flex items-center justify-evenly flex-col col-span">
+                <div className="container mr-2">
+                  <button
+                    className="bg-gradient-to-r from-yellow-500 to-green-600 text-xl rounded flex-shrink text-white pb-1 mt-2 py-2 h-10 w-20 block sm:hidden md:hidden lg:hidden xl:hidden"
+                    type="button"
+                    onClick={() => setIsOpen(true)}
+                    style={{ fontFamily: 'Acakadut' }}
+                  >
+                    <img alt="setting" src={watchLogo} className="h-7 pr-2" />
+                    Add
                   </button>
                   <ModalNewWatch
                     userAvatar={avatar}

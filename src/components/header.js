@@ -21,10 +21,10 @@ export default function Header() {
     <header className="h-18 bd-white border-b border-gray-primary">
       <div className="container ml-5 h-full">
         <div className="flex  justify-center">
-          <div className="cursor-pointer pl-5 flex-1 inline sm:mt-2 md:mt-2 lg:mt-2 xl:mt-2">
-            <div className="w-64 pt-2 inline">
+          <div className="cursor-pointer pl-5 flex-1 inline">
+            <div className="w-64 align-middle inline">
               <span
-                className="text-4xl sm:text-3xl md:text-5xl lg:text-5xl xl:text-5xl"
+                className="text-4xl sm:text-3xl md:text-4xl md:pt-3 lg:text-5xl xl:text-5xl"
                 style={{ fontFamily: 'Acakadut' }}
               >
                 Roll & Box
@@ -33,7 +33,7 @@ export default function Header() {
             <div className="inline">
               <Link to={ROUTES.DASHBOARD}>
                 <img
-                  className=" w-0 invisible sm:invisible md:invisible lg:visible xl:visible sm:w-10 lg:w-28 xl:w-28"
+                  className=" w-0 invisible sm:invisible md:invisible lg:visible xl:visible sm:w-10 lg:w-28 xl:w-28 sm:mt-1 mb-0.5 md:mt-1 mb-0.5 lg:mt-1 mb-0.5 xl:mt-1 mb-0.5"
                   src={image1}
                   alt="Roll and Box"
                   style={{ maxWidth: '30rem' }}
@@ -41,7 +41,7 @@ export default function Header() {
               </Link>
             </div>
           </div>
-          <div className="justify-end inline ">
+          <div className="justify-end inline">
             {user ? (
               <>
                 <div className="">
@@ -49,16 +49,16 @@ export default function Header() {
                     <img
                       src={worldBoxLogo}
                       alt="worldbox"
-                      className="pr-2"
-                      style={{ width: '6rem' }}
+                      className="pr-2 h-14"
+                      // style={{ width: '6rem' }}
                     />
                   </Link>
                   <Link to={`/${user.username}`} aria-label="Dashboard" className="inline">
                     <img
                       src={BoxLogo}
                       alt="worldbox"
-                      className="pr-3 ml-0"
-                      style={{ width: '6.2rem' }}
+                      className="pr-3 h-14"
+                      // style={{ width: '6.2rem' }}
                     />
                   </Link>
                   <button
@@ -79,8 +79,8 @@ export default function Header() {
                     <img
                       src={signOutLogo}
                       alt="worldbox"
-                      className="pt-0.5 pr-2"
-                      style={{ width: '3.4rem' }}
+                      className="pt-0.5 pr-2 h-10"
+                      // style={{ width: '3.4rem' }}
                     />
                   </button>
                   <div className="cursor-pointer inline pr-1">
@@ -88,7 +88,7 @@ export default function Header() {
                       <img
                         className="rounded-full shadow-lg"
                         alt="logo"
-                        style={{ width: '3rem' }}
+                        style={{ width: '2.5rem' }}
                         src={user.imageurl}
                       />
                     </Link>
