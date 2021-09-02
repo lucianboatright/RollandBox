@@ -73,7 +73,6 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
   };
 
   const handleSubmitUpload = (e) => {
-    // generateDownload(previewCanvasRef.current, completedCrop);
     const metadata = {
       contentType: 'image/jpeg',
       customMetadata: {
@@ -84,7 +83,6 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
     const file = imageBlob;
     const storageRef = firebase.storage().ref();
     const fileRef = storageRef.child(`avatars/${profile}.jpg`).put(file, metadata);
-    // setUrl(await fileRef.getDownloadURL());
     fileRef.on(
       'state_changed',
       (snapshot) => {
@@ -145,6 +143,7 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
     canvas.height = crop.height * pixelRatio;
 
     ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    // ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = 'high';
 
     ctx.drawImage(
@@ -220,7 +219,7 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
                   src={upImg}
                   onImageLoaded={onLoad}
                   crop={crop}
-                  onChange={((c) => setCrop(c), (c) => setCompletedCrop(c))}
+                  onChange={(c) => setCrop(c)}
                   onComplete={(c) => setCompletedCrop(c)}
                   style={{ height: 'auto', width: '8rem' }}
                   className=""
@@ -273,7 +272,6 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
                                   alt="logo"
                                   src={loading}
                                   className="animate-spin h-6 w-6 mr-3 inline"
-                                  // viewBox="0 0 24 24"
                                 />
                                 <span className="inline">Please Try Again</span>
                               </div>
@@ -284,12 +282,7 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
                                 style={{ fontFamily: 'Acakadut' }}
                                 className="rounded mb-1 pl-2 pr-2 pt-2 w-60 text-green-900"
                               >
-                                <img
-                                  alt="logo"
-                                  src={correct}
-                                  className="h-8 w-8 mr-3 inline"
-                                  // viewBox="0 0 24 24"
-                                />
+                                <img alt="logo" src={correct} className="h-8 w-8 mr-3 inline" />
                                 <span className="inline">Ready To Upload</span>
                               </div>
                             </>

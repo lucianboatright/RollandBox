@@ -1,7 +1,5 @@
-/* eslint-disable global-require */
 import { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
@@ -19,8 +17,8 @@ export default function Header() {
 
   return (
     <header className="h-18 bd-white border-b border-gray-primary">
-      <div className="container ml-5 w-screen-lg h-full">
-        <div className="flex w-screen justify-center">
+      <div className="container ml-5 h-full">
+        <div className="flex  justify-center">
           <div className="cursor-pointer pl-5 flex-1 inline sm:mt-2 md:mt-2 lg:mt-2 xl:mt-2">
             <div className="w-64 pt-2 inline">
               <span
@@ -41,7 +39,7 @@ export default function Header() {
               </Link>
             </div>
           </div>
-          <div className="justify-end inline pr-5">
+          <div className="justify-end inline ">
             {user ? (
               <>
                 <div className="">
@@ -121,5 +119,3 @@ export default function Header() {
     </header>
   );
 }
-
-/* eslint-disable global-require */

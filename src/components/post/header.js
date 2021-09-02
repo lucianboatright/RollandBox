@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Header({ username, avatar }) {
   const watch = avatar[0];
+  console.log('WATCH AVATAR', watch);
   return (
     <div
       className="col-span-1 grid grid-rows-1 grid-flow-col gap-1"

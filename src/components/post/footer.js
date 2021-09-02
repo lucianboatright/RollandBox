@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
 import { PropTypes } from 'prop-types';
 
-export default function Footer({ caption, watchName }) {
+export default function Footer(caption, watchName) {
   return (
     <div
       className="has-tooltip w-20 truncate pl-1 text-sm"

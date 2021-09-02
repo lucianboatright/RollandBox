@@ -7,7 +7,6 @@ import singleBox from '../../images/borders/shortSingleBox.png';
 import '../../styles/watches.css';
 
 export default function Watches({ watches, profile }) {
-  console.log('PROFILE INFO INSIDE WATCHES', profile);
   return (
     <div className="mr-2 ml-2">
       <div className="h-16 border-t border-gray-primary">
