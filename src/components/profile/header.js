@@ -5,6 +5,8 @@ import useUser from '../../hooks/use-user';
 import { isUserFollowingProfile, toggleFollow } from '../../services/firebase';
 import ModalNewWatch from '../newWatch/ModalNewWatch';
 import ModalAvitar from '../newWatch/ModalAvitar';
+import settingLogo from '../../images/svg_png/smallSettingWhite.png';
+import watchLogo from '../../images/svg_png/watch.png';
 
 export default function Header({
   watchesCount,
@@ -119,6 +121,7 @@ export default function Header({
                     onClick={() => setIsOpenAvitar(true)}
                     style={{ fontFamily: 'Acakadut' }}
                   >
+                    <img alt="setting" src={settingLogo} className="h-6 pr-1" />
                     Profile Settings
                   </button>
                   <ModalAvitar
@@ -134,11 +137,12 @@ export default function Header({
               <div className="flex items-center justify-evenly flex-col col-span">
                 <div className="container mr-2">
                   <button
-                    className="bg-gradient-to-r from-yellow-500 to-green-600 text-xl rounded text-white mt-2 pr-5 pl-5 h-10 w-40"
+                    className="bg-gradient-to-r from-yellow-500 to-green-600 text-xl rounded text-white mt-2 pr-2 pl-1 h-10 w-40"
                     type="button"
                     onClick={() => setIsOpen(true)}
                     style={{ fontFamily: 'Acakadut' }}
                   >
+                    <img alt="setting" src={watchLogo} className="h-7 pr-1" />
                     Add New Watch
                   </button>
                   <ModalNewWatch

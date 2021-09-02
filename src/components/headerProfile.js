@@ -20,7 +20,7 @@ export default function Header() {
   return (
     <header className="h-20 bd-white border-b border-gray-primary mb-2">
       <div className="container ml-5 w-screen-lg h-full">
-        <div className="flex w-screen justify-center ">
+        <div className="flex justify-center ">
           <div className="cursor-pointer flex-1 inline ">
             <div className="w-64 pt-2 inline">
               <span
@@ -41,10 +41,10 @@ export default function Header() {
               </Link>
             </div>
           </div>
-          <div className="justify-start inline pr-4">
+          <div className="justify-start inline">
             {user ? (
               <>
-                <div className="i">
+                <div className="">
                   <Link to={ROUTES.DASHBOARD} aria-label="Dashboard" className="inline">
                     <img
                       src={worldBoxLogo}
@@ -74,20 +74,10 @@ export default function Header() {
                     <img
                       src={signOutLogo}
                       alt="worldbox"
-                      className="pt-0.5 pr-3"
-                      style={{ width: '3.8rem', paddingTop: '0.2rem' }}
+                      className="pt-0.5 pr-0"
+                      style={{ width: '3rem', paddingTop: '0.2rem' }}
                     />
                   </button>
-                  {/* <div className="cursor-pointer">
-                    <Link to={`/${user.username}`}>
-                      <img
-                        className="rounded-full shadow-lg w-11"
-                        alt="logo"
-                        // style={{ width: '3rem' }}
-                        src={user.imageurl}
-                      />
-                    </Link>
-                  </div> */}
                 </div>
               </>
             ) : (
