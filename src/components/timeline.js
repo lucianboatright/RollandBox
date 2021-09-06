@@ -2,7 +2,7 @@
 import Skeleton from 'react-loading-skeleton';
 import useWatches from '../hooks/use-watches';
 import Post from './post';
-import singleBox from '../images/borders/Box_single.png';
+import singleBox from '../images/borders/woodBackground.jpg';
 // import grid from '../images/borders/wooden_grid_5x.png';
 
 export default function Timeline() {
@@ -10,7 +10,15 @@ export default function Timeline() {
   console.log('WATCHES', singleBox);
   return (
     <div className="col-span-5">
-      <div className="pt-5 flex pl-0 pl-14px flex-wrap overflow-hidden">
+      <div
+        className="pt-0 mt-2 mr-2 ml-0 flex flex-wrap overflow-hidden"
+        style={{
+          backgroundImage: `url(${singleBox})`,
+          backgroundPosition: '',
+          backgroundSize: '38rem 27.9rem',
+          backgroundRepeat: 'repeat'
+        }}
+      >
         {!watches ? (
           <>
             {[...new Array(12)].map((_, index) => (
@@ -20,7 +28,7 @@ export default function Timeline() {
                 style={{
                   backgroundImage: `url(${singleBox})`,
                   backgroundPosition: 'top',
-                  backgroundSize: '165px',
+                  backgroundSize: '164px',
                   backgroundRepeat: 'repeat'
                 }}
               >
@@ -37,7 +45,7 @@ export default function Timeline() {
         ) : watches?.length > 0 ? (
           watches.map((content) => (
             <>
-              <div
+              {/* <div
                 key={content.docId}
                 className=""
                 style={{
@@ -46,15 +54,15 @@ export default function Timeline() {
                   backgroundSize: '11rem 27.9rem',
                   backgroundRepeat: 'no-repeat'
                 }}
-              >
-                <div className="pl-2 mr-2">
-                  <Post
-                    key={content.docId}
-                    className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
-                    content={content}
-                  />
-                </div>
+              > */}
+              <div className="pl-4 ">
+                <Post
+                  key={content.docId}
+                  className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
+                  content={content}
+                />
               </div>
+              {/* </div> */}
             </>
           ))
         ) : (

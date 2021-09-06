@@ -22,9 +22,9 @@ export default function Header() {
       <div className="container ml-5 h-full">
         <div className="flex justify-center">
           <div className="cursor-pointer pl-5 flex-1">
-            <div className="w-64 align-middle inline">
+            <div className="w-64 align-middle inline mt-2">
               <span
-                className="text-4xl sm:text-3xl md:text-4xl md:pt-3 lg:text-5xl xl:text-5xl"
+                className="pr-1 text-4xl sm:text-3xl md:text-4xl md:pt-3 lg:text-5xl xl:text-5xl"
                 style={{ fontFamily: 'Acakadut' }}
               >
                 Roll & Box
