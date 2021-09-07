@@ -15,7 +15,7 @@ export default function Header({
   profile: {
     docId: profileDocId,
     userId: profileUserId,
-    fullName,
+    // fullName,
     following = [],
     followers = [],
     username: profileUsername,

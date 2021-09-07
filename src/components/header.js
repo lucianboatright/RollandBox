@@ -1,7 +1,6 @@
 /* eslint-disable global-require */
 import { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';

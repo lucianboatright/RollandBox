@@ -1,9 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import PropTypes from 'prop-types';
-import { useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import WatchCard from './individualWatch';
-import singleBox from '../../images/borders/shortSingleBox.png';
 import '../../styles/watches.css';
 
 export default function Watches({ watches, profile }) {

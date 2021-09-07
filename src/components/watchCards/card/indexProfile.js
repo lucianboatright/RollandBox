@@ -1,14 +1,10 @@
 import { useRef } from 'react';
-import PropTypes, { array } from 'prop-types';
-import Header from './headerProfile';
+import PropTypes from 'prop-types';
 import Image from './imageProfile';
-import Actions from './actionsProfile';
 import Footer from './footerProfile';
 import Comments from './commentsProfile';
 
 export default function Post({ imageurl, watchName, comments, watchInfo, docId }) {
-  const commentInput = useRef(null);
-  const handleFocus = () => commentInput.current.focus();
   console.log('WATCH INFO ON INDEX PROFILE', watchInfo);
 
   return (
@@ -16,7 +12,7 @@ export default function Post({ imageurl, watchName, comments, watchInfo, docId }
       {/* <div className="rounded col-span-1 border bg-white border-grey-primary"> */}
       <Image src={imageurl} caption={watchInfo} />
       <Footer caption={watchInfo} watchName={watchName} />
-      <Comments docId={docId} comments={comments} commentInput={commentInput} />
+      <Comments comments={comments} />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { useReducer, useEffect, useState } from 'react';
+import { useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Header from './header';
 import Watches from './watches';

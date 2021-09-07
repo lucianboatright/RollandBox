@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import watchBox from '../../images/borders/ProfileCardBoxEdit.png';
 import paper from '../../images/borders/paper-1.jpg';
