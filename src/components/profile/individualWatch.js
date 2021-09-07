@@ -44,7 +44,6 @@ export default function IndividualWatch({ watchInfo }) {
             }}
           >
             <div>
-              {/* <div className="pb-2 pt-1"> */}
               <img
                 className="rounded ml-4 mr-3 mt-5 cursor-pointer"
                 src={watchInfo.imageurl}
