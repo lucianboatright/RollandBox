@@ -16,7 +16,8 @@ const MODAL_STYLES = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   backgroundColor: '#FFF',
-  padding: '50px'
+  padding: '20px',
+  width: '600px'
 };
 
 const OVERLAY_STYLES = {
@@ -188,7 +189,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
           X Close Modal
         </button>
         <div style={MODAL_STYLES} className="rounded">
-          <div className="overflow-y-scroll h-80">
+          <div className="overflow-y-scroll" style={{ height: '22rem' }}>
             <form onSubmit={handleSubmitUpload} method="POST">
               <div className="flex items-start">
                 <div>
@@ -323,7 +324,6 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                                     alt="logo"
                                     src={loading}
                                     className="animate-spin h-6 w-6 mr-3 inline"
-                                    // viewBox="0 0 24 24"
                                   />
                                   <span className="inline">Please Try Again</span>
                                 </div>
@@ -334,12 +334,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                                   style={{ fontFamily: 'Acakadut' }}
                                   className="rounded mb-1 pl-2 pr-2 pt-2 w-60 text-green-900"
                                 >
-                                  <img
-                                    alt="logo"
-                                    src={correct}
-                                    className="h-8 w-8 mr-3 inline"
-                                    // viewBox="0 0 24 24"
-                                  />
+                                  <img alt="logo" src={correct} className="h-8 w-8 mr-3 inline" />
                                   <span className="inline">Ready To Upload</span>
                                 </div>
                               </>
@@ -354,7 +349,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                     </div>
                   </div>
                 </div>
-                <div className="mt-0">
+                <div className="">
                   <p className="text-blue-600 pl-1" style={{ fontFamily: 'Quinngothic' }}>
                     Watch Name
                   </p>

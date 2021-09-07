@@ -13,7 +13,7 @@ export default function Dashboard() {
     <div className="bg-grey-background">
       <Header />
       <div>
-        <div className="grid grid-cols-5 gap-4 justify-between mx-auto ml-10 mr-10">
+        <div className="grid grid-cols-6 gap-4 justify-between mx-auto ml-0 mr-24 sm:ml-10 mr-10  md:ml-10 lg:ml-10 xl:ml-10">
           <Timeline />
           <Sidebar />
         </div>
