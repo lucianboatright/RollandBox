@@ -22,14 +22,12 @@ export default function Header() {
       <div className="">
         <div className="flex">
           <div className="flex-grow w-1/2 mt-1.5">
-            {/* <div className="inline"> */}
             <div
               className="inline text-4xl ml-0 pl-0 sm:text-5xl sm:pl-1 sm:ml-9 md:text-5xl md:pl-1 md:ml-9 lg:text-5xl lg:pl-1 lg:ml-9 xl:text-5xl xl:pl-1 xl:ml-9"
               style={{ fontFamily: 'Acakadut' }}
             >
               Roll & Box
             </div>
-            {/* </div> */}
             <div className="inline">
               <Link to={ROUTES.DASHBOARD}>
                 <img
