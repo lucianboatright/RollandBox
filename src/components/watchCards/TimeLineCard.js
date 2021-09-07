@@ -48,7 +48,7 @@ export default function Modal({ open, onClose, watchInfo }) {
         <div style={MODAL_STYLES} className="rounded">
           <div className="overflow-y-scroll h-screen">
             <div
-              className="pl-1 pr-1 pt-3 rounded pb-40 content-center"
+              className="pl-1 pr-1 pt-3 rounded content-center"
               style={{
                 backgroundImage: `url(${watchBox})`,
                 backgroundPosition: 'center top',

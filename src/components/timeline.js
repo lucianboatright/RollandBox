@@ -2,7 +2,7 @@
 import Skeleton from 'react-loading-skeleton';
 import useWatches from '../hooks/use-watches';
 import Post from './post';
-import singleBox from '../images/borders/Box_single.png';
+import singleBox from '../images/borders/Box_single_LowerMiddle.png';
 // import grid from '../images/borders/wooden_grid_5x.png';
 
 export default function Timeline() {
@@ -43,11 +43,11 @@ export default function Timeline() {
                 style={{
                   backgroundImage: `url(${singleBox})`,
                   backgroundPosition: 'center top',
-                  backgroundSize: '11rem 27.9rem',
+                  backgroundSize: '14.5rem 32rem',
                   backgroundRepeat: 'no-repeat'
                 }}
               >
-                <div className="pl-2 mr-2">
+                <div className="mr-3 ">
                   <Post
                     key={content.docId}
                     className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"

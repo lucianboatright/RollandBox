@@ -18,38 +18,41 @@ export default function Header() {
   const history = useHistory();
 
   return (
-    <header className="h-12 sm:h-14 md:h-16 lg:h-20 xl:h-20 bd-white border-b border-gray-primary mb-2">
-      <div className="container ml-5 w-screen-lg h-full">
-        <div className="flex justify-center ">
-          <div className="cursor-pointer flex-1 inline">
-            <div className="w-64 pt-2 inline">
-              <span
-                className="text-4xl pt-4 pl-0 sm:text-3xl pl-1 sm:pt-4 md:text-5xl pl-1 lg:text-5xl pl-1 xl:text-5xl pl-1"
-                style={{ fontFamily: 'Acakadut' }}
-              >
-                Roll & Box
-              </span>
+    <header className="h-12 sm:h-16 md:h-16 lg:h-16 xl:h-16 bd-white border-b border-gray-primary mb-2">
+      <div className="">
+        <div className="flex">
+          <div className="flex-grow w-1/2 mt-1.5">
+            {/* <div className="inline"> */}
+            <div
+              className="inline text-4xl pl-0 sm:text-5xl pl-1 md:text-5xl pl-1 lg:text-5xl pl-1 xl:text-5xl pl-1"
+              style={{ fontFamily: 'Acakadut' }}
+            >
+              Roll & Box
             </div>
+            {/* </div> */}
             <div className="inline">
               <Link to={ROUTES.DASHBOARD}>
                 <img
-                  className=" w-0 invisible sm:invisible md:invisible lg:visible xl:visible sm:w-10 lg:w-28 xl:w-28 sm:mt-1 mb-0.5 md:mt-1 mb-0.5 lg:mt-1 mb-0.5 xl:mt-1 mb-0.5"
+                  className="ml-1 w-0 mb-1 invisible sm:visible md:visible lg:visible xl:visible sm:w-24 md:w-24 lg:w-24 xl:w-24"
                   src={image1}
                   alt="Roll and Box"
-                  style={{ width: '3rem' }}
+                  // style={{ width: '3rem' }}
                 />
               </Link>
             </div>
           </div>
-          <div className="justify-start inline pt-0 sm:pt-0 md:pt-0 lg:pt-1.5 xl:pt-1.5">
+          {/* <div className="flex-shrink w-auto">
+            <span />
+          </div> */}
+          <div className="flex-grow w-1/2 flex justify-end inline-grid inline mt-0.5">
             {user ? (
               <>
-                <div className="">
+                <div className="justify-end">
                   <Link to={ROUTES.DASHBOARD} aria-label="Dashboard" className="inline">
                     <img
                       src={worldBoxLogo}
                       alt="worldbox"
-                      className="pr-1 h-8 sm:h-8 md:h-8 lg:h-8 xl:h-8"
+                      className="pr-1 h-9 sm:h-14 md:h-14 lg:h-14 xl:h-14"
                       // style={{ width: '6rem' }}
                     />
                   </Link>
@@ -57,7 +60,7 @@ export default function Header() {
                     <img
                       src={BoxLogo}
                       alt="worldbox"
-                      className="pr-1 h-8 sm:h-8 md:h-8 lg:h-8 xl:h-8"
+                      className="pr-1 h-9 sm:h-14 md:h-14 lg:h-14 xl:h-14"
                     />
                   </Link>
                   <button
@@ -75,11 +78,11 @@ export default function Header() {
                       }
                     }}
                   >
-                    <div style={{ paddingTop: '0.5rem' }}>
+                    <div style={{ paddingTop: 'rem' }}>
                       <img
                         src={signOutLogo}
                         alt="worldbox"
-                        className="pl-1 pt-0.5 pr-3 h-6 sm:h-6 md:h-6 lg:h-6 xl:h-6"
+                        className="pl-1 pt-0.5 pr-3 h-7 sm:h-11 md:h-11 lg:h-11 xl:h-11"
                         // style={{ width: '1.8rem', paddingTop: '0.2rem' }}
                       />
                     </div>

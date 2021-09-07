@@ -49,13 +49,13 @@ export default function Header({
   }, [user.username, profileUserId]);
 
   return (
-    <div className="grid grid-cols-3 gap-2 pb-2 pt-2">
+    <div className="grid grid-cols-3 gap-2 pb-2 pt-0 sm:pt-1 md:pt-1 lg:pt-1 xl:pt-1">
       <div className="container flex justify-center border-r-2 border-grey-700 invisible sm:visible md:visible lg:visible xl:visible">
         {user.username && (
           <img className="rounded-full h-30 w-auto flex shadow-lg" src={imgurl} alt="imgurl" />
         )}
       </div>
-      <div className="flex items-center justify-center flex-col col-span border-r-2 border-grey-700 pl-3 sm:pl-0 md:pl-0 lg:pl-0 xl:pl-0">
+      <div className="flex items-center justify-center flex-col col-span border-r-2 border-grey-700 pl-0 sm:pl-0 md:pl-0 lg:pl-0 xl:pl-0">
         <div className="container flex item-center">
           <p className="text-2xl mr-4 capitalize" style={{ fontFamily: 'Quinngothic' }}>
             {profileUsername}
@@ -134,13 +134,12 @@ export default function Header({
               <div className="flex items-center justify-evenly flex-col col-span">
                 <div className="container mr-2">
                   <button
-                    className="bg-gradient-to-r from-green-600 to-yellow-500 text-base text-xl rounded text-white h-10 w-20 block sm:hidden md:hidden lg:hidden xl:hidden"
+                    className="bg-gradient-to-r from-green-600 to-yellow-500 text-base text-xl rounded text-white h-10 w-10 block sm:hidden md:hidden lg:hidden xl:hidden"
                     type="button"
                     onClick={() => setIsOpenAvitar(true)}
                     style={{ fontFamily: 'Acakadut' }}
                   >
-                    <img alt="setting" src={settingLogo} className="h-6 pr-2" />
-                    Set
+                    <img alt="setting" src={settingLogo} className="h-6 " />
                   </button>
                   <ModalAvitar
                     userAvatar={avatar}
@@ -176,13 +175,13 @@ export default function Header({
               <div className="flex items-center justify-evenly flex-col col-span">
                 <div className="container mr-2">
                   <button
-                    className="bg-gradient-to-r from-yellow-500 to-green-600 text-xl rounded flex-shrink text-white pb-1 mt-2 py-2 h-10 w-20 block sm:hidden md:hidden lg:hidden xl:hidden"
+                    className="bg-gradient-to-r from-yellow-500 to-green-600 text-xl rounded flex-shrink text-white mt-2 py-2 h-10 w-10 block sm:hidden md:hidden lg:hidden xl:hidden"
                     type="button"
                     onClick={() => setIsOpen(true)}
                     style={{ fontFamily: 'Acakadut' }}
                   >
-                    <img alt="setting" src={watchLogo} className="h-7 pr-2" />
-                    Add
+                    <img alt="setting" src={watchLogo} className="h-7 pb-0" />
+                    plus
                   </button>
                   <ModalNewWatch
                     userAvatar={avatar}

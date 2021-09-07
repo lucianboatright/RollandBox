@@ -16,7 +16,8 @@ const MODAL_STYLES = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   backgroundColor: '#FFF',
-  padding: '50px'
+  padding: '20px',
+  width: '600px'
 };
 
 const OVERLAY_STYLES = {
@@ -348,7 +349,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                     </div>
                   </div>
                 </div>
-                <div className="mt-0">
+                <div className="">
                   <p className="text-blue-600 pl-1" style={{ fontFamily: 'Quinngothic' }}>
                     Watch Name
                   </p>

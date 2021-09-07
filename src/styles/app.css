@@ -536,11 +536,11 @@ object {
 img,
 video {
   max-width: 100%;
-  height: auto;
+  /* height: auto; */
 }
 
 .container {
-  /* width: 100%; */
+  width: 100%;
 }
 
 @media (min-width: 640px) {

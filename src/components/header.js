@@ -18,38 +18,41 @@ export default function Header() {
   const history = useHistory();
 
   return (
-    <header className="h-18 bd-white border-b border-gray-primary">
-      <div className="container ml-5 h-full">
-        <div className="flex justify-center">
-          <div className="cursor-pointer pl-5 flex-1">
-            <div className="w-64 align-middle inline">
-              <span
-                className="text-4xl sm:text-3xl md:text-4xl md:pt-3 lg:text-5xl xl:text-5xl"
-                style={{ fontFamily: 'Acakadut' }}
-              >
-                Roll & Box
-              </span>
+    <header className="h-12 sm:h-16 md:h-16 lg:h-16 xl:h-16 bd-white border-b border-gray-primary mb-2">
+      <div className="">
+        <div className="flex">
+          <div className="flex-grow w-1/2 mt-1.5">
+            {/* <div className="inline"> */}
+            <div
+              className="inline text-4xl ml-0 pl-0 sm:text-5xl sm:pl-1 sm:ml-9 md:text-5xl md:pl-1 md:ml-9 lg:text-5xl lg:pl-1 lg:ml-9 xl:text-5xl xl:pl-1 xl:ml-9"
+              style={{ fontFamily: 'Acakadut' }}
+            >
+              Roll & Box
             </div>
+            {/* </div> */}
             <div className="inline">
               <Link to={ROUTES.DASHBOARD}>
                 <img
-                  className=" w-0 invisible sm:invisible md:invisible lg:visible xl:visible sm:w-10 lg:w-28 xl:w-28 sm:mt-1 mb-0.5 md:mt-1 mb-0.5 lg:mt-1 mb-0.5 xl:mt-1 mb-0.5"
+                  className="ml-1 w-0 mb-1 invisible sm:visible md:visible lg:visible xl:visible sm:w-24 md:w-24 lg:w-24 xl:w-24"
                   src={image1}
                   alt="Roll and Box"
-                  style={{ maxWidth: '5rem' }}
+                  // style={{ width: '3rem' }}
                 />
               </Link>
             </div>
           </div>
-          <div className="justify-end inline">
+          {/* <div className="flex-shrink w-auto">
+            <span />
+          </div> */}
+          <div className="flex-grow w-1/2 flex justify-end inline mt-0.5">
             {user ? (
               <>
-                <div className="">
+                <div className="justify-end">
                   <Link to={ROUTES.DASHBOARD} aria-label="Dashboard" className="inline">
                     <img
                       src={worldBoxLogo}
                       alt="worldbox"
-                      className="pr-2 h-14"
+                      className="pr-1 h-9 sm:h-14 md:h-14 lg:h-14 xl:h-14"
                       // style={{ width: '6rem' }}
                     />
                   </Link>
@@ -57,8 +60,7 @@ export default function Header() {
                     <img
                       src={BoxLogo}
                       alt="worldbox"
-                      className="pr-3 h-14"
-                      // style={{ width: '6.2rem' }}
+                      className="pr-1 h-9 sm:h-14 md:h-14 lg:h-14 xl:h-14"
                     />
                   </Link>
                   <button
@@ -76,24 +78,26 @@ export default function Header() {
                       }
                     }}
                   >
-                    <img
-                      src={signOutLogo}
-                      alt="worldbox"
-                      className="pt-0.5 pr-2 h-10"
-                      // style={{ width: '3.4rem' }}
-                    />
-                  </button>
-                  <div className="cursor-pointer inline pr-1">
-                    <Link to={`/${user.username}`}>
+                    <div style={{ paddingTop: 'rem' }}>
                       <img
-                        className="rounded-full shadow-lg"
-                        alt="logo"
-                        style={{ width: '2.5rem' }}
-                        src={user.imageurl}
+                        src={signOutLogo}
+                        alt="worldbox"
+                        className="pl-1 pt-0.5 pr-1 h-7 sm:h-9 md:h-9 lg:h-9 xl:h-9"
+                        // style={{ width: '1.8rem', paddingTop: '0.2rem' }}
                       />
-                    </Link>
-                  </div>
+                    </div>
+                  </button>
                 </div>
+                {/* <div className="inline cursor-pointer pr-1"> */}
+                <Link to={`/${user.username}`} className="inline cursor-pointer pr-1 pt-2 mr-3">
+                  <img
+                    className="inline rounded-full shadow-lg h-8 sm:h-10 md:h-10 lg:h-10 xl:h-10 hidden sm:block md:block lg:block xl:block"
+                    alt="logo"
+                    // style={{ width: '2.5rem' }}
+                    src={user.imageurl}
+                  />
+                </Link>
+                {/* </div> */}
               </>
             ) : (
               <>

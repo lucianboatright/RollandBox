@@ -9,10 +9,10 @@ import '../../styles/watches.css';
 export default function Watches({ watches, profile }) {
   console.log('PROFILE INFO INSIDE WATCHES', profile);
   return (
-    <div className="mr-2 ml-2">
-      <div className="h-16 border-t border-gray-primary">
-        <div>
-          <div className="pt-1 flex flex-wrap overflow-hidden flex justify-start">
+    <div className="mr-2 ml-2 ">
+      <div className="border-t border-gray-primary">
+        <div className="ml-5">
+          <div className="pt-1 flex flex-wrap justify-start">
             {!watches ? (
               <>
                 <div className="">
