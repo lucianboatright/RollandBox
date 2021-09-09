@@ -1,15 +1,16 @@
-module.export = {
-    future: {
-        removeDeprecatedGapUtilities: true
-    },
+const colors = require('tailwindcss/colors')
 
+module.export = {
     theme: {
-        animation: {
-            'bounce': {
-                '0%, 100%': { transform: 'rotate(-3deg)' },
-                '50%': { transform: 'rotate(3deg)' },
-            }
-        ,}
+        extend: {
+            colors: {
+                // transparent: 'transparent',
+                // current: 'currentColor',
+                'ink': '#000F55',
+                'custom-teal': '#008080',
+            },
+
+        },
         fontSize: {
             sm: ['14px', '20px'],
             base: ['16px', '24px'],
@@ -19,25 +20,6 @@ module.export = {
         fill: (theme) => ({
             red: theme('color.red.primary')
         }),
-        color: {
-            ink: '#000F55',
-            white: '#ffffff',
-            blue: {
-                medium: '#005c98'
-            },
-            black: {
-                light: '#262626',
-                faded: '#00000059'
-            },
-            grey: {
-                base: '#616161',
-                background: '#fafafa',
-                primary: '#dbdbdb'
-            },
-            red: {
-                primary: '#ed4956'
-            }
-        },
     },
     variants: {
         display: ['ground-hover']
