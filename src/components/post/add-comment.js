@@ -28,7 +28,7 @@ export default function AddComment({ docId, comments, setComments, commentInput 
   return (
     <div className="border-2 border-grey-800 rounded mb-3">
       <form
-        className="pl-0 pr-0"
+        className="pl-0.5 pr-0"
         method="POST"
         onSubmit={(event) =>
           comment.length >= 1 ? handleSubmitComment(event) : event.preventDefault()
@@ -39,14 +39,14 @@ export default function AddComment({ docId, comments, setComments, commentInput 
             <input
               aria-label="Add a Comment"
               autoComplete="off"
-              className="text-xs text-gray-600"
+              className="text-sm text-gray-600 mr-2 rounded"
               type="text"
               name="add-comment"
               placeholder="Comment ..."
               value={comment}
               onChange={({ target }) => setComment(target.value)}
               ref={commentInput}
-              style={{ width: '4.3rem' }}
+              style={{ width: '5.8rem' }}
             />
             <button
               className={`inline-block align-baseline text-xs font-bold text-white bg-gradient-to-r from-pink-400 to-blue-500 pl-2 pt-1.5 pb-1 pr-3 rounded border-grey-800 ${

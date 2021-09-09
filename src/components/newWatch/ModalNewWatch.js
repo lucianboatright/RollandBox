@@ -43,7 +43,6 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
   const [downloadAtempt, setDownloadAtempt] = useState(false);
   const [fileSelected, setFileSelected] = useState(false);
   const hiddenFileInput = React.useRef(null);
-  const [progress, setProgress] = useState(0);
 
   const generateDownload = (upImg, completedCrop) => {
     console.log('anything');
@@ -70,16 +69,16 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
     }
   };
 
-  const handleClick = (e) => {
+  const handleClick = () => {
     hiddenFileInput.current.click();
   };
 
-  const imageBlobGenerater = async (e) => {
+  const imageBlobGenerater = async () => {
     generateDownload(previewCanvasRef.current, completedCrop);
     setDownloadAtempt(true);
   };
 
-  const handleSubmitUpload = (e) => {
+  const handleSubmitUpload = () => {
     const metadata = {
       contentType: 'image/jpeg',
       customMetadata: {
@@ -95,10 +94,6 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
     // setUrl(await fileRef.getDownloadURL());
     fileRef.on(
       'state_changed',
-      (snapshot) => {
-        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-        setProgress(progress);
-      },
       (error) => {
         console.log(error);
         alert(error.messgae);
@@ -118,7 +113,6 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
               likes: [],
               userId
             });
-            setProgress(0);
             setWatchInfo('');
             setWatchName('');
             setImageBlob(null);
@@ -135,7 +129,6 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
 
   const closeModal = (e) => {
     e.preventDefault();
-    setProgress(0);
     setWatchInfo('');
     setWatchName('');
     setImageBlob(null);

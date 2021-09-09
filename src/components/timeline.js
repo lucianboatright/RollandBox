@@ -3,7 +3,6 @@ import Skeleton from 'react-loading-skeleton';
 import useWatches from '../hooks/use-watches';
 import Post from './post';
 import singleBox from '../images/borders/Box_single_LowerMiddle.png';
-// import grid from '../images/borders/wooden_grid_5x.png';
 
 export default function Timeline() {
   const { watches } = useWatches();

@@ -16,7 +16,7 @@ export default function Header({
   profile: {
     docId: profileDocId,
     userId: profileUserId,
-    fullName,
+    // fullName,
     following = [],
     followers = [],
     username: profileUsername,
@@ -58,7 +58,7 @@ export default function Header({
           <img className="rounded-full h-30 w-auto flex shadow-lg" src={imgurl} alt="imgurl" />
         )}
       </div>
-      <div className="flex items-center justify-center flex-col col-span border-r-2 border-grey-700 pl-0 sm:pl-0 md:pl-0 lg:pl-0 xl:pl-0">
+      <div className="flex flex-col col-span border-r-2 border-grey-700 pl-0 sm:pl-0 md:pl-0 lg:pl-0 xl:pl-0">
         <div className="container flex item-center">
           <p className="text-2xl mr-4 capitalize" style={{ fontFamily: 'Quinngothic' }}>
             {profileUsername}
@@ -90,17 +90,26 @@ export default function Header({
             <Skeleton count={1} width={677} height={24} />
           ) : (
             <>
-              <p className="mr-4" style={{ fontFamily: 'Quinngothic' }}>
+              <p
+                className="mr-4 text-base sm:mr-10 sm:text-xl md:mr-10 md:text-xl lg:mr-10 lg:text-xl xl:mr-10 xl:text-xl"
+                style={{ fontFamily: 'Quinngothic' }}
+              >
                 <span className="font-bold">{watchesCount}</span>
                 {`  `}
                 Watches
               </p>
-              <p className="mr-4" style={{ fontFamily: 'Quinngothic' }}>
+              <p
+                className="mr-4 text-base sm:mr-10 sm:text-xl md:mr-10 md:text-xl lg:mr-10 lg:text-xl xl:mr-10 xl:text-xl"
+                style={{ fontFamily: 'Quinngothic' }}
+              >
                 <span className="font-bold">{followerCount}</span>
                 {`  `}
                 {followerCount === 1 ? `Follower` : `Followers`}
               </p>
-              <p className="mr-4" style={{ fontFamily: 'Quinngothic' }}>
+              <p
+                className="mr-4 text-base sm:mr-10 sm:text-xl md:mr-10 md:text-xl lg:mr-10 lg:text-xl xl:mr-10 xl:text-xl"
+                style={{ fontFamily: 'Quinngothic' }}
+              >
                 <span className="font-bold">{following?.length}</span>
                 {`  `}
                 Following
@@ -116,13 +125,15 @@ export default function Header({
               <div className="flex items-center justify-evenly flex-col col-span">
                 <div className="container mr-2">
                   <button
-                    className="bg-gradient-to-r from-green-600 to-yellow-500 text-base text-xl rounded text-white h-10 w-40 hidden sm:block md:block lg:block xl:block"
+                    className="text-base text-xl rounded text-white h-10 w-40 hidden sm:block md:block lg:block xl:block"
                     type="button"
                     onClick={() => setIsOpenAvitar(true)}
-                    style={{ fontFamily: 'Acakadut' }}
+                    style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
                   >
-                    <img alt="setting" src={settingLogo} className="h-6 pr-1" />
-                    Profile Settings
+                    <div className="flex items-center">
+                      <img alt="setting" src={settingLogo} className="h-6 mb-0.5 pl-1 pr-2" />
+                      Add New Avitar
+                    </div>
                   </button>
                   <ModalAvitar
                     userAvatar={avatar}
@@ -137,12 +148,12 @@ export default function Header({
               <div className="flex items-center justify-evenly flex-col col-span">
                 <div className="container mr-2">
                   <button
-                    className="bg-gradient-to-r from-green-600 to-yellow-500 text-base text-xl rounded text-white h-10 w-10 block sm:hidden md:hidden lg:hidden xl:hidden"
+                    className="rounded text-white h-10 w-10 block sm:hidden md:hidden lg:hidden xl:hidden"
                     type="button"
                     onClick={() => setIsOpenAvitar(true)}
-                    style={{ fontFamily: 'Acakadut' }}
+                    style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
                   >
-                    <img alt="setting" src={settingLogo} className="h-6 " />
+                    <img alt="setting" src={settingLogo} className="h-8 pl-1" />
                   </button>
                   <ModalAvitar
                     userAvatar={avatar}
@@ -157,13 +168,15 @@ export default function Header({
               <div className="flex items-center justify-evenly flex-col col-span">
                 <div className="container mr-2">
                   <button
-                    className="bg-gradient-to-r from-yellow-500 to-green-600 text-xl rounded text-white mt-2 pr-2 pl-1 h-10 w-40 hidden sm:block md:block lg:block xl:block"
+                    className="text-xl rounded text-white mt-2 pr-2 pl-1 h-10 w-40 hidden sm:block md:block lg:block xl:block"
                     type="button"
                     onClick={() => setIsOpen(true)}
-                    style={{ fontFamily: 'Acakadut' }}
+                    style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
                   >
-                    <img alt="setting" src={watchLogo} className="h-7 pr-1" />
-                    Add New Watch
+                    <div className=" flex items-center">
+                      <img alt="setting" src={watchLogo} className="h-7 pr-1 " />
+                      Add New Watch
+                    </div>
                   </button>
                   <ModalNewWatch
                     userAvatar={avatar}
@@ -178,12 +191,12 @@ export default function Header({
               <div className="flex items-center justify-evenly flex-col col-span">
                 <div className="container mr-2">
                   <button
-                    className="bg-gradient-to-r from-yellow-500 to-green-600 text-xl rounded flex-shrink text-white mt-2 py-2 h-10 w-10 block sm:hidden md:hidden lg:hidden xl:hidden"
+                    className="text-xl rounded flex-shrink text-white mt-2 py-2 h-16 w-10 block sm:hidden md:hidden lg:hidden xl:hidden"
                     type="button"
                     onClick={() => setIsOpen(true)}
-                    style={{ fontFamily: 'Acakadut' }}
+                    style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
                   >
-                    <img alt="setting" src={watchLogo} className="h-7 pb-0" />
+                    <img alt="setting" src={watchLogo} className="h-8 pl-1" />
                     plus
                   </button>
                   <ModalNewWatch

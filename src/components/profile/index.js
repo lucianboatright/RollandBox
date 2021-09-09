@@ -1,8 +1,7 @@
-import { useReducer, useEffect, useState } from 'react';
+import { useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Header from './header';
 import Watches from './watches';
-// import useAvatar from '../hooks/use-avatar';
 
 import { getUserWatchesByUsername } from '../../services/firebase';
 
@@ -21,7 +20,6 @@ export default function Profile({ user }) {
       dispatch({ profile: user, watchCollection: watches, followerCount: user.followers.length });
     }
     getProfileInfoAndWatches();
-    // eslint-disable-next-line
   }, [user.username]);
 
   return (

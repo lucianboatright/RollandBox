@@ -8,7 +8,7 @@ export default function Comments({ docId, comments: allComments = [], posted, co
   const [comments, setComments] = useState(allComments);
   return (
     <>
-      <div className="ml-1 p-0">
+      <div className="ml-1 p-0 pb-1.5">
         {comments.length >= 1 && (
           <div
             className="text-xs text-gray-700 mb-0 cursor-pointer"
