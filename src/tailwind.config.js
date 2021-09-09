@@ -4,7 +4,6 @@ module.export = {
     theme: {
         extend: {
             colors: {
-                // transparent: 'transparent',
                 // current: 'currentColor',
                 'ink': '#000F55',
                 'custom-teal': '#008080',
