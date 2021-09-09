@@ -122,13 +122,13 @@ export default function Header({
               <div className="flex items-center justify-evenly flex-col col-span">
                 <div className="container mr-2">
                   <button
-                    className="bg-custom-teal text-base text-xl rounded text-white h-10 w-40 hidden sm:block md:block lg:block xl:block"
+                    className="text-base text-xl rounded text-white h-10 w-40 hidden sm:block md:block lg:block xl:block"
                     type="button"
                     onClick={() => setIsOpenAvitar(true)}
-                    style={{ fontFamily: 'Acakadut' }}
+                    style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
                   >
                     <div className="flex items-center">
-                      <img alt="setting" src={settingLogo} className="h-6 mb-0.5 px-1" />
+                      <img alt="setting" src={settingLogo} className="h-6 mb-0.5 pl-1 pr-2" />
                       Add New Avitar
                     </div>
                   </button>
