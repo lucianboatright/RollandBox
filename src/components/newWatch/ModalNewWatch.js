@@ -182,9 +182,9 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
           X Close Modal
         </button>
         <div style={MODAL_STYLES} className="rounded">
-          <div className="overflow-y-scroll" style={{ height: '22rem' }}>
+          <div className="overflow-y-scroll" style={{ height: '24rem' }}>
             <form onSubmit={handleSubmitUpload} method="POST">
-              <div className="flex items-start">
+              <div className="flex flex-col">
                 <div>
                   <div className="flex items-stretch">
                     <div className="justify-left">
@@ -206,7 +206,10 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                     <div className="w-60 mt-1 mb-1 pr-1 pt-1 pb-1">
                       {fileSelected === false ? (
                         <>
-                          <div className="pt-1 text-center w-34 h-10 text-green-900 rounded bg-gradient-to-r from-green-400 to-yellow-500">
+                          <div
+                            style={{ backgroundColor: 'rgb(128,0,0)' }}
+                            className="pt-1 text-center w-34 h-10 text-white rounded"
+                          >
                             <img
                               alt="logo"
                               src={rightArrow}
@@ -231,11 +234,11 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                         </>
                       ) : (
                         <>
-                          <div className="pt-1 text-center w-34 h-10 text-white rounded bg-gradient-to-r from-green-400 to-yellow-500">
+                          <div className="pt-1 text-center w-34 h-10 rounded border-2 ">
                             <button
                               onClick={handleClick}
                               type="button"
-                              style={{ fontFamily: 'Acakadut' }}
+                              style={{ fontFamily: 'Acakadut', color: 'rgb(128,0,0)' }}
                             >
                               Browse Files for Upload ...
                             </button>
@@ -282,10 +285,10 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                             <>
                               <button
                                 type="button"
-                                className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 bg-gradient-to-r from-green-400 to-yellow-500 text-xl text-green-800"
+                                className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 text-xl text-white"
                                 disabled={!completedCrop?.width || !completedCrop?.height}
                                 onClick={imageBlobGenerater}
-                                style={{ fontFamily: 'Acakadut' }}
+                                style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
                               >
                                 <img
                                   alt="logo"
@@ -368,18 +371,18 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                   {imagedownload === false ? (
                     <>
                       <input
-                        style={{ fontFamily: 'Acakadut' }}
+                        style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
                         type="submit"
                         value="Add Watch"
-                        className="rounded mt-1 mb-1 pl-2 pr-2 pt-1 pb-1 bg-gradient-to-r from-yellow-500 to-green-400 text-red-700 text-xl w-60 bg"
+                        className="rounded mt-1 mb-1 pl-2 pr-2 pt-1 pb-1 text-red-900 text-xl w-60 bg"
                       />
                     </>
                   ) : (
                     <>
                       <button
                         type="submit"
-                        style={{ fontFamily: 'Acakadut' }}
-                        className="rounded mt-1 mb-1 pr-2 pt-1 pb-1 bg-gradient-to-r from-yellow-500 to-green-400 text-green-800 text-xl w-60 bg"
+                        style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
+                        className="rounded mt-1 mb-1 pr-2 pt-1 pb-1 text-green-800 text-xl w-60 bg"
                       >
                         <img
                           alt="logo"
@@ -396,10 +399,10 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                     </>
                   )}
                 </div>
+                <img src={completedCrop} alt="" />
               </div>
             </form>
             <br />
-            <img src={completedCrop} alt="" />
           </div>
         </div>
       </div>

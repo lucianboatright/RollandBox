@@ -1,7 +1,5 @@
-/* eslint-disable global-require */
 import { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
@@ -34,14 +32,11 @@ export default function Header() {
                   className="ml-1 w-0 mb-1 invisible sm:visible md:visible lg:visible xl:visible sm:w-24 md:w-24 lg:w-24 xl:w-24"
                   src={image1}
                   alt="Roll and Box"
-                  // style={{ width: '3rem' }}
                 />
               </Link>
             </div>
           </div>
-          {/* <div className="flex-shrink w-auto">
-            <span />
-          </div> */}
+
           <div className="flex-grow w-1/2 flex justify-end inline mb-0 mr-0 sm:mb-3 md:mb-3 lg:mb-3 xl:mb-3">
             {user ? (
               <>
@@ -51,7 +46,6 @@ export default function Header() {
                       src={worldBoxLogo}
                       alt="worldbox"
                       className="pr-1 h-9 sm:h-14 md:h-14 lg:h-14 xl:h-14"
-                      // style={{ width: '6rem' }}
                     />
                   </Link>
                   <Link to={`/${user.username}`} aria-label="Dashboard" className="inline">
@@ -81,21 +75,17 @@ export default function Header() {
                         src={signOutLogo}
                         alt="worldbox"
                         className="pl-1 pt-0.5 pr-1 h-7 sm:h-9 md:h-9 lg:h-9 xl:h-9"
-                        // style={{ width: '1.8rem', paddingTop: '0.2rem' }}
                       />
                     </div>
                   </button>
                 </div>
-                {/* <div className="inline cursor-pointer pr-1"> */}
                 <Link to={`/${user.username}`} className="inline cursor-pointer pr-1 pt-2 mr-3">
                   <img
                     className="inline rounded-full shadow-lg h-9 sm:h-11 md:h-11 lg:h-11 xl:h-11 hidden sm:block md:block lg:block xl:block mr-0 sm:mr-5 md:mr-5 lg:mr-5 lx:mr-5"
                     alt="logo"
-                    // style={{ width: '2.5rem' }}
                     src={user.imageurl}
                   />
                 </Link>
-                {/* </div> */}
               </>
             ) : (
               <>
@@ -123,5 +113,3 @@ export default function Header() {
     </header>
   );
 }
-
-/* eslint-disable global-require */
