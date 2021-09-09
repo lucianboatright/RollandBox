@@ -20,7 +20,7 @@ export default function Header() {
     <header className="h-12 sm:h-16 md:h-16 lg:h-16 xl:h-16 bd-white border-b border-gray-primary mb-2">
       <div className="">
         <div className="flex">
-          <div className="flex-grow w-1/2 mt-1.5">
+          <div className="flex-grow flex items-center  w-1/2 mt-1.5 mr-0 sm:ml-9 md:-ml-9 lg:ml-9 xl:ml-9">
             {/* <div className="inline"> */}
             <div
               className="inline text-4xl pl-0 sm:text-5xl pl-1 md:text-5xl pl-1 lg:text-5xl pl-1 xl:text-5xl pl-1"
@@ -43,10 +43,10 @@ export default function Header() {
           {/* <div className="flex-shrink w-auto">
             <span />
           </div> */}
-          <div className="flex-grow w-1/2 flex justify-end inline-grid inline mt-0.5">
+          <div className="flex-grow w-1/2 flex justify-end inline-grid inline mb-0 mr-0 sm:mr-9 sm:mb-3 md:-mr-9 md:mb-3 lg:mr-9 lg:mb-3 xl:mr-9 xl:mb-3">
             {user ? (
               <>
-                <div className="justify-end">
+                <div className="justify-end flex items-center">
                   <Link to={ROUTES.DASHBOARD} aria-label="Dashboard" className="inline">
                     <img
                       src={worldBoxLogo}
@@ -81,7 +81,7 @@ export default function Header() {
                       <img
                         src={signOutLogo}
                         alt="worldbox"
-                        className="pl-1 pt-0.5 pr-3 h-7 sm:h-11 md:h-11 lg:h-11 xl:h-11"
+                        className="pl-1 pt-0.5 h-7 sm:h-11 md:h-11 lg:h-11 xl:h-11"
                         // style={{ width: '1.8rem', paddingTop: '0.2rem' }}
                       />
                     </div>

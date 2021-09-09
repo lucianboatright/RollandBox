@@ -522,7 +522,7 @@ audio,
 iframe,
 embed,
 object {
-  /* display: block; */
+  display: block;
   vertical-align: middle;
 }
 
@@ -536,7 +536,7 @@ object {
 img,
 video {
   max-width: 100%;
-  /* height: auto; */
+  height: auto;
 }
 
 .container {
