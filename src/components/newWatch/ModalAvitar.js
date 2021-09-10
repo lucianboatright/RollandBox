@@ -71,7 +71,7 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
     setDownloadAtempt(true);
   };
 
-  const handleSubmitUpload = (e) => {
+  const handleSubmitUpload = () => {
     const metadata = {
       contentType: 'image/jpeg',
       customMetadata: {

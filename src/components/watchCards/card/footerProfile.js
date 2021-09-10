@@ -4,14 +4,14 @@ import { PropTypes } from 'prop-types';
 export default function Footer({ caption, watchName }) {
   return (
     <div
-      className="w-42 pt-7 pl-7 text-left"
+      className="w-42 pt-14 pl-4 text-left"
       style={{ fontFamily: 'Buggie', color: 'rgb(0,15,85)' }}
     >
-      <div className="text-2xl w-48 border-b-2 mb-1">
-        <div className="w-42">{watchName}</div>
+      <div className="text-4xl w-68 border-b-2 mb-2">
+        <div className="w-68">{watchName}</div>
       </div>
-      <div className="text-lg w-48 border-b-2 mb-1">
-        <div className="w-42">{caption}</div>
+      <div className="text-xl w-68 border-b-2 mb-2">
+        <div className="w-68">{caption}</div>
       </div>
     </div>
   );
