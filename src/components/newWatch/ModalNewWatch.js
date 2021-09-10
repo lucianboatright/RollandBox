@@ -17,7 +17,7 @@ const MODAL_STYLES = {
   transform: 'translate(-50%, -50%)',
   backgroundColor: '#FFF',
   padding: '20px',
-  width: '600px'
+  width: 'auto'
 };
 
 const OVERLAY_STYLES = {
@@ -184,7 +184,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
         <div style={MODAL_STYLES} className="rounded">
           <div className="overflow-y-scroll" style={{ height: '24rem' }}>
             <form onSubmit={handleSubmitUpload} method="POST">
-              <div className="flex flex-col">
+              <div className="flex flex-col sm:flex-row md:flex-row :lg:flex-row xl:flex-row">
                 <div>
                   <div className="flex items-stretch">
                     <div className="justify-left">
@@ -345,7 +345,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                     </div>
                   </div>
                 </div>
-                <div className="">
+                <div className="flex flex-col">
                   <p className="text-blue-600 pl-1" style={{ fontFamily: 'Quinngothic' }}>
                     Watch Name
                   </p>
