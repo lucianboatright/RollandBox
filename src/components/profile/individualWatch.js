@@ -8,10 +8,10 @@ export default function IndividualWatch({ watchInfo }) {
   const [isOpen, setIsOpen] = useState(false);
   console.log('IsIt OPEN', isOpen);
 
-  const closeModal = () => {
-    console.log('CLOSING IN INDIVIDI CARD', isOpen);
-    setIsOpen(false);
-  };
+  // const closeModal = () => {
+  //   console.log('CLOSING IN INDIVIDI CARD', isOpen);
+  //   setIsOpen(false);
+  // };
 
   const viewWatch = () => {
     console.log('IS THIS OPENINGN IT', isOpen);
@@ -35,7 +35,6 @@ export default function IndividualWatch({ watchInfo }) {
         <div>
           <button
             type="button"
-            className=""
             onClick={viewWatch}
             onKeyDown={(event) => {
               if (event.key === 'Enter') {
@@ -57,7 +56,7 @@ export default function IndividualWatch({ watchInfo }) {
                 comments={watchInfo.comments}
                 info={watchInfo.watchinfo}
                 id={watchInfo.docId}
-                onClose={closeModal}
+                onClose={() => setIsOpen(false)}
               />
             </div>
           </button>

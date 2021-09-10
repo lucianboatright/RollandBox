@@ -5,7 +5,6 @@ import WatchCard from './individualWatch';
 import '../../styles/watches.css';
 
 export default function Watches({ watches, profile }) {
-  console.log('PROFILE INFO INSIDE WATCHES', profile);
   return (
     <div className="mr-2 ml-2 ">
       <div className="border-t border-gray-primary">
@@ -20,7 +19,7 @@ export default function Watches({ watches, profile }) {
                 </div>
               </>
             ) : watches?.length > 0 ? (
-              watches.map((watch) => <WatchCard key={watch.docId} watchInfo={watch} />)
+              watches.map((watch) => <WatchCard key={profile.docId} watchInfo={watch} />)
             ) : (
               <p className="text-center text-2xl">No watches added yet</p>
             )}

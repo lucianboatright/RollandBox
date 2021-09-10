@@ -25,7 +25,6 @@ const OVERLAY_STYLES = {
 };
 
 export default function Modal({ open, onClose, watchInfo }) {
-  console.log('CONTNET INSIDE MODAL', watchInfo);
   if (!open) return null;
   return (
     <>
