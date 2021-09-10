@@ -49,17 +49,17 @@ export default function IndividualWatch({ watchInfo }) {
                 alt={`${watchInfo.watchId}`}
                 width="160px"
               />
-              <WatchCard
-                open={isOpen}
-                image={watchInfo.imageurl}
-                name={watchInfo.watchname}
-                comments={watchInfo.comments}
-                info={watchInfo.watchinfo}
-                id={watchInfo.docId}
-                onClose={() => setIsOpen(false)}
-              />
             </div>
           </button>
+          <WatchCard
+            open={isOpen}
+            image={watchInfo.imageurl}
+            name={watchInfo.watchname}
+            comments={watchInfo.comments}
+            info={watchInfo.watchinfo}
+            id={watchInfo.docId}
+            onClose={() => setIsOpen(false)}
+          />
         </div>
       </div>
     </div>

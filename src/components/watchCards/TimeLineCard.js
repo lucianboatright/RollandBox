@@ -55,7 +55,7 @@ export default function Modal({ open, onClose, watchInfo }) {
                 backgroundRepeat: 'no-repeat'
               }}
             >
-              <div className="pl-11 pr-9 pb-10 pt-11">
+              <div className="pl-11 pr-9 pb-20 pt-11 sm:pb-10 md:pb-10 lg:pb-10 lx:pb-10">
                 <img alt="watch" src={watchInfo.imageurl} className="rounded w-64" />
               </div>
               <div

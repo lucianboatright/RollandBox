@@ -10,7 +10,7 @@ const MODAL_STYLES = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   backgroundColor: '#FFF',
-  padding: '40px',
+  padding: '20px',
   marginTop: '4rem',
   marginBottom: '4rem'
   // zIndex: 1000
@@ -56,7 +56,7 @@ export default function Modal({ open, onClose, image, name, comments, info, id }
           <div style={MODAL_STYLES} className="rounded">
             <div className="overflow-y-scroll h-screen">
               <div
-                className="pt-7 rounded"
+                className="pt-7 rounded "
                 style={{
                   backgroundImage: `url(${watchBox})`,
                   backgroundPosition: 'center top',
