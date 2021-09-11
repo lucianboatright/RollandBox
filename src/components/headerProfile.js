@@ -21,28 +21,22 @@ export default function Header() {
       <div className="">
         <div className="flex">
           <div className="flex-grow flex items-center  w-1/2 mt-1.5 mr-0 sm:ml-9 md:-ml-9 lg:ml-9 xl:ml-9">
-            {/* <div className="inline"> */}
             <div
               className="inline text-4xl pl-0 sm:text-5xl pl-1 md:text-5xl pl-1 lg:text-5xl pl-1 xl:text-5xl pl-1"
               style={{ fontFamily: 'Acakadut' }}
             >
               Roll & Box
             </div>
-            {/* </div> */}
             <div className="inline">
               <Link to={ROUTES.DASHBOARD}>
                 <img
                   className="ml-1 w-0 mb-1 invisible sm:visible md:visible lg:visible xl:visible sm:w-24 md:w-24 lg:w-24 xl:w-24"
                   src={image1}
                   alt="Roll and Box"
-                  // style={{ width: '3rem' }}
                 />
               </Link>
             </div>
           </div>
-          {/* <div className="flex-shrink w-auto">
-            <span />
-          </div> */}
           <div className="flex-grow w-1/2 flex justify-end inline-grid inline mb-0 mr-0 sm:mr-9 sm:mb-3 md:-mr-9 md:mb-3 lg:mr-9 lg:mb-3 xl:mr-9 xl:mb-3">
             {user ? (
               <>
