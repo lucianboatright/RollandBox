@@ -16,7 +16,7 @@ export default function Header() {
   const history = useHistory();
 
   return (
-    <header className="h-12 sm:h-16 md:h-16 lg:h-16 xl:h-16 bd-white border-b border-gray-primary mb-2">
+    <header className="h-14 sm:h-20 md:h-20 lg:h-20 xl:h-20 bd-white border-b border-gray-primary mb-2">
       <div className="">
         <div className="flex">
           <div className="flex-grow flex items-center w-1/2 mt-1.5">
@@ -37,7 +37,7 @@ export default function Header() {
             </div>
           </div>
 
-          <div className="flex-grow w-1/2 flex justify-end inline mb-0 mr-0 sm:mb-3 md:mb-3 lg:mb-3 xl:mb-3">
+          <div className="flex-grow w-1/2 flex justify-end inline mb-0 mt-2 mr-0 sm:mb-3 sm:mt-2 md:mb-3 md:mt-2 lg:mb-3 lg:mt-2 xl:mb-3 xl:mt-2">
             {user ? (
               <>
                 <div className="justify-end flex items-center">
