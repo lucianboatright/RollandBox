@@ -10,7 +10,7 @@ export default function Footer({ caption, watchName }) {
       <div className="text-4xl w-68 border-b-2 mb-2">
         <div className="w-68">{watchName}</div>
       </div>
-      <div className="text-xl w-68 border-b-2 mb-2">
+      <div className="text-xl w-68 border-b-2 mb-2" style={{ whiteSpace: 'pre-wrap' }}>
         <div className="w-68">{caption}</div>
       </div>
     </div>

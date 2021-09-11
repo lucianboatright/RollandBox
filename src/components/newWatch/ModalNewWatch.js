@@ -94,8 +94,12 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
     // setUrl(await fileRef.getDownloadURL());
     fileRef.on(
       'state_changed',
+      (snapshot) => {
+        console.log(snapshot);
+      },
       (error) => {
         console.log(error);
+        console.log('THIS ERRORR IS HAPPENING!!!');
         alert(error.messgae);
       },
       () => {
