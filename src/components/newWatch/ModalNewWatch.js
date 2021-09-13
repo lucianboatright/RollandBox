@@ -153,12 +153,12 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
     const scaleY = image.naturalHeight / image.height;
     const ctx = canvas.getContext('2d');
     const pixelRatio = window.devicePixelRatio;
-    canvas.width = crop.width * pixelRatio;
-    canvas.height = crop.height * pixelRatio;
+    canvas.width = crop.width * pixelRatio * scaleX;
+    canvas.height = crop.height * pixelRatio * scaleY;
 
     ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-    ctx.imageSmoothingEnabled = true;
-    ctx.imageSmoothingQuality = 'high';
+    // ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'low';
 
     ctx.drawImage(
       image,
@@ -168,8 +168,8 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
       crop.height * scaleY,
       0,
       0,
-      crop.width,
-      crop.height
+      crop.width * scaleX,
+      crop.height * scaleY
     );
   }, [completedCrop]);
 
@@ -258,17 +258,17 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                         </>
                       )}
                     </div>
-                    <div className="flex justify-center ml-4 h-26 w-2/3">
+                    <div className="flex justify-center ml-4 h-60 ">
                       <ReactCrop
                         src={upImg}
                         onImageLoaded={onLoad}
                         crop={crop}
                         onChange={(c) => setCrop(c)}
                         onComplete={(c) => setCompletedCrop(c)}
-                        style={{ height: 'auto', width: '8rem' }}
+                        style={{ height: 'auto', width: '10rem' }}
                         className=""
                       />
-                      <div style={{ height: 'auto', width: '8rem', marginLeft: '1rem' }}>
+                      <div style={{ height: 'auto', width: '20rem', marginLeft: '1rem' }}>
                         <canvas
                           ref={previewCanvasRef}
                           style={{

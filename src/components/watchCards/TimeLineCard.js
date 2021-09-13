@@ -69,23 +69,27 @@ export default function Modal({ open, onClose, watchInfo }) {
                 }}
                 className="pt-3 ml-10 mr-8 mt-8 pb-60 rounded"
               >
-                <div className="border-b-2 w-60 ml-1 text-4xl capitalize">
-                  <span>{watchInfo.username}</span>
-                </div>
-                <div className="border-b-2 w-60 ml-1 text-xl">
-                  <span>{watchInfo.watchname}</span>
-                </div>
-                <div className="border-b-2 w-60 ml-1">
-                  <span style={{ whiteSpace: 'pre-wrap' }}>{watchInfo.watchinfo}</span>
-                </div>
-                <div className="mb-60">
-                  {watchInfo.comments.map((item) => (
-                    <p key={`${item.content}-${item.displayName}`} className="w-60 ml-1">
-                      <span className="capitalize">
-                        {item.displayName}: {item.comment}
-                      </span>
-                    </p>
-                  ))}
+                <div className="content-center">
+                  <div className="border-b-2 w-60 ml-1 text-4xl capitalize">
+                    <span>{watchInfo.username}</span>
+                  </div>
+                  <div className="border-b-2 w-60 ml-1 text-xl">
+                    <span>{watchInfo.watchname}</span>
+                  </div>
+                  <div className="border-b-2 w-60 ml-1">
+                    <span style={{ whiteSpace: 'pre-wrap' }} className="overflow-y-auto">
+                      {watchInfo.watchinfo}
+                    </span>
+                  </div>
+                  <div className="mb-60">
+                    {watchInfo.comments.map((item) => (
+                      <p key={`${item.content}-${item.displayName}`} className="w-60 ml-1">
+                        <span className="capitalize">
+                          {item.displayName}: {item.comment}
+                        </span>
+                      </p>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

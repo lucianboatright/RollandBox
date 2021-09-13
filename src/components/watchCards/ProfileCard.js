@@ -27,11 +27,6 @@ const OVERLAY_STYLES = {
 };
 
 export default function Modal({ open, onClose, image, name, comments, info, id }) {
-  // const closeCard = (event) => {
-  //   event.preventDefault();
-  //   console.log('CLOSING');
-  //   onClose();
-  // };
   console.log('STATE OF OPEN', open);
   if (!open) return null;
   return (
