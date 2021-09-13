@@ -3,8 +3,13 @@ import Image from './imageProfile';
 import Footer from './footerProfile';
 import Comments from './commentsProfile';
 import paper from '../../../images/borders/paper-1.jpg';
+import deleteLogo from '../../../images/svg_png/deleteWhite.png';
 
 export default function Post({ imageurl, watchName, comments, watchInfo }) {
+  const handleDelete = () => {
+    console.log('DELETE');
+  };
+
   return (
     <div className="">
       {/* <div className="rounded col-span-1 border bg-white border-grey-primary"> */}
@@ -21,6 +26,14 @@ export default function Post({ imageurl, watchName, comments, watchInfo }) {
             color: 'rgb(0,15,85)'
           }}
         >
+          <button type="button" onClick={handleDelete}>
+            <img
+              alt="delete"
+              src={deleteLogo}
+              className="pb-2 mt-2 ml-2.5 h-10 w-8"
+              // onClick={handleDelete}
+            />
+          </button>
           <Footer caption={watchInfo} watchName={watchName} />
           <Comments comments={comments} />
         </div>
@@ -41,6 +54,14 @@ export default function Post({ imageurl, watchName, comments, watchInfo }) {
               color: 'rgb(0,15,85)'
             }}
           >
+            <button type="button" onClick={handleDelete}>
+              <img
+                alt="delete"
+                src={deleteLogo}
+                className="pb-2 mt-2 ml-2.5 h-10 w-8"
+                // onClick={handleDelete}
+              />
+            </button>
             <Footer caption={watchInfo} watchName={watchName} />
             <Comments comments={comments} />
           </div>
