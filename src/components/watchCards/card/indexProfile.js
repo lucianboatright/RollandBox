@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { doc, deleteDoc } from 'firebase/firestore';
 import { firebase } from '../../../lib/firebase';
 import Image from './imageProfile';
 import Footer from './footerProfile';

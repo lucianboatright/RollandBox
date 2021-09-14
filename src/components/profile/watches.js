@@ -4,7 +4,7 @@ import Skeleton from 'react-loading-skeleton';
 import WatchCard from './individualWatch';
 import '../../styles/watches.css';
 
-export default function Watches({ watches, profile }) {
+export default function Watches({ watches }) {
   return (
     <div className="mr-2 ml-2 ">
       <div className="border-t border-gray-primary">
@@ -19,7 +19,7 @@ export default function Watches({ watches, profile }) {
                 </div>
               </>
             ) : watches?.length > 0 ? (
-              watches.map((watch) => <WatchCard key={profile.docId} watchInfo={watch} />)
+              watches.map((watch) => <WatchCard key={watch.docId} watchInfo={watch} />)
             ) : (
               <p className="text-center text-2xl">No watches added yet</p>
             )}
@@ -31,14 +31,5 @@ export default function Watches({ watches, profile }) {
 }
 
 Watches.propTypes = {
-  watches: PropTypes.array,
-  profile: PropTypes.shape({
-    docId: PropTypes.string,
-    userId: PropTypes.string,
-    fullName: PropTypes.string,
-    username: PropTypes.string,
-    followers: PropTypes.array,
-    following: PropTypes.array,
-    imageurl: PropTypes.string
-  })
+  watches: PropTypes.array
 };

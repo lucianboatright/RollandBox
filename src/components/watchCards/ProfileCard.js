@@ -29,7 +29,6 @@ const OVERLAY_STYLES = {
 };
 
 export default function Modal({ open, onClose, image, name, comments, info, id }) {
-  console.log('STATE OF OPEN', open);
   if (!open) return null;
   return (
     <>
@@ -112,7 +111,7 @@ Modal.propTypes = {
   onClose: PropTypes.bool,
   image: PropTypes.string,
   name: PropTypes.string,
-  comments: PropTypes.string,
+  comments: PropTypes.array,
   info: PropTypes.string,
   id: PropTypes.string
 };
