@@ -15,7 +15,7 @@ export default function Header({
   profile: {
     docId: profileDocId,
     userId: profileUserId,
-    // fullName,
+    fullName,
     following = [],
     followers = [],
     username: profileUsername,
@@ -64,7 +64,7 @@ export default function Header({
             className="font-medium inline-block align-bottom capitalize pr-3"
             style={{ fontFamily: 'Quinngothic' }}
           >
-            {user.fullName}
+            {fullName}
           </span>
           {activeButtonFollow && (
             <button

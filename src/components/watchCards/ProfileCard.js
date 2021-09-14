@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import watchBox from '../../images/borders/ProfileCardBoxEdit.png';
+import watchBoxLong from '../../images/borders/2xSide.png';
 import PostCard from './card/indexProfile';
 // import { firebase } from '../../lib/firebase';
 
@@ -11,8 +12,9 @@ const MODAL_STYLES = {
   transform: 'translate(-50%, -50%)',
   backgroundColor: '#FFF',
   padding: '20px',
-  marginTop: '4rem',
-  marginBottom: '4rem'
+  marginTop: '2rem',
+  marginBottom: '4rem',
+  height: '650px'
   // zIndex: 1000
 };
 
@@ -27,11 +29,6 @@ const OVERLAY_STYLES = {
 };
 
 export default function Modal({ open, onClose, image, name, comments, info, id }) {
-  // const closeCard = (event) => {
-  //   event.preventDefault();
-  //   console.log('CLOSING');
-  //   onClose();
-  // };
   console.log('STATE OF OPEN', open);
   if (!open) return null;
   return (
@@ -54,25 +51,52 @@ export default function Modal({ open, onClose, image, name, comments, info, id }
             </button>
           </div>
           <div style={MODAL_STYLES} className="rounded">
-            <div className="overflow-y-scroll h-screen">
-              <div
-                className="pt-7 rounded "
-                style={{
-                  backgroundImage: `url(${watchBox})`,
-                  backgroundPosition: 'center top',
-                  backgroundSize: '30rem 180rem',
-                  backgroundRepeat: 'no-repeat'
-                }}
-              >
-                <div className="pl-10 pr-10">
-                  <PostCard
-                    imageurl={image}
-                    watchName={name}
-                    comments={comments}
-                    watchInfo={info}
-                    docId={id}
-                    className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
-                  />
+            <div className=" sm:hidden md:hidden lg:hidden xl:hidden">
+              <div className="overflow-y-scroll h-screen">
+                <div
+                  className="pt-6 pl-10 pr-10 rounded "
+                  style={{
+                    backgroundImage: `url(${watchBox})`,
+                    backgroundPosition: 'center top',
+                    backgroundSize: '26rem 155rem',
+                    backgroundRepeat: 'no-repeat'
+                  }}
+                >
+                  <div className=" ">
+                    <PostCard
+                      imageurl={image}
+                      watchName={name}
+                      comments={comments}
+                      watchInfo={info}
+                      docId={id}
+                      className="w-60 overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="hidden sm:flex md:flex lg:flex xl:flex">
+              <div className="">
+                <div
+                  className="pt-4 rounded pl-10 pr-10 "
+                  style={{
+                    backgroundImage: `url(${watchBoxLong})`,
+                    backgroundPosition: 'center top',
+                    backgroundSize: '45rem 36.8rem',
+                    backgroundRepeat: 'no-repeat'
+                  }}
+                >
+                  <div className="">
+                    <PostCard
+                      onClose={() => onClose()}
+                      imageurl={image}
+                      watchName={name}
+                      comments={comments}
+                      watchInfo={info}
+                      docId={id}
+                      className="w-10 overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-3/6"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
