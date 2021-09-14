@@ -13,14 +13,16 @@ export default function Post({ imageurl, watchName, comments, watchInfo }) {
   return (
     <div className="">
       {/* <div className="rounded col-span-1 border bg-white border-grey-primary"> */}
-      <div className="flex flex-row sm:hidden md:hidden lg:hidden xl:hidden">
-        <Image src={imageurl} caption={watchInfo} />
+      <div className="flex flex-col sm:hidden md:hidden lg:hidden xl:hidden">
+        <div className="ml-1 mb-2">
+          <Image src={imageurl} caption={watchInfo} />
+        </div>
         <div
-          className="rounded mt-2 ml-2"
+          className="rounded mt-20 ml-2"
           style={{
             backgroundImage: `url(${paper})`,
             backgroundPosition: '',
-            backgroundSize: '22rem 60rem',
+            backgroundSize: '23rem 60rem',
             backgroundRepeat: 'no-repeat',
             fontFamily: 'Buggie',
             color: 'rgb(0,15,85)'
@@ -44,7 +46,7 @@ export default function Post({ imageurl, watchName, comments, watchInfo }) {
             <Image src={imageurl} caption={watchInfo} />
           </div>
           <div
-            className="rounded mt-9 ml-12 pl-4 mb-1 mr-2 w-1/2 flex flex-col"
+            className="overflow-y-scroll rounded mt-9 ml-12 pl-4 mb-1 mr-2 w-1/2 flex flex-col"
             style={{
               backgroundImage: `url(${paper})`,
               backgroundPosition: '',
