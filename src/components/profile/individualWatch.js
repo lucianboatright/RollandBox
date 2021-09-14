@@ -6,20 +6,9 @@ import '../../styles/watches.css';
 
 export default function IndividualWatch({ watchInfo }) {
   const [isOpen, setIsOpen] = useState(false);
-  console.log('IsIt OPEN', watchInfo);
-
-  // const closeModal = () => {
-  //   console.log('CLOSING IN INDIVIDI CARD', isOpen);
-  //   setIsOpen(false);
-  // };
-
   const viewWatch = () => {
-    console.log('IS THIS OPENINGN IT', isOpen);
     setIsOpen(true);
-    console.log('IS THIS OPENINGN IT 22', isOpen);
   };
-
-  console.log('IsIt OPEN LATER', isOpen);
 
   return (
     <div

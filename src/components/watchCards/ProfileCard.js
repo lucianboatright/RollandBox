@@ -12,7 +12,7 @@ const MODAL_STYLES = {
   transform: 'translate(-50%, -50%)',
   backgroundColor: '#FFF',
   padding: '20px',
-  marginTop: '0rem',
+  marginTop: '2rem',
   marginBottom: '4rem',
   height: '650px'
   // zIndex: 1000
@@ -88,6 +88,7 @@ export default function Modal({ open, onClose, image, name, comments, info, id }
                 >
                   <div className="">
                     <PostCard
+                      onClose={() => onClose()}
                       imageurl={image}
                       watchName={name}
                       comments={comments}

@@ -1,13 +1,27 @@
 import PropTypes from 'prop-types';
+import { doc, deleteDoc } from 'firebase/firestore';
+import { firebase } from '../../../lib/firebase';
 import Image from './imageProfile';
 import Footer from './footerProfile';
 import Comments from './commentsProfile';
 import paper from '../../../images/borders/paper-1.jpg';
 import deleteLogo from '../../../images/svg_png/deleteWhite.png';
 
-export default function Post({ imageurl, watchName, comments, watchInfo }) {
+const db = firebase.firestore();
+
+export default function Post({ imageurl, watchName, comments, watchInfo, onClose, docId }) {
+  console.log(docId);
   const handleDelete = () => {
-    console.log('DELETE');
+    db.collection('watches')
+      .doc(docId)
+      .delete()
+      .then(() => {
+        console.log('Deleted Post');
+      })
+      .catch((error) => {
+        console.log('ERROR', error);
+      });
+    onClose();
   };
 
   return (
@@ -74,8 +88,10 @@ export default function Post({ imageurl, watchName, comments, watchInfo }) {
 }
 
 Post.propTypes = {
+  onClose: PropTypes.bool,
   imageurl: PropTypes.string,
   watchName: PropTypes.string,
   comments: PropTypes.string,
-  watchInfo: PropTypes.string
+  watchInfo: PropTypes.string,
+  docId: PropTypes.string
 };
