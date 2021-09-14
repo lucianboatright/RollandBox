@@ -16,7 +16,7 @@ const MODAL_STYLES = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   backgroundColor: '#FFF',
-  padding: '20px',
+  padding: '40px',
   width: 'auto'
 };
 
@@ -43,6 +43,16 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
   const [downloadAtempt, setDownloadAtempt] = useState(false);
   const [fileSelected, setFileSelected] = useState(false);
   const hiddenFileInput = React.useRef(null);
+  const [progress, setProgress] = useState(0);
+  const [completeUpload, setCompleteUpload] = useState(false);
+
+  const today = new Date();
+  const time =
+    today.getMonth() *
+    today.getFullYear() *
+    today.getHours() *
+    today.getMinutes() *
+    today.getSeconds();
 
   const generateDownload = (upImg, completedCrop) => {
     console.log('anything');
@@ -73,11 +83,6 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
     hiddenFileInput.current.click();
   };
 
-  const imageBlobGenerater = async () => {
-    generateDownload(previewCanvasRef.current, completedCrop);
-    setDownloadAtempt(true);
-  };
-
   const handleSubmitUpload = () => {
     const metadata = {
       contentType: 'image/jpeg',
@@ -90,12 +95,13 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
     };
     const file = imageBlob;
     const storageRef = firebase.storage().ref();
-    const fileRef = storageRef.child(`watches/${watchName}.jpg`).put(file, metadata);
+    const fileRef = storageRef.child(`watches/${watchName}${time}.jpg`).put(file, metadata);
     // setUrl(await fileRef.getDownloadURL());
     fileRef.on(
       'state_changed',
       (snapshot) => {
-        console.log(snapshot);
+        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        setProgress(progress);
       },
       (error) => {
         console.log(error);
@@ -106,7 +112,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
         firebase
           .storage()
           .ref('watches')
-          .child(`${watchName}.jpg`)
+          .child(`${watchName}${time}.jpg`)
           .getDownloadURL()
           .then((url) => {
             db.collection('watches').add({
@@ -121,10 +127,15 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
             setWatchName('');
             setImageBlob(null);
             console.log('complete', url);
+            setCompleteUpload(true);
           });
       }
     );
-    onClose();
+  };
+
+  const imageBlobGenerater = async () => {
+    generateDownload(previewCanvasRef.current, completedCrop);
+    setDownloadAtempt(true);
   };
 
   const onLoad = useCallback((img) => {
@@ -186,8 +197,8 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
           X Close Modal
         </button>
         <div style={MODAL_STYLES} className="rounded">
-          <div className="overflow-y-scroll" style={{ height: '24rem' }}>
-            <form onSubmit={handleSubmitUpload} method="POST">
+          <div className="overflow-y-scroll" style={{ height: '28rem' }}>
+            <form onSubmit={closeModal} method="POST">
               <div className="flex flex-col sm:flex-row md:flex-row :lg:flex-row xl:flex-row">
                 <div>
                   <div className="flex items-stretch">
@@ -206,7 +217,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                       <p style={{ fontSize: '0.8rem' }}>Current total is {watchesCount} Watches</p>
                     </div>
                   </div>
-                  <div className="App">
+                  <div className="App w-96">
                     <div className="w-60 mt-1 mb-1 pr-1 pt-1 pb-1">
                       {fileSelected === false ? (
                         <>
@@ -258,7 +269,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                         </>
                       )}
                     </div>
-                    <div className="flex justify-center ml-4 h-60 ">
+                    <div className="flex justify-left ml-0 h-60 mb-3">
                       <ReactCrop
                         src={upImg}
                         onImageLoaded={onLoad}
@@ -268,8 +279,9 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                         style={{ height: 'auto', width: '10rem' }}
                         className=""
                       />
-                      <div style={{ height: 'auto', width: '20rem', marginLeft: '1rem' }}>
+                      <div style={{ height: '10', marginLeft: '1rem' }}>
                         <canvas
+                          className=""
                           ref={previewCanvasRef}
                           style={{
                             width: Math.round(completedCrop?.width ?? 0),
@@ -317,7 +329,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                             {imagedownload === false ? (
                               <>
                                 <div
-                                  style={{ fontFamily: 'Acakadut' }}
+                                  style={{ fontFamily: 'Quinngothic' }}
                                   className="rounded mb-1 pl-2 pr-2 pt-1 pb-1 w-60 text-red-700 inline-block align-middle"
                                 >
                                   <img
@@ -331,12 +343,18 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                             ) : (
                               <>
                                 <div
-                                  style={{ fontFamily: 'Acakadut' }}
+                                  style={{ fontFamily: 'Quinngothic' }}
                                   className="rounded mb-1 pl-2 pr-2 pt-2 w-60 text-green-900"
                                 >
-                                  <img alt="logo" src={correct} className="h-8 w-8 mr-3 inline" />
-                                  <span className="inline">Ready To Upload</span>
+                                  <img alt="logo" src={correct} className="h-8 w-8 mr-1 inline" />
+                                  <span className="inline">File Selected</span>
                                 </div>
+                                <span
+                                  className="ml-11 text-green-900 text-xl"
+                                  style={{ fontFamily: 'Quinngothic' }}
+                                >
+                                  Add Watch Information
+                                </span>
                               </>
                             )}
                           </div>
@@ -372,6 +390,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                   >
                     {text}
                   </textarea>
+                  <progress value={progress} max="100" className="mt-2 border rounded w-60" />
                   {imagedownload === false ? (
                     <>
                       <input
@@ -384,23 +403,37 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                   ) : (
                     <>
                       <button
-                        type="submit"
+                        type="button"
+                        onClick={handleSubmitUpload}
                         style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
-                        className="rounded mt-1 mb-1 pr-2 pt-1 pb-1 text-green-800 text-xl w-60 bg"
+                        className="rounded mt-1 mb-1 pr-2 pt-1 pb-1 text-white text-xl w-60 bg"
                       >
-                        <img
-                          alt="logo"
-                          src={rightArrow}
-                          className="animate-pulse h-8 w-8 mr-3 inline"
-                        />
-                        Add Watch
-                        <img
-                          alt="logo"
-                          src={leftArrow}
-                          className="animate-pulse h-8 w-8 ml-3 inline"
-                        />
+                        Information Added
                       </button>
                     </>
+                  )}
+                  {completeUpload === false ? (
+                    <>
+                      <span />
+                    </>
+                  ) : (
+                    <button
+                      type="submit"
+                      style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
+                      className="rounded mt-1 mb-1 pr-2 pt-1 pb-1 text-white text-xl w-60 bg"
+                    >
+                      <img
+                        alt="logo"
+                        src={rightArrow}
+                        className="animate-pulse h-8 w-8 mr-3 inline"
+                      />
+                      Complete
+                      <img
+                        alt="logo"
+                        src={leftArrow}
+                        className="animate-pulse h-8 w-8 ml-3 inline"
+                      />
+                    </button>
                   )}
                 </div>
                 <img src={completedCrop} alt="" />
