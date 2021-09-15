@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import useUser from '../../hooks/use-user';
 import { isUserFollowingProfile, toggleFollow } from '../../services/firebase';
-import ModalNewWatch from '../newWatch/ModalNewWatch';
-import ModalAvitar from '../newWatch/ModalAvitar';
+import ModalNewWatch from '../Modals/ModalNewWatch';
+import ModalAvitar from '../Modals/ModalAvitar';
+import ModalNewPost from '../Modals/ModalNewPost';
 import settingLogo from '../../images/svg_png/smallSettingWhite.png';
-import watchLogo from '../../images/svg_png/watch.png';
+import watchLogo from '../../images/svg_png/watchInBoxPlus.png';
+// import watchWristLogo from '../../images/svg_png/watchOnWrist2.png';
+import watchWristLogo from '../../images/svg_png/addWatchLogo.png';
 
 export default function Header({
   watchesCount,
@@ -27,6 +30,7 @@ export default function Header({
   const activeButtonFollow = user.username && user.username !== profileUsername;
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenAvitar, setIsOpenAvitar] = useState(false);
+  const [isOpenPost, setIsOpenPost] = useState(false);
   const editProfile = user.username && user.username === profileUsername;
   const avatar = user.imageurl;
 
@@ -128,7 +132,7 @@ export default function Header({
                     style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
                   >
                     <div className="flex items-center">
-                      <img alt="setting" src={settingLogo} className="h-6 mb-0.5 pl-1 pr-2" />
+                      <img alt="setting" src={settingLogo} className="h-8 mb-0.5 pl-0.5 pr-2" />
                       Add New Avitar
                     </div>
                   </button>
@@ -165,14 +169,14 @@ export default function Header({
               <div className="flex items-center justify-evenly flex-col col-span">
                 <div className="container mr-2">
                   <button
-                    className="text-xl rounded text-white mt-2 pr-2 pl-1 h-10 w-40 hidden sm:block md:block lg:block xl:block"
+                    className="text-xl rounded text-white mt-4 pr-2 pl-0 h-10 w-40 hidden sm:block md:block lg:block xl:block"
                     type="button"
                     onClick={() => setIsOpen(true)}
                     style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
                   >
                     <div className=" flex items-center">
-                      <img alt="setting" src={watchLogo} className="h-7 pr-1 " />
-                      Add New Watch
+                      <img alt="setting" src={watchLogo} className="h-10 pr-2 " />
+                      Collect Watch
                     </div>
                   </button>
                   <ModalNewWatch
@@ -188,12 +192,12 @@ export default function Header({
               <div className="flex items-center justify-evenly flex-col col-span">
                 <div className="container mr-2">
                   <button
-                    className="text-xl rounded flex-shrink text-white mt-2 py-2 h-16 w-10 block sm:hidden md:hidden lg:hidden xl:hidden"
+                    className="text-xl rounded flex-shrink text-white mt-2 py-0 h-16 w-10 block sm:hidden md:hidden lg:hidden xl:hidden"
                     type="button"
                     onClick={() => setIsOpen(true)}
                     style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
                   >
-                    <img alt="setting" src={watchLogo} className="h-8 pl-1" />
+                    <img alt="setting" src={watchLogo} className=" h-10 pb-0" />
                     plus
                   </button>
                   <ModalNewWatch
@@ -206,6 +210,29 @@ export default function Header({
                   />
                 </div>
               </div>
+            </div>
+          )}
+          {editProfile && (
+            <div>
+              <div>
+                <button
+                  className="text-xl rounded flex-shrink text-white mt-0 h-24 w-10"
+                  type="button"
+                  onClick={() => setIsOpenPost(true)}
+                  style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
+                >
+                  <img alt="setting" src={watchWristLogo} className=" h-10 pb-0" />
+                  <div className="pt-2">Post</div>
+                </button>
+              </div>
+              <ModalNewPost
+                userAvatar={avatar}
+                documentId={user.docId}
+                profile={profileUsername}
+                userId={profileUserId}
+                open={isOpenPost}
+                onClose={() => setIsOpenPost(false)}
+              />
             </div>
           )}
         </div>
