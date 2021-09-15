@@ -15,20 +15,23 @@ export default function Profile({ user }) {
     followerCount: 0,
     postsCollection: []
   };
-  const [{ profile, watchCollection, followerCount }, dispatch] = useReducer(reducer, initialState);
+  const [{ profile, watchCollection, followerCount, postsCollection }, dispatch] = useReducer(
+    reducer,
+    initialState
+  );
 
   useEffect(() => {
     async function getProfileInfoAndWatches() {
-      const watches = await getUserWatchesByUsername(user.username);
-      dispatch({ profile: user, watchCollection: watches, followerCount: user.followers.length });
+      const watches = await getUserWatchesByUsername(user);
+      const posts = await getUserPostsByUsername(user);
+      dispatch({
+        profile: user,
+        watchCollection: watches,
+        followerCount: user.followers.length,
+        postsCollection: posts
+      });
     }
     getProfileInfoAndWatches();
-
-    async function getProfilePosts() {
-      const posts = await getUserPostsByUsername(user.username);
-      return posts;
-    }
-    getProfilePosts();
   }, [user.username]);
 
   return (
