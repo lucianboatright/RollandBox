@@ -24,7 +24,7 @@ export async function getUserByUsername(username) {
 }
 
 export async function getUserByUserId(userId) {
-  const result = await firebase.firestore().collection('users').where('userId', '==', userId).get();
+  const result = await firebase.firestore().collection('users').                                                                                                                                            ('userId', '==', userId).get();
 
   const user = result.docs.map((item) => ({
     ...item.data(),

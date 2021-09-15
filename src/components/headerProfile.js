@@ -22,7 +22,7 @@ export default function Header() {
         <div className="flex">
           <div className="flex-grow flex items-center  w-1/2 mt-1.5 mr-0 sm:ml-9 md:-ml-9 lg:ml-9 xl:ml-9">
             <div
-              className="inline text-4xl pl-0 sm:text-5xl pl-1 md:text-5xl pl-1 lg:text-5xl pl-1 xl:text-5xl pl-1"
+              className="inline text-4xl ml-3 sm:text-5xl pl-1 sm:ml-0 md:text-5xl md:ml-0 pl-1 lg:text-5xl lg:ml-0 pl-1 xl:text-5xl xl:ml-0 pl-1"
               style={{ fontFamily: 'Acakadut' }}
             >
               Roll & Box
@@ -75,7 +75,7 @@ export default function Header() {
                       <img
                         src={signOutLogo}
                         alt="worldbox"
-                        className="pl-1 pt-0.5 h-7 sm:h-11 md:h-11 lg:h-11 xl:h-11"
+                        className="pl-1 pt-0.5 h-7 mr-3 sm:h-11 sm:mr-0 md:h-11 md:mr-0 lg:h-11 lg:mr-0 xl:h-11 xl:mr-0"
                         // style={{ width: '1.8rem', paddingTop: '0.2rem' }}
                       />
                     </div>
