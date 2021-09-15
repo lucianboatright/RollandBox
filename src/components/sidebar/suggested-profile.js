@@ -19,8 +19,8 @@ export default function SuggestedProfile({
     await updateFollowedUserFollowers(profileDocId, userId, false);
   }
   return !followed ? (
-    <div className="flex flex-row items-center align-items ">
-      <div className="flex items-center justify-between pr-2">
+    <div className="ml-5 flex flex-row align-items ">
+      <div className="flex items-center pr-2">
         <img
           className="rounded-full w-8 mr-2 shadow-lg"
           style={{ fontFamily: 'Quinngothic' }}
@@ -36,7 +36,7 @@ export default function SuggestedProfile({
           </p>
         </Link>
       </div>
-      <div className="invisible w-1 sm:invisible w-1 md:visible lg:visible xl:visible">
+      <div className="ml-auto pl-8 mr-11 invisible w-1 sm:invisible w-1 md:visible lg:visible xl:visible">
         <button
           className="text-sm mx-1 my-1 px-3 py-0.5 border-grey-700 rounded text-white rounded bg-gradient-to-r from-blue-500 to-pink-600 hover:bg-gradient-to-r hover:from-pink-600 hover:to-blue-500 hover:text-blue"
           type="button"
