@@ -7,6 +7,7 @@ import { getUserWatchesByUsername, getUserPostsByUsername } from '../../services
 // import { getUserPostsByUsername } from '../../services/firebase';
 
 export default function Profile({ user }) {
+  console.log('USER', user);
   const reducer = (state, newState) => ({ ...state, ...newState });
   const initialState = {
     profile: {},
@@ -25,10 +26,10 @@ export default function Profile({ user }) {
       dispatch({ profile: user, watchCollection: watches, followerCount: user.followers.length });
     }
     getProfileInfoAndWatches();
-
     async function getProfilePosts() {
       const posts = await getUserPostsByUsername(user.username);
       dispatch({ profile: user, postsCollection: posts });
+      console.log('POSTS', posts);
     }
     getProfilePosts();
   }, [user.username]);
