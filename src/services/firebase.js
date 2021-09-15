@@ -95,11 +95,47 @@ export async function getWatches(userId, following) {
   );
   return watchesWithUserDetails;
 }
+
 export async function getUserWatchesByUsername(username) {
   const [user] = await getUserByUsername(username);
   const result = await firebase
     .firestore()
     .collection('watches')
+    .where('userId', '==', user.userId)
+    .get();
+  return result.docs.map((item) => ({
+    ...item.data(),
+    docId: item.id
+  }));
+}
+
+export async function getPosts(userId, following) {
+  const result = await firebase
+    .firestore()
+    .collection('posts')
+    .where('userId', 'in', following)
+    .get();
+  const userFollowedWatches = result.docs.map((post) => ({
+    ...post.data(),
+    docId: post.id
+  }));
+
+  const watchesWithUserDetails = await Promise.all(
+    userFollowedWatches.map(async (post) => {
+      const userLikedWatch = (post.likes || []).includes(userId);
+      const user = await getUserByUserId(post.userId);
+      const { username } = user[0];
+      return { username, ...post, userLikedWatch, user };
+    })
+  );
+  return watchesWithUserDetails;
+}
+
+export async function getUserPostsByUsername(username) {
+  const [user] = await getUserByUsername(username);
+  const result = await firebase
+    .firestore()
+    .collection('posts')
     .where('userId', '==', user.userId)
     .get();
   return result.docs.map((item) => ({
