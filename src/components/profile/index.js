@@ -2,7 +2,6 @@ import { useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Header from './header';
 import Watches from './watches';
-import Posts from './posts';
 
 import { getUserWatchesByUsername, getUserPostsByUsername } from '../../services/firebase';
 // import { getUserPostsByUsername } from '../../services/firebase';
@@ -22,16 +21,16 @@ export default function Profile({ user }) {
 
   useEffect(() => {
     async function getProfileInfoAndWatches() {
-      const watches = await getUserWatchesByUsername(user);
-      const posts = await getUserPostsByUsername(user);
-      dispatch({
-        profile: user,
-        watchCollection: watches,
-        followerCount: user.followers.length,
-        postsCollection: posts
-      });
+      const watches = await getUserWatchesByUsername(user.username);
+      dispatch({ profile: user, watchCollection: watches, followerCount: user.followers.length });
     }
     getProfileInfoAndWatches();
+
+    async function getProfilePosts() {
+      const posts = await getUserPostsByUsername(user.username);
+      dispatch({ profile: user, postsCollection: posts });
+    }
+    getProfilePosts();
   }, [user.username]);
 
   return (
@@ -43,7 +42,6 @@ export default function Profile({ user }) {
         setFollowerCount={dispatch}
       />
       <Watches watches={watchCollection} profile={profile} />
-      <Posts />
     </>
   );
 }
