@@ -84,7 +84,7 @@ export default function Header() {
                   className="inline cursor-pointer pr-1 pt-2 mr-1 sm:mr-3 md:mr-3 lg:mr-3 xl:mr-3"
                 >
                   <img
-                    className="inline rounded-full shadow-lg h-9 sm:h-11 md:h-11 lg:h-11 xl:h-11 hidden sm:block md:block lg:block xl:block mr-0 sm:mr-12 md:mr-2 lg:mr-6 xl:mr-20"
+                    className="inline rounded-full shadow-lg h-9 sm:h-11 md:h-11 lg:h-11 xl:h-11 hidden sm:block md:block lg:block xl:block mr-0 sm:mr-12 md:mr-2 lg:mr-7 xl:mr-20"
                     alt="logo"
                     src={user.imageurl}
                   />
