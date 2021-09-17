@@ -29,7 +29,6 @@ export default function Profile({ user }) {
     async function getProfilePosts() {
       const posts = await getUserPostsByUsername(user.username);
       dispatch({ profile: user, postsCollection: posts });
-      console.log('POSTS', posts);
     }
     getProfilePosts();
   }, [user.username]);
@@ -42,7 +41,7 @@ export default function Profile({ user }) {
         followerCount={followerCount}
         setFollowerCount={dispatch}
       />
-      <Watches watches={watchCollection} profile={profile} />
+      <Watches watches={watchCollection} profile={profile} userPosts={postsCollection} />
     </>
   );
 }

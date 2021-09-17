@@ -2,9 +2,11 @@
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import WatchCard from './individualWatch';
+import PostCard from './individualPost';
 import '../../styles/watches.css';
 
-export default function Watches({ watches }) {
+export default function Watches({ watches, userPosts }) {
+  console.log('USER POSTS', userPosts);
   return (
     <div className="mr-2 ml-2 ">
       <div className="border-t border-gray-primary">
@@ -31,11 +33,17 @@ export default function Watches({ watches }) {
             )}
           </div>
         </div>
+        <div className="pt-1 ml-10 flex flex-wrap justify-start border-2">
+          {userPosts.map((post) => (
+            <PostCard key={post.docId} postInfo={post} />
+          ))}
+        </div>
       </div>
     </div>
   );
 }
 
 Watches.propTypes = {
-  watches: PropTypes.array
+  watches: PropTypes.array,
+  userPosts: PropTypes.array
 };
