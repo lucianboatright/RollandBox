@@ -45,6 +45,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
   const hiddenFileInput = React.useRef(null);
   const [progress, setProgress] = useState(0);
   const [completeUpload, setCompleteUpload] = useState(false);
+  const [uploadingWatch, setUploadingWatch] = useState(false);
 
   const today = new Date();
   const time =
@@ -84,6 +85,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
   };
 
   const handleSubmitUpload = () => {
+    setUploadingWatch(true);
     const metadata = {
       contentType: 'image/jpeg',
       customMetadata: {
@@ -123,8 +125,8 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
               likes: [],
               userId
             });
-            setWatchInfo('');
-            setWatchName('');
+            setWatchInfo(null);
+            setWatchName(null);
             setImageBlob(null);
             console.log('complete', url);
             setCompleteUpload(true);
@@ -142,10 +144,9 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
     imgRef.current = img;
   }, []);
 
-  const closeModal = (e) => {
-    e.preventDefault();
-    setWatchInfo('');
-    setWatchName('');
+  const closeModal = () => {
+    setWatchInfo(null);
+    setWatchName(null);
     setImageBlob(null);
     onClose();
   };
@@ -269,19 +270,19 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                         </>
                       )}
                     </div>
-                    <div className="flex justify-left ml-0 h-60 mb-3">
+                    <div className="flex justify-left ml-0 h-50 p-1 w-60 mb-3 border-2 rounded">
                       <ReactCrop
                         src={upImg}
                         onImageLoaded={onLoad}
                         crop={crop}
                         onChange={(c) => setCrop(c)}
                         onComplete={(c) => setCompletedCrop(c)}
-                        style={{ height: 'auto', width: '10rem' }}
+                        style={{ height: '12rem', width: '7rem' }}
                         className=""
                       />
-                      <div style={{ height: '10', marginLeft: '1rem' }}>
+                      <div style={{}}>
                         <canvas
-                          className=""
+                          className="ml-1"
                           ref={previewCanvasRef}
                           style={{
                             width: Math.round(completedCrop?.width ?? 0),
@@ -390,7 +391,6 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                   >
                     {text}
                   </textarea>
-                  <progress value={progress} max="100" className="mt-2 border rounded w-60" />
                   {imagedownload === false ? (
                     <>
                       <input
@@ -402,14 +402,40 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                     </>
                   ) : (
                     <>
-                      <button
-                        type="button"
-                        onClick={handleSubmitUpload}
-                        style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
-                        className="rounded mt-1 mb-1 pr-2 pt-1 pb-1 text-white text-xl w-60 bg"
-                      >
-                        Information Added
-                      </button>
+                      {completeUpload === false ? (
+                        <>
+                          <button
+                            type="button"
+                            onClick={handleSubmitUpload}
+                            style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
+                            className="rounded mt-1 mb-1 pr-2 pt-1 pb-1 text-white text-xl w-60 bg"
+                          >
+                            Information Added
+                          </button>
+                          <div>
+                            {uploadingWatch === false ? (
+                              <span />
+                            ) : (
+                              <div>
+                                <progress
+                                  value={progress}
+                                  max="100"
+                                  className="mt-2 border rounded w-52"
+                                />
+                                <img
+                                  alt="logo"
+                                  src={loading}
+                                  className="animate-spin h-6 w-6 mr-3 ml-2 inline mb-2"
+                                />
+                              </div>
+                            )}
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <span />
+                        </>
+                      )}
                     </>
                   )}
                   {completeUpload === false ? (
@@ -417,23 +443,25 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                       <span />
                     </>
                   ) : (
-                    <button
-                      type="submit"
-                      style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
-                      className="rounded mt-1 mb-1 pr-2 pt-1 pb-1 text-white text-xl w-60 bg"
-                    >
-                      <img
-                        alt="logo"
-                        src={rightArrow}
-                        className="animate-pulse h-8 w-8 mr-3 inline"
-                      />
-                      Complete
-                      <img
-                        alt="logo"
-                        src={leftArrow}
-                        className="animate-pulse h-8 w-8 ml-3 inline"
-                      />
-                    </button>
+                    <div>
+                      <button
+                        type="submit"
+                        style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
+                        className="rounded mt-1 mb-1 pr-2 pt-1 pb-1 text-white text-xl w-60 bg"
+                      >
+                        <img
+                          alt="logo"
+                          src={rightArrow}
+                          className="animate-pulse h-8 w-8 mr-3 inline"
+                        />
+                        Complete
+                        <img
+                          alt="logo"
+                          src={leftArrow}
+                          className="animate-pulse h-8 w-8 ml-3 inline"
+                        />
+                      </button>
+                    </div>
                   )}
                 </div>
                 <img src={completedCrop} alt="" />

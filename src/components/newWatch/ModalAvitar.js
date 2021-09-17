@@ -40,6 +40,7 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
   const [downloadAtempt, setDownloadAtempt] = useState(false);
   const [fileDownload, setFileDownload] = useState(false);
   const hiddenFileInput = React.useRef(null);
+  const [progress, setProgress] = useState(0);
 
   const generateDownload = (upImg, completedCrop) => {
     console.log('anything');
@@ -85,6 +86,10 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
     // setUrl(await fileRef.getDownloadURL());
     fileRef.on(
       'state_changed',
+      (snapshot) => {
+        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        setProgress(progress);
+      },
       (error) => {
         console.log(error);
         alert(error.messgae);
@@ -132,11 +137,12 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
     const scaleY = image.naturalHeight / image.height;
     const ctx = canvas.getContext('2d');
     const pixelRatio = window.devicePixelRatio;
-    canvas.width = crop.width * pixelRatio;
-    canvas.height = crop.height * pixelRatio;
+    canvas.width = crop.width * pixelRatio * scaleX;
+    canvas.height = crop.height * pixelRatio * scaleY;
 
     ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-    ctx.imageSmoothingQuality = 'high';
+    // ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'low';
 
     ctx.drawImage(
       image,
@@ -146,8 +152,8 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
       crop.height * scaleY,
       0,
       0,
-      crop.width,
-      crop.height
+      crop.width * scaleX,
+      crop.height * scaleY
     );
   }, [completedCrop]);
 
@@ -165,10 +171,10 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
           X Close Modal
         </button>
         <div style={MODAL_STYLES} className="rounded">
-          <div className="overflow-y-scroll h-80">
+          <div className="overflow-y-scroll h-90">
             <div className="flex items-stretch">
               <div className="justify-left pb-2">
-                <img className="rounded-full h-12 mr-2" src={userAvatar} alt={profile} />
+                {/* <img className="rounded-full h-12 mr-2" src={userAvatar} alt={profile} /> */}
               </div>
               <div className="justify-left capitalize" style={{ fontFamily: 'Quinngothic' }}>
                 <p>Hello {profile}</p>
@@ -242,7 +248,7 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
                     ) : (
                       <button
                         type="button"
-                        className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 text-white w-60 bg"
+                        className="rounded mt-2 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 text-white w-60 bg"
                         disabled={!completedCrop?.width || !completedCrop?.height}
                         onClick={imageBlobGenerater}
                         style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
@@ -298,8 +304,8 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
                 <button
                   type="button"
                   onClick={handleSubmitUpload}
-                  style={{ fontFamily: 'Acakadut' }}
-                  className="rounded mt-3 text-xl mb-1 pr-2 pt-1 pb-1 w-60 text-green-800 bg-gradient-to-r from-green-400 to-yellow-500 w-60 bg"
+                  style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
+                  className="rounded mt-3 text-xl mb-1 pr-2 pt-1 pb-1 w-60 text-white w-60 bg"
                 >
                   <img alt="logo" src={rightArrow} className="animate-pulse h-8 w-8 mr-3 inline" />
                   Finish

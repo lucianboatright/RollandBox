@@ -52,7 +52,7 @@ export default function Header({
     <div className="grid grid-cols-3 gap-2 pb-2 pt-0 sm:pt-1 md:pt-1 lg:pt-1 xl:pt-1">
       <div className="container flex justify-center border-r-2 border-grey-700 invisible sm:visible md:visible lg:visible xl:visible">
         {user.username && (
-          <img className="rounded-full h-30 w-auto flex shadow-lg" src={imgurl} alt="imgurl" />
+          <img className="rounded-full h-32 w-auto flex shadow-lg" src={imgurl} alt="imgurl" />
         )}
       </div>
       <div className="flex flex-col col-span border-r-2 border-grey-700 pl-0 sm:pl-0 md:pl-0 lg:pl-0 xl:pl-0">
