@@ -177,7 +177,10 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
             </div>
             <div className="App">
               {fileDownload === false ? (
-                <div className="pt-1 text-center w-60 h-10 text-green-900 rounded bg-gradient-to-r from-green-400 to-yellow-500">
+                <div
+                  className="pt-1 text-center w-60 h-10 text-white"
+                  style={{ backgroundColor: 'rgb(128,0,0)' }}
+                >
                   <img alt="logo" src={rightArrow} className="animate-pulse h-8 w-8 mr-3 inline" />
                   <button onClick={handleClick} type="button" style={{ fontFamily: 'Acakadut' }}>
                     Browse Files for Upload ...
@@ -192,7 +195,10 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
                   />
                 </div>
               ) : (
-                <div className="pt-1 text-center w-60 h-10 text-green-900 rounded bg-gradient-to-r from-green-400 to-yellow-500">
+                <div
+                  style={{ backgroundColor: 'rgb(128,0,0)' }}
+                  className="pt-1 text-center w-60 h-10 text-white rounded"
+                >
                   <button onClick={handleClick} type="button" style={{ fontFamily: 'Acakadut' }}>
                     Browse Files for Upload ...
                   </button>
@@ -213,7 +219,7 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
                   crop={crop}
                   onChange={(c) => setCrop(c)}
                   onComplete={(c) => setCompletedCrop(c)}
-                  style={{ height: 'auto', width: '8rem' }}
+                  style={{ height: '10rem', width: '15rem' }}
                   className=""
                 />
                 <div style={{ height: 'auto', width: '8rem', marginLeft: '1rem' }}>
@@ -236,10 +242,10 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
                     ) : (
                       <button
                         type="button"
-                        className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 text-green-800 bg-gradient-to-r from-green-400 to-yellow-500 w-60 bg"
+                        className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 text-white w-60 bg"
                         disabled={!completedCrop?.width || !completedCrop?.height}
                         onClick={imageBlobGenerater}
-                        style={{ fontFamily: 'Acakadut' }}
+                        style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
                       >
                         <img
                           alt="logo"
