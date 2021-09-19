@@ -35,13 +35,13 @@ Below you can see the difference between Mobile, Ipad and Desctop.
 
 ### Timeline and Profile layouts for Mobile, Ipad, Desktop
 ![mobileProfile](src/images/readme/Mobile_profile_timeline.png)
-![mobileProfile](src/images/readme/Ipad_layout.pdf)
+![mobileProfile](src/images/readme/Ipad_layout.png)
 ![mobileProfile](src/images/readme/Timeline.png)
 ![mobileProfile](src/images/readme/timeline_with_followers.png)
 
 ### Upload New Watch Upload Modal
-![watchbox](src/images/readme/Avatar_upload.pdf)
-![watchbox](src/images/readme/Mobile_watch_upload.pdf)
+![watchbox](src/images/readme/Avatar_upload.png)
+![watchbox](src/images/readme/Mobile_watch_upload.png)
 
 ### Upload Avatar Modal
 ![watchbox](src/images/readme/first_background.png)
