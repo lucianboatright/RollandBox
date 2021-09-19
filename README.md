@@ -39,13 +39,16 @@ Below you can see the difference between Mobile, Ipad and Desctop.
 ![mobileProfile](src/images/readme/Timeline.png)
 ![mobileProfile](src/images/readme/timeline_with_followers.png)
 
+
 ## Upload New Watch Upload Modal
 ![watchbox](src/images/readme/Avatar_upload.png)
 ![watchbox](src/images/readme/Mobile_watch_upload.png)
 
+
 ## Watch Enlarge Modal
 ![watchbox](src/images/readme/Show_watch_profile.png)
 ![watchbox](src/images/readme/Timeline_Show_watch.png)
+
 
 
 ## Upload Avatar Modal
@@ -53,6 +56,7 @@ Below you can see the difference between Mobile, Ipad and Desctop.
 
 ![watchbox](src/images/readme/first_background.png)
 ![watchbox2](src/images/readme/first_background_2.png)
+
 
 ## Empty Profile and Group Collections without Followers
 ![mobileProfile](src/images/readme/Timeline_empty.png)
