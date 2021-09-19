@@ -33,23 +33,28 @@ I tryed a few different ways starting with a large background image and placiong
 There are two layouts for teh watch box, one for the Group Collections page and teh Profile page. This is due to requirements on each page but the basic difference is position and width limit.
 Below you can see the difference between Mobile, Ipad and Desctop.
 
-### Timeline and Profile layouts for Mobile, Ipad, Desktop
+## Timeline and Profile layouts for Mobile, Ipad, Desktop
 ![mobileProfile](src/images/readme/Mobile_profile_timeline.png)
 ![mobileProfile](src/images/readme/Ipad_layout.png)
 ![mobileProfile](src/images/readme/Timeline.png)
 ![mobileProfile](src/images/readme/timeline_with_followers.png)
 
-### Upload New Watch Upload Modal
+## Upload New Watch Upload Modal
 ![watchbox](src/images/readme/Avatar_upload.png)
 ![watchbox](src/images/readme/Mobile_watch_upload.png)
 
-### Upload Avatar Modal
+## Watch Enlarge Modal
+![watchbox](src/images/readme/Show_watch_profile.png)
+![watchbox](src/images/readme/Timeline_Show_watch.png)
+
+
+## Upload Avatar Modal
 ![watchbox](src/images/readme/first_background.png)
 
 ![watchbox](src/images/readme/first_background.png)
 ![watchbox2](src/images/readme/first_background_2.png)
 
-### Empty Profile and Group Collections without Followers
+## Empty Profile and Group Collections without Followers
 ![mobileProfile](src/images/readme/Timeline_empty.png)
 ![mobileProfile](src/images/readme/Profile_empty.png)
 
