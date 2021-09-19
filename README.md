@@ -69,7 +69,6 @@ I tried a few different ways starting with a large background image and placing 
 - This style will have empty spaces even if the watch is not there. 
 - Works well when there is not information.
 The second style uses a single a single box .png as shown below which is used as a background image that is repeated around each image which means the box will only be visiable around existant watches. This means the box is infinate and will grow with the collection. It does also mean that there will be spaces that are not showing the box leading to a non complete box visual as shown below.
-
 ![watchoutline](src/images/readme/single_box.png)
 ![watchoutline](src/images/readme/profile_box.png)
 ![watchoutline](src/images/readme/timeline_box.png) -->
