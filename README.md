@@ -34,7 +34,7 @@ There are two layouts for teh watch box, one for the Group Collections page and 
 Below you can see the difference between Mobile, Ipad and Desctop.
 
 ### Timeline and Profile layouts for Mobile, Ipad, Desktop
-![mobileProfile](src/images/readme/Mobile_profile_timeline.pdf)
+![mobileProfile](src/images/readme/Mobile_profile_timeline.png)
 ![mobileProfile](src/images/readme/Ipad_layout.pdf)
 ![mobileProfile](src/images/readme/Timeline.png)
 ![mobileProfile](src/images/readme/timeline_with_followers.png)
@@ -44,7 +44,7 @@ Below you can see the difference between Mobile, Ipad and Desctop.
 ![watchbox](src/images/readme/Mobile_watch_upload.pdf)
 
 ### Upload Avatar Modal
-![watchbox](src/images/readme/first_background.
+![watchbox](src/images/readme/first_background.png)
 
 ![watchbox](src/images/readme/first_background.png)
 ![watchbox2](src/images/readme/first_background_2.png)
