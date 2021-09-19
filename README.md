@@ -1,4 +1,3 @@
-
 # Watch Box Web App 
 Find a deployed version at: https://mywatchboxweb.firebaseapp.com/
 Please feel free to sign up and create an account.
@@ -10,14 +9,14 @@ This website is mainly aimed at helping the user with two things.
 
 This will allow both collectors and sellers to easily show their entire collection in one place.
 
-As users will be interestd in using this application while out it has been designed to work on all platforms: mobiles, Ipad and desktop.
+As users will be interested in using this application while out it has been designed to work on all platforms: mobiles, Ipad and desktop.
 
 ## User Actions
 - Login / SignUp 
 - Add Watches, Delete Watches
-- Add Avitar, Change Avitar
+- Add Avatar, Change Avatar
 - Like watches, Comment on Watches
-- View Personal Collection of wacthes, View Collection of Followed Users watches.
+- View Personal Collection of watches, View Collection of Followed Users watches.
 
 ## Additions to come
 I am currently working on adding a 'Posts' section for a stream of lifestyle photos taken by the user, acting as a way to show the watches in real life setting, with clothes etc.
@@ -26,19 +25,16 @@ I am currently working on adding a 'Posts' section for a stream of lifestyle pho
 ## Technologies
 This was built on a React cra front end with Tailwind css used for styling and firebase used for the data storage.
 
-- Tailwind Css - Used to style the components, This has been very useful to make the site work easily on all platforms from mobile to desktop. Its also includes resposive interaction and animations for loading screens etc. 
+- Tailwind Css - Used to style the components, This has been very useful to make the site work easily on all platforms from mobile to desktop. Its also includes responsive interaction and animations for loading screens etc. 
 - React-Loading-Skeleton - place holder visual white data is loading, holds space ready for images to load into.
-- React-Image-Crop - This has been a very usefull package used to upload and crop the images, however making the UI around the cropper was very important to make the intereaction easy to follow.
+- React-Image-Crop - This has been a very useful package used to upload and crop the images, however making the UI around the cropper was very important to make the interaction easy to follow.
 - Eslint - used for managing code base and checking for best code practice.
 
-Hosted on Firebase useing Firebase databases and storgae to handle inforamtion on the page.
+Hosted on Firebase using Firebase databases and storage to handle information on the page.
 
-## Interesting aplications to create box
+## Interesting applications to create box
 One of the hardest and most important part of the app has been creating the box to hold Desktop web browsers.
-I tryed a few different ways starting with a large background image and placiong each image over, the other version creates a box aroudn each mobile rendered. the difference is that the rendering of the full box will always show a full box in a fulrectangle where are the individual wrapping will have gapps in the were watches have not been uploaded (teh empty spaces in the grid will show as empty)
-
-There are two layouts for teh watch box, one for the Group Collections page and teh Profile page. This is due to requirements on each page but the basic difference is position and width limit.
-Below you can see the difference between Mobile, Ipad and Desctop.
+I tried a few different ways starting with a large background image and placing each image over, the other version creates a box around each mobile rendered. the difference is that the rendering of the full box will always show a full box in a full rectangle where are the individual wrapping will have gaps in the were watches have not been uploaded (the empty spaces in the grid will show as empty)
 
 ## Timeline and Profile layouts for Mobile, Ipad, Desktop
 ![mobileProfile](src/images/readme/Mobile_profile_timeline.png)
