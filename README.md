@@ -53,7 +53,6 @@ Below you can see the difference between Mobile, Ipad and Desctop.
 ![mobileProfile](src/images/readme/Timeline_empty.png)
 ![mobileProfile](src/images/readme/Profile_empty.png)
 
-
 <!-- This had its limitations though it me be something that the user can chose between.
 - This style will have empty spaces even if the watch is not there. 
 - Works well when there is not information.
