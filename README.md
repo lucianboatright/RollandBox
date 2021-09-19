@@ -12,6 +12,13 @@ This will allow both collectors and sellers to easily show their entire collecti
 
 As users will be interestd in using this application while out it has been designed to work on all platforms: mobiles, Ipad and desktop.
 
+## User Actions
+- Login / SignUp 
+- Add Watches, Delete Watches
+- Add Avitar, Change Avitar
+- Like watches, Comment on Watches
+- View Personal Collection of wacthes, View Collection of Followed Users watches.
+
 ## Additions to come
 I am currently working on adding a 'Posts' section for a stream of lifestyle photos taken by the user, acting as a way to show the watches in real life setting, with clothes etc.
 
