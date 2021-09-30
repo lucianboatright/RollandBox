@@ -33,10 +33,10 @@ export default function IndividualWatch({ watchInfo }) {
           >
             <div>
               <img
-                className="rounded ml-4 mr-4 mt-5 pl-0.5 cursor-pointer"
+                className="rounded ml-4 mr-4 mt-5 pl-1 cursor-pointer"
                 src={watchInfo.imageurl}
                 alt={`${watchInfo.watchId}`}
-                width="160px"
+                width="162px"
               />
             </div>
           </button>
