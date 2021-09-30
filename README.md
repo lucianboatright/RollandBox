@@ -47,6 +47,7 @@ I tried a few different ways starting with a large background image and placing 
 ![watchbox](src/images/readme/Avatar_upload.png)
 ![watchbox](src/images/readme/Mobile_watch_upload.png)
 
+Hosted on Firebase useing Firebase databases and storgae to handle inforamtion on the page.
 
 ## Watch Enlarge Modal
 ![watchbox](src/images/readme/Show_watch_profile.png)

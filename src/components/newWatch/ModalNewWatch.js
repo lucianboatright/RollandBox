@@ -16,8 +16,7 @@ const MODAL_STYLES = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   backgroundColor: '#FFF',
-  padding: '40px',
-  width: 'auto'
+  padding: '40px'
 };
 
 const OVERLAY_STYLES = {
@@ -200,7 +199,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
         <div style={MODAL_STYLES} className="rounded">
           <div className="overflow-y-scroll" style={{ height: '28rem' }}>
             <form onSubmit={closeModal} method="POST">
-              <div className="flex flex-col sm:flex-row md:flex-row :lg:flex-row xl:flex-row">
+              <div className="flex flex-col w-60 sm:flex-row sm:w-auto md:flex-row md:w-auto lg:w-auto lg:flex-row xl:flex-row xl:w-auto">
                 <div>
                   <div className="flex items-stretch">
                     <div className="justify-left">
@@ -420,7 +419,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                                 <progress
                                   value={progress}
                                   max="100"
-                                  className="mt-2 border rounded w-52"
+                                  className="mt-2 border rounded w-48 mr-1"
                                 />
                                 <img
                                   alt="logo"
