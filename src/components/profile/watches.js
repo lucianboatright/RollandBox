@@ -9,7 +9,7 @@ export default function Watches({ watches }) {
     <div className="mr-2 ml-2 ">
       <div className="border-t border-gray-primary">
         <div className="">
-          <div className="pt-1 ml-0 flex flex-wrap justify-center sm:justify-start sm:ml-5 md:justify-start md:ml-5 lg:justify-start lg:ml-5 xl:justify-start lx:ml-5 ">
+          <div className="pt-1 flex flex-wrap justify-start ml-1 sm:justify-start sm:ml-5 md:justify-start md:ml-5 lg:justify-start lg:ml-5 xl:justify-start lx:ml-5 ">
             {!watches ? (
               <>
                 <div className="align-center">

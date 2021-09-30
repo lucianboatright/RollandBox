@@ -53,11 +53,11 @@ export default function Modal({ open, onClose, image, name, comments, info, id }
             <div className=" sm:hidden md:hidden lg:hidden xl:hidden">
               <div className="overflow-y-scroll h-screen">
                 <div
-                  className="pt-6 pl-10 pr-10 rounded "
+                  className="pt-6 pl-11 pr-10 rounded "
                   style={{
                     backgroundImage: `url(${watchBox})`,
                     backgroundPosition: 'center top',
-                    backgroundSize: '26rem 155rem',
+                    backgroundSize: '25rem 151rem',
                     backgroundRepeat: 'no-repeat'
                   }}
                 >
@@ -81,7 +81,7 @@ export default function Modal({ open, onClose, image, name, comments, info, id }
                   style={{
                     backgroundImage: `url(${watchBoxLong})`,
                     backgroundPosition: 'center top',
-                    backgroundSize: '45rem 36.8rem',
+                    backgroundSize: '45rem 36.5rem',
                     backgroundRepeat: 'no-repeat'
                   }}
                 >

@@ -27,11 +27,11 @@ export default function Post({ imageurl, watchName, comments, watchInfo, onClose
     <div className="">
       {/* <div className="rounded col-span-1 border bg-white border-grey-primary"> */}
       <div className="flex flex-col sm:hidden md:hidden lg:hidden xl:hidden">
-        <div className="ml-1 mb-2">
-          <Image src={imageurl} caption={watchInfo} />
+        <div className="ml-1 mb-3">
+          <Image src={imageurl} caption={watchInfo} className="h-10" />
         </div>
         <div
-          className="rounded mt-20 ml-2"
+          className="rounded mt-16 ml-1"
           style={{
             backgroundImage: `url(${paper})`,
             backgroundPosition: '',
@@ -59,14 +59,15 @@ export default function Post({ imageurl, watchName, comments, watchInfo, onClose
             <Image src={imageurl} caption={watchInfo} />
           </div>
           <div
-            className="overflow-y-scroll rounded mt-9 ml-12 pl-4 mb-1 mr-2 w-1/2 flex flex-col"
+            className="overflow-auto rounded pb-32 mt-9 ml-12 pl-4 mr-2 w-1/2 flex flex-col"
             style={{
               backgroundImage: `url(${paper})`,
               backgroundPosition: '',
               backgroundSize: '22rem 37rem',
               backgroundRepeat: 'no-repeat',
               fontFamily: 'Buggie',
-              color: 'rgb(0,15,85)'
+              color: 'rgb(0,15,85)',
+              height: '30rem'
             }}
           >
             <button type="button" onClick={handleDelete}>
