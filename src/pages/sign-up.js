@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import 'react-image-crop/dist/ReactCrop.css';
 import * as ROUTES from '../constants/routes';
 import FirebaseContext from '../context/firebase';
-import image1 from '../images/watchbox.jpg';
+import image1 from '../images/watchBoxWhite.png';
 import { doesUsernameExist } from '../services/firebase';
 
 export default function SignUp() {
@@ -66,7 +66,10 @@ export default function SignUp() {
       <div className="flex flex-col ml-8 w-4/5 sm:w-2/5 ml-0 md:w-2/5 ml-0 lg:w-2/5 ml-0 lx:w-2/5 ml-0">
         <div className="flex flex-col items-center bg-white p-4 border border-grey-primary mb-4 rounded">
           <h1 className="flex justify-center w-full text-4xl" style={{ fontFamily: 'Acakadut' }}>
-            <p>Roll & Box</p>
+            <p className="pt-2">Roll & Box</p>
+            <div className="lex w-12 mb-2 block sm:hidden md:hidden lg:hidden xl:hidden">
+              <img src={image1} alt="Watch box" />
+            </div>
           </h1>
           {error && (
             <p
