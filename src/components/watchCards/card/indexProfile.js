@@ -54,7 +54,7 @@ export default function Post({ imageurl, watchName, comments, watchInfo, onClose
         </div>
       </div>
       <div className=" pb-20 hidden sm:block md:block lg:block xl:block">
-        <div className="flex flex-row ">
+        <div className="flex flex-row">
           <div className="">
             <Image src={imageurl} caption={watchInfo} />
           </div>

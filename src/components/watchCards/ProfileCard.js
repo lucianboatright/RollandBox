@@ -74,7 +74,7 @@ export default function Modal({ open, onClose, image, name, comments, info, id }
                 </div>
               </div>
             </div>
-            <div className="hidden sm:flex md:flex lg:flex xl:flex">
+            <div className="hidden sm:block md:block lg:block xl:block sm:w-max md:w-max lg:w-max xl:w-max">
               <div className="">
                 <div
                   className="pt-4 rounded pl-10 pr-10 "
