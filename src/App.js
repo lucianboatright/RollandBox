@@ -12,6 +12,7 @@ const SignUp = lazy(() => import('./pages/sign-up'));
 const Dashboard = lazy(() => import('./pages/dashboard'));
 const Profile = lazy(() => import('./pages/profile'));
 const NotFound = lazy(() => import('./pages/not-found'));
+const Contact = lazy(() => import('./pages/contact'));
 
 export default function App() {
   const { user } = useAuthListener();
@@ -31,6 +32,7 @@ export default function App() {
             <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
               <Dashboard />
             </ProtectedRoute>
+            <Contact path={ROUTES.CONTACT} component={Contact} />
             <Route component={NotFound} />
           </Switch>
         </Suspense>

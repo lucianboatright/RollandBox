@@ -8,8 +8,16 @@ import deleteLogo from '../../../images/svg_png/deleteWhite.png';
 
 const db = firebase.firestore();
 
-export default function Post({ imageurl, watchName, comments, watchInfo, onClose, docId }) {
-  console.log(docId);
+export default function Post({
+  imageurl,
+  watchName,
+  comments,
+  watchInfo,
+  onClose,
+  docId,
+  watchUserId,
+  userId
+}) {
   const handleDelete = () => {
     db.collection('watches')
       .doc(docId)
@@ -26,7 +34,7 @@ export default function Post({ imageurl, watchName, comments, watchInfo, onClose
   return (
     <div className="">
       {/* <div className="rounded col-span-1 border bg-white border-grey-primary"> */}
-      <div className="flex flex-col sm:hidden md:hidden lg:hidden xl:hidden">
+      <div className="overflow-y-scroll h-screen sm:hidden md:hidden lg:hidden xl:hidden">
         <div className="ml-1 mb-3">
           <Image src={imageurl} caption={watchInfo} className="h-10" />
         </div>
@@ -41,14 +49,18 @@ export default function Post({ imageurl, watchName, comments, watchInfo, onClose
             color: 'rgb(0,15,85)'
           }}
         >
-          <button type="button" onClick={handleDelete}>
-            <img
-              alt="delete"
-              src={deleteLogo}
-              className="pb-2 mt-2 ml-2.5 h-10 w-8"
-              // onClick={handleDelete}
-            />
-          </button>
+          {watchUserId === userId ? (
+            <button type="button" onClick={handleDelete}>
+              <img
+                alt="delete"
+                src={deleteLogo}
+                className="pb-2 mt-2 ml-2.5 h-10 w-8"
+                // onClick={handleDelete}
+              />
+            </button>
+          ) : (
+            <span />
+          )}
           <Footer caption={watchInfo} watchName={watchName} />
           <Comments comments={comments} />
         </div>
@@ -70,14 +82,18 @@ export default function Post({ imageurl, watchName, comments, watchInfo, onClose
               height: '30rem'
             }}
           >
-            <button type="button" onClick={handleDelete}>
-              <img
-                alt="delete"
-                src={deleteLogo}
-                className="pb-2 mt-2 ml-2.5 h-10 w-8"
-                // onClick={handleDelete}
-              />
-            </button>
+            {watchUserId === userId ? (
+              <button type="button" onClick={handleDelete}>
+                <img
+                  alt="delete"
+                  src={deleteLogo}
+                  className="pb-2 mt-2 ml-2.5 h-10 w-8"
+                  // onClick={handleDelete}
+                />
+              </button>
+            ) : (
+              <span />
+            )}
             <Footer caption={watchInfo} watchName={watchName} />
             <Comments comments={comments} />
           </div>
@@ -93,5 +109,7 @@ Post.propTypes = {
   watchName: PropTypes.string,
   comments: PropTypes.string,
   watchInfo: PropTypes.string,
-  docId: PropTypes.string
+  docId: PropTypes.string,
+  watchUserId: PropTypes.string,
+  userId: PropTypes.string
 };

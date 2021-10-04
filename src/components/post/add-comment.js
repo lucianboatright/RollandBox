@@ -49,7 +49,12 @@ export default function AddComment({ docId, comments, setComments, commentInput 
               style={{ width: '5.8rem' }}
             />
             <button
-              className={`inline-block align-baseline text-xs font-bold text-white bg-gradient-to-r from-pink-400 to-blue-500 pl-2 pt-1.5 pb-1 pr-3 rounded border-grey-800 ${
+              style={{
+                backgroundColor: '#b5d6d6',
+                borderStyle: 'solid',
+                borderColor: 'rgb(95,158,160)'
+              }}
+              className={`inline-block align-baseline text-xs font-bold text-white pl-2 pt-1.5 pb-1 pr-3 rounded ${
                 !comment && 'opacity-80'
               }`}
               type="button"

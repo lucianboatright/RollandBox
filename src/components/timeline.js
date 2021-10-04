@@ -6,7 +6,6 @@ import singleBox from '../images/borders/Box_single_LowerMiddle.png';
 
 export default function Timeline() {
   const { watches } = useWatches();
-  console.log('WATCHES', singleBox);
   return (
     <div className="col-span-5">
       <div className="pt-5 flex pl-0 pl-14px flex-wrap overflow-hidden">
@@ -18,9 +17,9 @@ export default function Timeline() {
                 className="pt-3"
                 style={{
                   backgroundImage: `url(${singleBox})`,
-                  backgroundPosition: 'top',
-                  backgroundSize: '165px',
-                  backgroundRepeat: 'repeat'
+                  backgroundPosition: 'center top',
+                  backgroundSize: '14.5rem 32rem',
+                  backgroundRepeat: 'no-repeat'
                 }}
               >
                 <Skeleton

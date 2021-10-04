@@ -29,7 +29,7 @@ const OVERLAY_STYLES = {
   zIndex: 1000
 };
 
-export default function Modal({ open, onClose, profile, userId, documentId, userAvatar }) {
+export default function Modal({ open, onClose, profile, userId, documentId }) {
   const [upImg, setUpImg] = useState();
   const imgRef = useRef(null);
   const previewCanvasRef = useRef(null);
@@ -185,7 +185,7 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
               {fileDownload === false ? (
                 <div
                   className="pt-1 text-center w-60 h-10 text-white"
-                  style={{ backgroundColor: 'rgb(128,0,0)' }}
+                  style={{ backgroundColor: '#c0362c' }}
                 >
                   <img alt="logo" src={rightArrow} className="animate-pulse h-8 w-8 mr-3 inline" />
                   <button onClick={handleClick} type="button" style={{ fontFamily: 'Acakadut' }}>
@@ -202,7 +202,7 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
                 </div>
               ) : (
                 <div
-                  style={{ backgroundColor: 'rgb(128,0,0)' }}
+                  style={{ backgroundColor: '#c0362c' }}
                   className="pt-1 text-center w-60 h-10 text-white rounded"
                 >
                   <button onClick={handleClick} type="button" style={{ fontFamily: 'Acakadut' }}>
@@ -251,7 +251,7 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
                         className="rounded mt-2 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 text-white w-60 bg"
                         disabled={!completedCrop?.width || !completedCrop?.height}
                         onClick={imageBlobGenerater}
-                        style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
+                        style={{ fontFamily: 'Acakadut', backgroundColor: '#c0362c' }}
                       >
                         <img
                           alt="logo"
@@ -286,6 +286,11 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
                                 style={{ fontFamily: 'Acakadut' }}
                                 className="rounded mb-1 pl-2 pr-2 pt-2 w-60 text-green-900"
                               >
+                                <progress
+                                  value={progress}
+                                  max="100"
+                                  className="mt-2 border rounded w-48 mr-1"
+                                />
                                 <img alt="logo" src={correct} className="h-8 w-8 mr-3 inline" />
                                 <span className="inline">Ready To Upload</span>
                               </div>
@@ -304,7 +309,7 @@ export default function Modal({ open, onClose, profile, userId, documentId, user
                 <button
                   type="button"
                   onClick={handleSubmitUpload}
-                  style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
+                  style={{ fontFamily: 'Acakadut', backgroundColor: '#c0362c' }}
                   className="rounded mt-3 text-xl mb-1 pr-2 pt-1 pb-1 w-60 text-white w-60 bg"
                 >
                   <img alt="logo" src={rightArrow} className="animate-pulse h-8 w-8 mr-3 inline" />
@@ -325,6 +330,5 @@ Modal.propTypes = {
   open: PropTypes.bool,
   onClose: PropTypes.bool,
   profile: PropTypes.string,
-  userId: PropTypes.string,
-  userAvatar: PropTypes.string
+  userId: PropTypes.string
 };

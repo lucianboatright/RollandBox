@@ -222,7 +222,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                       {fileSelected === false ? (
                         <>
                           <div
-                            style={{ backgroundColor: 'rgb(128,0,0)' }}
+                            style={{ backgroundColor: '#c0362c' }}
                             className="pt-1 text-center w-34 h-10 text-white rounded"
                           >
                             <img
@@ -253,7 +253,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                             <button
                               onClick={handleClick}
                               type="button"
-                              style={{ fontFamily: 'Acakadut', color: 'rgb(128,0,0)' }}
+                              style={{ fontFamily: 'Acakadut', color: '#c0362c' }}
                             >
                               Browse Files for Upload ...
                             </button>
@@ -304,7 +304,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                                 className="rounded mt-3 mb-1 pl-2 pr-2 pt-1 pb-1 w-60 text-xl text-white"
                                 disabled={!completedCrop?.width || !completedCrop?.height}
                                 onClick={imageBlobGenerater}
-                                style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
+                                style={{ fontFamily: 'Acakadut', backgroundColor: '#c0362c' }}
                               >
                                 <img
                                   alt="logo"
@@ -392,12 +392,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                   </textarea>
                   {imagedownload === false ? (
                     <>
-                      <input
-                        style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
-                        type="submit"
-                        value="Add Watch"
-                        className="rounded mt-1 mb-1 pl-2 pr-2 pt-1 pb-1 text-red-900 text-xl w-60 bg"
-                      />
+                      <span />
                     </>
                   ) : (
                     <>
@@ -406,7 +401,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                           <button
                             type="button"
                             onClick={handleSubmitUpload}
-                            style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
+                            style={{ fontFamily: 'Acakadut', backgroundColor: '#c0362c' }}
                             className="rounded mt-1 mb-1 pr-2 pt-1 pb-1 text-white text-xl w-60 bg"
                           >
                             Information Added
@@ -445,7 +440,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                     <div>
                       <button
                         type="submit"
-                        style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
+                        style={{ fontFamily: 'Acakadut', backgroundColor: '#c0362c' }}
                         className="rounded mt-1 mb-1 pr-2 pt-1 pb-1 text-white text-xl w-60 bg"
                       >
                         <img
