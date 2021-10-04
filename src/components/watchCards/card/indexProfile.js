@@ -1,4 +1,9 @@
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
+// import { useHistory } from 'react-router-dom';
+// import { useContext } from 'react';
+// import UserContext from '../../../context/user';
+// import useUser from '../../../hooks/use-user';
 import { firebase } from '../../../lib/firebase';
 import Image from './imageProfile';
 import Footer from './footerProfile';
@@ -8,8 +13,21 @@ import deleteLogo from '../../../images/svg_png/deleteWhite.png';
 
 const db = firebase.firestore();
 
-export default function Post({ imageurl, watchName, comments, watchInfo, onClose, docId }) {
-  console.log(docId);
+export default function Post({
+  imageurl,
+  watchName,
+  comments,
+  watchInfo,
+  onClose,
+  docId,
+  watchUserId,
+  userId
+}) {
+  const [userProfile, setUserPrfile] = useState(false);
+  // const { user: loggedInUser } = useContext(UserContext);
+  // const { user } = useUser(loggedInUser?.uid);
+  console.log('user', userId);
+  console.log('Watch user', watchUserId);
   const handleDelete = () => {
     db.collection('watches')
       .doc(docId)
@@ -22,6 +40,16 @@ export default function Post({ imageurl, watchName, comments, watchInfo, onClose
       });
     onClose();
   };
+
+  useEffect(() => {
+    if (watchUserId === userId) {
+      setUserPrfile(true);
+    } else {
+      console.log('UNTRUE');
+      setUserPrfile(false);
+    }
+    console.log(userProfile);
+  });
 
   return (
     <div className="">
@@ -41,14 +69,27 @@ export default function Post({ imageurl, watchName, comments, watchInfo, onClose
             color: 'rgb(0,15,85)'
           }}
         >
-          <button type="button" onClick={handleDelete}>
-            <img
-              alt="delete"
-              src={deleteLogo}
-              className="pb-2 mt-2 ml-2.5 h-10 w-8"
-              // onClick={handleDelete}
-            />
-          </button>
+          {/* {userProfile === true ? (
+            <button type="button" onClick={handleDelete}>
+              <img
+                alt="delete"
+                src={deleteLogo}
+                className="pb-2 mt-2 ml-2.5 h-10 w-8"
+                // onClick={handleDelete}
+              />
+            </button> */}
+          {userId === watchUserId ? (
+            <button type="button" onClick={handleDelete}>
+              <img
+                alt="delete"
+                src={deleteLogo}
+                className="pb-2 mt-2 ml-2.5 h-10 w-8"
+                // onClick={handleDelete}
+              />
+            </button>
+          ) : (
+            <span />
+          )}
           <Footer caption={watchInfo} watchName={watchName} />
           <Comments comments={comments} />
         </div>
@@ -93,5 +134,7 @@ Post.propTypes = {
   watchName: PropTypes.string,
   comments: PropTypes.string,
   watchInfo: PropTypes.string,
-  docId: PropTypes.string
+  docId: PropTypes.string,
+  watchUserId: PropTypes.string,
+  userId: PropTypes.string
 };

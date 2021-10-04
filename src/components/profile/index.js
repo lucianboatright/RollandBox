@@ -12,6 +12,7 @@ export default function Profile({ user }) {
     watchCollection: [],
     followerCount: 0
   };
+  // console.log('userInindex', user);
   const [{ profile, watchCollection, followerCount }, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {

@@ -1,5 +1,8 @@
-import React from 'react';
+// import React from 'react';
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
+import UserContext from '../../context/user';
+import useUser from '../../hooks/use-user';
 import watchBox from '../../images/borders/ProfileCardBoxEdit.png';
 import watchBoxLong from '../../images/borders/2xSide.png';
 import PostCard from './card/indexProfile';
@@ -28,7 +31,11 @@ const OVERLAY_STYLES = {
   zIndex: 1000
 };
 
-export default function Modal({ open, onClose, image, name, comments, info, id }) {
+export default function Modal({ open, onClose, image, name, comments, info, id, watchUserId }) {
+  const { user: loggedInUser } = useContext(UserContext);
+  const { user } = useUser(loggedInUser?.uid);
+  // console.log('user', user.userId);
+  // console.log('Watch user', watchUserId);
   if (!open) return null;
   return (
     <>
@@ -63,6 +70,8 @@ export default function Modal({ open, onClose, image, name, comments, info, id }
                 >
                   <div className=" ">
                     <PostCard
+                      userId={user.userId}
+                      watchUserId={watchUserId}
                       imageurl={image}
                       watchName={name}
                       comments={comments}
@@ -88,6 +97,8 @@ export default function Modal({ open, onClose, image, name, comments, info, id }
                   <div className="">
                     <PostCard
                       onClose={() => onClose()}
+                      userId={user.userId}
+                      watchUserId={watchUserId}
                       imageurl={image}
                       watchName={name}
                       comments={comments}
@@ -113,5 +124,6 @@ Modal.propTypes = {
   name: PropTypes.string,
   comments: PropTypes.array,
   info: PropTypes.string,
-  id: PropTypes.string
+  id: PropTypes.string,
+  watchUserId: PropTypes.string
 };

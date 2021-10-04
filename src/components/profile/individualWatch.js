@@ -47,6 +47,7 @@ export default function IndividualWatch({ watchInfo }) {
             comments={watchInfo.comments}
             info={watchInfo.watchinfo}
             id={watchInfo.docId}
+            watchUserId={watchInfo.userId}
             onClose={() => setIsOpen(false)}
           />
         </div>
