@@ -1,4 +1,3 @@
-import * as ROUTES from '../constants/routes';
 export default function Contact() {
   return (
     <div>
