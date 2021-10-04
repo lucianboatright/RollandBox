@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import Header from '../components/header';
 import Sidebar from '../components/sidebar';
 import Timeline from '../components/timeline';
+import BottomBanner from '../components/bottomBanner';
 
 export default function Dashboard() {
   useEffect(() => {
@@ -17,6 +18,7 @@ export default function Dashboard() {
           <Sidebar />
         </div>
       </div>
+      <BottomBanner />
     </div>
   );
 }
