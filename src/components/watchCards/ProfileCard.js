@@ -16,7 +16,7 @@ const MODAL_STYLES = {
   backgroundColor: '#FFF',
   padding: '20px',
   marginTop: '2rem',
-  marginBottom: '4rem',
+  marginBottom: '10rem',
   height: '650px'
   // zIndex: 1000
 };
@@ -34,8 +34,8 @@ const OVERLAY_STYLES = {
 export default function Modal({ open, onClose, image, name, comments, info, id, watchUserId }) {
   const { user: loggedInUser } = useContext(UserContext);
   const { user } = useUser(loggedInUser?.uid);
-  // console.log('user', user.userId);
-  // console.log('Watch user', watchUserId);
+  console.log('user', user.userId);
+  console.log('Watch user', watchUserId);
   if (!open) return null;
   return (
     <>
@@ -60,7 +60,7 @@ export default function Modal({ open, onClose, image, name, comments, info, id, 
             <div className=" sm:hidden md:hidden lg:hidden xl:hidden">
               <div className="overflow-y-scroll h-screen">
                 <div
-                  className="pt-6 pl-11 pr-10 rounded "
+                  className="pt-6 pl-11 pr-10 rounded"
                   style={{
                     backgroundImage: `url(${watchBox})`,
                     backgroundPosition: 'center top',
@@ -68,7 +68,7 @@ export default function Modal({ open, onClose, image, name, comments, info, id, 
                     backgroundRepeat: 'no-repeat'
                   }}
                 >
-                  <div className=" ">
+                  <div className="">
                     <PostCard
                       userId={user.userId}
                       watchUserId={watchUserId}

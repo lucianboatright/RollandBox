@@ -6,7 +6,7 @@ import watchBoxSide from '../../images/borders/2xSide.png';
 
 const MODAL_STYLES = {
   position: 'fixed',
-  top: '30%',
+  top: '35%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
   backgroundColor: '#FFF',
@@ -46,7 +46,7 @@ export default function Modal({ open, onClose, watchInfo }) {
           </button>
         </div>
         <div style={MODAL_STYLES} className="rounded">
-          <div className=" sm:hidden md:hidden lg:hidden xl:hidden">
+          <div className="sm:hidden md:hidden lg:hidden xl:hidden">
             <div className="overflow-y-scroll h-screen">
               <div
                 className="pl-1 pr-1 pt-3 rounded content-center"

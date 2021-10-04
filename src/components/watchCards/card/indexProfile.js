@@ -54,7 +54,7 @@ export default function Post({
   return (
     <div className="">
       {/* <div className="rounded col-span-1 border bg-white border-grey-primary"> */}
-      <div className="flex flex-col sm:hidden md:hidden lg:hidden xl:hidden">
+      <div className="overflow-y-scroll h-screen sm:hidden md:hidden lg:hidden xl:hidden">
         <div className="ml-1 mb-3">
           <Image src={imageurl} caption={watchInfo} className="h-10" />
         </div>
@@ -69,16 +69,7 @@ export default function Post({
             color: 'rgb(0,15,85)'
           }}
         >
-          {/* {userProfile === true ? (
-            <button type="button" onClick={handleDelete}>
-              <img
-                alt="delete"
-                src={deleteLogo}
-                className="pb-2 mt-2 ml-2.5 h-10 w-8"
-                // onClick={handleDelete}
-              />
-            </button> */}
-          {userId === watchUserId ? (
+          {userProfile === true ? (
             <button type="button" onClick={handleDelete}>
               <img
                 alt="delete"
@@ -111,14 +102,18 @@ export default function Post({
               height: '30rem'
             }}
           >
-            <button type="button" onClick={handleDelete}>
-              <img
-                alt="delete"
-                src={deleteLogo}
-                className="pb-2 mt-2 ml-2.5 h-10 w-8"
-                // onClick={handleDelete}
-              />
-            </button>
+            {userProfile === true ? (
+              <button type="button" onClick={handleDelete}>
+                <img
+                  alt="delete"
+                  src={deleteLogo}
+                  className="pb-2 mt-2 ml-2.5 h-10 w-8"
+                  // onClick={handleDelete}
+                />
+              </button>
+            ) : (
+              <span />
+            )}
             <Footer caption={watchInfo} watchName={watchName} />
             <Comments comments={comments} />
           </div>
