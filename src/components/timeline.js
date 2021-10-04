@@ -7,14 +7,14 @@ import singleBox from '../images/borders/Box_single_LowerMiddle.png';
 export default function Timeline() {
   const { watches } = useWatches();
   return (
-    <div className="col-span-5">
+    <div className="">
       <div className="pt-5 flex pl-0 pl-14px flex-wrap overflow-hidden">
         {!watches ? (
           <>
             {[...new Array(12)].map((_, index) => (
               <div
                 key={index}
-                className="pt-3"
+                className=""
                 style={{
                   backgroundImage: `url(${singleBox})`,
                   backgroundPosition: 'center top',
@@ -22,13 +22,24 @@ export default function Timeline() {
                   backgroundRepeat: 'no-repeat'
                 }}
               >
-                <Skeleton
-                  key={index}
-                  className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
-                  count={1}
-                  width={140}
-                  height={180}
-                />
+                <div>
+                  <div className="">
+                    <Skeleton
+                      key={index}
+                      className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
+                      count={0}
+                      width={155}
+                      height={240}
+                    />
+                    <Skeleton
+                      key={index}
+                      className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
+                      count={1}
+                      width={155}
+                      height={200}
+                    />
+                  </div>
+                </div>
               </div>
             ))}
           </>
