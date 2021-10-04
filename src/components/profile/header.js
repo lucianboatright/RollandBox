@@ -57,12 +57,15 @@ export default function Header({
       </div>
       <div className="flex flex-col col-span border-r-2 border-grey-700 pl-0 sm:pl-0 md:pl-0 lg:pl-0 xl:pl-0">
         <div className="container flex item-center">
-          <p className="text-2xl mr-4 capitalize" style={{ fontFamily: 'Quinngothic' }}>
+          <p
+            className="text-4xl mr-4 capitalize"
+            style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}
+          >
             {profileUsername}
           </p>
           <span
-            className="font-medium inline-block align-bottom capitalize pr-3"
-            style={{ fontFamily: 'Quinngothic' }}
+            className="font-medium inline-block align-bottom capitalize text-2xl pr-3"
+            style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}
           >
             {fullName}
           </span>
@@ -89,7 +92,7 @@ export default function Header({
             <>
               <p
                 className="mr-4 text-base sm:mr-10 sm:text-xl md:mr-10 md:text-xl lg:mr-10 lg:text-xl xl:mr-10 xl:text-xl"
-                style={{ fontFamily: 'Quinngothic' }}
+                style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}
               >
                 <span className="font-bold">{watchesCount}</span>
                 {`  `}
@@ -97,7 +100,7 @@ export default function Header({
               </p>
               <p
                 className="mr-4 text-base sm:mr-10 sm:text-xl md:mr-10 md:text-xl lg:mr-10 lg:text-xl xl:mr-10 xl:text-xl"
-                style={{ fontFamily: 'Quinngothic' }}
+                style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}
               >
                 <span className="font-bold">{followerCount}</span>
                 {`  `}
@@ -105,7 +108,7 @@ export default function Header({
               </p>
               <p
                 className="mr-4 text-base sm:mr-10 sm:text-xl md:mr-10 md:text-xl lg:mr-10 lg:text-xl xl:mr-10 xl:text-xl"
-                style={{ fontFamily: 'Quinngothic' }}
+                style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}
               >
                 <span className="font-bold">{following?.length}</span>
                 {`  `}
@@ -116,19 +119,19 @@ export default function Header({
         </div>
       </div>
       <div className="flex items-center justify-center flex-col col-span">
-        <div className="container flex item-center">
+        <div className=" pl-10 container flex item-center">
           {editProfile && (
             <div className="ml-1">
               <div className="flex items-center justify-evenly flex-col col-span">
                 <div className="container mr-2">
                   <button
-                    className="text-base text-xl rounded text-white h-10 w-40 hidden sm:block md:block lg:block xl:block"
+                    className="text-base text-xl rounded text-white h-10 w-48 hidden sm:block md:block lg:block xl:block"
                     type="button"
                     onClick={() => setIsOpenAvitar(true)}
-                    style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
+                    style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(95,158,160)' }}
                   >
                     <div className="flex items-center">
-                      <img alt="setting" src={settingLogo} className="h-6 mb-0.5 pl-1 pr-2" />
+                      <img alt="setting" src={settingLogo} className="h-6 mb-0.5 pl-3 pr-4" />
                       Add New Avitar
                     </div>
                   </button>
@@ -148,7 +151,7 @@ export default function Header({
                     className="rounded text-white h-10 w-10 block sm:hidden md:hidden lg:hidden xl:hidden"
                     type="button"
                     onClick={() => setIsOpenAvitar(true)}
-                    style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
+                    style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(95,158,160)' }}
                   >
                     <img alt="setting" src={settingLogo} className="h-8 pl-1" />
                   </button>
@@ -165,13 +168,13 @@ export default function Header({
               <div className="flex items-center justify-evenly flex-col col-span">
                 <div className="container mr-2">
                   <button
-                    className="text-xl rounded text-white mt-2 pr-2 pl-1 h-10 w-40 hidden sm:block md:block lg:block xl:block"
+                    className="text-xl rounded text-white mt-6 pr-2 pl-1 h-10 w-48 hidden sm:block md:block lg:block xl:block"
                     type="button"
                     onClick={() => setIsOpen(true)}
-                    style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
+                    style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(95,158,160)' }}
                   >
                     <div className=" flex items-center">
-                      <img alt="setting" src={watchLogo} className="h-7 pr-1 " />
+                      <img alt="setting" src={watchLogo} className="h-7 pr-3 pl-2 " />
                       Add New Watch
                     </div>
                   </button>
@@ -191,7 +194,7 @@ export default function Header({
                     className="text-xl rounded flex-shrink text-white mt-2 py-2 h-16 w-10 block sm:hidden md:hidden lg:hidden xl:hidden"
                     type="button"
                     onClick={() => setIsOpen(true)}
-                    style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(128,0,0)' }}
+                    style={{ fontFamily: 'Acakadut', backgroundColor: 'rgb(95,158,160)' }}
                   >
                     <img alt="setting" src={watchLogo} className="h-8 pl-1" />
                     plus

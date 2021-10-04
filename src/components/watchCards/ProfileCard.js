@@ -34,8 +34,6 @@ const OVERLAY_STYLES = {
 export default function Modal({ open, onClose, image, name, comments, info, id, watchUserId }) {
   const { user: loggedInUser } = useContext(UserContext);
   const { user } = useUser(loggedInUser?.uid);
-  console.log('user', user.userId);
-  console.log('Watch user', watchUserId);
   if (!open) return null;
   return (
     <>

@@ -21,7 +21,6 @@ export default function Profile() {
     }
     checkUserExists();
   }, [username, history]);
-  console.log('userinProfile', user);
   return user?.username ? (
     <div className="bg-gray-background">
       <Header />

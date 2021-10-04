@@ -1,9 +1,4 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
-// import { useHistory } from 'react-router-dom';
-// import { useContext } from 'react';
-// import UserContext from '../../../context/user';
-// import useUser from '../../../hooks/use-user';
 import { firebase } from '../../../lib/firebase';
 import Image from './imageProfile';
 import Footer from './footerProfile';
@@ -23,11 +18,6 @@ export default function Post({
   watchUserId,
   userId
 }) {
-  const [userProfile, setUserPrfile] = useState(false);
-  // const { user: loggedInUser } = useContext(UserContext);
-  // const { user } = useUser(loggedInUser?.uid);
-  console.log('user', userId);
-  console.log('Watch user', watchUserId);
   const handleDelete = () => {
     db.collection('watches')
       .doc(docId)
@@ -40,16 +30,6 @@ export default function Post({
       });
     onClose();
   };
-
-  useEffect(() => {
-    if (watchUserId === userId) {
-      setUserPrfile(true);
-    } else {
-      console.log('UNTRUE');
-      setUserPrfile(false);
-    }
-    console.log(userProfile);
-  });
 
   return (
     <div className="">
@@ -69,7 +49,7 @@ export default function Post({
             color: 'rgb(0,15,85)'
           }}
         >
-          {userProfile === true ? (
+          {watchUserId === userId ? (
             <button type="button" onClick={handleDelete}>
               <img
                 alt="delete"
@@ -102,7 +82,7 @@ export default function Post({
               height: '30rem'
             }}
           >
-            {userProfile === true ? (
+            {watchUserId === userId ? (
               <button type="button" onClick={handleDelete}>
                 <img
                   alt="delete"

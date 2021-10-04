@@ -1,10 +1,8 @@
 import PropTypes from 'prop-types';
-import Skeleton from 'react-loading-skeleton';
 import WatchCard from './individualWatch';
 import '../../styles/watches.css';
 
 export default function Watches({ watches }) {
-  console.log('WATCGHES', watches);
   return (
     <div className="mr-2 ml-2 ">
       <div className="border-t border-gray-primary">
