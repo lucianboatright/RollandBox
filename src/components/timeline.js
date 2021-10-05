@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 import Skeleton from 'react-loading-skeleton';
 import useWatches from '../hooks/use-watches';
 import Post from './post';
@@ -32,36 +31,39 @@ export default function Timeline() {
               </div>
             ))}
           </>
-        ) : watches?.length > 0 ? (
-          watches.map((content) => (
-            <>
-              <div
-                key={content.docId}
-                className=""
-                style={{
-                  backgroundImage: `url(${singleBox})`,
-                  backgroundPosition: 'center top',
-                  backgroundSize: '14.5rem 32rem',
-                  backgroundRepeat: 'no-repeat'
-                }}
-              >
-                <div className="mr-3 ">
-                  <Post
-                    key={content.docId}
-                    className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
-                    content={content}
-                  />
-                </div>
-              </div>
-            </>
-          ))
         ) : (
-          <p key="" className="text-center text-2xl">
-            You need to Follow others to see Watches
-          </p>
+          <>
+            {watches?.length > 0 ? (
+              watches.map((content) => (
+                <>
+                  <div
+                    key={content.docId}
+                    className=""
+                    style={{
+                      backgroundImage: `url(${singleBox})`,
+                      backgroundPosition: 'center top',
+                      backgroundSize: '14.5rem 32rem',
+                      backgroundRepeat: 'no-repeat'
+                    }}
+                  >
+                    <div className="mr-3 ">
+                      <Post
+                        key={content.docId}
+                        className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
+                        content={content}
+                      />
+                    </div>
+                  </div>
+                </>
+              ))
+            ) : (
+              <p key="" className="text-center text-2xl">
+                You need to Follow others to see Watches
+              </p>
+            )}
+          </>
         )}
       </div>
     </div>
-    // </div>
   );
 }

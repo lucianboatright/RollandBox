@@ -71,8 +71,8 @@ export default function Header({
           </span>
           {activeButtonFollow && (
             <button
-              style={{ fontFamily: 'Acakadut' }}
-              className="text-sm mx-1 my-1 px-3 py-0.5 border-grey-700 rounded text-white rounded bg-gradient-to-r from-blue-500 to-pink-600 hover:bg-gradient-to-r hover:from-pink-600 hover:to-blue-500 hover:text-blue"
+              style={{ fontFamily: 'Acakadut', backgroundColor: '#e69597' }}
+              className="text-sm mx-1 my-1 px-3 py-0.5 border-grey-700 rounded text-white rounded hover:text-blue"
               type="button"
               onClick={handleToggleFollow}
               onKeyDown={(event) => {
