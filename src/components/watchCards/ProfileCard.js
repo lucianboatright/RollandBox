@@ -6,7 +6,6 @@ import useUser from '../../hooks/use-user';
 import watchBox from '../../images/borders/ProfileCardBoxEdit.png';
 import watchBoxLong from '../../images/borders/2xSide.png';
 import PostCard from './card/indexProfile';
-// import { firebase } from '../../lib/firebase';
 
 const MODAL_STYLES = {
   position: 'fixed',
