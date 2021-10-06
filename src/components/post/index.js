@@ -13,7 +13,6 @@ export default function Post({ content }) {
 
   return (
     <div className="">
-      {/* <div className="rounded col-span-1 border bg-white border-grey-primary"> */}
       <Image className="" src={content.imageurl} caption={content.watchinfo} />
       <div
         className="rounded align-center ml-4"
