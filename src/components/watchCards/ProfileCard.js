@@ -18,7 +18,6 @@ const MODAL_STYLES = {
   marginTop: '2rem',
   marginBottom: '10rem',
   height: '650px'
-  // zIndex: 1000
 };
 
 const OVERLAY_STYLES = {
