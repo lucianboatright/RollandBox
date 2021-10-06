@@ -30,6 +30,7 @@ const OVERLAY_STYLES = {
 };
 
 export default function Modal({ open, onClose, profile, userId, documentId }) {
+  console.log('docId', documentId);
   const [upImg, setUpImg] = useState();
   const imgRef = useRef(null);
   const previewCanvasRef = useRef(null);
@@ -41,6 +42,8 @@ export default function Modal({ open, onClose, profile, userId, documentId }) {
   const [fileDownload, setFileDownload] = useState(false);
   const hiddenFileInput = React.useRef(null);
   const [progress, setProgress] = useState(0);
+  const [uploadingWatch, setUploadingWatch] = useState(false);
+  const [uploadComnplete, setUploadComplete] = useState(false);
 
   const generateDownload = (upImg, completedCrop) => {
     console.log('anything');
@@ -67,12 +70,12 @@ export default function Modal({ open, onClose, profile, userId, documentId }) {
     }
   };
 
-  const imageBlobGenerater = async () => {
-    generateDownload(previewCanvasRef.current, completedCrop);
-    setDownloadAtempt(true);
+  const handleClick = () => {
+    hiddenFileInput.current.click();
   };
 
   const handleSubmitUpload = () => {
+    setUploadingWatch(true);
     const metadata = {
       contentType: 'image/jpeg',
       customMetadata: {
@@ -104,16 +107,17 @@ export default function Modal({ open, onClose, profile, userId, documentId }) {
             db.collection('users').doc(documentId).update({
               imageurl: url
             });
+            setUploadComplete(true);
             setImageBlob(null);
             console.log('complete', url);
           });
       }
     );
-    onClose();
   };
 
-  const handleClick = () => {
-    hiddenFileInput.current.click();
+  const imageBlobGenerater = async () => {
+    generateDownload(previewCanvasRef.current, completedCrop);
+    setDownloadAtempt(true);
   };
 
   const closeModal = () => {
@@ -286,11 +290,6 @@ export default function Modal({ open, onClose, profile, userId, documentId }) {
                                 style={{ fontFamily: 'Acakadut' }}
                                 className="rounded mb-1 pl-2 pr-2 pt-2 w-60 text-green-900"
                               >
-                                <progress
-                                  value={progress}
-                                  max="100"
-                                  className="mt-2 border rounded w-48 mr-1"
-                                />
                                 <img alt="logo" src={correct} className="h-8 w-8 mr-3 inline" />
                                 <span className="inline">Ready To Upload</span>
                               </div>
@@ -306,16 +305,65 @@ export default function Modal({ open, onClose, profile, userId, documentId }) {
                   </div>
                 </>
               ) : (
-                <button
-                  type="button"
-                  onClick={handleSubmitUpload}
-                  style={{ fontFamily: 'Acakadut', backgroundColor: '#c0362c' }}
-                  className="rounded mt-3 text-xl mb-1 pr-2 pt-1 pb-1 w-60 text-white w-60 bg"
-                >
-                  <img alt="logo" src={rightArrow} className="animate-pulse h-8 w-8 mr-3 inline" />
-                  Finish
-                  <img alt="logo" src={leftArrow} className="animate-pulse h-8 w-8 ml-3 inline" />
-                </button>
+                <>
+                  {uploadingWatch === false ? (
+                    <div>
+                      <button
+                        type="button"
+                        onClick={handleSubmitUpload}
+                        style={{ fontFamily: 'Acakadut', backgroundColor: '#c0362c' }}
+                        className="rounded mt-3 text-xl mb-1 pr-2 pt-1 pb-1 w-60 text-white w-60 bg"
+                      >
+                        <img
+                          alt="logo"
+                          src={rightArrow}
+                          className="animate-pulse h-8 w-8 mr-3 inline"
+                        />
+                        Upload
+                        <img
+                          alt="logo"
+                          src={leftArrow}
+                          className="animate-pulse h-8 w-8 ml-3 inline"
+                        />
+                      </button>
+                    </div>
+                  ) : (
+                    <div>
+                      <div>
+                        <progress
+                          value={progress}
+                          max="100"
+                          className="mt-2 border rounded w-48 mr-1"
+                        />
+                        <img
+                          alt="logo"
+                          src={loading}
+                          className="animate-spin h-6 w-6 mr-3 ml-2 inline mb-2"
+                        />
+                      </div>
+                      <div>
+                        <button
+                          type="button"
+                          onClick={closeModal}
+                          style={{ fontFamily: 'Acakadut', backgroundColor: '#c0362c' }}
+                          className="rounded mt-3 text-xl mb-1 pr-2 pt-1 pb-1 w-60 text-white w-60 bg"
+                        >
+                          <img
+                            alt="logo"
+                            src={rightArrow}
+                            className="animate-pulse h-8 w-8 mr-3 inline"
+                          />
+                          Complete
+                          <img
+                            alt="logo"
+                            src={leftArrow}
+                            className="animate-pulse h-8 w-8 ml-3 inline"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </>
               )}
             </div>
           </div>
