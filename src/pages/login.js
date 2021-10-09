@@ -22,7 +22,6 @@ export default function Login() {
       await firebase.auth().signInWithEmailAndPassword(emailAddress, password);
       history.push(ROUTES.DASHBOARD);
     } catch (error) {
-      // If there is an erroer reset the vcalues to nothing
       setEmailAddress('');
       setPassword('');
       setError(error.message);
