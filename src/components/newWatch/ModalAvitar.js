@@ -281,7 +281,7 @@ export default function Modal({ open, onClose, profile, userId, documentId }) {
                                   src={loading}
                                   className="animate-spin h-6 w-6 mr-3 inline"
                                 />
-                                <span className="inline">Please Try Again</span>
+                                <span className="inline">Please Try Again in a Moment</span>
                               </div>
                             </>
                           ) : (
@@ -330,16 +330,26 @@ export default function Modal({ open, onClose, profile, userId, documentId }) {
                   ) : (
                     <div>
                       <div>
-                        <progress
-                          value={progress}
-                          max="100"
-                          className="mt-2 border rounded w-48 mr-1"
-                        />
-                        <img
-                          alt="logo"
-                          src={loading}
-                          className="animate-spin h-6 w-6 mr-3 ml-2 inline mb-2"
-                        />
+                        <div>
+                          <p
+                            style={{ fontFamily: 'Acakadut' }}
+                            className="rounded mb-0 pl-2 pr-2 pt-2 pb-1 w-60 text-red-700 inline-block align-middle"
+                          >
+                            Uploading Please wait
+                          </p>
+                        </div>
+                        <div>
+                          <progress
+                            value={progress}
+                            max="100"
+                            className="mt-2 border rounded w-48 mr-1"
+                          />
+                          <img
+                            alt="logo"
+                            src={loading}
+                            className="animate-spin h-6 w-6 mr-3 ml-2 inline mb-2"
+                          />
+                        </div>
                       </div>
                       <div>
                         <button

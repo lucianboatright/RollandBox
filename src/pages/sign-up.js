@@ -119,6 +119,19 @@ export default function SignUp() {
                 style={{ fontFamily: 'Quinngothic' }}
                 value={password}
               />
+              <div style={{ fontFamily: 'Quinngothic' }}>
+                By clicking SignUp you agree to the terms and conditions for this site which can be
+                seen&nbsp;
+                <a
+                  className="underline"
+                  href="https://www.termsfeed.com/live/f1f2f92c-f9d2-48a1-80ea-68b048591174"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Here
+                </a>
+                .
+              </div>
               <button
                 disabled={isInvalid}
                 type="submit"

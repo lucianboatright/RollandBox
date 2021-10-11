@@ -11,7 +11,24 @@ export default function Watches({ watches }) {
             {watches?.length > 0 ? (
               watches.map((watch) => <WatchCard key={watch.docId} watchInfo={watch} />)
             ) : (
-              <p className="text-center text-2xl">No watches added yet</p>
+              <div style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}>
+                <br />
+                <br />
+                <span className="text-center text-2xl">No watches added yet</span>
+                <p className="text-center text-2xl">Use the Button on the header to add watches.</p>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+              </div>
             )}
           </div>
         </div>
