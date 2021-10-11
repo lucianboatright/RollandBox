@@ -8,7 +8,7 @@ export default function Banner() {
         <span className="flex justify-center">
           © Copyright 2020 Lucian Boatright-Roberts. All Rights Reserved. &nbsp;
           <span />
-          <span className="no-underline"> &nbsp;</span>
+          <span className="no-underline">Please reed the &nbsp; </span>
           <a
             className="underline"
             href="https://www.termsfeed.com/live/f1f2f92c-f9d2-48a1-80ea-68b048591174"
@@ -17,9 +17,12 @@ export default function Banner() {
           >
             Privacy
           </a>
-          <span className="no-underline">. & &nbsp;</span>
+          <span className="no-underline">.&nbsp;&&nbsp;</span>
+          <span>Contact Us at &nbsp;</span>
           <Link className="underline" to={ROUTES.CONTACT}>
-            <span>Contact Us.</span>
+            <span>
+              <p>RollandBox@gmail.co.uk.</p>
+            </span>
           </Link>
         </span>
       </div>
