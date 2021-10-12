@@ -15,7 +15,7 @@ export default function Post({ content }) {
     <div className="">
       <Image className="" src={content.imageurl} caption={content.watchinfo} />
       <div
-        className="rounded align-center ml-4"
+        className="rounded align-center ml-3.5"
         style={{
           backgroundImage: `url(${paper})`,
           backgroundPosition: '',

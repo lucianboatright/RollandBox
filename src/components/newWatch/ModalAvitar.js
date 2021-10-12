@@ -43,7 +43,6 @@ export default function Modal({ open, onClose, profile, userId, documentId }) {
   const hiddenFileInput = React.useRef(null);
   const [progress, setProgress] = useState(0);
   const [uploadingWatch, setUploadingWatch] = useState(false);
-  const [uploadComnplete, setUploadComplete] = useState(false);
 
   const generateDownload = (upImg, completedCrop) => {
     console.log('anything');
@@ -107,7 +106,6 @@ export default function Modal({ open, onClose, profile, userId, documentId }) {
             db.collection('users').doc(documentId).update({
               imageurl: url
             });
-            setUploadComplete(true);
             setImageBlob(null);
             console.log('complete', url);
           });

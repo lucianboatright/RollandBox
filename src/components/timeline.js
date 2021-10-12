@@ -41,7 +41,7 @@ export default function Timeline() {
                     className=""
                     style={{
                       backgroundImage: `url(${singleBox})`,
-                      backgroundPosition: 'center top',
+                      backgroundPosition: '-27px top',
                       backgroundSize: '14.5rem 32rem',
                       backgroundRepeat: 'no-repeat'
                     }}
