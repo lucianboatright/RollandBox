@@ -57,10 +57,10 @@ export default function Header({
             style={{
               backgroundImage: `url(${altLogo})`,
               backgroundRepeat: 'no-repeat',
-              backgroundSize: '180px 180px',
+              backgroundSize: '200px 200px',
               backgroundPosition: 'center',
-              height: '10rem',
-              width: '10rem'
+              height: '9rem',
+              width: '9rem'
             }}
             className="rounded-full h-32 w-auto flex shadow-lg"
             src={imgurl}
