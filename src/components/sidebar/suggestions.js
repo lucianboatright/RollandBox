@@ -31,17 +31,19 @@ export default function Suggestions({ userId, following, followers, loggedInUser
           Suggested Users
         </p>
       </div>
-      <div className="mt-1 grid gap-2">
+      <div className="mt-1">
         {profiles.map((profile) => (
-          <SuggestedProfile
-            key={profile.docId}
-            profileDocId={profile.docId}
-            username={profile.username}
-            profileId={profile.userId}
-            userId={userId}
-            loggedInUserDocId={loggedInUserDocId}
-            avatar={profile}
-          />
+          <div className="pt-2">
+            <SuggestedProfile
+              key={profile.docId}
+              profileDocId={profile.docId}
+              username={profile.username}
+              profileId={profile.userId}
+              userId={userId}
+              loggedInUserDocId={loggedInUserDocId}
+              avatar={profile}
+            />
+          </div>
         ))}
       </div>
     </div>
