@@ -1,4 +1,3 @@
-/* eslint-disable global-require */
 import { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import FirebaseContext from '../context/firebase';
@@ -108,5 +107,3 @@ export default function Header() {
     </header>
   );
 }
-
-/* eslint-disable global-require */

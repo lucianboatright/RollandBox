@@ -4,10 +4,7 @@ import { Link } from 'react-router-dom';
 export default function Header({ username, avatar }) {
   const watch = avatar[0];
   return (
-    <div
-      className="col-span-1 grid grid-rows-1 grid-flow-col gap-1"
-      style={{ color: 'rgb(0,15,85)' }}
-    >
+    <div className="" style={{ color: 'rgb(0,15,85)' }}>
       <div className="flex items-center pt-1">
         <Link to={`/${username}`} className="flex items-center p-0">
           <img

@@ -57,9 +57,23 @@ export default function Timeline() {
                 </>
               ))
             ) : (
-              <p key="" className="text-center text-2xl">
-                You need to Follow others to see Watches
-              </p>
+              <span
+                style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}
+                key=""
+                className="text-center text-2xl"
+              >
+                <br />
+                <br />
+                <p>You need to Follow others to see Watches</p>
+                <br />
+                <p>Either go to someone Profile and click 'Follow'</p>
+                <br />
+                <p>Or Click 'Follow' on one of our users on the right.</p>
+                <br />
+                <br />
+                <br />
+                <br />
+              </span>
             )}
           </>
         )}
