@@ -25,7 +25,7 @@ export default function Suggestions({ userId, following, followers, loggedInUser
     <div className="rounded flex flex-col">
       <div className="text-md flex items-center mb-1">
         <p
-          className="ml-4 font-bold text-gray-base"
+          className="ml-1 sm:ml-4 md:ml-4 lg:ml-4 xl:ml-4  font-bold text-gray-base"
           style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}
         >
           Suggested Users

@@ -10,12 +10,12 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="bg-grey-background">
+    <div className="bg-grey-background overflow-hidden">
       <Header />
-      <div>
+      <div className="">
         <div
           style={{ display: 'grid', gridTemplateColumns: '85% 15%' }}
-          className="mx-auto ml-3 mr-24 sm:ml-10 mr-10 md:ml-10 lg:ml-10 xl:ml-10"
+          className="ml-3 mr-24 sm:ml-10 mr-10 md:ml-10 lg:ml-10 xl:ml-10"
         >
           <div>
             <Timeline />
