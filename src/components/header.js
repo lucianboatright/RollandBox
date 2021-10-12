@@ -18,8 +18,14 @@ export default function Header() {
   return (
     <header className="h-12 sm:h-16 md:h-16 lg:h-16 xl:h-16 bd-white border-b border-gray-primary mb-2">
       <div className="">
-        <div className="flex">
-          <div className="flex-grow flex items-center w-1/2 mt-1.5">
+        <div
+          className=""
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '60% 40%'
+          }}
+        >
+          <div className="flex items-center mt-1.5">
             <div
               className="inline text-4xl ml-0 pl-3 sm:text-5xl sm:pl-1 sm:ml-9 md:text-5xl md:pl-1 md:ml-9 lg:text-5xl lg:pl-1 lg:ml-9 xl:text-5xl xl:pl-1 xl:ml-9"
               style={{ fontFamily: 'Acakadut' }}
@@ -37,7 +43,7 @@ export default function Header() {
             </div>
           </div>
 
-          <div className="flex-grow w-1/2 flex justify-end inline mb-0 mr-0 sm:mb-3 md:mb-3 lg:mb-3 xl:mb-3">
+          <div className="flex justify-end inline mr-2 sm: md:mr-9 lg:mr-9 xl:mr-9 mb-0 mr-0 sm:mb-3 md:mb-3 lg:mb-3 xl:mb-3">
             {user ? (
               <>
                 <div className="justify-end flex items-center">
@@ -79,12 +85,9 @@ export default function Header() {
                     </div>
                   </button>
                 </div>
-                <Link
-                  to={`/${user.username}`}
-                  className="inline cursor-pointer pr-1 pt-2 mr-1 sm:mr-3 md:mr-3 lg:mr-3 xl:mr-3"
-                >
+                <Link to={`/${user.username}`} className="inline cursor-pointer pt-2">
                   <img
-                    className="inline rounded-full shadow-lg h-9 sm:h-11 md:h-11 lg:h-11 xl:h-11 hidden sm:block md:block lg:block xl:block mr-0 sm:mr-12 md:mr-2 lg:mr-7 xl:mr-20"
+                    className="inline rounded-full shadow-lg h-9 sm:h-11 md:h-11 lg:h-11 xl:h-11 hidden sm:block md:block lg:block xl:block"
                     alt="logo"
                     src={user.imageurl}
                   />
