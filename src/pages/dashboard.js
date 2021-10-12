@@ -14,7 +14,7 @@ export default function Dashboard() {
       <Header />
       <div>
         <div
-          style={{ display: 'grid', gridTemplateColumns: '80% 20%' }}
+          style={{ display: 'grid', gridTemplateColumns: '85% 15%' }}
           className="mx-auto ml-3 mr-24 sm:ml-10 mr-10 md:ml-10 lg:ml-10 xl:ml-10"
         >
           <div>

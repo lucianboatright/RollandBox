@@ -36,7 +36,7 @@ export default function SuggestedProfile({
           </p>
         </Link>
       </div>
-      <div className="ml-auto pl-9 mr-11 hidden w-1 sm:hidden w-1 md:block lg:block xl:block">
+      <div className=" mr-11 hidden w-1 sm:hidden w-1 md:block lg:block xl:block">
         <button
           className="text-sm mx-1 my-1 px-3 py-0.5 border-grey-700 rounded text-white rounded hover:text-blue"
           type="button"
