@@ -9,7 +9,7 @@ export default function User({ username, fullName, avatar }) {
     <Link to={`/${username}`} className="flex mb-4 pb-5 items-center border-b-2">
       <div className="items-center pr-1 col-span-1 w-12 invisible sm:invisible md:visible lg:visible lg:w-14 lg:h-14 xl:visible xl:w-14 xl:h-14">
         <img
-          className="rounded-full mr-2 pr-0 ml-3 w-16 max-w-none shadow-lg visible sm:visible md:visible lg:visible xl:visible"
+          className="rounded-full mr-2 pr-0 ml-3 w-10 sm:w-16 md:w-16 lg:w-16 xl:w-16 max-w-none shadow-lg visible sm:visible md:visible lg:visible xl:visible"
           src={avatar}
           alt={username}
         />

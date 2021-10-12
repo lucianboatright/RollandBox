@@ -23,7 +23,7 @@ export default function Suggestions({ userId, following, followers, loggedInUser
     <Skeleton count={1} height={150} className="mt-5" />
   ) : profiles.length > 0 ? (
     <div className="rounded flex flex-col">
-      <div className="text-sm flex items-center mb-1">
+      <div className="text-md flex items-center mb-1">
         <p
           className="ml-4 font-bold text-gray-base"
           style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}
