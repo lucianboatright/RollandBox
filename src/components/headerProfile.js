@@ -4,7 +4,7 @@ import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
 import useUser from '../hooks/use-user';
-import worldBoxLogo from '../images/svg_png/TestWorldBox.png';
+import worldBoxLogo from '../images/svg_png/worldWatchBoxLogo.png';
 import BoxLogo from '../images/svg_png/watchBoxLogoLongHouse.png';
 import image1 from '../images/watchrollfullopen.webp';
 import signOutLogo from '../images/svg_png/logout4.svg';
