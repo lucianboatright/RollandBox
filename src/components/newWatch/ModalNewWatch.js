@@ -150,7 +150,8 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
     onClose();
   };
 
-  const text = 'Info: \nManufacturer:  \nMovment: \nCase Size: \nCase Material: \nYear: \nLink:';
+  // const text = 'Info: \nManufacturer:  \nMovment: \nCase Size: \nCase Material: \nYear: \nLink:';
+  const text2 = 'Dial \nStrap \nHands \nCrown \nExtra...';
 
   useEffect(() => {
     if (!completedCrop || !previewCanvasRef.current || !imgRef.current) {
@@ -369,16 +370,72 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                 </div>
                 <div className="flex flex-col">
                   <p className="text-blue-600 pl-1" style={{ fontFamily: 'Quinngothic' }}>
-                    Watch Name
+                    Watch Tag
                   </p>
                   <input
                     className="border-solid border-2 border-light-blue-500 w-60"
                     type="text"
+                    placeholder="Watch Tag"
                     onChange={({ target }) => setWatchName(target.value)}
                   />
                   <br />
-                  <p className="text-blue-600 pl-1 pt-0.5" style={{ fontFamily: 'Quinngothic' }}>
-                    Enter Iinformation and Links
+                  <p className="text-blue-600 pl-1" style={{ fontFamily: 'Quinngothic' }}>
+                    Manufacture
+                  </p>
+                  <input
+                    className="border-solid border-2 border-light-blue-500 w-60"
+                    type="text"
+                    placeholder="Manufacture:"
+                    onChange={({ target }) => setWatchName(target.value)}
+                  />
+                  <br />
+                  <div>
+                    <span>
+                      <p className="text-blue-600 pl-1" style={{ fontFamily: 'Quinngothic' }}>
+                        Year
+                      </p>
+                      <input
+                        className="border-solid border-2 border-light-blue-500 w-20"
+                        type="text"
+                        placeholder="Year:"
+                        onChange={({ target }) => setWatchName(target.value)}
+                      />
+                      <p className="text-blue-600 pl-1" style={{ fontFamily: 'Quinngothic' }}>
+                        Country
+                      </p>
+                      <input
+                        className="border-solid border-2 border-light-blue-500 w-32"
+                        type="text"
+                        placeholder="Country:"
+                        onChange={({ target }) => setWatchName(target.value)}
+                      />
+                    </span>
+                  </div>
+                  <p className="text-blue-600 pl-1" style={{ fontFamily: 'Quinngothic' }}>
+                    Case Size (Without Crown):
+                  </p>
+                  <p className="text-blue-600 pl-1" style={{ fontFamily: 'Quinngothic' }}>
+                    Width / Height /Lugs
+                  </p>
+                  <input
+                    className="border-solid border-2 border-light-blue-500 w-60"
+                    type="text"
+                    placeholder="Case Size (Without Crown): Width / Height / Lugs"
+                    onChange={({ target }) => setWatchName(target.value)}
+                  />
+                  <br />
+                  <p className="text-blue-600 pl-1" style={{ fontFamily: 'Quinngothic' }}>
+                    Case Material
+                  </p>
+                  <input
+                    className="border-solid border-2 border-light-blue-500 w-60"
+                    type="text"
+                    placeholder="Case Material:"
+                    onChange={({ target }) => setWatchName(target.value)}
+                  />
+                  <br />
+                  <p className="text-blue-600 pl-1" style={{ fontFamily: 'Quinngothic' }}>
+                    Extra Info (Dial, Strap, Hands, Crown etc...)
                   </p>
                   <textarea
                     id="watchinfo"
@@ -388,7 +445,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                     cols="50"
                     style={{ whiteSpace: 'pre-wrap' }}
                   >
-                    {text}
+                    {text2}
                   </textarea>
                   {imagedownload === false ? (
                     <>
