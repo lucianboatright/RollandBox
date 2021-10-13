@@ -100,7 +100,7 @@ export default function Login() {
         </div>
       </div>
       <center
-        className="border border-grey-primary rounded mb-2 w-1/3 mx-auto p-2 m-10 text-xl"
+        className="border border-grey-primary rounded mb-40 w-1/3 mx-auto p-2 m-10 text-xl"
         style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}
       >
         <div>Hello, Welcome to RollandBox, </div>
