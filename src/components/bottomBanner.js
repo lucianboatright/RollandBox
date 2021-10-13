@@ -9,19 +9,25 @@ export default function Banner() {
           © Copyright 2020 Lucian Boatright-Roberts. All Rights Reserved. &nbsp;
           <span />
           <span className="no-underline">Please reed the &nbsp; </span>
+          <Link className="underline" to={ROUTES.RULES}>
+            <span>
+              <p>Rules.</p>
+            </span>
+          </Link>
+          <span>&nbsp;and&nbsp;</span>
           <a
             className="underline"
             href="https://www.termsfeed.com/live/f1f2f92c-f9d2-48a1-80ea-68b048591174"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Privacy
+            Privacy with T&C
           </a>
-          <span className="no-underline">.&nbsp;&&nbsp;</span>
+          <span className="no-underline">.&nbsp;or&nbsp;</span>
           <span>Contact Us at &nbsp;</span>
-          <Link className="underline" to={ROUTES.CONTACT}>
+          <Link className="underline">
             <span>
-              <p>RollandBox@gmail.co.uk.</p>
+              <p>RollandBoxWebsite@gmail.co.uk.</p>
             </span>
           </Link>
         </span>

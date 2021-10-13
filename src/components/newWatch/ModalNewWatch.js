@@ -337,7 +337,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                                     src={loading}
                                     className="animate-spin h-6 w-6 mr-3 inline"
                                   />
-                                  <span className="inline">Please Try Again</span>
+                                  <span className="inline">2 secs Please Try Again</span>
                                 </div>
                               </>
                             ) : (
