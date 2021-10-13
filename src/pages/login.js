@@ -34,7 +34,7 @@ export default function Login() {
 
   return (
     <div>
-      <div className="container flex mx-auto max-w-screen-md items-center h-screen">
+      <div className="container flex mx-auto max-w-screen-md items-center ">
         <div className="flex w-0 sm:w-3/5 md:w-3/5 lg:w-3/5 ">
           <img src={image1} alt="Watch box" />
         </div>
@@ -99,6 +99,15 @@ export default function Login() {
           </div>
         </div>
       </div>
+      <center
+        className="border border-grey-primary rounded mb-2 w-1/3 mx-auto p-2 m-10 text-xl"
+        style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}
+      >
+        <div>Hello, Welcome to RollandBox, </div>
+        <div>Create Watch Collections, View them and Other Users Collections</div>
+        <div>Free and Currently not for profit.</div>
+        <div>Find Terms and Conditions, Privacy Policy and Rules below</div>
+      </center>
       <BottomBanner />
     </div>
   );
