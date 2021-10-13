@@ -7,7 +7,7 @@ export default function Contact() {
       <Header />
       <div className="mt-10 mb-20" style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}>
         <span className="ml-5 underline text-3xl">
-          User Rules Overview. aka (Terms & Conditions).
+          User Rules Overview. (Also find Terms & Conditions at the Bottom).
         </span>
         <p className="ml-5">
           <br />

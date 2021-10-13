@@ -21,7 +21,7 @@ export default function Banner() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Privacy
+            Privacy with T&C
           </a>
           <span className="no-underline">.&nbsp;or&nbsp;</span>
           <span>Contact Us at &nbsp;</span>
