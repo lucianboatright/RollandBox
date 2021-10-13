@@ -425,7 +425,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                   />
                   <br />
                   <p className="text-blue-600 pl-1" style={{ fontFamily: 'Quinngothic' }}>
-                    Case Material
+                    Case Material:
                   </p>
                   <input
                     className="border-solid border-2 border-light-blue-500 w-60"
