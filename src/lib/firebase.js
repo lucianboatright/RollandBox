@@ -13,7 +13,9 @@ const db = firebase.firestore();
 const { FieldValue } = Firebase.firestore;
 const { storage } = Firebase.storage();
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+// const analytics = firebase.analytics();
+const analytics = getAnalytics();
+logEvent(analytics, 'notification_received');
 
 
 export { firebase, storage, db, FieldValue };
