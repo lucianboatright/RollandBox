@@ -26,9 +26,7 @@ export default function Banner() {
           <span className="no-underline">.&nbsp;or&nbsp;</span>
           <span>Contact Us at &nbsp;</span>
           <Link className="underline">
-            <span>
-              <p>RollandBoxWebsite@gmail.co.uk.</p>
-            </span>
+            <p>RollandBoxWebsite@gmail.co.uk.</p>
           </Link>
         </span>
       </div>

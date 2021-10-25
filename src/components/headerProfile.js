@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import FirebaseContext from '../context/firebase';
+import UserLoggedIn from '../hooks/use-auth-listener';
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
 import useUser from '../hooks/use-user';
@@ -14,6 +15,10 @@ export default function Header() {
   const { firebase } = useContext(FirebaseContext);
   const { user } = useUser(loggedInUser?.uid);
   const history = useHistory();
+  console.log('USERS');
+  console.log(user);
+  console.log('***********');
+  const testLength = UserLoggedIn.length;
 
   return (
     <header className="h-12 sm:h-16 md:h-16 lg:h-16 xl:h-16 bd-white border-b border-gray-primary mb-2">
@@ -37,8 +42,49 @@ export default function Header() {
             </div>
           </div>
           <div className="flex-grow w-1/2 flex justify-end inline-grid inline mb-0 mr-0 sm:mr-9 sm:mb-3 md:-mr-9 md:mb-3 lg:mr-9 lg:mb-3 xl:mr-9 xl:mb-3">
-            {user ? (
+            {testLength === 0 ? (
               <>
+                <div className="justify-end flex items-center">
+                  <Link to={ROUTES.LOGIN}>
+                    <button
+                      style={{ fontFamily: 'Acakadut', backgroundColor: '#e69597' }}
+                      type="button"
+                      className="bg-blue-700 font-bold text-sm rounded text-white w-20 h-10 mr-2 mt-2 text-lg"
+                    >
+                      Login
+                    </button>
+                  </Link>
+                  <Link to={ROUTES.SIGN_UP}>
+                    <button
+                      type="button"
+                      style={{ fontFamily: 'Acakadut' }}
+                      className="font-bold text-sm rounded text-blue-700 w-20 h-10 mt-2 border text-lg"
+                    >
+                      Sign-Up
+                    </button>
+                  </Link>
+                </div>
+              </>
+            ) : (
+              <>
+                {/* <div className="justify-end flex items-center">
+                  <Link to={ROUTES.LOGIN}>
+                    <button
+                      type="button"
+                      className="bg-blue-700 font-bold text-sm rounded text-white w-20 h-10 mr-2 mt-2"
+                    >
+                      Login
+                    </button>
+                  </Link>
+                  <Link to={ROUTES.SIGN_UP}>
+                    <button
+                      type="button"
+                      className="font-bold text-sm rounded text-blue-700 w-20 h-10 mt-2 border"
+                    >
+                      Sign-Up
+                    </button>
+                  </Link>
+                </div> */}
                 <div className="justify-end flex items-center">
                   <Link to={ROUTES.DASHBOARD} aria-label="Dashboard" className="inline">
                     <img
@@ -80,25 +126,6 @@ export default function Header() {
                     </div>
                   </button>
                 </div>
-              </>
-            ) : (
-              <>
-                <Link to={ROUTES.LOGIN}>
-                  <button
-                    type="button"
-                    className="bg-blue-700 font-bold text-sm rounded text-white w-20 h-8"
-                  >
-                    Login
-                  </button>
-                </Link>
-                <Link to={ROUTES.SIGN_UP}>
-                  <button
-                    type="button"
-                    className="font-bold text-sm rounded text-blue-700 w-20 h-8 border"
-                  >
-                    Sign-Up
-                  </button>
-                </Link>
               </>
             )}
           </div>

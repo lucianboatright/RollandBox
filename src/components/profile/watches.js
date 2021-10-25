@@ -3,6 +3,7 @@ import WatchCard from './individualWatch';
 import '../../styles/watches.css';
 
 export default function Watches({ watches }) {
+  console.log(watches);
   return (
     <div className="mr-2 ml-2 ">
       <div className="border-t border-gray-primary">
