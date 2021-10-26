@@ -5,6 +5,10 @@ import singleBox from '../images/borders/Box_single_LowerMiddle.png';
 
 export default function Timeline() {
   const { watches } = useWatches();
+  // const dateTime = new Date();
+  console.log('watches');
+  console.log(watches);
+  // console.log(dateTime);
   return (
     <div className="col-span-5">
       <div className="pt-5 flex pl-0 pl-14px flex-wrap overflow-hidden">
@@ -37,7 +41,7 @@ export default function Timeline() {
               watches.map((content) => (
                 <>
                   <div
-                    key={content.docId}
+                    key={content.dateAdded}
                     className=""
                     style={{
                       backgroundImage: `url(${singleBox})`,
@@ -48,7 +52,7 @@ export default function Timeline() {
                   >
                     <div className="mr-3 ">
                       <Post
-                        key={content.docId}
+                        key={(content.dateAdded, console.log(content.dateAdded))}
                         className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
                         content={content}
                       />

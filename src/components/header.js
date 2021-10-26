@@ -15,7 +15,7 @@ export default function Header() {
   const { firebase } = useContext(FirebaseContext);
   const { user } = useUser(loggedInUser?.uid);
   const history = useHistory();
-  const testLength = UserLoggedIn.length;
+  const isLoggedIn = Object.keys(user).length === 0;
 
   return (
     <header className="h-12 sm:h-16 md:h-16 lg:h-16 xl:h-16 bd-white border-b border-gray-primary mb-2">
@@ -46,7 +46,7 @@ export default function Header() {
           </div>
 
           <div className="flex justify-end inline mr-2 sm: md:mr-9 lg:mr-9 xl:mr-9 mb-0 mr-0 sm:mb-3 md:mb-3 lg:mb-3 xl:mb-3">
-            {testLength === 0 ? (
+            {isLoggedIn ? (
               <>
                 <div className="justify-end flex items-center">
                   <Link to={ROUTES.LOGIN}>

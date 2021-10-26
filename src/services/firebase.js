@@ -79,7 +79,20 @@ export async function getWatches(userId, following) {
     .firestore()
     .collection('watches')
     .where('userId', 'in', following)
+    // .orderBy('timestamp')
     .get();
+  // .then((querySnapshot) => {
+  //   querySnapshot.forEach((doc) => {
+  //     console.log(doc.id, '+', doc.data());
+  //     return doc.data();
+  //   });
+  // });
+  // const userFollowedWatches = result.onSnapshot(querySnapshot => {
+  //   querySnapshot.forEach((watch) => {
+  //     ...watch.data(),
+  //     docId: watch.id
+  //   });
+  // });
   const userFollowedWatches = result.docs.map((watch) => ({
     ...watch.data(),
     docId: watch.id

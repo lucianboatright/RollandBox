@@ -17,7 +17,7 @@ export default function useWatches() {
       if (following.length > 0) {
         followedUserWatches = await getWatches(userId, following);
       }
-      followedUserWatches.sort((a, b) => b.dateCreated - a.dateCreated);
+      followedUserWatches.sort((a, b) => b.dateAdded - a.dateAdded);
       setWatches(followedUserWatches);
     }
 
