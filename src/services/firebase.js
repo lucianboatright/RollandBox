@@ -80,11 +80,19 @@ export async function getWatches(userId, following) {
     .collection('watches')
     .where('userId', 'in', following)
     // .orderBy('timestamp')
-    .get();
+    .get()
+    .then((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      console.log('ALL DATA', data);
+    });
+  console.log('RESULT', result);
   // .then((querySnapshot) => {
-  //   querySnapshot.forEach((doc) => {
-  //     console.log(doc.id, '+', doc.data());
-  //     return doc.data();
+  //   querySnapshot.forEach((docs) => {
+  //     console.log(docs.id, '+', docs.data());
+  //     docs.data();
   //   });
   // });
   // const userFollowedWatches = result.onSnapshot(querySnapshot => {
