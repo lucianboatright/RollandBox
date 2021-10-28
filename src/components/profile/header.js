@@ -31,6 +31,13 @@ export default function Header({
   const editProfile = user.username && user.username === profileUsername;
   const avatar = user.imageurl;
 
+  const reload = () => window.location.reload();
+
+  const handleClose = () => {
+    setIsOpen(false);
+    reload();
+  };
+
   const handleToggleFollow = async () => {
     setIsFollowingProfile((isFollowingProfile) => !isFollowingProfile);
     setFollowerCount({
@@ -218,7 +225,7 @@ export default function Header({
                     watchesCount={watchesCount}
                     userId={profileUserId}
                     open={isOpen}
-                    onClose={() => setIsOpen(false)}
+                    onClose={handleClose}
                   />
                 </div>
               </div>
