@@ -6,8 +6,8 @@ import singleBox from '../images/borders/Box_single_LowerMiddle.png';
 export default function Timeline() {
   const { watches } = useWatches();
   // const dateTime = new Date();
-  console.log('watches');
-  console.log(watches);
+  // console.log('watches');
+  // console.log(watches);
   // console.log(dateTime);
   return (
     <div className="col-span-5">

@@ -26,6 +26,8 @@ const OVERLAY_STYLES = {
 };
 
 export default function Modal({ open, onClose, watchInfo }) {
+  console.log('watchInfo');
+  console.log(watchInfo);
   if (!open) return null;
   return (
     <>
@@ -135,6 +137,7 @@ export default function Modal({ open, onClose, watchInfo }) {
                           {watchInfo.watchinfo}
                         </span>
                       </div>
+                      {/* <div className="mb-64">{totalComments.length}</div> */}
                       <div className="mb-64">
                         {watchInfo.comments.map((item) => (
                           <p key={`${item.content}-${item.displayName}`} className="w-64 ml-1">
