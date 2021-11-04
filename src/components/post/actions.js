@@ -36,7 +36,7 @@ export default function Actions({ docId, totalLikes, likedWatch, watchContent, h
 
   return (
     <>
-      <div className="flex justify-between pt-1 mt-0">
+      <div className="flex justify-between pt-0.3 mt-0">
         <div className="flex items-center">
           <div>
             <button
