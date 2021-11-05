@@ -5,10 +5,6 @@ import singleBox from '../images/borders/Box_single_LowerMiddle.png';
 
 export default function Timeline() {
   const { watches } = useWatches();
-  // const dateTime = new Date();
-  // console.log('watches');
-  // console.log(watches);
-  // console.log(dateTime);
   return (
     <div className="col-span-5">
       <div className="pt-5 flex pl-0 pl-14px flex-wrap overflow-hidden">

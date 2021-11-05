@@ -39,6 +39,18 @@ export default function Actions({ docId, totalLikes, likedWatch, watchContent, h
       <div className="flex justify-between pt-0.3 mt-0">
         <div className="flex items-center">
           <div>
+            <Magnifying
+              onClick={viewWatch}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  viewWatch();
+                }
+              }}
+              className="h-5 mr-2 ml-2 select-none cursor-pointer"
+            />
+            <WatchCard open={isOpen} watchInfo={watchContent} onClose={() => setIsOpen(false)} />
+          </div>
+          <div className="pt-0">
             <button
               type="button"
               onClick={handleToggleLiked}
@@ -47,7 +59,7 @@ export default function Actions({ docId, totalLikes, likedWatch, watchContent, h
                   handleToggleLiked();
                 }
               }}
-              className="w-5 ml-0.5 mr-1 select-none cursor-pointer"
+              className="w-6 h-6 ml-0.5 mr-1 select-none cursor-pointer flex items-center"
             >
               {toggleLiked ? (
                 <img alt="watch" src={watchLogoPink} />
@@ -79,18 +91,6 @@ export default function Actions({ docId, totalLikes, likedWatch, watchContent, h
               />
             </svg>
           </div> */}
-          <div>
-            <Magnifying
-              onClick={viewWatch}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter') {
-                  viewWatch();
-                }
-              }}
-              className="h-5 mr-2 ml-2 select-none cursor-pointer"
-            />
-            <WatchCard open={isOpen} watchInfo={watchContent} onClose={() => setIsOpen(false)} />
-          </div>
         </div>
       </div>
       <div className="pl-1">
