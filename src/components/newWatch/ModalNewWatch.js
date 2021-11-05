@@ -94,6 +94,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
         usernumber: userId
       }
     };
+    const dateTime = new Date();
     const file = imageBlob;
     const storageRef = firebase.storage().ref();
     const fileRef = storageRef.child(`watches/${watchName}${time}.jpg`).put(file, metadata);
@@ -117,8 +118,10 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
           .getDownloadURL()
           .then((url) => {
             db.collection('watches').add({
+              // watchname: firebase.firestore.FieldValue.serverTimestamp(),
               watchname: watchName,
               watchinfo: watchInfo,
+              dataAdded: dateTime,
               imageurl: url,
               comments: [],
               likes: [],

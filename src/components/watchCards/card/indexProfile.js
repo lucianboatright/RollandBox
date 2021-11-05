@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
-import { firebase } from '../../../lib/firebase';
+// import { firebase } from '../../../lib/firebase';
 import Image from './imageProfile';
 import Footer from './footerProfile';
 import Comments from './commentsProfile';
 import paper from '../../../images/borders/paper-1.jpg';
 import deleteLogo from '../../../images/svg_png/deleteWhite.png';
 
-const db = firebase.firestore();
+// const db = firebase.firestore();
 
 export default function Post({
   imageurl,
@@ -18,18 +18,18 @@ export default function Post({
   watchUserId,
   userId
 }) {
-  const handleDelete = () => {
-    db.collection('watches')
-      .doc(docId)
-      .delete()
-      .then(() => {
-        console.log('Deleted Post');
-      })
-      .catch((error) => {
-        console.log('ERROR', error);
-      });
-    onClose();
-  };
+  // const handleDelete = () => {
+  //   db.collection('watches')
+  //     .doc(docId)
+  //     .delete()
+  //     .then(() => {
+  //       console.log('Deleted Post');
+  //     })
+  //     .catch((error) => {
+  //       console.log('ERROR', error);
+  //     });
+  //   onClose();
+  // };
 
   return (
     <div className="">
@@ -49,7 +49,7 @@ export default function Post({
             color: 'rgb(0,15,85)'
           }}
         >
-          {watchUserId === userId ? (
+          {/* {watchUserId === userId ? (
             <button type="button" onClick={handleDelete}>
               <img
                 alt="delete"
@@ -60,8 +60,14 @@ export default function Post({
             </button>
           ) : (
             <span />
-          )}
-          <Footer caption={watchInfo} watchName={watchName} />
+          )} */}
+          <Footer
+            caption={watchInfo}
+            watchName={watchName}
+            docId={docId}
+            watchUserId={watchUserId}
+            userId={userId}
+          />
           <Comments comments={comments} />
         </div>
       </div>
@@ -82,19 +88,25 @@ export default function Post({
               height: '30rem'
             }}
           >
-            {watchUserId === userId ? (
-              <button type="button" onClick={handleDelete}>
-                <img
-                  alt="delete"
-                  src={deleteLogo}
-                  className="pb-2 mt-2 ml-2.5 h-10 w-8"
-                  // onClick={handleDelete}
-                />
-              </button>
-            ) : (
-              <span />
-            )}
-            <Footer caption={watchInfo} watchName={watchName} />
+            <div className="">
+              {/* <div className="inline-block">
+                {watchUserId === userId ? (
+                  <button type="button" onClick={handleDelete}>
+                    <img
+                      alt="delete"
+                      src={deleteLogo}
+                      classNameName="pb-2 mt-2 ml-2.5 h-10 w-8"
+                      // onClick={handleDelete}
+                    />
+                  </button>
+                ) : (
+                  <span />
+                )}
+              </div> */}
+              <div className="inline-block">
+                <Footer caption={watchInfo} watchName={watchName} />
+              </div>
+            </div>
             <Comments comments={comments} />
           </div>
         </div>

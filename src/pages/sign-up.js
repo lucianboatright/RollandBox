@@ -61,7 +61,7 @@ export default function SignUp() {
 
   return (
     <div>
-      <div className="container flex mx-auto max-w-screen-md items-center h-screen">
+      <div className="container flex mx-auto max-w-screen-md items-center h-screen mt-10">
         <div className="flex w-0 sm:w-3/5 md:w-3/5 lg:w-3/5">
           <img src={image1} alt="Watch box" />
         </div>
@@ -119,7 +119,16 @@ export default function SignUp() {
                 style={{ fontFamily: 'Quinngothic' }}
                 value={password}
               />
-              <div style={{ fontFamily: 'Quinngothic' }}>
+              <button
+                disabled={isInvalid}
+                type="submit"
+                style={{ fontFamily: 'Acakadut' }}
+                className={`bg-blue-500 text-white w-full border border-grey-primary rounded text-s my-1 py-1
+                ${isInvalid && 'opacity-50'}`}
+              >
+                Sign Up
+              </button>
+              <div className="text-red-500" style={{ fontFamily: 'Quinngothic' }}>
                 By clicking SignUp you agree to the terms and conditions for this site which can be
                 seen&nbsp;
                 <a
@@ -132,15 +141,6 @@ export default function SignUp() {
                 </a>
                 .
               </div>
-              <button
-                disabled={isInvalid}
-                type="submit"
-                style={{ fontFamily: 'Acakadut' }}
-                className={`bg-blue-500 text-white w-full border border-grey-primary rounded text-s my-1 py-1
-                ${isInvalid && 'opacity-50'}`}
-              >
-                Sign Up
-              </button>
             </form>
           </div>
           <div className="flex justify-center items-center flex-col p-4 rounded border border-grey-primary">

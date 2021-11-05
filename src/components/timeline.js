@@ -37,7 +37,7 @@ export default function Timeline() {
               watches.map((content) => (
                 <>
                   <div
-                    key={content.docId}
+                    key={content.dateAdded}
                     className=""
                     style={{
                       backgroundImage: `url(${singleBox})`,
@@ -48,7 +48,7 @@ export default function Timeline() {
                   >
                     <div className="mr-3 ">
                       <Post
-                        key={content.docId}
+                        key={(content.dateAdded, console.log(content.dateAdded))}
                         className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
                         content={content}
                       />

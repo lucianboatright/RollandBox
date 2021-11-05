@@ -3,7 +3,9 @@ import { useState, useContext } from 'react';
 import FirebaseContext from '../../context/firebase';
 import UserContext from '../../context/user';
 import WatchCard from '../watchCards/TimeLineCard';
-import { ReactComponent as WatchLogo } from '../../images/svg_png/watch.svg';
+import watchLogo from '../../images/svg_png/addWatchLogoPNG.png';
+import watchLogoPink from '../../images/svg_png/addWatchLogoPNGPINK.png';
+// import { ReactComponent as WatchLogo } from '../../images/svg_png/addWatchLogoPNGLARGE.svg';
 import { ReactComponent as Magnifying } from '../../images/svg_png/magnifying.svg';
 
 export default function Actions({ docId, totalLikes, likedWatch, watchContent, handleFocus }) {
@@ -34,22 +36,39 @@ export default function Actions({ docId, totalLikes, likedWatch, watchContent, h
 
   return (
     <>
-      <div className="flex justify-between pt-1 pb-1 mt-0">
+      <div className="flex justify-between pt-0.3 mt-0">
         <div className="flex items-center">
           <div>
-            <WatchLogo
+            <Magnifying
+              onClick={viewWatch}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  viewWatch();
+                }
+              }}
+              className="h-5 mr-2 ml-2 select-none cursor-pointer"
+            />
+            <WatchCard open={isOpen} watchInfo={watchContent} onClose={() => setIsOpen(false)} />
+          </div>
+          <div className="pt-0">
+            <button
+              type="button"
               onClick={handleToggleLiked}
               onKeyDown={(event) => {
                 if (event.key === 'Enter') {
                   handleToggleLiked();
                 }
               }}
-              className={`w-4 mr-2 select-none cursor-pointer ${
-                toggleLiked ? 'fill-current text-red-600' : 'text-black-light'
-              }`}
-            />
+              className="w-6 h-6 ml-0.5 mr-1 select-none cursor-pointer flex items-center"
+            >
+              {toggleLiked ? (
+                <img alt="watch" src={watchLogoPink} />
+              ) : (
+                <img alt="watch" src={watchLogo} />
+              )}
+            </button>
           </div>
-          <div>
+          {/* <div>
             <svg
               onClick={handleFocus}
               onKeyDown={(event) => {
@@ -71,19 +90,7 @@ export default function Actions({ docId, totalLikes, likedWatch, watchContent, h
                 d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
               />
             </svg>
-          </div>
-          <div>
-            <Magnifying
-              onClick={viewWatch}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter') {
-                  viewWatch();
-                }
-              }}
-              className="w-4 mr-2 ml-2 select-none cursor-pointer"
-            />
-            <WatchCard open={isOpen} watchInfo={watchContent} onClose={() => setIsOpen(false)} />
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="pl-1">

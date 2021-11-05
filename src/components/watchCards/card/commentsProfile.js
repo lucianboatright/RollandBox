@@ -4,6 +4,7 @@ export default function Comments({ comments: allComments = [] }) {
   const comments = allComments;
   return (
     <>
+      <div className="ml-4 text-lg border-b-2 w-60">Comments: {comments.length}</div>
       <div className="ml-1 p-0 pt-0 pb-0 pb-0 w-64 flex flex-col">
         {comments.map((item) => (
           <p
