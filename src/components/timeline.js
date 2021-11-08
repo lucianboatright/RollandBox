@@ -7,7 +7,7 @@ export default function Timeline() {
   const { watches } = useWatches();
   return (
     <div className="col-span-5">
-      <div className="pt-5 flex pl-0 pl-14px flex-wrap overflow-hidden">
+      <div className="pt-5 flex pl-2 pl-14px flex-wrap overflow-hidden sm:pl-0 md:pl-0 lg:pl-0 xl:pl-0">
         {!watches ? (
           <>
             {[...new Array(12)].map((_, index) => (
