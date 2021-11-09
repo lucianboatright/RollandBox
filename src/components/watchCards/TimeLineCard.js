@@ -27,8 +27,8 @@ const OVERLAY_STYLES = {
 
 export default function Modal({ open, onClose, watchInfo }) {
   const commentLength = watchInfo.comments;
-  console.log('watchInfo');
-  console.log(watchInfo);
+  // console.log('watchInfo');
+  // console.log(watchInfo);
   if (!open) return null;
   return (
     <>

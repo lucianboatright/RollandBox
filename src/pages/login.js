@@ -31,81 +31,86 @@ export default function Login() {
   }, []);
 
   return (
-    <div>
-      <div className="container flex mx-auto max-w-screen-md items-center mt-10">
-        <div className="flex w-0 sm:w-3/5 md:w-3/5 lg:w-3/5 ">
-          <img src={image1} alt="Watch box" />
-        </div>
-        <div className="flex flex-col ml-8 w-4/5 sm:w-2/5 ml-0 md:w-2/5 ml-0 lg:w-2/5 ml-0 lx:w-2/5 ml-0">
-          <div className="flex flex-col items-center bg-white p-4 border border-grey-primary mb-4 rounded">
-            <h1 className="flex justify-center w-full text-4xl" style={{ fontFamily: 'Acakadut' }}>
-              <p className="pt-2">Roll & Box</p>
-              <div className="flex w-12 mb-2 block sm:hidden md:hidden lg:hidden xl:hidden">
-                <img src={image1} alt="Watch box" />
-              </div>
-            </h1>
-            {error && (
-              <p
-                className="mb-4 text-s text-center text-red-700"
-                style={{ fontFamily: 'Quinngothic' }}
+    <div className="flex flex-col min-h-screen">
+      <div className="flex-grow">
+        <div className="container flex mx-auto max-w-screen-md items-center mt-10">
+          <div className="flex w-0 sm:w-3/5 md:w-3/5 lg:w-3/5 ">
+            <img src={image1} alt="Watch box" />
+          </div>
+          <div className="flex flex-col ml-8 w-4/5 sm:w-2/5 ml-0 md:w-2/5 ml-0 lg:w-2/5 ml-0 lx:w-2/5 ml-0">
+            <div className="flex flex-col items-center bg-white p-4 border border-grey-primary mb-4 rounded">
+              <h1
+                className="flex justify-center w-full text-4xl"
+                style={{ fontFamily: 'Acakadut' }}
               >
-                {error}
-              </p>
-            )}
+                <p className="pt-2">Roll & Box</p>
+                <div className="flex w-12 mb-2 block sm:hidden md:hidden lg:hidden xl:hidden">
+                  <img src={image1} alt="Watch box" />
+                </div>
+              </h1>
+              {error && (
+                <p
+                  className="mb-4 text-s text-center text-red-700"
+                  style={{ fontFamily: 'Quinngothic' }}
+                >
+                  {error}
+                </p>
+              )}
 
-            <form onSubmit={handleLogin} method="POST">
-              <input
-                aria-label="Enter your email address"
-                style={{ fontFamily: 'Quinngothic' }}
-                type="text"
-                placeholder="Email Address ..."
-                className="text-sm text-grey-base w-full mr-3 py-5 px-4 h-2 border border-grey-primary rounded mb-2"
-                onChange={({ target }) => setEmailAddress(target.value)}
-                value={emailAddress}
-              />
-              <input
-                aria-label="Enter your password"
-                style={{ fontFamily: 'Quinngothic' }}
-                type="password"
-                placeholder="Password ..."
-                className="text-sm text-grey-base w-full mr-3 py-5 px-4 h-2 border border-grey-primary rounded mb-2"
-                onChange={({ target }) => setPassword(target.value)}
-                value={password}
-              />
-              <button
-                disabled={isInvalid}
-                style={{ fontFamily: 'Acakadut' }}
-                type="submit"
-                className={`bg-blue-500 text-white w-full border border-grey-primary rounded text-s my-1 py-1
-                ${isInvalid && 'opacity-50'}`}
-              >
-                Login
-              </button>
-            </form>
-          </div>
-          <div className="flex justify-center items-center flex-col p-4 rounded border border-grey-primary">
-            <p className="text-sm" style={{ fontFamily: 'Quinngothic' }}>
-              New Account? &ensp;
-              <Link
-                to={ROUTES.SIGN_UP}
-                style={{ fontFamily: 'Acakadut' }}
-                className="bg-blue-500 opacity-50 border border-grey-primary px-2 py-1 rounded text-white text-xl hover:opacity-100"
-              >
-                Sign up
-              </Link>
-            </p>
+              <form onSubmit={handleLogin} method="POST">
+                <input
+                  aria-label="Enter your email address"
+                  style={{ fontFamily: 'Quinngothic' }}
+                  type="text"
+                  placeholder="Email Address ..."
+                  className="text-sm text-grey-base w-full mr-3 py-5 px-4 h-2 border border-grey-primary rounded mb-2"
+                  onChange={({ target }) => setEmailAddress(target.value)}
+                  value={emailAddress}
+                />
+                <input
+                  aria-label="Enter your password"
+                  style={{ fontFamily: 'Quinngothic' }}
+                  type="password"
+                  placeholder="Password ..."
+                  className="text-sm text-grey-base w-full mr-3 py-5 px-4 h-2 border border-grey-primary rounded mb-2"
+                  onChange={({ target }) => setPassword(target.value)}
+                  value={password}
+                />
+                <button
+                  disabled={isInvalid}
+                  style={{ fontFamily: 'Acakadut' }}
+                  type="submit"
+                  className={`bg-blue-500 text-white w-full border border-grey-primary rounded text-s my-1 py-1
+                  ${isInvalid && 'opacity-50'}`}
+                >
+                  Login
+                </button>
+              </form>
+            </div>
+            <div className="flex justify-center items-center flex-col p-4 rounded border border-grey-primary">
+              <p className="text-sm" style={{ fontFamily: 'Quinngothic' }}>
+                New Account? &ensp;
+                <Link
+                  to={ROUTES.SIGN_UP}
+                  style={{ fontFamily: 'Acakadut' }}
+                  className="bg-blue-500 opacity-50 border border-grey-primary px-2 py-1 rounded text-white text-xl hover:opacity-100"
+                >
+                  Sign up
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
+        <center
+          className="border border-grey-primary rounded mb-40 flex-shrink w-96 mx-auto p-2 m-10 text-xl"
+          style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}
+        >
+          <div>Hello, Welcome to RollandBox, </div>
+          <div>Create Watch Collections, View them and Other Users Collections</div>
+          <div>Free and Currently not for profit.</div>
+          <div>Find Terms and Conditions, Privacy Policy and Rules below</div>
+        </center>
       </div>
-      <center
-        className="border border-grey-primary rounded mb-40 flex-shrink w-96 mx-auto p-2 m-10 text-xl"
-        style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}
-      >
-        <div>Hello, Welcome to RollandBox, </div>
-        <div>Create Watch Collections, View them and Other Users Collections</div>
-        <div>Free and Currently not for profit.</div>
-        <div>Find Terms and Conditions, Privacy Policy and Rules below</div>
-      </center>
       <BottomBanner />
     </div>
   );

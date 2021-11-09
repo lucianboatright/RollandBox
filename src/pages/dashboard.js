@@ -24,8 +24,8 @@ export default function Dashboard() {
             <Sidebar />
           </div>
         </div>
+        <BottomBanner />
       </div>
-      <BottomBanner />
     </div>
   );
 }

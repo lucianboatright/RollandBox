@@ -16,8 +16,8 @@ export default function Timeline() {
                 className="pt-3"
                 style={{
                   backgroundImage: `url(${singleBox})`,
-                  backgroundPosition: 'center top',
-                  backgroundSize: '14.5rem 32rem',
+                  backgroundPosition: '-27px top',
+                  backgroundSize: '16.5rem 43rem',
                   backgroundRepeat: 'no-repeat'
                 }}
               >
@@ -25,15 +25,15 @@ export default function Timeline() {
                   key={index}
                   className=" ml-5 w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
                   count={1}
-                  width={140}
-                  height={180}
+                  width={195}
+                  height={311}
                 />
                 <Skeleton
                   key={index}
                   className=" ml-5 w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
                   count={1}
-                  width={140}
-                  height={180}
+                  width={195}
+                  height={311}
                 />
               </div>
             ))}
