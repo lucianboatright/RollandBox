@@ -58,18 +58,18 @@ export default function Header({
 
   return (
     <div className="grid grid-cols-3 gap-2 pb-2 pt-0 sm:pt-1 md:pt-1 lg:pt-1 xl:pt-1">
-      <div className="container flex justify-center border-r-2 border-grey-700 invisible sm:visible md:visible lg:visible xl:visible">
+      <div className="container flex justify-end mt-5 mb-5 pr-1 pl-4 border-r-2 border-grey-700 sm:pr-28 md:pr-28 lg:pr-28 xl:pr-28 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 sm:mt-0 md:mt-0 lg:mt-0 xl:mt-0 sm:visible md:visible lg:visible xl:visible">
         {user.username && (
           <img
             style={{
               backgroundImage: `url(${altLogo})`,
               backgroundRepeat: 'no-repeat',
               backgroundSize: '200px 200px',
-              backgroundPosition: 'center',
-              height: '9rem',
-              width: '9rem'
+              backgroundPosition: 'right',
+              height: 'auto',
+              width: 'auto'
             }}
-            className="rounded-full h-32 w-auto flex shadow-lg"
+            className="rounded-full flex shadow-lg"
             src={imgurl}
             alt=""
           />
@@ -110,30 +110,32 @@ export default function Header({
             <Skeleton count={1} width={677} height={24} />
           ) : (
             <>
-              <p
-                className="mr-4 text-base sm:mr-10 sm:text-xl md:mr-10 md:text-xl lg:mr-10 lg:text-xl xl:mr-10 xl:text-xl"
-                style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}
-              >
-                <span className="font-bold">{watchesCount}</span>
-                {`  `}
-                Watches
-              </p>
-              <p
-                className="mr-4 text-base sm:mr-10 sm:text-xl md:mr-10 md:text-xl lg:mr-10 lg:text-xl xl:mr-10 xl:text-xl"
-                style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}
-              >
-                <span className="font-bold">{followerCount}</span>
-                {`  `}
-                {followerCount === 1 ? `Follower` : `Followers`}
-              </p>
-              <p
-                className="mr-4 text-base sm:mr-10 sm:text-xl md:mr-10 md:text-xl lg:mr-10 lg:text-xl xl:mr-10 xl:text-xl"
-                style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}
-              >
-                <span className="font-bold">{following?.length}</span>
-                {`  `}
-                Following
-              </p>
+              <div>
+                <div
+                  className="mr-4 text-base sm:mr-10 sm:text-xl md:mr-10 md:text-xl lg:mr-10 lg:text-xl xl:mr-10 xl:text-xl"
+                  style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}
+                >
+                  <span className="font-bold">{watchesCount}</span>
+                  {`  `}
+                  Watches
+                </div>
+                <div
+                  className="mr-4 text-base sm:mr-10 sm:text-xl md:mr-10 md:text-xl lg:mr-10 lg:text-xl xl:mr-10 xl:text-xl"
+                  style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}
+                >
+                  <span className="font-bold">{followerCount}</span>
+                  {`  `}
+                  {followerCount === 1 ? `Follower` : `Followers`}
+                </div>
+                <div
+                  className="mr-4 text-base sm:mr-10 sm:text-xl md:mr-10 md:text-xl lg:mr-10 lg:text-xl xl:mr-10 xl:text-xl"
+                  style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}
+                >
+                  <span className="font-bold">{following?.length}</span>
+                  {`  `}
+                  Following
+                </div>
+              </div>
             </>
           )}
         </div>

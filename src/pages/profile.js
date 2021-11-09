@@ -23,9 +23,9 @@ export default function Profile() {
     checkUserExists();
   }, [username, history]);
   return user?.username ? (
-    <div className="bg-gray-background">
+    <div className="bg-gray-background flex flex-col min-h-screen">
       <Header />
-      <div className="mx-auto max-w-screen-lg">
+      <div className="mx-auto flex-grow">
         <UserProfile user={user} />
       </div>
       <BottomBanner />

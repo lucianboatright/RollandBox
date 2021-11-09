@@ -30,7 +30,7 @@ const OVERLAY_STYLES = {
 };
 
 export default function Modal({ open, onClose, profile, userId, documentId }) {
-  console.log('docId', documentId);
+  // console.log('docId', documentId);
   const [upImg, setUpImg] = useState();
   const imgRef = useRef(null);
   const previewCanvasRef = useRef(null);
@@ -45,13 +45,13 @@ export default function Modal({ open, onClose, profile, userId, documentId }) {
   const [uploadingWatch, setUploadingWatch] = useState(false);
 
   const generateDownload = (upImg, completedCrop) => {
-    console.log('anything');
+    // console.log('anything');
     if (!completedCrop || !upImg) {
       return;
     }
     upImg.toBlob((blob) => {
       setImageBlob(blob);
-      console.log('end', imageBlob);
+      // console.log('end', imageBlob);
       if (imageBlob === null) {
         setImageDownload(false);
       } else {
@@ -107,7 +107,7 @@ export default function Modal({ open, onClose, profile, userId, documentId }) {
               imageurl: url
             });
             setImageBlob(null);
-            console.log('complete', url);
+            // console.log('complete', url);
           });
       }
     );

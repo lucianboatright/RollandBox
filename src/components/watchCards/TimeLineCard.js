@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import watchBox from '../../images/borders/ProfileCardBoxEdit.png';
 import paper from '../../images/borders/paper-1.jpg';
-import watchBoxSide from '../../images/borders/2xSide.png';
+import watchBoxSide from '../../images/borders/2xSide2.png';
 
 const MODAL_STYLES = {
   position: 'fixed',
@@ -11,7 +11,7 @@ const MODAL_STYLES = {
   transform: 'translate(-50%, -50%)',
   backgroundColor: '#FFF',
   padding: '20px',
-  marginTop: '10rem',
+  marginTop: '12rem',
   marginBottom: '6rem'
 };
 
@@ -27,8 +27,8 @@ const OVERLAY_STYLES = {
 
 export default function Modal({ open, onClose, watchInfo }) {
   const commentLength = watchInfo.comments;
-  console.log('watchInfo');
-  console.log(watchInfo);
+  // console.log('watchInfo');
+  // console.log(watchInfo);
   if (!open) return null;
   return (
     <>
@@ -52,7 +52,7 @@ export default function Modal({ open, onClose, watchInfo }) {
           <div className="sm:hidden md:hidden lg:hidden xl:hidden">
             <div className="overflow-y-scroll h-screen">
               <div
-                className="pl-1 pr-1 pt-3 rounded content-center"
+                className="ml-1 mr-1 pr-4 pl-4 pt-3 rounded content-center"
                 style={{
                   backgroundImage: `url(${watchBox})`,
                   backgroundPosition: 'center top',
@@ -60,19 +60,19 @@ export default function Modal({ open, onClose, watchInfo }) {
                   backgroundRepeat: 'no-repeat'
                 }}
               >
-                <div className="pl-11 pr-9 pb-20 pt-11 sm:pb-10 md:pb-10 lg:pb-10 lx:pb-10">
-                  <img alt="watch" src={watchInfo.imageurl} className="rounded w-64" />
+                <div className="ml-4 mr-4 pb-2 pt-4 sm:pb-4 md:pb-4 lg:pb-4 lx:pb-4">
+                  <img alt="watch" src={watchInfo.imageurl} className="rounded w-72 max-w-none" />
                 </div>
                 <div
                   style={{
                     backgroundImage: `url(${paper})`,
                     backgroundPosition: '',
-                    backgroundSize: '18rem 50rem',
+                    backgroundSize: '22rem 50rem',
                     backgroundRepeat: 'no-repeat',
                     fontFamily: 'Buggie',
                     color: 'rgb(0,15,85)'
                   }}
-                  className="pt-3 ml-10 mr-8 mt-8 pb-60 rounded"
+                  className="pt-3 pl-2 ml-4 mr-4 mt-6 pb-60 rounded"
                 >
                   <div className="content-center">
                     <div className="border-b-2 w-60 ml-1 text-4xl capitalize">
@@ -107,24 +107,24 @@ export default function Modal({ open, onClose, watchInfo }) {
                 style={{
                   backgroundImage: `url(${watchBoxSide})`,
                   backgroundPosition: 'center top',
-                  backgroundSize: '43rem 35.2rem',
+                  backgroundSize: '42rem 35.2rem',
                   backgroundRepeat: 'no-repeat'
                 }}
               >
-                <div className="flex flex-row">
-                  <div className=" ml-6 pr-2 pb-20 pt-11 sm:pb-10 md:pb-10 lg:pb-10 lx:pb-10">
-                    <img alt="watch" src={watchInfo.imageurl} className="rounded w-72" />
+                <div className="flex flex-row ml-7 mr-7">
+                  <div className=" ml-0 pr-4 mr-2 pb-20 pt-4 sm:pb-10 md:pb-10 lg:pb-10 lx:pb-10">
+                    <img alt="watch" src={watchInfo.imageurl} className="rounded w-80" />
                   </div>
                   <div
                     style={{
                       backgroundImage: `url(${paper})`,
                       backgroundPosition: '',
-                      backgroundSize: '40rem 28.7rem',
+                      backgroundSize: '50rem 31.9rem',
                       backgroundRepeat: 'no-repeat',
                       fontFamily: 'Buggie',
                       color: 'rgb(0,15,85)'
                     }}
-                    className="pt-3 ml-8 mr-8 mt-11 mb-2 rounded"
+                    className="pt-3 pr-0 mt-4 rounded"
                   >
                     <div className="ml-3 mr-3">
                       <div className="border-b-2 w-64 ml-1 text-4xl capitalize">

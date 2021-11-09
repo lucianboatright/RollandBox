@@ -3,14 +3,14 @@ import WatchCard from './individualWatch';
 import '../../styles/watches.css';
 
 export default function Watches({ watches }) {
-  console.log(watches);
+  // console.log(watches);
   return (
     <div className="mr-2 ml-2 ">
-      <div className="border-t border-gray-primary">
-        <div className="">
-          <div className="pt-1 flex flex-wrap justify-center ml-1 sm:justify-start sm:ml-5 md:justify-start md:ml-5 lg:justify-start lg:ml-5 xl:justify-start lx:ml-5 ">
+      <div className="border-t border-gray-primary ml-1.5 sm:ml-4 md:ml-4 xl:ml-4 lg:ml-4">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="pt-1 flex flex-wrap ml-1 sm:ml-16 md:ml-16 lg:ml-16 xl:ml-16 ">
             {watches?.length > 0 ? (
-              watches.map((watch) => <WatchCard key={watch.docId} watchInfo={watch} />)
+              watches.map((watch) => <WatchCard key={watch.dateAdded} watchInfo={watch} />)
             ) : (
               <div style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}>
                 <br />

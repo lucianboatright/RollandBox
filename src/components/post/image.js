@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 export default function Image({ src, caption }) {
   return (
     <img
-      className="mb-7 mt-6 ml-3.5 align-center rounded"
+      className=" mt-6 ml-2.5 align-center rounded"
       src={src}
       alt={caption}
-      width={155}
+      width={195}
       height="auto"
     />
   );

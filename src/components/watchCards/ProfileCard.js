@@ -4,19 +4,19 @@ import { useContext } from 'react';
 import UserContext from '../../context/user';
 import useUser from '../../hooks/use-user';
 import watchBox from '../../images/borders/ProfileCardBoxEdit.png';
-import watchBoxLong from '../../images/borders/2xSide.png';
+import watchBoxLong from '../../images/borders/doubleBox.png';
 import PostCard from './card/indexProfile';
 
 const MODAL_STYLES = {
   position: 'fixed',
-  top: '50%',
+  top: '35%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
   backgroundColor: '#FFF',
   padding: '20px',
-  marginTop: '2rem',
-  marginBottom: '10rem',
-  height: '650px'
+  marginTop: '6rem',
+  marginBottom: '20rem',
+  height: '720px'
 };
 
 const OVERLAY_STYLES = {
@@ -37,30 +37,30 @@ export default function Modal({ open, onClose, image, name, comments, info, id, 
     <>
       <div style={OVERLAY_STYLES}>
         <div>
-          <div>
-            <button
-              type="button"
-              onClick={onClose}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter') {
-                  onClose();
-                }
-              }}
-              style={{ fontFamily: 'Acakadut' }}
-              className="text-white bg-gradient-to-r from-red-600 to-blue-500 rounded px-2 py-0.5 hover:bg-white-600 hover:text-red"
-            >
-              X Close Modal
-            </button>
-          </div>
           <div style={MODAL_STYLES} className="rounded">
+            <div>
+              <button
+                type="button"
+                onClick={onClose}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter') {
+                    onClose();
+                  }
+                }}
+                style={{ fontFamily: 'Acakadut' }}
+                className="text-white mb-4 ml-5 bg-gradient-to-r from-red-600 to-blue-500 rounded px-2 py-0.5 hover:bg-white-600 hover:text-red"
+              >
+                X Close Modal
+              </button>
+            </div>
             <div className=" sm:hidden md:hidden lg:hidden xl:hidden">
-              <div className="overflow-y-scroll h-screen">
+              <div className="overflow-auto pb-60 mb-40 h-screen">
                 <div
-                  className="pt-6 pl-11 pr-10 rounded"
+                  className="pt-8 pl-11 pr-10 rounded"
                   style={{
                     backgroundImage: `url(${watchBox})`,
                     backgroundPosition: 'center top',
-                    backgroundSize: '25rem 151rem',
+                    backgroundSize: '23.3rem 140rem',
                     backgroundRepeat: 'no-repeat'
                   }}
                 >
@@ -73,7 +73,7 @@ export default function Modal({ open, onClose, image, name, comments, info, id, 
                       comments={comments}
                       watchInfo={info}
                       docId={id}
-                      className="w-60 overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
+                      className="w-60 pb-40 mb-40 lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
                     />
                   </div>
                 </div>
@@ -82,7 +82,7 @@ export default function Modal({ open, onClose, image, name, comments, info, id, 
             <div className="hidden sm:block md:block lg:block xl:block sm:w-max md:w-max lg:w-max xl:w-max">
               <div className="">
                 <div
-                  className="pt-4 rounded pl-10 pr-10 "
+                  className="pt-4 rounded pl-7 pr-10 "
                   style={{
                     backgroundImage: `url(${watchBoxLong})`,
                     backgroundPosition: 'center top',

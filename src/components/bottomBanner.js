@@ -3,7 +3,7 @@ import * as ROUTES from '../constants/routes';
 
 export default function Banner() {
   return (
-    <div className="h-12 mt-5 pt-5 pl-2 pr-2 sm:h-16 md:h-16 lg:h-16 xl:h-16 sm:text-base md:text-base lg:text-base xl:text-base bd-white border-t border-gray-primary mb-2">
+    <div className=" max-h-16 h-12 mt-5 pt-5 pl-2 pr-2 sm:h-16 md:h-16 lg:h-16 xl:h-16 sm:text-base md:text-base lg:text-base xl:text-base bd-white border-t border-gray-primary mb-2">
       <div
         className="hidden sm:block md:block lg:block xl:block"
         style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}

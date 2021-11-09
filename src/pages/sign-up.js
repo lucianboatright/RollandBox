@@ -60,8 +60,8 @@ export default function SignUp() {
   }, []);
 
   return (
-    <div>
-      <div className="container flex mx-auto max-w-screen-md items-center h-screen mt-10">
+    <div className="flex flex-col min-h-screen">
+      <div className="container flex flex-grow mx-auto max-w-screen-md items-center mt-10">
         <div className="flex w-0 sm:w-3/5 md:w-3/5 lg:w-3/5">
           <img src={image1} alt="Watch box" />
         </div>

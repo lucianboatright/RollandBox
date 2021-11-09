@@ -1,13 +1,13 @@
 import Skeleton from 'react-loading-skeleton';
 import useWatches from '../hooks/use-watches';
 import Post from './post';
-import singleBox from '../images/borders/Box_single_LowerMiddle.png';
+import singleBox from '../images/borders/Box_single.png';
 
 export default function Timeline() {
   const { watches } = useWatches();
   return (
     <div className="col-span-5">
-      <div className="pt-5 flex pl-0 pl-14px flex-wrap overflow-hidden">
+      <div className="pt-5 flex pl-2 pl-14px flex-wrap overflow-hidden sm:pl-0 md:pl-0 lg:pl-0 xl:pl-0">
         {!watches ? (
           <>
             {[...new Array(12)].map((_, index) => (
@@ -16,17 +16,24 @@ export default function Timeline() {
                 className="pt-3"
                 style={{
                   backgroundImage: `url(${singleBox})`,
-                  backgroundPosition: 'center top',
-                  backgroundSize: '14.5rem 32rem',
+                  backgroundPosition: '-27px top',
+                  backgroundSize: '16.5rem 43rem',
                   backgroundRepeat: 'no-repeat'
                 }}
               >
                 <Skeleton
                   key={index}
-                  className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
+                  className=" ml-5 w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
                   count={1}
-                  width={140}
-                  height={180}
+                  width={195}
+                  height={311}
+                />
+                <Skeleton
+                  key={index}
+                  className=" ml-5 w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
+                  count={1}
+                  width={195}
+                  height={311}
                 />
               </div>
             ))}
@@ -42,7 +49,7 @@ export default function Timeline() {
                     style={{
                       backgroundImage: `url(${singleBox})`,
                       backgroundPosition: '-27px top',
-                      backgroundSize: '14.5rem 32rem',
+                      backgroundSize: '16.5rem 43rem',
                       backgroundRepeat: 'no-repeat'
                     }}
                   >

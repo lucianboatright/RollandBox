@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 export default function Footer({ caption, watchName }) {
   return (
     <div
-      className="has-tooltip w-20 truncate pl-1 text-sm"
+      className="has-tooltip w-40 truncate pl-1 text-xl mt-1 mb-0.5"
       style={{ fontFamily: 'Buggie', color: 'rgb(0,15,85)' }}
     >
       <span className="ml-1 tooltip rounded shadow-lg p-1 bg-gray-100 text-xl">

@@ -36,12 +36,23 @@ Hosted on Firebase using Firebase databases and storage to handle information on
 One of the hardest and most important part of the app has been creating the box to hold Desktop web browsers.
 I tried a few different ways starting with a large background image and placing each image over, the other version creates a box around each mobile rendered. the difference is that the rendering of the full box will always show a full box in a full rectangle where are the individual wrapping will have gaps in the were watches have not been uploaded (the empty spaces in the grid will show as empty)
 
+## Profile and TimeLine Watch Box
+![watchbox](src/images/readme/Profile.png)
+![watchbox](src/images/readme/Timeline2.png)
+![watchbox](src/images/readme/Mobile_watch_upload.png)
+
+Hosted on Firebase useing Firebase databases and storgae to handle inforamtion on the page.
+
+## Watch Enlarge Modal for Desktop and Mobile Version
+![watchbox](src/images/readme/profile.png)
+
 ## Timeline and Profile layouts for Mobile, Ipad, Desktop Version
+![watchbox](src/images/readme/Avatar_upload.png)
+![watchbox](src/images/readme/Mobile_watch_upload.png)
 ![mobileProfile](src/images/readme/Mobile_profile_timeline.png)
 ![mobileProfile](src/images/readme/Ipad_layout.png)
-![mobileProfile](src/images/readme/Timeline.png)
-![mobileProfile](src/images/readme/timeline_with_followers.png)
-
+<!-- ![mobileProfile](src/images/readme/Timeline.png)
+![mobileProfile](src/images/readme/timeline_with_followers.png) -->
 
 ## Upload New Avatar and Watch Upload Modal for Mobile and Ipad/Desktop Version
 ![watchbox](src/images/readme/Avatar_upload.png)
@@ -49,13 +60,14 @@ I tried a few different ways starting with a large background image and placing 
 
 Hosted on Firebase useing Firebase databases and storgae to handle inforamtion on the page.
 
-## Watch Enlarge Modal for Desktop and Mobile Version
-![watchbox](src/images/readme/Show_watch_profile.png)
+
+
+<!-- ![watchbox](src/images/readme/Show_watch_profile.png)
 ![watchbox](src/images/readme/Timeline_Show_watch.png)
+ -->
 
 
-
-## Upload Avatar Modal
+<!-- ## Upload Avatar Modal
 ![watchbox](src/images/readme/first_background.png)
 
 ![watchbox](src/images/readme/first_background.png)
@@ -64,7 +76,7 @@ Hosted on Firebase useing Firebase databases and storgae to handle inforamtion o
 
 ## Empty Profile and Group Collections without Followers
 ![mobileProfile](src/images/readme/Timeline_empty.png)
-![mobileProfile](src/images/readme/Profile_empty.png)
+![mobileProfile](src/images/readme/Profile_empty.png) -->
 
 <!-- This had its limitations though it me be something that the user can chose between.
 - This style will have empty spaces even if the watch is not there. 

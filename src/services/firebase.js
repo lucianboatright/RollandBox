@@ -81,7 +81,7 @@ export async function getWatches(userId, following) {
     .where('userId', 'in', following)
     // .orderBy('timestamp')
     .get();
-  console.log('RESULT', result);
+  // console.log('RESULT', result);
   // .then((querySnapshot) => {
   //   querySnapshot.forEach((docs) => {
   //     console.log(docs.id, '+', docs.data());
