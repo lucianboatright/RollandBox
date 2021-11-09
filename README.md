@@ -46,7 +46,7 @@ I tried a few different ways starting with a large background image and placing 
 ![watchbox](src/images/readme/profile.png)
 
 ## Timeline and Profile layouts for Mobile, Ipad, Desktop Version
-![watchbox](src/images/readme/Avatar_upload.png)
+<!-- ![watchbox](src/images/readme/Avatar_upload.png) -->
 ![watchbox](src/images/readme/Mobile_watch_upload.png)
 ![mobileProfile](src/images/readme/Mobile_profile_timeline.png)
 ![mobileProfile](src/images/readme/Ipad_layout.png)
@@ -54,7 +54,8 @@ I tried a few different ways starting with a large background image and placing 
 ![mobileProfile](src/images/readme/timeline_with_followers.png) -->
 
 ## Upload New Avatar and Watch Upload Modal for Mobile and Ipad/Desktop Version
-![watchbox](src/images/readme/Avatar_upload.png)
+![watchbox](src/images/readme/New_watch_upload.png)
+<!-- ![watchbox](src/images/readme/Avatar_upload.png) -->
 ![watchbox](src/images/readme/Mobile_watch_upload.png)
 
 
