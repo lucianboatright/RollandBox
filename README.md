@@ -3,7 +3,7 @@ Find a deployed version at: https://rollandbox.co.uk
 Please feel free to sign up and create an account.
 Hosted on Firebase.
 
-This Project is still Live and I have been getting feedback from users which has been feeding into ongoing changes and upgrades.
+This Project is still Live and I have been getting feedback from users which has been feeding into ongoing changes and upgrades which are deployed when the feature is complete.
 
 ## Project outline
 This website is mainly aimed at helping the user with two things.
@@ -50,7 +50,8 @@ I tried a few different ways starting with a large background image and placing 
 
 ## Timeline and Profile layouts for Mobile, Ipad, Desktop Version
 <!-- ![watchbox](src/images/readme/Avatar_upload.png) -->
-<!-- ![watchbox](src/images/readme/Mobile_watch_upload.png) -->
+![watchbox](src/images/readme/MobileProfile.png)
+![watchbox](src/images/readme/mobileTimeline.png)
 ![mobileProfile](src/images/readme/Mobile_profile_timeline.png)
 ![mobileProfile](src/images/readme/Ipad_layout.png)
 <!-- ![mobileProfile](src/images/readme/Timeline.png)

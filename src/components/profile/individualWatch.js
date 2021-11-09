@@ -62,7 +62,7 @@ export default function IndividualWatch({ watchInfo }) {
           style={{
             backgroundImage: `url(${singleBox})`,
             backgroundPosition: '-26px top',
-            backgroundSize: '23.5rem 31.5rem',
+            backgroundSize: '23.5rem 33.5rem',
             backgroundRepeat: 'no-repeat'
           }}
         >
