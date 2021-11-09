@@ -1,12 +1,8 @@
 import PropTypes from 'prop-types';
-// import { firebase } from '../../../lib/firebase';
 import Image from './imageProfile';
 import Footer from './footerProfile';
 import Comments from './commentsProfile';
 import paper from '../../../images/borders/paper-1.jpg';
-import deleteLogo from '../../../images/svg_png/deleteWhite.png';
-
-// const db = firebase.firestore();
 
 export default function Post({
   imageurl,
@@ -18,49 +14,23 @@ export default function Post({
   watchUserId,
   userId
 }) {
-  // const handleDelete = () => {
-  //   db.collection('watches')
-  //     .doc(docId)
-  //     .delete()
-  //     .then(() => {
-  //       console.log('Deleted Post');
-  //     })
-  //     .catch((error) => {
-  //       console.log('ERROR', error);
-  //     });
-  //   onClose();
-  // };
-
   return (
     <div className="">
-      {/* <div className="rounded col-span-1 border bg-white border-grey-primary"> */}
-      <div className="overflow-y-scroll h-screen sm:hidden md:hidden lg:hidden xl:hidden">
+      <div className=" h-screen sm:hidden md:hidden lg:hidden xl:hidden">
         <div className="ml-1 mb-3">
           <Image src={imageurl} caption={watchInfo} className="h-10" />
         </div>
         <div
-          className="rounded mt-16 ml-1"
+          className="rounded mt-10 ml-1 pb-40"
           style={{
             backgroundImage: `url(${paper})`,
             backgroundPosition: '',
-            backgroundSize: '23rem 60rem',
+            backgroundSize: '21rem 60rem',
             backgroundRepeat: 'no-repeat',
             fontFamily: 'Buggie',
             color: 'rgb(0,15,85)'
           }}
         >
-          {/* {watchUserId === userId ? (
-            <button type="button" onClick={handleDelete}>
-              <img
-                alt="delete"
-                src={deleteLogo}
-                className="pb-2 mt-2 ml-2.5 h-10 w-8"
-                // onClick={handleDelete}
-              />
-            </button>
-          ) : (
-            <span />
-          )} */}
           <Footer
             caption={watchInfo}
             watchName={watchName}
@@ -89,20 +59,6 @@ export default function Post({
             }}
           >
             <div className="">
-              {/* <div className="inline-block">
-                {watchUserId === userId ? (
-                  <button type="button" onClick={handleDelete}>
-                    <img
-                      alt="delete"
-                      src={deleteLogo}
-                      classNameName="pb-2 mt-2 ml-2.5 h-10 w-8"
-                      // onClick={handleDelete}
-                    />
-                  </button>
-                ) : (
-                  <span />
-                )}
-              </div> */}
               <div className="inline-block">
                 <Footer caption={watchInfo} watchName={watchName} />
               </div>

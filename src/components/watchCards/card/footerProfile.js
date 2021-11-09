@@ -23,11 +23,11 @@ export default function Footer({ caption, watchName, docId, watchUserId, userId 
       className="w-60 pt-2 pl-4 text-left"
       style={{ fontFamily: 'Buggie', color: 'rgb(0,15,85)' }}
     >
-      <div className="text-4xl border-b-2 mb-2 mt-2 flex justify-between">
+      <div className="text-3xl border-b-2 mb-2 mt-2 flex justify-between sm:text-4xl md:text-4xl lg:text-4xl xl:text-4xl">
         <div className=" inline">{watchName}</div>
         <div className="inline mt-1 ">
           {watchUserId === userId ? (
-            <button type="button" onClick={handleDelete}>
+            <button type="button" onClick={handleDelete()}>
               <img
                 style={{ maxWidth: '20rem' }}
                 alt="delete"
