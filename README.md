@@ -3,6 +3,8 @@ Find a deployed version at: https://rollandbox.co.uk
 Please feel free to sign up and create an account.
 Hosted on Firebase.
 
+This Project is still Live and I have been getting feedback from users which has been feeding into ongoing changes and upgrades.
+
 ## Project outline
 This website is mainly aimed at helping the user with two things.
 1. Allowing the user to easily store images and information about their watches in order to have a simple and easy to view their watch collection or allowing other so view
