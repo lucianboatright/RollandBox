@@ -50,8 +50,8 @@ I tried a few different ways starting with a large background image and placing 
 
 ## Timeline and Profile layouts for Mobile, Ipad, Desktop Version
 <!-- ![watchbox](src/images/readme/Avatar_upload.png) -->
-<img src="src/images/readme/MobileProfile.png" width="400" />
-![watchbox](src/images/readme/MobileProfile.png) ![watchbox](src/images/readme/mobileTimeline.png)
+<img src="src/images/readme/MobileProfile.png" width="375" /> <img src="src/images/readme/mobileTimeline.png" width="375" />
+<!-- ![watchbox](src/images/readme/MobileProfile.png) ![watchbox](src/images/readme/mobileTimeline.png) -->
 ![mobileProfile](src/images/readme/Mobile_profile_timeline.png)
 ![mobileProfile](src/images/readme/Ipad_layout.png)
 <!-- ![mobileProfile](src/images/readme/Timeline.png)
