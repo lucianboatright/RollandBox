@@ -15,13 +15,13 @@ export default function Post({ content }) {
     <div className="">
       <Image className="" src={content.imageurl} caption={content.watchinfo} />
       <div
-        className="rounded align-center ml-3"
+        className="rounded align-center ml-2.5 h-80 mb-10"
         style={{
           backgroundImage: `url(${paper})`,
           backgroundPosition: '',
-          backgroundSize: '30rem 30rem',
+          backgroundSize: '30rem 35rem',
           backgroundRepeat: 'no-repeat',
-          marginTop: '1.9rem'
+          marginTop: '1.2rem'
         }}
       >
         <Header className="" username={content.username} avatar={content.user} />

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import watchBox from '../../images/borders/ProfileCardBoxEdit.png';
 import paper from '../../images/borders/paper-1.jpg';
-import watchBoxSide from '../../images/borders/2xSide.png';
+import watchBoxSide from '../../images/borders/2xSide2.png';
 
 const MODAL_STYLES = {
   position: 'fixed',
@@ -107,24 +107,24 @@ export default function Modal({ open, onClose, watchInfo }) {
                 style={{
                   backgroundImage: `url(${watchBoxSide})`,
                   backgroundPosition: 'center top',
-                  backgroundSize: '43rem 35.2rem',
+                  backgroundSize: '42rem 35.2rem',
                   backgroundRepeat: 'no-repeat'
                 }}
               >
-                <div className="flex flex-row">
-                  <div className=" ml-6 pr-2 pb-20 pt-11 sm:pb-10 md:pb-10 lg:pb-10 lx:pb-10">
-                    <img alt="watch" src={watchInfo.imageurl} className="rounded w-72" />
+                <div className="flex flex-row ml-7 mr-7">
+                  <div className=" ml-0 pr-4 mr-2 pb-20 pt-4 sm:pb-10 md:pb-10 lg:pb-10 lx:pb-10">
+                    <img alt="watch" src={watchInfo.imageurl} className="rounded w-80" />
                   </div>
                   <div
                     style={{
                       backgroundImage: `url(${paper})`,
                       backgroundPosition: '',
-                      backgroundSize: '40rem 28.7rem',
+                      backgroundSize: '50rem 31.9rem',
                       backgroundRepeat: 'no-repeat',
                       fontFamily: 'Buggie',
                       color: 'rgb(0,15,85)'
                     }}
-                    className="pt-3 ml-8 mr-8 mt-11 mb-2 rounded"
+                    className="pt-3 pr-0 mt-4 rounded"
                   >
                     <div className="ml-3 mr-3">
                       <div className="border-b-2 w-64 ml-1 text-4xl capitalize">

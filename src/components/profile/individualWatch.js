@@ -16,7 +16,7 @@ export default function IndividualWatch({ watchInfo }) {
       style={{
         backgroundImage: `url(${singleBox})`,
         backgroundPosition: '-26px top',
-        backgroundSize: '15rem 19.5rem',
+        backgroundSize: '16.5rem 21.5rem',
         backgroundRepeat: 'no-repeat'
       }}
     >
@@ -33,10 +33,10 @@ export default function IndividualWatch({ watchInfo }) {
           >
             <div>
               <img
-                className="rounded ml-4 mr-4 mt-5  cursor-pointer"
+                className="rounded ml-4 mr-4 mt-2  cursor-pointer"
                 src={watchInfo.imageurl}
                 alt={`${watchInfo.watchId}`}
-                width="160px"
+                width="190px"
               />
             </div>
           </button>

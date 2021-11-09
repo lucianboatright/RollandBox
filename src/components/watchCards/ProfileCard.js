@@ -82,7 +82,7 @@ export default function Modal({ open, onClose, image, name, comments, info, id, 
             <div className="hidden sm:block md:block lg:block xl:block sm:w-max md:w-max lg:w-max xl:w-max">
               <div className="">
                 <div
-                  className="pt-4 rounded pl-10 pr-10 "
+                  className="pt-4 rounded pl-6 pr-10 "
                   style={{
                     backgroundImage: `url(${watchBoxLong})`,
                     backgroundPosition: 'center top',

@@ -6,11 +6,11 @@ export default function Watches({ watches }) {
   console.log(watches);
   return (
     <div className="mr-2 ml-2 ">
-      <div className="border-t border-gray-primary">
-        <div className="">
-          <div className="pt-1 flex flex-wrap justify-center ml-1 sm:justify-start sm:ml-5 md:justify-start md:ml-5 lg:justify-start lg:ml-5 xl:justify-start lx:ml-5 ">
+      <div className="border-t border-gray-primary ml-4">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="pt-1 flex flex-wrap ml-16 ">
             {watches?.length > 0 ? (
-              watches.map((watch) => <WatchCard key={watch.docId} watchInfo={watch} />)
+              watches.map((watch) => <WatchCard key={watch.dateAdded} watchInfo={watch} />)
             ) : (
               <div style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}>
                 <br />

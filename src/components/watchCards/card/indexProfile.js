@@ -77,7 +77,7 @@ export default function Post({
             <Image src={imageurl} caption={watchInfo} />
           </div>
           <div
-            className="overflow-auto rounded pb-32 mt-9 ml-12 pl-4 mr-2 w-1/2 flex flex-col"
+            className="overflow-auto rounded pb-36 mt-3 ml-4 pl-0 mr-2 w-80 flex flex-col"
             style={{
               backgroundImage: `url(${paper})`,
               backgroundPosition: '',
@@ -85,7 +85,7 @@ export default function Post({
               backgroundRepeat: 'no-repeat',
               fontFamily: 'Buggie',
               color: 'rgb(0,15,85)',
-              height: '30rem'
+              height: '33rem'
             }}
           >
             <div className="">

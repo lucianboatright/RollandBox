@@ -1,7 +1,7 @@
 import Skeleton from 'react-loading-skeleton';
 import useWatches from '../hooks/use-watches';
 import Post from './post';
-import singleBox from '../images/borders/Box_single_LowerMiddle.png';
+import singleBox from '../images/borders/Box_single.png';
 
 export default function Timeline() {
   const { watches } = useWatches();
@@ -23,7 +23,14 @@ export default function Timeline() {
               >
                 <Skeleton
                   key={index}
-                  className="w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
+                  className=" ml-5 w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
+                  count={1}
+                  width={140}
+                  height={180}
+                />
+                <Skeleton
+                  key={index}
+                  className=" ml-5 w-full overflow-hidden lg:w-1/6 xl:my-4 xl:px-4 xl:w-1/6"
                   count={1}
                   width={140}
                   height={180}
@@ -42,7 +49,7 @@ export default function Timeline() {
                     style={{
                       backgroundImage: `url(${singleBox})`,
                       backgroundPosition: '-27px top',
-                      backgroundSize: '14.5rem 32rem',
+                      backgroundSize: '16.5rem 43rem',
                       backgroundRepeat: 'no-repeat'
                     }}
                   >

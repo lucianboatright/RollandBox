@@ -8,10 +8,10 @@ export default function Comments({ docId, comments: allComments = [], posted, co
   const [comments, setComments] = useState(allComments);
   return (
     <>
-      <div className="ml-1 p-0 pb-1.5">
+      <div className="ml-1 p-0 pb-1.5 h-44">
         {comments.length >= 1 && (
           <div
-            className="text-xs text-gray-700 mb-0 cursor-pointer"
+            className="text-base text-gray-700 mb-0 cursor-pointer font-bold"
             style={{ fontFamily: 'Buggie', color: 'rgb(0,15,85)' }}
           >
             {comments.length} Comments
@@ -19,7 +19,7 @@ export default function Comments({ docId, comments: allComments = [], posted, co
         )}
         {comments.length === 0 && (
           <div
-            className="text-xs text-gray-700 cursor-pointer mb-11"
+            className="text-base text-gray-700 cursor-pointer mb-11"
             style={{ fontFamily: 'Buggie', color: 'rgb(0,15,85)' }}
           >
             <div className="pb-1.5">Add Comments</div>
@@ -28,18 +28,18 @@ export default function Comments({ docId, comments: allComments = [], posted, co
         {comments.length === 1 && (
           <div
             style={{ paddingTop: '0.1rem' }}
-            className="text-xs text-gray-700 cursor-pointer mb-6 pb-2"
+            className="text-base text-gray-700 cursor-pointer mb-6 pb-2"
           />
         )}
-        {comments.length === 2 && <div className="text-xs text-gray-700 cursor-pointer mb-4" />}
-        {comments.slice(0, 3).map((item) => (
+        {comments.length === 2 && <div className="text-base text-gray-700 cursor-pointer mb-4" />}
+        {comments.slice(0, 6).map((item) => (
           <p
             key={`${item.comment}-${item.displayName}`}
-            className="mb-0 text-xs cursor-pointer w-20 truncate"
+            className="mb-0 text-base cursor-pointer w-40 truncate"
           >
             <Link to={`/${item.displayName}`} className="inline">
               <span
-                className="text-xs mr-1 font-bold capitalize"
+                className="text-base mr-1 font-bold capitalize"
                 style={{ fontFamily: 'Buggie', color: 'rgb(0,15,85)' }}
               >
                 {item.displayName}:
@@ -60,7 +60,7 @@ export default function Comments({ docId, comments: allComments = [], posted, co
           </p>
         ))}
         {!!posted && (
-          <p className="text-xs text-gray-700 uppercase mt-0">
+          <p className="text-base text-gray-700 uppercase mt-0">
             {formatDistance(posted, new Date())} ago
           </p>
         )}

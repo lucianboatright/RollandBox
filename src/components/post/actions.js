@@ -36,7 +36,7 @@ export default function Actions({ docId, totalLikes, likedWatch, watchContent, h
 
   return (
     <>
-      <div className="flex justify-between pt-0.3 mt-0">
+      <div className="flex justify-between pt-0.3 mt-1">
         <div className="flex items-center">
           <div>
             <Magnifying
@@ -68,6 +68,14 @@ export default function Actions({ docId, totalLikes, likedWatch, watchContent, h
               )}
             </button>
           </div>
+          <div className="pl-1">
+            <p
+              className="font-bold text-lg"
+              style={{ fontFamily: 'Buggie', color: 'rgb(0,15,85)' }}
+            >
+              {likes === 1 ? `${likes} like` : `${likes} likes`}
+            </p>
+          </div>
           {/* <div>
             <svg
               onClick={handleFocus}
@@ -92,14 +100,6 @@ export default function Actions({ docId, totalLikes, likedWatch, watchContent, h
             </svg>
           </div> */}
         </div>
-      </div>
-      <div className="pl-1">
-        <p
-          className="font-light text-xs font-sx"
-          style={{ fontFamily: 'Buggie', color: 'rgb(0,15,85)' }}
-        >
-          {likes === 1 ? `${likes} like` : `${likes} likes`}
-        </p>
       </div>
     </>
   );
