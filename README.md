@@ -1,6 +1,7 @@
 # Watch Box Web App 
 Find a deployed version at: https://rollandbox.co.uk
 Please feel free to sign up and create an account.
+Hosted on Firebase.
 
 ## Project outline
 This website is mainly aimed at helping the user with two things.
@@ -39,9 +40,7 @@ I tried a few different ways starting with a large background image and placing 
 ## Profile and TimeLine Watch Box
 ![watchbox](src/images/readme/Profile.png)
 ![watchbox](src/images/readme/Timeline2.png)
-![watchbox](src/images/readme/Mobile_watch_upload.png)
 
-Hosted on Firebase useing Firebase databases and storgae to handle inforamtion on the page.
 
 ## Watch Enlarge Modal for Desktop and Mobile Version
 ![watchbox](src/images/readme/profile.png)
@@ -58,7 +57,6 @@ Hosted on Firebase useing Firebase databases and storgae to handle inforamtion o
 ![watchbox](src/images/readme/Avatar_upload.png)
 ![watchbox](src/images/readme/Mobile_watch_upload.png)
 
-Hosted on Firebase useing Firebase databases and storgae to handle inforamtion on the page.
 
 
 
