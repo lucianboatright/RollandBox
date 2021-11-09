@@ -43,11 +43,12 @@ I tried a few different ways starting with a large background image and placing 
 
 
 ## Watch Enlarge Modal for Desktop and Mobile Version
-![watchbox](src/images/readme/profile.png)
+![watchbox](src/images/readme/profileCard.png)
+![watchbox](src/images/readme/TimeCard.png)
 
 ## Timeline and Profile layouts for Mobile, Ipad, Desktop Version
 <!-- ![watchbox](src/images/readme/Avatar_upload.png) -->
-![watchbox](src/images/readme/Mobile_watch_upload.png)
+<!-- ![watchbox](src/images/readme/Mobile_watch_upload.png) -->
 ![mobileProfile](src/images/readme/Mobile_profile_timeline.png)
 ![mobileProfile](src/images/readme/Ipad_layout.png)
 <!-- ![mobileProfile](src/images/readme/Timeline.png)
