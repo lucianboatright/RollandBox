@@ -29,6 +29,7 @@ export default function Profile({ user }) {
         profile={profile}
         followerCount={followerCount}
         setFollowerCount={dispatch}
+        watches={watchCollection}
       />
       <Watches watches={watchCollection} profile={profile} />
     </>
