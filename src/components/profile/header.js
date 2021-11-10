@@ -31,8 +31,8 @@ export default function Header({
   const [isOpenAvitar, setIsOpenAvitar] = useState(false);
   const editProfile = user.username && user.username === profileUsername;
   const avatar = user.imageurl;
-  const [commentCount, setCommentCount] = useState();
-  const [likesCount, setLikesCount] = useState();
+  const [commentCount, setCommentCount] = useState([]);
+  const [likesCount, setLikesCount] = useState([]);
 
   // const lk = [];
   // Object.values(watches).forEach((k) => lk.push([k.watchname, k.likes]));
@@ -91,16 +91,19 @@ export default function Header({
       const lk = [];
       Object.values(watches).forEach((k) => lk.push([k.watchname, k.likes]));
       const mostLiked = await lk.sort().reverse()[0];
-      setLikesCount(mostLiked[0]);
-      console.log(mostLiked);
+      const mostLikedCount = await mostLiked[1].length;
+      setLikesCount([mostLiked[0], ' with ', mostLikedCount]);
     };
     const commentsCheck = async () => {
       const com = [];
       Object.values(watches).forEach((k) => com.push([k.watchname, k.comments]));
       com.sort((a, b) => b[1].length - a[1].length);
-      console.log('com1', com[0][1].length);
+      if (com === null) {
+        setCommentCount('No Comments');
+      }
       const commmentsLength = await com[0][1];
-      setCommentCount(commmentsLength.length);
+      const commmentsName = await com[0][0];
+      setCommentCount([commmentsName, ' with ', commmentsLength.length]);
     };
     const isLoggedInUserFollowingProfile = async () => {
       const isFollowing = await isUserFollowingProfile(user.username, profileUserId);
@@ -116,9 +119,6 @@ export default function Header({
     likesCheck();
     commentsCheck();
   }, [user.username, profileUserId]);
-
-  // console.log('like', likesCount);
-  // console.log('comm', commentCount);
 
   return (
     <div className="grid grid-cols-3 gap-2 pb-2 pt-0 sm:pt-1 md:pt-1 lg:pt-1 xl:pt-1">
