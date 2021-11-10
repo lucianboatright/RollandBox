@@ -1,7 +1,7 @@
 import { PropTypes } from 'prop-types';
 import { useState, useContext } from 'react';
 import FirebaseContext from '../../context/firebase';
-import { firebase } from '../../lib/firebase';
+// import { firebase } from '../../lib/firebase';
 import UserContext from '../../context/user';
 import WatchCard from '../watchCards/TimeLineCard';
 import watchLogo from '../../images/svg_png/addWatchLogoPNG.png';
@@ -9,7 +9,7 @@ import watchLogoPink from '../../images/svg_png/addWatchLogoPNGPINK.png';
 import { ReactComponent as WatchLogo } from '../../images/svg_png/watch.svg';
 import { ReactComponent as Magnifying } from '../../images/svg_png/magnifying.svg';
 
-const db = firebase.firestore();
+// const db = firebase.firestore();
 
 export default function Actions({ docId, totalLikes, likedWatch, watchContent, handleFocus }) {
   const {
@@ -26,10 +26,12 @@ export default function Actions({ docId, totalLikes, likedWatch, watchContent, h
 
   const handleToggleLiked = async () => {
     console.log('docId', docId);
+    console.log('watchcontent', watchContent);
     setToggleLiked((toggleLiked) => !toggleLiked);
-    await db
+    await firebase
+      .firestore()
       .collection('watches')
-      .doc(docId)
+      .doc(watchContent.docId)
       .update({
         likes: toggleLiked ? FieldValue.arrayRemove(userId) : FieldValue.arrayUnion(userId)
       });
