@@ -34,17 +34,6 @@ export default function Header({
   const [commentCount, setCommentCount] = useState([]);
   const [likesCount, setLikesCount] = useState([]);
 
-  // const lk = [];
-  // Object.values(watches).forEach((k) => lk.push([k.watchname, k.likes]));
-  // const mostLiked = lk.sort().reverse()[0];
-  // console.log(mostLiked);
-
-  // const com = [];
-  // Object.values(watches).forEach((k) => com.push([k.watchname, k.comments]));
-  // com.sort((a, b) => b[1].length - a[1].length);
-  // setCommentCount(com[0]);
-  // console.log('com1', commentCount);
-
   const reload = () => window.location.reload();
 
   const handleClose = () => {
@@ -60,50 +49,29 @@ export default function Header({
     await toggleFollow(isFollowingProfile, user.docId, profileDocId, profileUserId, user.userId);
   };
 
-  // const likesCheck = async () => {
-  //   const lk = [];
-  //   Object.values(watches).forEach((k) => lk.push([k.watchname, k.likes]));
-  //   const mostLiked = lk.sort().reverse()[0];
-  //   setLikesCount(mostLiked[0]);
-  //   console.log(mostLiked);
-  // };
-  // const commentsCheck = async = () => {
-  //   const com = [];
-  //   Object.values(watches).forEach((k) => com.push([k.watchname, k.comments]));
-  //   com.sort((a, b) => b[1].length - a[1].length);
-  //   console.log('com1', com[0][0]);
-  // }
-  // const lk = [];
-  // Object.values(watches).forEach((k) => lk.push([k.watchname, k.likes]));
-  // const mostLiked = lk.sort().reverse()[0];
-  // console.log(mostLiked);
-  // setLikesCount(mostLiked[0]);
-
-  // const com = [];
-  // Object.values(watches).forEach((k) => com.push([k.watchname, k.comments]));
-  // com.sort((a, b) => b[1].length - a[1].length);
-  // // setCommentCount(com[0]);
-  // console.log('com1', com[0][0]);
-  // setCommentCount(com[0][0]);
-
   useEffect(() => {
     const likesCheck = async () => {
       const lk = [];
       Object.values(watches).forEach((k) => lk.push([k.watchname, k.likes]));
-      const mostLiked = await lk.sort().reverse()[0];
-      const mostLikedCount = await mostLiked[1].length;
-      setLikesCount([mostLiked[0], ' with ', mostLikedCount]);
+      if (lk.length > 1) {
+        const mostLiked = await lk.sort().reverse()[0];
+        const mostLikedCount = await mostLiked[1].length;
+        setLikesCount([mostLiked[0], ' with ', mostLikedCount]);
+      }
     };
     const commentsCheck = async () => {
       const com = [];
       Object.values(watches).forEach((k) => com.push([k.watchname, k.comments]));
       com.sort((a, b) => b[1].length - a[1].length);
-      if (com === null) {
-        setCommentCount('No Comments');
+      // if (com === null) {
+      //   com.push([0, ' Comments']);
+      // }
+      // console.log('test', com);
+      if (com.length > 1) {
+        const commmentsLength = await com[0][1];
+        const commmentsName = await com[0][0];
+        setCommentCount([commmentsName, ' with ', commmentsLength.length]);
       }
-      const commmentsLength = await com[0][1];
-      const commmentsName = await com[0][0];
-      setCommentCount([commmentsName, ' with ', commmentsLength.length]);
     };
     const isLoggedInUserFollowingProfile = async () => {
       const isFollowing = await isUserFollowingProfile(user.username, profileUserId);
@@ -112,10 +80,6 @@ export default function Header({
     if (user.username && profileUserId) {
       isLoggedInUserFollowingProfile();
     }
-    // return () => {
-    //   setLikesCount(mostLiked);
-    //   setCommentCount(com[0]);
-    // };
     likesCheck();
     commentsCheck();
   }, [user.username, profileUserId]);
@@ -131,7 +95,8 @@ export default function Header({
               backgroundSize: '200px 200px',
               backgroundPosition: 'right',
               height: 'auto',
-              width: 'auto'
+              width: 'auto',
+              maxWidth: '10rem'
             }}
             className="rounded-full flex shadow-lg"
             src={imgurl}
@@ -153,21 +118,6 @@ export default function Header({
           >
             {fullName}
           </span>
-          {/* {activeButtonFollow && (
-            <button
-              style={{ fontFamily: 'Acakadut', backgroundColor: '#e69597' }}
-              className="text-sm mx-1 my-1 px-3 py-0.5 border-grey-700 rounded text-white rounded hover:text-blue"
-              type="button"
-              onClick={handleToggleFollow}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter') {
-                  handleToggleFollow();
-                }
-              }}
-            >
-              {isFollowingProfile ? 'Unfollow' : 'Follow'}
-            </button>
-          )} */}
         </div>
         <div className="container flex mt-4">
           {followers === undefined || following === undefined ? (
@@ -211,10 +161,6 @@ export default function Header({
                   ) : (
                     <div>Most Commented - </div>
                   )}
-                  {/* Most Commented - {}
-                  {commentCount.map((item) => (
-                    <div>{item.length}</div>
-                  ))} */}
                 </div>
               </div>
             </>
