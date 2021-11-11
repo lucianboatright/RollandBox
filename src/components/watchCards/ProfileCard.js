@@ -18,7 +18,6 @@ const MODAL_STYLES = {
   marginBottom: '20rem',
   height: '720px'
 };
-
 const OVERLAY_STYLES = {
   position: 'fixed',
   top: 0,

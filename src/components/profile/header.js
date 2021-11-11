@@ -63,10 +63,6 @@ export default function Header({
       const com = [];
       Object.values(watches).forEach((k) => com.push([k.watchname, k.comments]));
       com.sort((a, b) => b[1].length - a[1].length);
-      // if (com === null) {
-      //   com.push([0, ' Comments']);
-      // }
-      // console.log('test', com);
       if (com.length > 1) {
         const commmentsLength = await com[0][1];
         const commmentsName = await com[0][0];
@@ -96,7 +92,7 @@ export default function Header({
               backgroundPosition: 'right',
               height: 'auto',
               width: 'auto',
-              maxWidth: '10rem'
+              maxWidth: '14rem'
             }}
             className="rounded-full flex shadow-lg"
             src={imgurl}
@@ -154,7 +150,7 @@ export default function Header({
                 className="mr-4 text-base sm:mr-10 sm:text-xl md:mr-10 md:text-xl lg:mr-10 lg:text-xl xl:mr-10 xl:text-xl"
                 style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}
               >
-                <div>Most Liked Watch - {likesCount}</div>
+                <div>Most Liked - {likesCount}</div>
                 <div>
                   {commentCount != null ? (
                     <div>Most Commented - {commentCount}</div>
@@ -168,21 +164,23 @@ export default function Header({
         </div>
       </div>
       <div className="flex items-center justify-center flex-col col-span">
-        {activeButtonFollow && (
-          <button
-            style={{ fontFamily: 'Acakadut', backgroundColor: '#e69597' }}
-            className="text-sm mx-1 my-1 px-3 py-0.5 border-grey-700 rounded text-white rounded hover:text-blue"
-            type="button"
-            onClick={handleToggleFollow}
-            onKeyDown={(event) => {
-              if (event.key === 'Enter') {
-                handleToggleFollow();
-              }
-            }}
-          >
-            {isFollowingProfile ? 'Unfollow' : 'Follow'}
-          </button>
-        )}
+        <div className=" pl-10 container flex item-center">
+          {activeButtonFollow && (
+            <button
+              style={{ fontFamily: 'Acakadut', backgroundColor: '#e69597' }}
+              className="text-sm mx-1 my-1 px-3 py-0.5 border-grey-700 rounded text-white rounded hover:text-blue"
+              type="button"
+              onClick={handleToggleFollow}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  handleToggleFollow();
+                }
+              }}
+            >
+              {isFollowingProfile ? 'Unfollow' : 'Follow'}
+            </button>
+          )}
+        </div>
         <div className=" pl-10 container flex item-center">
           {editProfile && (
             <div className="ml-1">
