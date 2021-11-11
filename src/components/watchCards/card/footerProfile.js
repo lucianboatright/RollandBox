@@ -5,7 +5,7 @@ import deleteLogo from '../../../images/svg_png/deleteWhite.png';
 
 const db = firebase.firestore();
 
-export default function Footer({ caption, watchName, docId, watchUserId, userId }) {
+export default function Footer({ caption, watchName, docId, watchUserId, userId, onClose }) {
   const handleDelete = () => {
     db.collection('watches')
       .doc(docId)
@@ -16,8 +16,10 @@ export default function Footer({ caption, watchName, docId, watchUserId, userId 
       .catch((error) => {
         console.log('ERROR', error);
       });
+    // makeClose();
     // onClose();
   };
+
   return (
     <div
       className="w-60 pt-2 pl-4 text-left"
@@ -49,6 +51,7 @@ export default function Footer({ caption, watchName, docId, watchUserId, userId 
 }
 
 Footer.propType = {
+  onClose: PropTypes.bool,
   caption: PropTypes.string,
   watchName: PropTypes.string,
   docId: PropTypes.string,

@@ -82,19 +82,17 @@ export default function Header({
 
   return (
     <div className="grid grid-cols-3 gap-2 pb-2 pt-0 sm:pt-1 md:pt-1 lg:pt-1 xl:pt-1">
-      <div className="container flex justify-end mt-5 mb-5 pr-1 pl-4 border-r-2 border-grey-700 sm:pr-28 md:pr-28 lg:pr-28 xl:pr-28 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 sm:mt-0 md:mt-0 lg:mt-0 xl:mt-0 sm:visible md:visible lg:visible xl:visible">
+      <div className="container flex justify-end w-auto border-r-2 border-grey-700 sm:pr-28 md:pr-28 lg:pr-28 xl:pr-28 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 sm:mt-0 md:mt-0 lg:mt-0 xl:mt-0 sm:visible md:visible lg:visible xl:visible">
         {user.username && (
           <img
             style={{
               backgroundImage: `url(${altLogo})`,
               backgroundRepeat: 'no-repeat',
-              backgroundSize: '200px 200px',
-              backgroundPosition: 'right',
-              height: 'auto',
-              width: 'auto',
-              maxWidth: '14rem'
+              backgroundSize: 'auto',
+              backgroundPosition: '',
+              width: '8rem'
             }}
-            className="rounded-full flex shadow-lg"
+            className="rounded-full shadow-lg"
             src={imgurl}
             alt=""
           />
