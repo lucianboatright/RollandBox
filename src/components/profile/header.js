@@ -10,6 +10,7 @@ import watchLogo from '../../images/svg_png/watch.png';
 import altLogo from '../../images/svg_png/avatarAlt.png';
 
 export default function Header({
+  watches,
   watchesCount,
   followerCount,
   setFollowerCount,
@@ -30,6 +31,8 @@ export default function Header({
   const [isOpenAvitar, setIsOpenAvitar] = useState(false);
   const editProfile = user.username && user.username === profileUsername;
   const avatar = user.imageurl;
+  const [commentCount, setCommentCount] = useState([]);
+  const [likesCount, setLikesCount] = useState([]);
 
   const reload = () => window.location.reload();
 
@@ -47,6 +50,25 @@ export default function Header({
   };
 
   useEffect(() => {
+    const likesCheck = async () => {
+      const lk = [];
+      Object.values(watches).forEach((k) => lk.push([k.watchname, k.likes]));
+      if (lk.length > 1) {
+        const mostLiked = await lk.sort().reverse()[0];
+        const mostLikedCount = await mostLiked[1].length;
+        setLikesCount([mostLiked[0], ' with ', mostLikedCount]);
+      }
+    };
+    const commentsCheck = async () => {
+      const com = [];
+      Object.values(watches).forEach((k) => com.push([k.watchname, k.comments]));
+      com.sort((a, b) => b[1].length - a[1].length);
+      if (com.length > 1) {
+        const commmentsLength = await com[0][1];
+        const commmentsName = await com[0][0];
+        setCommentCount([commmentsName, ' with ', commmentsLength.length]);
+      }
+    };
     const isLoggedInUserFollowingProfile = async () => {
       const isFollowing = await isUserFollowingProfile(user.username, profileUserId);
       setIsFollowingProfile(isFollowing);
@@ -54,22 +76,23 @@ export default function Header({
     if (user.username && profileUserId) {
       isLoggedInUserFollowingProfile();
     }
+    likesCheck();
+    commentsCheck();
   }, [user.username, profileUserId]);
 
   return (
     <div className="grid grid-cols-3 gap-2 pb-2 pt-0 sm:pt-1 md:pt-1 lg:pt-1 xl:pt-1">
-      <div className="container flex justify-end mt-5 mb-5 pr-1 pl-4 border-r-2 border-grey-700 sm:pr-28 md:pr-28 lg:pr-28 xl:pr-28 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 sm:mt-0 md:mt-0 lg:mt-0 xl:mt-0 sm:visible md:visible lg:visible xl:visible">
+      <div className="container flex justify-end w-auto border-r-2 border-grey-700 sm:pr-28 md:pr-28 lg:pr-28 xl:pr-28 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 sm:mt-0 md:mt-0 lg:mt-0 xl:mt-0 sm:visible md:visible lg:visible xl:visible">
         {user.username && (
           <img
             style={{
               backgroundImage: `url(${altLogo})`,
               backgroundRepeat: 'no-repeat',
-              backgroundSize: '200px 200px',
-              backgroundPosition: 'right',
-              height: 'auto',
-              width: 'auto'
+              backgroundSize: 'auto',
+              backgroundPosition: '',
+              width: '8rem'
             }}
-            className="rounded-full flex shadow-lg"
+            className="rounded-full shadow-lg"
             src={imgurl}
             alt=""
           />
@@ -89,21 +112,6 @@ export default function Header({
           >
             {fullName}
           </span>
-          {activeButtonFollow && (
-            <button
-              style={{ fontFamily: 'Acakadut', backgroundColor: '#e69597' }}
-              className="text-sm mx-1 my-1 px-3 py-0.5 border-grey-700 rounded text-white rounded hover:text-blue"
-              type="button"
-              onClick={handleToggleFollow}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter') {
-                  handleToggleFollow();
-                }
-              }}
-            >
-              {isFollowingProfile ? 'Unfollow' : 'Follow'}
-            </button>
-          )}
         </div>
         <div className="container flex mt-4">
           {followers === undefined || following === undefined ? (
@@ -136,11 +144,41 @@ export default function Header({
                   Following
                 </div>
               </div>
+              <div
+                className="mr-4 text-base sm:mr-10 sm:text-xl md:mr-10 md:text-xl lg:mr-10 lg:text-xl xl:mr-10 xl:text-xl"
+                style={{ fontFamily: 'Quinngothic', color: 'rgb(0,15,85)' }}
+              >
+                <div>Most Liked - {likesCount}</div>
+                <div>
+                  {commentCount != null ? (
+                    <div>Most Commented - {commentCount}</div>
+                  ) : (
+                    <div>Most Commented - </div>
+                  )}
+                </div>
+              </div>
             </>
           )}
         </div>
       </div>
       <div className="flex items-center justify-center flex-col col-span">
+        <div className=" pl-10 container flex item-center">
+          {activeButtonFollow && (
+            <button
+              style={{ fontFamily: 'Acakadut', backgroundColor: '#e69597' }}
+              className="text-sm mx-1 my-1 px-3 py-0.5 border-grey-700 rounded text-white rounded hover:text-blue"
+              type="button"
+              onClick={handleToggleFollow}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  handleToggleFollow();
+                }
+              }}
+            >
+              {isFollowingProfile ? 'Unfollow' : 'Follow'}
+            </button>
+          )}
+        </div>
         <div className=" pl-10 container flex item-center">
           {editProfile && (
             <div className="ml-1">
@@ -240,6 +278,7 @@ export default function Header({
 }
 
 Header.propTypes = {
+  watches: PropTypes.array,
   watchesCount: PropTypes.number.isRequired,
   followerCount: PropTypes.number.isRequired,
   setFollowerCount: PropTypes.func.isRequired,
