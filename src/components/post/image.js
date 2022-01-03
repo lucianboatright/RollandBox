@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 export default function Image({ src, caption }) {
   return (
     <div
+      className=" mt-5 ml-3 align-center rounded"
       style={{
-        height: '300px',
+        height: '315px',
         width: '195px',
         background: `url(${src})`,
-        boxShadow: 'inset 0px 0px 10px rgba(0,0,0,0.9)'
+        boxShadow: 'inset 0px 0px 10px rgba(0,0,0,0.9)',
+        backgroundSize: '195px 320px'
       }}
     >
       {/* <img
