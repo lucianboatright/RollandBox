@@ -33,13 +33,22 @@ export default function IndividualWatch({ watchInfo }) {
                   }
                 }}
               >
-                <div>
-                  <img
+                <div
+                  className="ml-3 mr-3 mb-3 mt-2 rounded"
+                  style={{
+                    height: '315px',
+                    width: '195px',
+                    background: `url(${watchInfo.imageurl})`,
+                    boxShadow: 'inset 0px 0px 10px rgba(0,0,0,0.9)',
+                    backgroundSize: '195px 320px'
+                  }}
+                >
+                  {/* <img
                     className="rounded ml-4 mr-4 mt-2  cursor-pointer"
                     src={watchInfo.imageurl}
                     alt={`${watchInfo.watchId}`}
                     width="190px"
-                  />
+                  /> */}
                 </div>
               </button>
               <WatchCard

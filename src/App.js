@@ -32,7 +32,7 @@ export default function App() {
             <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
               <Dashboard />
             </ProtectedRoute>
-            <Route component={NotFound} />
+            <Route component={ROUTES.DASHBOARD} />
           </Switch>
         </Suspense>
       </Router>
