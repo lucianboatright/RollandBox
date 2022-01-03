@@ -340,7 +340,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                                     src={loading}
                                     className="animate-spin h-6 w-6 mr-3 inline"
                                   />
-                                  <span className="inline">2 secs Please Try Again</span>
+                                  <span className="inline">Please Try Again in 3s</span>
                                 </div>
                               </>
                             ) : (
@@ -380,7 +380,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                     onChange={({ target }) => setWatchName(target.value)}
                   />
                   <br />
-                  <p className="text-blue-600 pl-1 pt-0.5" style={{ fontFamily: 'Quinngothic' }}>
+                  <p className="text-blue-600 pl-1" style={{ fontFamily: 'Quinngothic' }}>
                     Enter Iinformation and Links
                   </p>
                   <textarea
@@ -444,7 +444,7 @@ export default function Modal({ open, onClose, profile, watchesCount, userId, us
                       <button
                         type="submit"
                         style={{ fontFamily: 'Acakadut', backgroundColor: '#c0362c' }}
-                        className="rounded mt-1 mb-1 pr-2 pt-1 pb-1 text-white text-xl w-60 bg"
+                        className="rounded mt-6 mb-1 pr-2 pt-1 pb-1 text-white text-xl w-60 bg"
                       >
                         <img
                           alt="logo"

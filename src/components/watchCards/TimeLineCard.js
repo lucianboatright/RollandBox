@@ -10,7 +10,7 @@ const MODAL_STYLES = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   backgroundColor: '#FFF',
-  padding: '20px',
+  padding: '10px',
   marginTop: '12rem',
   marginBottom: '6rem'
 };
@@ -33,22 +33,22 @@ export default function Modal({ open, onClose, watchInfo }) {
   return (
     <>
       <div style={OVERLAY_STYLES}>
-        <div>
-          <button
-            type="button"
-            onClick={onClose}
-            onKeyDown={(event) => {
-              if (event.key === 'Enter') {
-                onClose();
-              }
-            }}
-            style={{ fontFamily: 'Acakadut' }}
-            className="text-white bg-gradient-to-r from-red-600 to-blue-500 rounded px-2 py-0.5 hover:bg-white-600 hover:text-red"
-          >
-            X Close Modal
-          </button>
-        </div>
         <div style={MODAL_STYLES} className="rounded">
+          <div>
+            <button
+              type="button"
+              onClick={onClose}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  onClose();
+                }
+              }}
+              style={{ fontFamily: 'Acakadut' }}
+              className="text-white bg-gradient-to-r from-red-600 to-blue-500 rounded ml-3 mb-2 px-2 py-0.5 hover:bg-white-600 hover:text-red"
+            >
+              X Close Modal
+            </button>
+          </div>
           <div className="sm:hidden md:hidden lg:hidden xl:hidden">
             <div className="overflow-y-scroll h-screen">
               <div
@@ -107,13 +107,24 @@ export default function Modal({ open, onClose, watchInfo }) {
                 style={{
                   backgroundImage: `url(${watchBoxSide})`,
                   backgroundPosition: 'center top',
-                  backgroundSize: '42rem 35.2rem',
+                  backgroundSize: '41rem 35rem',
                   backgroundRepeat: 'no-repeat'
                 }}
               >
                 <div className="flex flex-row ml-7 mr-7">
                   <div className=" ml-0 pr-4 mr-2 pb-20 pt-4 sm:pb-10 md:pb-10 lg:pb-10 lx:pb-10">
-                    <img alt="watch" src={watchInfo.imageurl} className="rounded w-80" />
+                    <div
+                      className="rounded max-w-none"
+                      style={{
+                        height: '510px',
+                        width: '305px',
+                        background: `url(${watchInfo.imageurl})`,
+                        boxShadow: 'inset 0px 0px 10px rgba(0,0,0,0.9)',
+                        backgroundSize: '305px 510px'
+                      }}
+                    >
+                      {/* <img alt="watch" src={watchInfo.imageurl} className="rounded w-72 max-w-none" /> */}
+                    </div>
                   </div>
                   <div
                     style={{
