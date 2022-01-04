@@ -10,8 +10,11 @@ describe("Testing on Watch App", () => {
     })
 
     it("Can read items from Read only Collection", async () => {
+        // create test db firestore for testing
         const db = firebase.initializeTestApp({projectId: MY_PROJECT_ID}).firestore();
+        // testdoc == place to store in (collection)"readonly" in a (doc)"testdoc" 
         const testDoc = db.collection("readonly").doc("testDoc");
+        // await succesfull return on testDoc
         await firebase.assertSucceeds(testDoc.get());
     })
 
@@ -20,4 +23,13 @@ describe("Testing on Watch App", () => {
         const testDoc = bd.collection("readonly").doc("testDoc2")
         await firebase.assertSucceeds(testDoc.set({foo: "bar"}));
     }
+
+    it("can write to users if user ID == auth user", async () => {
+        // myAuth = added context for user in test 
+        const myAuth = {uid: "Lucian", email: "lucian@gmail.com"};
+        // adding myAuth to testApp so when ran it pretends Im signed as myAuth
+        const db = firebase.initializeTestApp({projectId: MY_PROJECT_ID, auth: myAuth}).firestore();
+        const testDoc = db.collection("users").doc("user_abc");
+        await firebase.assertSucceeds(testDoc.set({foo: "bar"}));
+    })
 })
