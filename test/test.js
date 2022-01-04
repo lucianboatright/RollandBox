@@ -2,6 +2,13 @@ const assert = require('assert');
 const firebase = require('@firebase/testing');
 
 const MY_PROJECT_ID = "mywatchboxweb";
+const myId = "Lucian";
+const theirId = "not_Lucian";
+const myAuth = {uid: myId, email: "lucian@gmail.com"};
+
+function getFirestore(auth) {
+    return firebase.initializeTestApp({projectId: MY_PROJECT_ID, auth: auth}).firestore();
+}
 
 describe("Testing on Watch App", () => {
 
@@ -19,7 +26,7 @@ describe("Testing on Watch App", () => {
     })
 
     it("can't write to files in read only collection", async () => {
-        const db = firebase.initializeTestApp({projectId: MY_PROJECT_ID}).firestore();
+        const db = getFirestore(null);
         const testDoc = db.collection("readonly").doc("testDoc2")
         await firebase.assertFails(testDoc.set({foo: "bar"}));
     })
@@ -29,14 +36,14 @@ describe("Testing on Watch App", () => {
         const myAuth = {uid: "Lucian", email: "lucian@gmail.com"};
         // adding myAuth to testApp so when ran it pretends Im signed as myAuth
         const db = firebase.initializeTestApp({projectId: MY_PROJECT_ID, auth: myAuth}).firestore();
-        const testDoc = db.collection("users").doc("Lucian");
+        const testDoc = db.collection("users").doc(myId);
         await firebase.assertSucceeds(testDoc.set({foo: "bar"}));
     })
 
+    // REFACTORED VERSION
     it("cant write to users if the user ID != auth user", async () => {
-        const myAuth = {uid: "Lucian", email: "lucian@gmail.com"};
-        const db = firebase.initializeTestApp({projectId: MY_PROJECT_ID, auth: myAuth}).firestore();
-        const testDoc = db.collection("users").doc("not_lucian");
+        const db = getFirestore(myAuth);
+        const testDoc = db.collection("users").doc(theirId);
         await firebase.assertFails(testDoc.set({foo: "bar"}));
     })
 })
