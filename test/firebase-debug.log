@@ -1,0 +1,38 @@
+[debug] [2022-01-05T17:10:06.668Z] ----------------------------------------------------------------------
+[debug] [2022-01-05T17:10:06.671Z] Command:       /usr/local/Cellar/node/16.8.0/bin/node /usr/local/bin/firebase emulators:start
+[debug] [2022-01-05T17:10:06.672Z] CLI Version:   9.20.0
+[debug] [2022-01-05T17:10:06.672Z] Platform:      darwin
+[debug] [2022-01-05T17:10:06.672Z] Node Version:  v16.8.0
+[debug] [2022-01-05T17:10:06.674Z] Time:          Wed Jan 05 2022 17:10:06 GMT+0000 (Greenwich Mean Time)
+[debug] [2022-01-05T17:10:06.674Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-01-05T17:10:06.722Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-01-05T17:10:06.722Z] > authorizing via signed-in user (lucian.boatright@googlemail.com)
+[info] i  emulators: Starting emulators: functions, firestore, hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions, firestore, hosting"}}
+[debug] [2022-01-05T17:10:06.739Z] [hub] writing locator at /var/folders/sv/w_k2z4ys69vfdvhqyvdsjhqc0000gn/T/hub-mywatchboxweb.json
+[warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: auth, database, pubsub, storage {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mauth, database, pubsub, storage\u001b[22m"}}
+[info] i  emulators: Shutting down emulators. {"metadata":{"emulator":{"name":"hub"},"message":"Shutting down emulators."}}
+[info] i  functions: Stopping Functions Emulator {"metadata":{"emulator":{"name":"functions"},"message":"Stopping Functions Emulator"}}
+[info] i  hub: Stopping emulator hub {"metadata":{"emulator":{"name":"hub"},"message":"Stopping emulator hub"}}
+[debug] [2022-01-05T17:10:06.751Z] Error: Cannot find module '/Users/lukeboat/Documents/Programming/WatchBoxApp/RollandBox/functions/package.json'
+Require stack:
+- /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulator.js
+- /usr/local/lib/node_modules/firebase-tools/lib/emulator/controller.js
+- /usr/local/lib/node_modules/firebase-tools/lib/emulator/commandUtils.js
+- /usr/local/lib/node_modules/firebase-tools/lib/commands/database-get.js
+- /usr/local/lib/node_modules/firebase-tools/lib/commands/index.js
+- /usr/local/lib/node_modules/firebase-tools/lib/index.js
+- /usr/local/lib/node_modules/firebase-tools/lib/bin/firebase.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:933:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:778:27)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:94:18)
+    at FunctionsEmulator.askInstallNodeVersion (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulator.js:454:21)
+    at FunctionsEmulator.start (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulator.js:166:32)
+    at Function.start (/usr/local/lib/node_modules/firebase-tools/lib/emulator/registry.js:16:24)
+    at startEmulator (/usr/local/lib/node_modules/firebase-tools/lib/emulator/controller.js:90:39)
+    at Object.startAll (/usr/local/lib/node_modules/firebase-tools/lib/emulator/controller.js:273:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async Command.actionFn (/usr/local/lib/node_modules/firebase-tools/lib/commands/emulators-start.js:26:9)
+[error] 
+[error] Error: An unexpected error has occurred.
