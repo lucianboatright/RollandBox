@@ -40,7 +40,7 @@ describe("Testing on Watch App", () => {
         await firebase.assertSucceeds(testDoc.set({foo: "bar"}));
     })
 
-    // REFACTORED VERSION
+    // REFACTORED VERSION 
     it("cant write to users if the user ID != auth user", async () => {
         const db = getFirestore(myAuth);
         const testDoc = db.collection("users").doc(theirId);
