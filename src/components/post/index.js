@@ -19,9 +19,10 @@ export default function Post({ content }) {
         style={{
           backgroundImage: `url(${paper})`,
           backgroundPosition: '',
-          backgroundSize: '30rem 35rem',
+          backgroundSize: '60rem',
           backgroundRepeat: 'no-repeat',
-          marginTop: '1.2rem'
+          marginTop: '1.2rem',
+          boxShadow: 'inset 0px 0px 10px rgba(0,0,0,0.9)'
         }}
       >
         <Header className="" username={content.username} avatar={content.user} />

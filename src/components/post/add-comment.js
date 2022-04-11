@@ -26,7 +26,7 @@ export default function AddComment({ docId, comments, setComments, commentInput 
   };
 
   return (
-    <div className="border-2 border-grey-800 rounded ">
+    <div className="border-2 border-grey-800 rounded ml-1 mr-1 ">
       <form
         className="pl-0.5 pr-0"
         method="POST"
@@ -46,7 +46,7 @@ export default function AddComment({ docId, comments, setComments, commentInput 
               value={comment}
               onChange={({ target }) => setComment(target.value)}
               ref={commentInput}
-              style={{ width: '8.2rem' }}
+              style={{ width: '7.5rem' }}
             />
             <button
               style={{
@@ -54,7 +54,7 @@ export default function AddComment({ docId, comments, setComments, commentInput 
                 borderStyle: 'solid',
                 borderColor: 'rgb(95,158,160)'
               }}
-              className={`inline-block align-baseline text-xs font-bold text-white pl-2 pt-1.5 pb-1 pr-3 rounded ${
+              className={`inline-block align-baseline text-xs font-bold text-white pl-2 pt-1 pb-0 pr-3 rounded ${
                 !comment && 'opacity-80'
               }`}
               type="button"

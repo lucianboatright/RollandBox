@@ -17,7 +17,12 @@ export default function Post({
   return (
     <div className="">
       <div className=" h-screen sm:hidden md:hidden lg:hidden xl:hidden">
-        <div className="ml-1 mb-3">
+        <div
+          className="ml-1 mb-3"
+          styles={{
+            boxShadow: 'inset 0px 0px 10px rgba(0,0,0,0.9)'
+          }}
+        >
           <Image src={imageurl} caption={watchInfo} className="h-10" />
         </div>
         <div
@@ -28,7 +33,8 @@ export default function Post({
             backgroundSize: '21rem 60rem',
             backgroundRepeat: 'no-repeat',
             fontFamily: 'Buggie',
-            color: 'rgb(0,15,85)'
+            color: 'rgb(0,15,85)',
+            boxShadow: 'inset 0px 0px 10px rgba(0,0,0,0.9)'
           }}
         >
           <Footer
@@ -43,7 +49,11 @@ export default function Post({
       </div>
       <div className=" pb-20 hidden sm:block md:block lg:block xl:block">
         <div className="flex flex-row">
-          <div className="">
+          <div
+            styles={{
+              boxShadow: 'inset 0px 0px 10px rgba(0,0,0,0.9)'
+            }}
+          >
             <Image src={imageurl} caption={watchInfo} />
           </div>
           <div
@@ -55,7 +65,8 @@ export default function Post({
               backgroundRepeat: 'no-repeat',
               fontFamily: 'Buggie',
               color: 'rgb(0,15,85)',
-              height: '33rem'
+              height: '33rem',
+              boxShadow: 'inset 0px 0px 10px rgba(0,0,0,0.9)'
             }}
           >
             <div className="">
