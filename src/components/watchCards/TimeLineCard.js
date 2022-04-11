@@ -123,17 +123,19 @@ export default function Modal({ open, onClose, watchInfo }) {
                         backgroundSize: '305px 510px'
                       }}
                     >
-                      {/* <img alt="watch" src={watchInfo.imageurl} className="rounded w-72 max-w-none" /> */}
+                      {/* <img alt='watch' src={watchInfo.imageurl} className='rounded w-72 max-w-none' /> */}
                     </div>
                   </div>
                   <div
                     style={{
                       backgroundImage: `url(${paper})`,
                       backgroundPosition: '',
-                      backgroundSize: '50rem 31.9rem',
+                      height: 510,
+                      paddingBottom: 15,
                       backgroundRepeat: 'no-repeat',
                       fontFamily: 'Buggie',
-                      color: 'rgb(0,15,85)'
+                      color: 'rgb(0,15,85)',
+                      boxShadow: 'inset 0px 0px 10px rgba(0,0,0,0.9)'
                     }}
                     className="pt-3 pr-0 mt-4 rounded"
                   >

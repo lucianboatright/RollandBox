@@ -82,7 +82,7 @@ export default function Header({
 
   return (
     <div className="grid grid-cols-3 gap-2 pb-2 pt-0 sm:pt-1 md:pt-1 lg:pt-1 xl:pt-1">
-      <div className="container flex justify-end w-auto border-r-2 border-grey-700 sm:pr-28 md:pr-28 lg:pr-28 xl:pr-28 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 sm:mt-0 md:mt-0 lg:mt-0 xl:mt-0 sm:visible md:visible lg:visible xl:visible">
+      <div className="container flex justify-end w-auto border-r-2 border-grey-700  sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 sm:mt-0 md:mt-0 lg:mt-0 xl:mt-0 sm:visible md:visible lg:visible xl:visible">
         {user.username && (
           <img
             style={{
@@ -90,7 +90,11 @@ export default function Header({
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'auto',
               backgroundPosition: '',
-              width: '8rem'
+              alignContent: 'center',
+              height: 'max-content',
+              margin: 'auto'
+              // width: 'auto',
+              // height: 'auto'
             }}
             className="rounded-full shadow-lg"
             src={imgurl}
@@ -161,8 +165,8 @@ export default function Header({
           )}
         </div>
       </div>
-      <div className="flex items-center justify-center flex-col col-span">
-        <div className=" pl-10 container flex item-center">
+      <div className="flex items-center justify-center flex-col col-span m-auto">
+        <div className="container flex item-center">
           {activeButtonFollow && (
             <button
               style={{ fontFamily: 'Acakadut', backgroundColor: '#e69597' }}
@@ -179,7 +183,7 @@ export default function Header({
             </button>
           )}
         </div>
-        <div className=" pl-10 container flex item-center">
+        <div className="container flex item-center">
           {editProfile && (
             <div className="ml-1">
               <div className="flex items-center justify-evenly flex-col col-span">
@@ -205,7 +209,7 @@ export default function Header({
                   />
                 </div>
               </div>
-              <div className="flex items-center justify-evenly flex-col col-span">
+              <div className="flex items-center justify-evenly flex-col col-span ">
                 <div className="container mr-2">
                   <button
                     className="rounded text-white h-10 w-10 block sm:hidden md:hidden lg:hidden xl:hidden"
