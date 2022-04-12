@@ -91,8 +91,11 @@ export default function Header({
               backgroundSize: 'auto',
               backgroundPosition: '',
               alignContent: 'center',
-              height: 'max-content',
-              margin: 'auto'
+              height: '50%',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              maxHeight: '50%',
+              marginTop: 30
               // width: 'auto',
               // height: 'auto'
             }}
