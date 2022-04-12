@@ -12,10 +12,8 @@ export default function AddComment({ docId, comments, setComments, commentInput 
 
   const handleSubmitComment = (event) => {
     event.preventDefault();
-
     setComments([{ displayName, comment }, ...comments]);
     setComment('');
-
     return firebase
       .firestore()
       .collection('watches')
