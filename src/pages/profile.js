@@ -25,7 +25,7 @@ export default function Profile() {
   return user?.username ? (
     <div className="bg-gray-background flex flex-col min-h-screen">
       <Header />
-      <div className="mx-auto flex-grow">
+      <div className="flex-grow">
         <UserProfile user={user} />
       </div>
       <BottomBanner />

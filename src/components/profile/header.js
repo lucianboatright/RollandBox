@@ -81,25 +81,28 @@ export default function Header({
   }, [user.username, profileUserId]);
 
   return (
-    <div className="grid grid-cols-3 gap-2 pb-2 pt-0 sm:pt-1 md:pt-1 lg:pt-1 xl:pt-1">
-      <div className="container flex justify-end w-auto border-r-2 border-grey-700  sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 sm:mt-0 md:mt-0 lg:mt-0 xl:mt-0 sm:visible md:visible lg:visible xl:visible">
+    <div className="grid grid-cols-3 gap-2 pb-0 pt-0 sm:pt-1 md:pt-1 lg:pt-1 xl:pt-1">
+      <div className="container flex justify-start w-auto border-r-2 border-grey-700 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 sm:mt-0 md:mt-0 lg:mt-0 xl:mt-0 sm:visible md:visible lg:visible xl:visible">
         {user.username && (
           <img
             style={{
               backgroundImage: `url(${altLogo})`,
               backgroundRepeat: 'no-repeat',
-              backgroundSize: 'auto',
+              backgroundSize: 30,
               backgroundPosition: '',
-              alignContent: 'center',
-              height: '50%',
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              maxHeight: '50%',
-              marginTop: 30
+              // alignContent: 'center'
+              height: 'auto',
+              marginTop: 'auto',
+              marginBottom: 'auto'
+              // objectFit: 'scale-down'
+              // marginLeft: 'auto',
+              // marginRight: 'auto',
+              // maxHeight: '50%',
+              // marginTop: 10
               // width: 'auto',
               // height: 'auto'
             }}
-            className="rounded-full shadow-lg"
+            className="rounded-full shadow-lg object-contain  mx-auto"
             src={imgurl}
             alt=""
           />

@@ -22,7 +22,7 @@ export default function Header() {
     <header className="h-12 sm:h-16 md:h-16 lg:h-16 xl:h-16 bd-white border-b border-gray-primary mb-2">
       <div className="">
         <div className="flex">
-          <div className="flex-grow flex items-center  w-1/2 mt-1.5 mr-0 sm:ml-9 md:-ml-9 lg:ml-9 xl:ml-9">
+          <div className="flex items-center  w-1/2 mt-1.5 mr-0 lg:ml-9 xl:ml-9">
             <div
               className="inline text-4xl ml-3 sm:text-5xl pl-1 sm:ml-0 md:text-5xl md:ml-0 pl-1 lg:text-5xl lg:ml-0 pl-1 xl:text-5xl xl:ml-0 pl-1"
               style={{ fontFamily: 'Acakadut' }}
@@ -39,7 +39,7 @@ export default function Header() {
               </Link>
             </div>
           </div>
-          <div className="flex-grow w-1/2 flex justify-end inline-grid inline mb-0 mr-0 sm:mr-9 sm:mb-3 md:-mr-9 md:mb-3 lg:mr-9 lg:mb-3 xl:mr-9 xl:mb-3">
+          <div className=" w-1/2 flex justify-end inline-grid inline mb-0 mr-0 sm:mr-9 sm:mb-3 md:-mr-9 md:mb-3 lg:mr-9 lg:mb-3 xl:mr-9 xl:mb-3">
             {isLoggedIn ? (
               <>
                 <div className="justify-end flex items-center">
