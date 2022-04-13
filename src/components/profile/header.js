@@ -90,17 +90,9 @@ export default function Header({
               backgroundRepeat: 'no-repeat',
               backgroundSize: 30,
               backgroundPosition: '',
-              // alignContent: 'center'
               height: 'auto',
               marginTop: 'auto',
               marginBottom: 'auto'
-              // objectFit: 'scale-down'
-              // marginLeft: 'auto',
-              // marginRight: 'auto',
-              // maxHeight: '50%',
-              // marginTop: 10
-              // width: 'auto',
-              // height: 'auto'
             }}
             className="rounded-full shadow-lg object-contain  mx-auto"
             src={imgurl}
